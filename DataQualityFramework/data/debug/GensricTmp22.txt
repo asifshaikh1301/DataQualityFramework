@@ -1,0 +1,3 @@
+"SourceName";"SourceLayerName";"SourceAttributeName";"RuleID";"FilterRuleID";"FilterRecordsCount";"FilterLeadingAttribute";"DQM_RuleCodesAppliedLAForFilter"
+"OmniCRM";"og_customer";"Gender";10;1;50;"Gender";"1.Gender*10.Gender"
+"OmniImInAMess";"og_customer";"Gender";10;1;50;"Gender";"1.Gender*10.Gender"

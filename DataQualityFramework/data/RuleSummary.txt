@@ -1,0 +1,28 @@
+"RuleID";"CategoryLayerID";"ScopeID";"Name";"GenericName";"RuleType";"LongDescription";"ShortDescription";"Expression";"Score";"ScoreExplanation";"RuleComplexity";"UpsertUserID";"UpsertDate";"CreateDate";"EXT_RuleID";"BuildStatus";"DateString";"CommentStep";"QuotedExplanation";"CommentComponent";"TextFileWriter_StepId";"Filter_StepId";"TextFileWriter_FileName";"Filter_Condition";"SQL_Technical_RuleName";"SQL_RuleID";"QuotedRuleID"
+1;1179;1;"Column is populated";"empty or blank check";"Generic";"""should not be blank or empty""";"SD";;10;"COLUMN_NOT_POPULATED";;"ASI0568";2021-01-07 22:39:57;2021-01-07 22:39:57;"1";"Defining";"14-01-2021 16:59:36";"Created on 14-01-2021 16:59:36";"""COLUMN_NOT_POPULATED"" + ""("" + tmp_LeadingAttribute + "")""";"Submitted for Development on : 14-01-2021 16:59:36
+Data Governance/External RuleID : 1
+DQFramework RuleID : 1
+Rule Name : Column is populated
+Generic Rule Name : empty or blank check";"TextFileWriter RuleID 1";"Filter RuleID 1";"../../rules/development/Rules_1.comp";"toInteger(trashNonDigits(RuleID)) in {1}";"Column is populated";1;"""1"""
+2;1175;1;"Mobile number is valid syntax and structure";"Mobile";"Generic";"""at minimum one phone number must be held - Mobile Phone Numbers must either start with """"+447"""" (international) 0r """"07"""" (local)
+- Mobile Phone Number must 13 digits in length (international prefix) or 11 digits in length (local prefix)
+- Mobile Phone Number must not contain blanks or breaks in the string""";"SD";;5;"INVALID_MOBILE_NUMBER_STRUCTURE";;"ASI0568";2021-01-07 22:39:57;2021-01-07 22:39:57;"2";"Defining";"14-01-2021 16:59:36";"Created on 14-01-2021 16:59:36";"""INVALID_MOBILE_NUMBER_STRUCTURE"" + ""("" + tmp_LeadingAttribute + "")""";"Submitted for Development on : 14-01-2021 16:59:36
+Data Governance/External RuleID : 2
+DQFramework RuleID : 2
+Rule Name : Mobile number is valid syntax and structure
+Generic Rule Name : Mobile";"TextFileWriter RuleID 2";"Filter RuleID 2";"../../rules/development/Rules_2.comp";"toInteger(trashNonDigits(RuleID)) in {2}";"Mobile number is valid syntax and structure";2;"""2"""
+3;1175;1;"Email address is valid syntax and structure";"Email";"Generic";"""- name@domain 
+- name.name@domain
+- name@domain.countrycode
+- name.name@domain.countrycode
+- ""name""@domain – allowed where special characters are used between “”
+- Address should not be of type '%@%@%'""";"SD";;5;"INVALID_EMAIL_STRUCTURE";;"ASI0568";2021-01-07 22:39:57;2021-01-07 22:39:57;"4";"Defining";"14-01-2021 16:59:36";"Created on 14-01-2021 16:59:36";"""INVALID_EMAIL_STRUCTURE"" + ""("" + tmp_LeadingAttribute + "")""";"Submitted for Development on : 14-01-2021 16:59:36
+Data Governance/External RuleID : 4
+DQFramework RuleID : 3
+Rule Name : Email address is valid syntax and structure
+Generic Rule Name : Email";"TextFileWriter RuleID 3";"Filter RuleID 3";"../../rules/development/Rules_3.comp";"toInteger(trashNonDigits(RuleID)) in {3}";"Email address is valid syntax and structure";3;"""3"""
+4;1175;1;"Column is valid Gender value";"Gender";"Generic";"Must be ""M"" or ""F""";"SD";;5;"INVALID_GENDER_VALUE";;"ASI0568";2021-01-07 22:39:57;2021-01-07 22:39:57;"10";"Defining";"14-01-2021 16:59:36";"Created on 14-01-2021 16:59:36";"""INVALID_GENDER_VALUE"" + ""("" + tmp_LeadingAttribute + "")""";"Submitted for Development on : 14-01-2021 16:59:36
+Data Governance/External RuleID : 10
+DQFramework RuleID : 4
+Rule Name : Column is valid Gender value
+Generic Rule Name : Gender";"TextFileWriter RuleID 4";"Filter RuleID 4";"../../rules/development/Rules_4.comp";"toInteger(trashNonDigits(RuleID)) in {4}";"Column is valid Gender value";4;"""4"""

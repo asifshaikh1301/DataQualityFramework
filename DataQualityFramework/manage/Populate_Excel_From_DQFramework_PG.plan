@@ -1,0 +1,357 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (DQCategory) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="DQCategory">
+		<properties queryString="select &quot;CategoryID&quot;, &quot;Category&quot; from &quot;dbo&quot;.&quot;DQCategory&quot;" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="CategoryID" type="LONG"/>
+				<jdbcReaderColumn name="Category" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,120,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="DQCategory"/>
+		<target endpoint="in_left" step="Join"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (DQCategoryHierarchy) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="DQCategoryHierarchy">
+		<properties queryString="select &quot;HierarchyCategoryID&quot;, &quot;Hierarchy&quot;, &quot;HierarchyCategory&quot;, &quot;CategoryID&quot;, &quot;Description&quot; from &quot;dbo&quot;.&quot;DQCategoryHierarchy&quot;" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="HierarchyCategoryID" type="LONG"/>
+				<jdbcReaderColumn name="Hierarchy" type="INTEGER"/>
+				<jdbcReaderColumn name="HierarchyCategory" type="STRING"/>
+				<jdbcReaderColumn name="CategoryID" type="LONG"/>
+				<jdbcReaderColumn name="Description" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,216,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="DQCategoryHierarchy"/>
+		<target endpoint="in_right" step="Join"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Data Quality Framework - Excel) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.msoffice.excel.write.ExcelFileWriter" disabled="false" id="Data Quality Framework - Excel">
+		<properties fileName="../data/out/DQFramework_Populated.xlsx" excel2007="true" templateFile="../data/ext/template/DQFramework_Template.xlsx" templateFormulaRecalculate="true">
+			<inputs>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="Rules" startCell="A2" writeAllColumns="false" inputName="Rules">
+					<columns>
+						<columnExprDef name="RuleID"/>
+						<columnExprDef name="Technical_RuleName"/>
+						<columnExprDef name="Generic_RuleName"/>
+						<columnExprDef name="Rule_Details"/>
+						<columnExprDef name="Score"/>
+						<columnExprDef name="Explanation"/>
+						<columnExprDef name="RuleScope"/>
+						<columnExprDef expression="HierarchyCategoryID" name="DQCategory"/>
+						<columnExprDef name="Tags"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="DQ Category" startCell="A2" writeAllColumns="false" inputName="DQ Category">
+					<columns>
+						<columnExprDef name="CategoryID"/>
+						<columnExprDef name="Category"/>
+						<columnExprDef name="HierarchyCategoryID"/>
+						<columnExprDef name="HierarchyCategory"/>
+						<columnExprDef name="Description"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="SourceDetails" startCell="A2" writeAllColumns="false" inputName="SourceDetails">
+					<columns>
+						<columnExprDef name="SourceName"/>
+						<columnExprDef name="SourceLayerName"/>
+						<columnExprDef name="SourceAttributeName"/>
+						<columnExprDef name="SourceAttributeDataType"/>
+						<columnExprDef name="OmniDB_SourceAttributeName"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="DomainDetails" startCell="A2" writeAllColumns="false" inputName="DomainDetails">
+					<columns>
+						<columnExprDef name="DomainName"/>
+						<columnExprDef name="DomainLayerName"/>
+						<columnExprDef name="DomainAttributeName"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="SourceDomainMapping" startCell="A2" writeAllColumns="false" inputName="SourceDomainMapping">
+					<columns>
+						<columnExprDef name="MappingID"/>
+						<columnExprDef name="SourceName"/>
+						<columnExprDef name="SourceLayerName"/>
+						<columnExprDef name="SourceAttributeName"/>
+						<columnExprDef name="SourceAttributeDataType"/>
+						<columnExprDef name="OmniDB_SourceAttributeName"/>
+						<columnExprDef name="DomainName"/>
+						<columnExprDef name="DomainLayerName"/>
+						<columnExprDef name="DomainAttributeName"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="Result_Rules" startCell="A2" writeAllColumns="false" inputName="Result_Rules">
+					<columns>
+						<columnExprDef name="DebugTraceID"/>
+						<columnExprDef name="SubmissionID"/>
+						<columnExprDef name="SubmissionDateTime"/>
+						<columnExprDef name="ReportDateTime"/>
+						<columnExprDef name="RuleID"/>
+						<columnExprDef name="SourceName"/>
+						<columnExprDef name="SourceLayerName"/>
+						<columnExprDef name="SourceAttributeName"/>
+						<columnExprDef name="Success_Count"/>
+						<columnExprDef name="Total"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+			</inputs>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="696,288,-1,-1"/>
+	</step>
+
+
+
+<!-- (Domains) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="Domains">
+		<properties queryString="select &quot;DomainName&quot;, &quot;DomainLayerName&quot;, &quot;DomainAttributeName&quot; from &quot;dbo&quot;.&quot;Domains&quot;" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="DomainName" type="STRING"/>
+				<jdbcReaderColumn name="DomainLayerName" type="STRING"/>
+				<jdbcReaderColumn name="DomainAttributeName" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,600,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Domains"/>
+		<target endpoint="DomainDetails" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="679,624"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join">
+		<properties matchStrategy="MERGE" leftKey="CategoryID" rightKey="CategoryID" joinType="INNER">
+			<columnDefinitions>
+				<columnDefinition expression="in_left.CategoryID" name="CategoryID"/>
+				<columnDefinition expression="in_left.Category" name="Category"/>
+				<columnDefinition expression="in_right.HierarchyCategoryID" name="HierarchyCategoryID"/>
+				<columnDefinition expression="in_right.HierarchyCategory" name="HierarchyCategory"/>
+				<columnDefinition expression="in_right.Description" name="Description"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="192,168,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join"/>
+		<target endpoint="DQ Category" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="679,192"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Results_Rules) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="Results_Rules">
+		<properties queryString="select &quot;DebugTraceID&quot;, &quot;SubmissionID&quot;, &quot;SubmissionDateTime&quot;, &quot;SubmissionDate&quot;, &quot;SubmissionWeek&quot;, &quot;SubmissionMonth&quot;, &quot;SubmissionYear&quot;, &quot;ReportDateTime&quot;, &quot;ReportDate&quot;, &quot;ReportWeek&quot;, &quot;ReportMonth&quot;, &quot;ReportYear&quot;, &quot;Ex_CallerRequestTime&quot;, &quot;Ex_RuleProcessingCompletion_Timestamp&quot;, &quot;DomainName&quot;, &quot;DomainLayerName&quot;, &quot;DomainAttributeName&quot;, &quot;SourceName&quot;, &quot;SourceLayerName&quot;, &quot;SourceAttributeName&quot;, &quot;SourceAttributeDataType&quot;, &quot;LeadingAttribute&quot;, &quot;RuleID&quot;, &quot;RuleCode&quot;, &quot;RuleName&quot;, &quot;Short_Description&quot;, &quot;Description&quot;, &quot;Expression&quot;, &quot;Success_Count&quot;, &quot;Fail_Count&quot;, &quot;Total&quot;, &quot;Percentage&quot;, &quot;Results_SourceAttribute_RDC&quot;, &quot;Results_SourceLayer_RDC&quot;, &quot;Results_Sourcer_RDC&quot;, &quot;Results_DomainAttribute_RDC&quot;, &quot;Results_DomainLayer_RDC&quot;, &quot;Results_Domain_RDC&quot;, &quot;Results_SourceAttribute_Mapped_RuleIDs&quot;, &quot;Results_SourceAttribute_NoOfRules&quot;, &quot;Results_SourceAttribute_AveragePercentage&quot;, &quot;Results_SourceAttribute_MaxPercentage&quot;, &quot;Results_SourceAttribute_MinPercentage&quot;, &quot;Results_SourceLayer_Mapped_RuleIDs&quot;, &quot;Results_SourceLayer_NoOfRules&quot;, &quot;Results_SourceLayer_AveragePercentage&quot;, &quot;Results_SourceLayer_MaxPercentage&quot;, &quot;Results_SourceLayer_MinPercentage&quot;, &quot;Results_SourceLayer_NoOfDomainLayers&quot;, &quot;Results_SourceAttribute_NoOfDomains&quot;, &quot;Results_SourceAttribute_NoOfDomainLayers&quot;, &quot;Results_SourceAttribute_NoOfDomainAttributeNames&quot;, &quot;Results_SourceAttribute_NoOfSources&quot;, &quot;Results_SourceAttribute_NoOfSourceLayers&quot;, &quot;Results_SourceAttribute_NoOfSourceAttributeNames&quot;, &quot;Results_SourceLayer_NoOfDomains&quot;, &quot;Results_SourceLayer_NoOfDomainAttributeNames&quot;, &quot;Results_SourceLayer_NoOfSources&quot;, &quot;Results_SourceLayer_NoOfSourceLayers&quot;, &quot;Results_SourceLayer_NoOfSourceAttributeNames&quot;, &quot;Results_Source_Mapped_RuleIDs&quot;, &quot;Results_Source_NoOfRules&quot;, &quot;Results_Source_AveragePercentage&quot;, &quot;Results_Source_MaxPercentage&quot;, &quot;Results_Source_MinPercentage&quot;, &quot;Results_Source_NoOfDomainLayers&quot;, &quot;Results_Source_NoOfDomains&quot;, &quot;Results_Source_NoOfDomainAttributeNames&quot;, &quot;Results_Source_NoOfSources&quot;, &quot;Results_Source_NoOfSourceLayers&quot;, &quot;Results_Source_NoOfSourceAttributeNames&quot;, &quot;Category&quot;, &quot;Hierarchy&quot;, &quot;HierarchyCategory&quot; from &quot;dbo&quot;.&quot;Results_Rules&quot;" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="DebugTraceID" type="STRING"/>
+				<jdbcReaderColumn name="SubmissionID" type="STRING"/>
+				<jdbcReaderColumn name="SubmissionDateTime" type="DATETIME"/>
+				<jdbcReaderColumn name="SubmissionDate" type="DAY"/>
+				<jdbcReaderColumn name="SubmissionWeek" type="LONG"/>
+				<jdbcReaderColumn name="SubmissionMonth" type="LONG"/>
+				<jdbcReaderColumn name="SubmissionYear" type="LONG"/>
+				<jdbcReaderColumn name="ReportDateTime" type="DATETIME"/>
+				<jdbcReaderColumn name="ReportDate" type="DAY"/>
+				<jdbcReaderColumn name="ReportWeek" type="LONG"/>
+				<jdbcReaderColumn name="ReportMonth" type="LONG"/>
+				<jdbcReaderColumn name="ReportYear" type="LONG"/>
+				<jdbcReaderColumn name="Ex_CallerRequestTime" type="DATETIME"/>
+				<jdbcReaderColumn name="Ex_RuleProcessingCompletion_Timestamp" type="DATETIME"/>
+				<jdbcReaderColumn name="DomainName" type="STRING"/>
+				<jdbcReaderColumn name="DomainLayerName" type="STRING"/>
+				<jdbcReaderColumn name="DomainAttributeName" type="STRING"/>
+				<jdbcReaderColumn name="SourceName" type="STRING"/>
+				<jdbcReaderColumn name="SourceLayerName" type="STRING"/>
+				<jdbcReaderColumn name="SourceAttributeName" type="STRING"/>
+				<jdbcReaderColumn name="SourceAttributeDataType" type="STRING"/>
+				<jdbcReaderColumn name="LeadingAttribute" type="STRING"/>
+				<jdbcReaderColumn name="RuleID" type="LONG"/>
+				<jdbcReaderColumn name="RuleCode" type="STRING"/>
+				<jdbcReaderColumn name="RuleName" type="STRING"/>
+				<jdbcReaderColumn name="Short_Description" type="STRING"/>
+				<jdbcReaderColumn name="Description" type="STRING"/>
+				<jdbcReaderColumn name="Expression" type="STRING"/>
+				<jdbcReaderColumn name="Success_Count" type="LONG"/>
+				<jdbcReaderColumn name="Fail_Count" type="LONG"/>
+				<jdbcReaderColumn name="Total" type="LONG"/>
+				<jdbcReaderColumn name="Percentage" type="FLOAT"/>
+				<jdbcReaderColumn name="Results_SourceAttribute_RDC" type="STRING"/>
+				<jdbcReaderColumn name="Results_SourceLayer_RDC" type="STRING"/>
+				<jdbcReaderColumn name="Results_Sourcer_RDC" type="STRING"/>
+				<jdbcReaderColumn name="Results_DomainAttribute_RDC" type="STRING"/>
+				<jdbcReaderColumn name="Results_DomainLayer_RDC" type="STRING"/>
+				<jdbcReaderColumn name="Results_Domain_RDC" type="STRING"/>
+				<jdbcReaderColumn name="Results_SourceAttribute_Mapped_RuleIDs" type="STRING"/>
+				<jdbcReaderColumn name="Results_SourceAttribute_NoOfRules" type="LONG"/>
+				<jdbcReaderColumn name="Results_SourceAttribute_AveragePercentage" type="FLOAT"/>
+				<jdbcReaderColumn name="Results_SourceAttribute_MaxPercentage" type="FLOAT"/>
+				<jdbcReaderColumn name="Results_SourceAttribute_MinPercentage" type="FLOAT"/>
+				<jdbcReaderColumn name="Results_SourceLayer_Mapped_RuleIDs" type="STRING"/>
+				<jdbcReaderColumn name="Results_SourceLayer_NoOfRules" type="LONG"/>
+				<jdbcReaderColumn name="Results_SourceLayer_AveragePercentage" type="FLOAT"/>
+				<jdbcReaderColumn name="Results_SourceLayer_MaxPercentage" type="FLOAT"/>
+				<jdbcReaderColumn name="Results_SourceLayer_MinPercentage" type="FLOAT"/>
+				<jdbcReaderColumn name="Results_SourceLayer_NoOfDomainLayers" type="LONG"/>
+				<jdbcReaderColumn name="Results_SourceAttribute_NoOfDomains" type="LONG"/>
+				<jdbcReaderColumn name="Results_SourceAttribute_NoOfDomainLayers" type="LONG"/>
+				<jdbcReaderColumn name="Results_SourceAttribute_NoOfDomainAttributeNames" type="LONG"/>
+				<jdbcReaderColumn name="Results_SourceAttribute_NoOfSources" type="LONG"/>
+				<jdbcReaderColumn name="Results_SourceAttribute_NoOfSourceLayers" type="LONG"/>
+				<jdbcReaderColumn name="Results_SourceAttribute_NoOfSourceAttributeNames" type="LONG"/>
+				<jdbcReaderColumn name="Results_SourceLayer_NoOfDomains" type="LONG"/>
+				<jdbcReaderColumn name="Results_SourceLayer_NoOfDomainAttributeNames" type="LONG"/>
+				<jdbcReaderColumn name="Results_SourceLayer_NoOfSources" type="LONG"/>
+				<jdbcReaderColumn name="Results_SourceLayer_NoOfSourceLayers" type="LONG"/>
+				<jdbcReaderColumn name="Results_SourceLayer_NoOfSourceAttributeNames" type="LONG"/>
+				<jdbcReaderColumn name="Results_Source_Mapped_RuleIDs" type="STRING"/>
+				<jdbcReaderColumn name="Results_Source_NoOfRules" type="LONG"/>
+				<jdbcReaderColumn name="Results_Source_AveragePercentage" type="FLOAT"/>
+				<jdbcReaderColumn name="Results_Source_MaxPercentage" type="FLOAT"/>
+				<jdbcReaderColumn name="Results_Source_MinPercentage" type="FLOAT"/>
+				<jdbcReaderColumn name="Results_Source_NoOfDomainLayers" type="LONG"/>
+				<jdbcReaderColumn name="Results_Source_NoOfDomains" type="LONG"/>
+				<jdbcReaderColumn name="Results_Source_NoOfDomainAttributeNames" type="LONG"/>
+				<jdbcReaderColumn name="Results_Source_NoOfSources" type="LONG"/>
+				<jdbcReaderColumn name="Results_Source_NoOfSourceLayers" type="LONG"/>
+				<jdbcReaderColumn name="Results_Source_NoOfSourceAttributeNames" type="LONG"/>
+				<jdbcReaderColumn name="Category" type="STRING"/>
+				<jdbcReaderColumn name="Hierarchy" type="LONG"/>
+				<jdbcReaderColumn name="HierarchyCategory" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,504,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Results_Rules"/>
+		<target endpoint="Result_Rules" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="200,528"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Rules 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="Rules 2">
+		<properties queryString="select &quot;RuleID&quot;, &quot;Generic_RuleName&quot;, &quot;Rule_Details&quot;, &quot;Technical_RuleName&quot;, &quot;Score&quot;, &quot;Explanation&quot;, &quot;RuleScope&quot;, &quot;DQCategory&quot;, &quot;Tags&quot;, &quot;Date&quot;, &quot;Comment&quot;, &quot;HierarchyCategoryID&quot; from &quot;dbo&quot;.&quot;Rules&quot;" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="RuleID" type="LONG"/>
+				<jdbcReaderColumn name="Generic_RuleName" type="STRING"/>
+				<jdbcReaderColumn name="Rule_Details" type="STRING"/>
+				<jdbcReaderColumn name="Technical_RuleName" type="STRING"/>
+				<jdbcReaderColumn name="Score" type="LONG"/>
+				<jdbcReaderColumn name="Explanation" type="STRING"/>
+				<jdbcReaderColumn name="RuleScope" type="STRING"/>
+				<jdbcReaderColumn name="DQCategory" type="STRING"/>
+				<jdbcReaderColumn name="Tags" type="STRING"/>
+				<jdbcReaderColumn name="Date" type="STRING"/>
+				<jdbcReaderColumn name="Comment" type="STRING"/>
+				<jdbcReaderColumn name="HierarchyCategoryID" type="LONG"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="72,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Rules 2"/>
+		<target endpoint="Rules" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="679,72"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SourceDomainMapping) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="SourceDomainMapping">
+		<properties queryString="select &quot;MappingID&quot;, &quot;DomainName&quot;, &quot;DomainLayerName&quot;, &quot;DomainAttributeName&quot;, &quot;SourceName&quot;, &quot;SourceLayerName&quot;, &quot;SourceAttributeName&quot;, &quot;SourceAttributeDataType&quot;, &quot;OmniDB_SourceAttributeName&quot; from &quot;dbo&quot;.&quot;SourceDomainMapping&quot;" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="MappingID" type="LONG"/>
+				<jdbcReaderColumn name="DomainName" type="STRING"/>
+				<jdbcReaderColumn name="DomainLayerName" type="STRING"/>
+				<jdbcReaderColumn name="DomainAttributeName" type="STRING"/>
+				<jdbcReaderColumn name="SourceName" type="STRING"/>
+				<jdbcReaderColumn name="SourceLayerName" type="STRING"/>
+				<jdbcReaderColumn name="SourceAttributeName" type="STRING"/>
+				<jdbcReaderColumn name="SourceAttributeDataType" type="STRING"/>
+				<jdbcReaderColumn name="OmniDB_SourceAttributeName" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,408,32,32"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SourceDomainMapping"/>
+		<target endpoint="SourceDomainMapping" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="189,432"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Sources) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="Sources">
+		<properties queryString="select &quot;SourceName&quot;, &quot;SourceLayerName&quot;, &quot;SourceAttributeName&quot;, &quot;SourceAttributeDataType&quot;, &quot;OmniDB_SourceAttributeName&quot; from &quot;dbo&quot;.&quot;Sources&quot;" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="SourceName" type="STRING"/>
+				<jdbcReaderColumn name="SourceLayerName" type="STRING"/>
+				<jdbcReaderColumn name="SourceAttributeName" type="STRING"/>
+				<jdbcReaderColumn name="SourceAttributeDataType" type="STRING"/>
+				<jdbcReaderColumn name="OmniDB_SourceAttributeName" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,312,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Sources"/>
+		<target endpoint="SourceDetails" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="195,300"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+</purity-config>

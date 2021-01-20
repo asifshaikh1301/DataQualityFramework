@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (Add record columns and remove tmp columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="true" id="Add record columns and remove tmp columns">
+		<properties>
+			<addedColumns>
+				<addedColumn name="DQM_DataQualityPercentage" type="FLOAT"/>
+				<addedColumn name="DQM_RuleFailureCount" type="INTEGER"/>
+				<addedColumn name="DQM_NoOfRules" type="INTEGER"/>
+			</addedColumns>
+			<removedColumns>
+				<columnRef name="tmp_RuleConditionMet"/>
+				<columnRef name="tmp_RuleCodeLA"/>
+				<columnRef name="tmp_PreviousRuleConditionMet"/>
+				<columnRef name="tmp_PreviousRuleCodeLA"/>
+			</removedColumns>
+		</properties>
+		<visual-constraints layout="vertical" bounds="456,264,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="Add record columns and remove tmp columns"/>
+		<target endpoint="in" step="Calculate record level summary"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Calculate record level summary) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="true" id="Calculate record level summary">
+		<properties>
+			<assignments>
+				<assignment expression="wordCount(DQM_RuleCodesApplied)" column="DQM_NoOfRules">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="wordCount(DQM_RuleCodesFailed)" column="DQM_RuleFailureCount">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="round(((toInteger(DQM_NoOfRules)-DQM_RuleFailureCount)/toInteger(DQM_NoOfRules))*100,1)" column="DQM_DataQualityPercentage">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="DQM_RecordScore" column="DQM_RecordScore">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="DQM_RecordExplanation" column="DQM_RecordExplanation">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="456,336,-1,-1"/>
+	</step>
+
+
+
+<!-- (in) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in">
+		<properties>
+			<columns>
+				<columnDef name="SourceName" type="STRING"/>
+				<columnDef name="SourceLayerName" type="STRING"/>
+				<columnDef name="tmp_RuleConditionMet" type="BOOLEAN"/>
+				<columnDef name="tmp_PreviousRuleConditionMet" type="BOOLEAN"/>
+				<columnDef name="tmp_PreviousRuleCodeLA" type="STRING"/>
+				<columnDef name="tmp_RuleCodeLA" type="STRING"/>
+				<columnDef name="DQM_Score" type="INTEGER"/>
+				<columnDef name="DQM_GlobalRecordID" type="STRING"/>
+				<columnDef name="DQM_RecordID" type="STRING"/>
+				<columnDef name="DQM_RecordScore" type="INTEGER"/>
+				<columnDef name="DQM_RecordExplanation" type="STRING"/>
+				<columnDef name="DQM_RuleCodesApplied" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedLA" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedLAGuid" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedMappings" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedForFilter" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedLAForFilter" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedLAFiltered" type="STRING"/>
+				<columnDef name="DQM_RuleCodesFailed" type="STRING"/>
+				<columnDef name="DQM_RuleCodesFailedLA" type="STRING"/>
+				<columnDef name="DQM_DataQualityPercentage" type="FLOAT"/>
+				<columnDef name="DQM_RuleFailureCount" type="INTEGER"/>
+				<columnDef name="DQM_NoOfRules" type="INTEGER"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,168,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in"/>
+		<target endpoint="in" step="out"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (out) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,432,-1,-1"/>
+	</step>
+
+</purity-config>

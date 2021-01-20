@@ -1,0 +1,7 @@
+"SourceName";"SourceLayerName";"SourceAttributeName";"RuleID";"RuleMappings"
+"OmniCRM";"og_customer";"Gender";10;"Rule_Attribute_1.Gender"
+"OmniCRM";"og_customer";"Gender";1;"Rule_Attribute_1.Gender"
+"OmniImInAMess";"og_customer";"Gender";1;"Rule_Attribute_1.Gender"
+"OmniImInAMess";"og_customer";"Gender";10;"Rule_Attribute_1.Gender"
+"OmniImInAMess";"og_customer";"Mobile";1;"Rule_Attribute_1.Mobile"
+"OmniCRM";"og_customer";"Mobile";1;"Rule_Attribute_1.Mobile"

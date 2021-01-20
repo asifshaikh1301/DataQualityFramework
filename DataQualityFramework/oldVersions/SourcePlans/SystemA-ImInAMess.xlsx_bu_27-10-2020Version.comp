@@ -1,0 +1,939 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" xmlns:def="http://www.ataccama.com/purity/defaults" version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings>
+			<property name="InputRecordingDateTime" insert="false" mappedTo="DQ Results Repository Update/parameters/InputRecordingDateTime">
+				<def:default-value>
+					<InputRecordingDateTime>//getRequestTime()
+&quot;20-06-2020 23:00:00&quot;</InputRecordingDateTime>
+				</def:default-value>
+			</property>
+			<property name="fileName" insert="false" mappedTo="DQ Results Repository Update/parameters/fileName">
+				<def:default-value>
+					<fileName>../../../SourcePlans/SystemA-ImInAMess.xlsx.comp</fileName>
+				</def:default-value>
+			</property>
+			<property name="InputDataFile" insert="false" mappedTo="ImInAMess/fileName">
+				<def:default-value>
+					<fileName>../../data/in/SystemA-ImInAMess01.xlsx</fileName>
+				</def:default-value>
+			</property>
+			<property name="profileOutputFile" insert="false" mappedTo="Profile my data for advanced analysis/outputFile">
+				<def:default-value>
+					<outputFile>../../data/pro/ImInAMess.xlsx.profile</outputFile>
+				</def:default-value>
+			</property>
+		</propertyMappings>
+	</component-mappings>
+
+<!-- (Column is populated - Mobile) --><component mode="NORMAL" disabled="false" id="Column is populated - Mobile">
+		<properties fileName="../Rules/Issued/Rules_1.comp">
+			<mappings>
+				<mappingEndPoint name="in">
+					<columnMappings>
+						<columnsMapping from="DQM_RecordID" to="DQM_RecordID"/>
+						<columnsMapping from="DQM_RecordScore" to="DQM_RecordScore"/>
+						<columnsMapping from="DQM_RecordExplanation" to="DQM_RecordExplanation"/>
+						<columnsMapping from="DQM_RuleCodesApplied" to="DQM_RuleCodesApplied"/>
+						<columnsMapping from="DQM_RuleCodesAppliedLA" to="DQM_RuleCodesAppliedLA"/>
+						<columnsMapping from="DQM_RuleCodesAppliedLAGuid" to="DQM_RuleCodesAppliedLAGuid"/>
+						<columnsMapping from="DQM_RuleCodesAppliedMappings" to="DQM_RuleCodesAppliedMappings"/>
+						<columnsMapping from="DQM_RuleCodesAppliedForFilter" to="DQM_RuleCodesAppliedForFilter"/>
+						<columnsMapping from="DQM_RuleCodesAppliedLAForFilter" to="DQM_RuleCodesAppliedLAForFilter"/>
+						<columnsMapping from="DQM_RuleCodesAppliedLAFiltered" to="DQM_RuleCodesAppliedLAFiltered"/>
+						<columnsMapping from="DQM_RuleCodesFailed" to="DQM_RuleCodesFailed"/>
+						<columnsMapping from="DQM_RuleCodesFailedLA" to="DQM_RuleCodesFailedLA"/>
+						<columnsMapping from="Mobile" to="Rule_Attribute_1"/>
+						<columnsMapping from="tmp_PreviousRuleConditionMet" to="tmp_PreviousRuleConditionMet"/>
+						<columnsMapping from="tmp_PreviousRuleCodeLA" to="tmp_PreviousRuleCodeLA"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="Summary">
+					<columnMappings/>
+				</mappingEndPoint>
+				<mappingEndPoint name="Detail">
+					<columnMappings>
+						<columnsMapping from="tmp_RuleConditionMet" to="tmp_RuleConditionMet"/>
+						<columnsMapping from="tmp_RuleCodeLA" to="tmp_RuleCodeLA"/>
+					</columnMappings>
+				</mappingEndPoint>
+			</mappings>
+			<parameters>
+				<tmp_useRuleFilter>false</tmp_useRuleFilter>
+				<tmp_RuleCodesMappings>&quot;RuleCodeMappings&quot;</tmp_RuleCodesMappings>
+				<tmp_LeadingAttribute>&quot;Mobile&quot;</tmp_LeadingAttribute>
+			</parameters>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,624,-1,-1"/>
+	</component>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="Summary" step="Column is populated - Mobile"/>
+		<target endpoint="in" step="Union Same"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="429,672"/>
+				<point location="863,672"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="Detail" step="Column is populated - Mobile"/>
+		<target endpoint="in" step="tmp_RuleConditionMet? - Mobile"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Column is valid Gender value) --><component mode="NORMAL" disabled="false" id="Column is valid Gender value">
+		<properties fileName="../Rules/Issued/Rules_10.comp">
+			<mappings>
+				<mappingEndPoint name="in">
+					<columnMappings>
+						<columnsMapping from="DQM_RecordID" to="DQM_RecordID"/>
+						<columnsMapping from="DQM_RecordScore" to="DQM_RecordScore"/>
+						<columnsMapping from="DQM_RecordExplanation" to="DQM_RecordExplanation"/>
+						<columnsMapping from="DQM_RuleCodesApplied" to="DQM_RuleCodesApplied"/>
+						<columnsMapping from="DQM_RuleCodesAppliedLA" to="DQM_RuleCodesAppliedLA"/>
+						<columnsMapping from="DQM_RuleCodesAppliedLAGuid" to="DQM_RuleCodesAppliedLAGuid"/>
+						<columnsMapping from="DQM_RuleCodesAppliedMappings" to="DQM_RuleCodesAppliedMappings"/>
+						<columnsMapping from="DQM_RuleCodesAppliedForFilter" to="DQM_RuleCodesAppliedForFilter"/>
+						<columnsMapping from="DQM_RuleCodesAppliedLAForFilter" to="DQM_RuleCodesAppliedLAForFilter"/>
+						<columnsMapping from="DQM_RuleCodesAppliedLAFiltered" to="DQM_RuleCodesAppliedLAFiltered"/>
+						<columnsMapping from="DQM_RuleCodesFailed" to="DQM_RuleCodesFailed"/>
+						<columnsMapping from="DQM_RuleCodesFailedLA" to="DQM_RuleCodesFailedLA"/>
+						<columnsMapping from="GD" to="Rule_Attribute_1"/>
+						<columnsMapping from="tmp_PreviousRuleConditionMet" to="tmp_PreviousRuleConditionMet"/>
+						<columnsMapping from="tmp_PreviousRuleCodeLA" to="tmp_PreviousRuleCodeLA"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="Summary">
+					<columnMappings/>
+				</mappingEndPoint>
+				<mappingEndPoint name="Detail">
+					<columnMappings>
+						<columnsMapping from="tmp_RuleConditionMet" to="tmp_RuleConditionMet"/>
+						<columnsMapping from="tmp_RuleCodeLA" to="tmp_RuleCodeLA"/>
+					</columnMappings>
+				</mappingEndPoint>
+			</mappings>
+			<parameters>
+				<tmp_LeadingAttribute>&quot;GD&quot;</tmp_LeadingAttribute>
+				<tmp_RuleCodesMappings>&quot;RuleCodeMappings&quot;</tmp_RuleCodesMappings>
+				<tmp_useRuleFilter>false</tmp_useRuleFilter>
+			</parameters>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,480,-1,-1"/>
+	</component>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="Summary" step="Column is valid Gender value"/>
+		<target endpoint="in" step="Union Same"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="863,528"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="Detail" step="Column is valid Gender value"/>
+		<target endpoint="in" step="Union Same -"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="215,528"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Component) --><component mode="NORMAL" disabled="false" id="Component">
+		<properties fileName="../Rules/Issued/Rules_1.comp">
+			<mappings>
+				<mappingEndPoint name="in">
+					<columnMappings>
+						<columnsMapping from="DQM_RecordID" to="DQM_RecordID"/>
+						<columnsMapping from="DQM_RecordScore" to="DQM_RecordScore"/>
+						<columnsMapping from="DQM_RecordExplanation" to="DQM_RecordExplanation"/>
+						<columnsMapping from="DQM_RuleCodesApplied" to="DQM_RuleCodesApplied"/>
+						<columnsMapping from="DQM_RuleCodesAppliedLA" to="DQM_RuleCodesAppliedLA"/>
+						<columnsMapping from="DQM_RuleCodesAppliedLAGuid" to="DQM_RuleCodesAppliedLAGuid"/>
+						<columnsMapping from="DQM_RuleCodesAppliedMappings" to="DQM_RuleCodesAppliedMappings"/>
+						<columnsMapping from="DQM_RuleCodesAppliedForFilter" to="DQM_RuleCodesAppliedForFilter"/>
+						<columnsMapping from="DQM_RuleCodesAppliedLAForFilter" to="DQM_RuleCodesAppliedLAForFilter"/>
+						<columnsMapping from="DQM_RuleCodesAppliedLAFiltered" to="DQM_RuleCodesAppliedLAFiltered"/>
+						<columnsMapping from="DQM_RuleCodesFailed" to="DQM_RuleCodesFailed"/>
+						<columnsMapping from="DQM_RuleCodesFailedLA" to="DQM_RuleCodesFailedLA"/>
+						<columnsMapping from="GD" to="Rule_Attribute_1"/>
+						<columnsMapping from="tmp_PreviousRuleConditionMet" to="tmp_PreviousRuleConditionMet"/>
+						<columnsMapping from="tmp_PreviousRuleCodeLA" to="tmp_PreviousRuleCodeLA"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="Summary">
+					<columnMappings/>
+				</mappingEndPoint>
+				<mappingEndPoint name="Detail">
+					<columnMappings>
+						<columnsMapping from="tmp_RuleConditionMet" to="tmp_RuleConditionMet"/>
+						<columnsMapping from="tmp_RuleCodeLA" to="tmp_RuleCodeLA"/>
+					</columnMappings>
+				</mappingEndPoint>
+			</mappings>
+			<parameters>
+				<tmp_useRuleFilter>false</tmp_useRuleFilter>
+				<tmp_RuleCodesMappings>&quot;RuleCodeMappings&quot;</tmp_RuleCodesMappings>
+				<tmp_LeadingAttribute>&quot;GD&quot;</tmp_LeadingAttribute>
+			</parameters>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,312,-1,-1"/>
+	</component>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="Summary" step="Component"/>
+		<target endpoint="in" step="Union Same"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="863,360"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="Detail" step="Component"/>
+		<target endpoint="in" step="tmp_RuleConditionMet? - Gender"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Component 2) --><component mode="NORMAL" disabled="false" id="Component 2">
+		<properties fileName="../../../ICanDoThis/Components_And_Dictionaries/Cleanse Gender.comp">
+			<mappings>
+				<mappingEndPoint name="in">
+					<columnMappings>
+						<columnsMapping from="GD" to="Gender"/>
+						<columnsMapping from="FullName" to="FullName"/>
+						<columnsMapping to="CleansingScore"/>
+						<columnsMapping to="CleansingScoreExplanation"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="out">
+					<columnMappings>
+						<columnsMapping from="GD" to="std_gender"/>
+					</columnMappings>
+				</mappingEndPoint>
+			</mappings>
+			<parameters/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,240,-1,-1"/>
+	</component>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Component 2"/>
+		<target endpoint="in" step="Component"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (CountRuleFailureCodes 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="CountRuleFailureCodes 2">
+		<properties>
+			<assignments>
+				<assignment expression="wordCount(DQM_RuleCodesApplied)" column="DQM_NoOfRules">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="wordCount(DQM_RuleCodesFailed)" column="DQM_RuleFailureCount">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="round(((toInteger(DQM_NoOfRules)-DQM_RuleFailureCount)/toInteger(DQM_NoOfRules))*100,1)" column="DQM_DataQualityPercentage">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="DQM_RecordScore" column="DQM_RecordScore">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="DQM_RecordExplanation" column="DQM_RecordExplanation">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="192,936,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="CountRuleFailureCodes 2"/>
+		<target endpoint="in" step="Multiplicator"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (DQ Results Repository Update) --><component mode="NORMAL" disabled="false" id="DQ Results Repository Update">
+		<properties fileName="../Rules/Manage/components/GenericRulesUpdate.comp">
+			<mappings>
+				<mappingEndPoint name="Rule Summary">
+					<columnMappings>
+						<columnsMapping from="Name" to="Name"/>
+						<columnsMapping from="Code" to="Code"/>
+						<columnsMapping from="Short_Description" to="Short_Description"/>
+						<columnsMapping from="Description" to="Description"/>
+						<columnsMapping from="Expression" to="Expression"/>
+						<columnsMapping from="Success_Count" to="Success_Count"/>
+						<columnsMapping from="Total" to="Total"/>
+						<columnsMapping from="LeadingAttribute" to="LeadingAttribute"/>
+					</columnMappings>
+				</mappingEndPoint>
+			</mappings>
+			<parameters/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="840,1056,-1,-1"/>
+	</component>
+
+
+
+<!-- (DiscrepancyReport - Excel) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.msoffice.excel.write.ExcelFileWriter" disabled="false" id="DiscrepancyReport - Excel">
+		<properties fileName="./DiscrepancyReport.xlsx" excel2007="true" templateFile="../../data/ext/DiscrepancyReport_Template.xlsx" templateFormulaRecalculate="true">
+			<inputs>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="Sheet1" startCell="A2" writeAllColumns="false" inputName="Sheet1">
+					<columns>
+						<columnExprDef name="RecID"/>
+						<columnExprDef name="FullName"/>
+						<columnExprDef name="GD"/>
+						<columnExprDef name="CalculatedDate"/>
+						<columnExprDef name="BirthDate"/>
+						<columnExprDef name="Description"/>
+						<columnExprDef name="Mobile"/>
+						<columnExprDef name="Landline"/>
+						<columnExprDef name="Email"/>
+						<columnExprDef name="dpadirectmailingoptoutcode"/>
+						<columnExprDef name="dpaemailoptoutcode"/>
+						<columnExprDef name="dpatelephonecommunicationoptoutcode"/>
+						<columnExprDef name="titleCode"/>
+						<columnExprDef name="RuleCodes"/>
+						<columnExprDef name="CountRuleFailureCodes"/>
+						<columnExprDef name="DataQualityPercentage"/>
+						<columnExprDef name="RecordScore"/>
+						<columnExprDef name="RecordExplanation"/>
+					</columns>
+				</excelSheetInput>
+			</inputs>
+		</properties>
+		<visual-constraints layout="vertical" bounds="192,1128,-1,-1"/>
+	</step>
+
+
+
+<!-- (Fitler Records  for testing) --><step mode="BYPASS" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Fitler Records  for testing">
+		<properties condition="RecID in {1,2,3,4}"/>
+		<visual-constraints layout="vertical" bounds="264,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Fitler Records  for testing"/>
+		<target endpoint="in" step="Prepare Runtime Columns - Should be in GenericComponent on RecordSummary and Summary side. 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ImInAMess) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.msoffice.excel.read.ExcelFileReader" disabled="false" id="ImInAMess">
+		<properties fileName="../../data/in/SystemA-ImInAMess01.xlsx" sheetName="Sheet1" startCell="A2" skipEmptyRows="false" useModelApi="false">
+			<columns>
+				<columnDef name="RecID" type="INTEGER"/>
+				<columnDef name="FullName" type="STRING"/>
+				<columnDef name="GD" type="STRING"/>
+				<columnDef name="CalculatedDate" type="STRING"/>
+				<columnDef name="BirthDate" type="STRING"/>
+				<columnDef name="Description" type="STRING"/>
+				<columnDef name="Mobile" type="STRING"/>
+				<columnDef name="Landline" type="STRING"/>
+				<columnDef name="Email" type="STRING"/>
+				<columnDef name="dpadirectmailingoptoutcode" type="STRING"/>
+				<columnDef name="dpaemailoptoutcode" type="STRING"/>
+				<columnDef name="dpatelephonecommunicationoptoutcode" type="STRING"/>
+				<columnDef name="titleCode" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ImInAMess"/>
+		<target endpoint="in" step="Fitler Records  for testing"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Mobile number is valid syntax and structure) --><component mode="NORMAL" disabled="false" id="Mobile number is valid syntax and structure">
+		<properties fileName="../Rules/Issued/Rules_2.comp">
+			<mappings>
+				<mappingEndPoint name="in">
+					<columnMappings>
+						<columnsMapping from="DQM_RecordID" to="DQM_RecordID"/>
+						<columnsMapping from="DQM_RecordScore" to="DQM_RecordScore"/>
+						<columnsMapping from="DQM_RecordExplanation" to="DQM_RecordExplanation"/>
+						<columnsMapping from="DQM_RuleCodesApplied" to="DQM_RuleCodesApplied"/>
+						<columnsMapping from="DQM_RuleCodesAppliedLA" to="DQM_RuleCodesAppliedLA"/>
+						<columnsMapping from="DQM_RuleCodesAppliedLAGuid" to="DQM_RuleCodesAppliedLAGuid"/>
+						<columnsMapping from="DQM_RuleCodesAppliedMappings" to="DQM_RuleCodesAppliedMappings"/>
+						<columnsMapping from="DQM_RuleCodesAppliedForFilter" to="DQM_RuleCodesAppliedForFilter"/>
+						<columnsMapping from="DQM_RuleCodesAppliedLAForFilter" to="DQM_RuleCodesAppliedLAForFilter"/>
+						<columnsMapping from="DQM_RuleCodesAppliedLAFiltered" to="DQM_RuleCodesAppliedLAFiltered"/>
+						<columnsMapping from="DQM_RuleCodesFailed" to="DQM_RuleCodesFailed"/>
+						<columnsMapping from="DQM_RuleCodesFailedLA" to="DQM_RuleCodesFailedLA"/>
+						<columnsMapping from="Mobile" to="Rule_Attribute_1"/>
+						<columnsMapping from="tmp_PreviousRuleConditionMet" to="tmp_PreviousRuleConditionMet"/>
+						<columnsMapping from="tmp_PreviousRuleCodeLA" to="tmp_PreviousRuleCodeLA"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="Summary">
+					<columnMappings/>
+				</mappingEndPoint>
+				<mappingEndPoint name="Detail">
+					<columnMappings>
+						<columnsMapping from="tmp_RuleConditionMet" to="tmp_RuleConditionMet"/>
+						<columnsMapping from="tmp_RuleCodeLA" to="tmp_RuleCodeLA"/>
+					</columnMappings>
+				</mappingEndPoint>
+			</mappings>
+			<parameters/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,792,-1,-1"/>
+	</component>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="Summary" step="Mobile number is valid syntax and structure"/>
+		<target endpoint="in" step="Union Same"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="863,840"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="Detail" step="Mobile number is valid syntax and structure"/>
+		<target endpoint="in" step="Union Same 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="192,1008,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="Sheet1" step="DiscrepancyReport - Excel"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="ImInAMess" step="Profile my data for advanced analysis"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="432,1056"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="ImInAMess" step="Profile my data for advanced analysis 2"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="600,1056"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 2">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="840,984,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 2"/>
+		<target endpoint="Rule Summary" step="DQ Results Repository Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 2"/>
+		<target endpoint="in" step="Rule Summary"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Prepare Runtime Columns - Should be in GenericComponent on RecordSummary and Summary side. 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Prepare Runtime Columns - Should be in GenericComponent on RecordSummary and Summary side. 2">
+		<properties>
+			<addedColumns>
+				<addedColumn name="tmp_RuleConditionMet" type="BOOLEAN"/>
+				<addedColumn name="RecordScore" type="INTEGER"/>
+				<addedColumn name="RecordExplanation" type="STRING"/>
+				<addedColumn expression="toString(RecID)" name="RecordID" type="STRING">
+					<comm:comment>Unique ID from the SourceLayer</comm:comment>
+				</addedColumn>
+				<addedColumn name="tmp_PreviousRuleConditionMet" type="BOOLEAN"/>
+				<addedColumn name="tmp_PreviousRuleCodeLA" type="STRING"/>
+				<addedColumn name="tmp_RuleCodeLA" type="STRING"/>
+				<addedColumn name="DQM_Score" type="INTEGER"/>
+				<addedColumn name="DQM_DataQualityPercentage" type="FLOAT"/>
+				<addedColumn name="DQM_RuleFailureCount" type="INTEGER"/>
+				<addedColumn name="DQM_NoOfRules" type="INTEGER"/>
+				<addedColumn name="DQM_RecordID" type="STRING"/>
+				<addedColumn name="DQM_RecordScore" type="INTEGER"/>
+				<addedColumn name="DQM_RecordExplanation" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesApplied" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesAppliedLA" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesAppliedLAGuid" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesAppliedMappings" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesAppliedForFilter" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesAppliedLAForFilter" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesAppliedLAFiltered" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesFailed" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesFailedLA" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,168,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Prepare Runtime Columns - Should be in GenericComponent on RecordSummary and Summary side. 2"/>
+		<target endpoint="in" step="Component 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Profile my data for advanced analysis) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.profiling.ProfilingAlgorithm" disabled="false" id="Profile my data for advanced analysis">
+		<properties defaultLocale="en_US" outputFile="../../data/pro/ImInAMess.xlsx.profile" outputLimit="1000" exportToEndpoint="false" tableNamePrefix="Prof1_" threaded="true" dataSource="DQMFramework">
+			<businessDomains strictThreshold="15.0" looseThreshold="10.0"/>
+			<domains>
+				<customs>
+					<customDomainAnalysis condition="matches(&quot;MID:[0-9][0-9][0-9][0-9][0-9][0-9]&quot;,value,true)" forType="STRING" name="MeterIdentifier" active="true" threshold="10"/>
+					<customDomainAnalysis condition="matches(&quot;[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]&quot;,value,true)" forType="STRING" name="MobilePhone" active="true" threshold="10"/>
+				</customs>
+				<datetime active="true" threshold="80"/>
+				<enum valueCountLimit="20" active="true"/>
+				<numeric active="true" threshold="80"/>
+				<pattern active="true" patternCountLimit="10"/>
+				<specval active="true" gradientThreshold="100"/>
+			</domains>
+			<fkAnalysis/>
+			<inputs>
+				<profilingInput name="ImInAMess" drillThrough="true">
+					<businessRules/>
+					<dataToProfile>
+						<profiledData expression="RecID" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="FullName" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="GD" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="CalculatedDate" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="BirthDate" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="Description" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="Mobile" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="Landline" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="Email" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="dpadirectmailingoptoutcode" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="dpaemailoptoutcode" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="dpatelephonecommunicationoptoutcode" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="titleCode" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="RecordScore" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="RecordExplanation" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="RuleCodes" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="CountRuleFailureCodes" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DataQualityPercentage" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+					</dataToProfile>
+					<dependencies/>
+					<pkAnalysis/>
+					<rollUps/>
+				</profilingInput>
+			</inputs>
+			<masks>
+				<maskCfg copyOther="true" name="characters">
+					<characterGroups>
+						<characterGroup characters="[:letter:]" symbol="L"/>
+						<characterGroup characters="[:digit:]" symbol="D"/>
+					</characterGroups>
+				</maskCfg>
+				<maskCfg copyOther="true" name="words">
+					<characterGroups>
+						<characterGroup repeatedSymbol="W" characters="[:letter:]" symbol="L" repeatedThreshold="2"/>
+						<characterGroup repeatedSymbol="N" characters="[:digit:]" symbol="D" repeatedThreshold="2"/>
+					</characterGroups>
+				</maskCfg>
+				<maskCfg copyOther="true" name="case_sensitive">
+					<characterGroups>
+						<characterGroup characters="[:lowercase:]" symbol="L"/>
+						<characterGroup characters="[:uppercase:]" symbol="U"/>
+						<characterGroup characters="[:digit:]" symbol="D"/>
+					</characterGroups>
+				</maskCfg>
+				<maskCfg copyOther="true" name="mask_digits">
+					<characterGroups>
+						<characterGroup characters="[:digit:]" symbol="D"/>
+					</characterGroups>
+				</maskCfg>
+			</masks>
+			<userMetadata>
+				<items/>
+			</userMetadata>
+		</properties>
+		<visual-constraints layout="vertical" bounds="408,1128,-1,-1"/>
+	</step>
+
+
+
+<!-- (Profile my data for advanced analysis 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.profiling.ProfilingAlgorithm" disabled="false" id="Profile my data for advanced analysis 2">
+		<properties defaultLocale="en_US" outputFile="../../data/pro/ImInAMess.xlsx_DQ_Percentage.profile" outputLimit="1000" exportToEndpoint="false" tableNamePrefix="Prof1_" threaded="true" dataSource="DQMFramework">
+			<businessDomains strictThreshold="15.0" looseThreshold="10.0"/>
+			<domains>
+				<customs>
+					<customDomainAnalysis condition="matches(&quot;MID:[0-9][0-9][0-9][0-9][0-9][0-9]&quot;,value,true)" forType="STRING" name="MeterIdentifier" active="true" threshold="10"/>
+					<customDomainAnalysis condition="matches(&quot;[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]&quot;,value,true)" forType="STRING" name="MobilePhone" active="true" threshold="10"/>
+				</customs>
+				<datetime active="true" threshold="80"/>
+				<enum valueCountLimit="20" active="true"/>
+				<numeric active="true" threshold="80"/>
+				<pattern active="true" patternCountLimit="10"/>
+				<specval active="true" gradientThreshold="100"/>
+			</domains>
+			<fkAnalysis/>
+			<inputs>
+				<profilingInput name="ImInAMess" drillThrough="true">
+					<businessRules/>
+					<dataToProfile>
+						<profiledData expression="RecID" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="FullName" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="GD" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="CalculatedDate" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="BirthDate" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="Description" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="Mobile" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="Landline" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="Email" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="dpadirectmailingoptoutcode" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="dpaemailoptoutcode" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="dpatelephonecommunicationoptoutcode" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="titleCode" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="RecordScore" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="RecordExplanation" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="RuleCodes" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="CountRuleFailureCodes" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DataQualityPercentage" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+					</dataToProfile>
+					<dependencies/>
+					<pkAnalysis/>
+					<rollUps>
+						<rollUp expression="floor(DataQualityPercentage)" name="DataQualityPercentage"/>
+					</rollUps>
+				</profilingInput>
+			</inputs>
+			<masks>
+				<maskCfg copyOther="true" name="characters">
+					<characterGroups>
+						<characterGroup characters="[:letter:]" symbol="L"/>
+						<characterGroup characters="[:digit:]" symbol="D"/>
+					</characterGroups>
+				</maskCfg>
+				<maskCfg copyOther="true" name="words">
+					<characterGroups>
+						<characterGroup repeatedSymbol="W" characters="[:letter:]" symbol="L" repeatedThreshold="2"/>
+						<characterGroup repeatedSymbol="N" characters="[:digit:]" symbol="D" repeatedThreshold="2"/>
+					</characterGroups>
+				</maskCfg>
+				<maskCfg copyOther="true" name="case_sensitive">
+					<characterGroups>
+						<characterGroup characters="[:lowercase:]" symbol="L"/>
+						<characterGroup characters="[:uppercase:]" symbol="U"/>
+						<characterGroup characters="[:digit:]" symbol="D"/>
+					</characterGroups>
+				</maskCfg>
+				<maskCfg copyOther="true" name="mask_digits">
+					<characterGroups>
+						<characterGroup characters="[:digit:]" symbol="D"/>
+					</characterGroups>
+				</maskCfg>
+			</masks>
+			<userMetadata>
+				<items/>
+			</userMetadata>
+		</properties>
+		<visual-constraints layout="vertical" bounds="576,1128,-1,-1"/>
+	</step>
+
+
+
+<!-- (Rule Summary) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Rule Summary">
+		<properties writeHeader="true" fileName="../../data/out/Union Rule Summary.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1056,1032,-1,-1"/>
+	</step>
+
+
+
+<!-- (Union Same) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="840,912,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union Same"/>
+		<target endpoint="in" step="Multiplicator 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union Same -) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same -">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="192,552,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union Same -"/>
+		<target endpoint="in" step="Column is populated - Mobile"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="215,624"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union Same 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same 3">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="192,840,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union Same 3"/>
+		<target endpoint="in" step="CountRuleFailureCodes 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (tmp_RuleConditionMet? - Gender) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="tmp_RuleConditionMet? - Gender">
+		<properties condition="tmp_RuleConditionMet"/>
+		<visual-constraints layout="vertical" bounds="240,408,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="tmp_RuleConditionMet? - Gender"/>
+		<target endpoint="in" step="Column is valid Gender value"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="tmp_RuleConditionMet? - Gender"/>
+		<target endpoint="in" step="Union Same -"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="215,456"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (tmp_RuleConditionMet? - Mobile) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="tmp_RuleConditionMet? - Mobile">
+		<properties condition="tmp_RuleConditionMet"/>
+		<visual-constraints layout="vertical" bounds="240,696,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="tmp_RuleConditionMet? - Mobile"/>
+		<target endpoint="in" step="Mobile number is valid syntax and structure"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="tmp_RuleConditionMet? - Mobile"/>
+		<target endpoint="in" step="Union Same 3"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="215,744"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<modelComment backgroundColor="255,255,180" borderColor="183,183,0" bounds="528,48,409,121" foregroundColor="51,51,51">- Add Rule Filtered on capability juar like tmp_leading Attribute.
+must be rule filter plus code. </modelComment>
+
+</purity-config>

@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (Create Source & SourceLayer name column) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="true" id="Create Source &amp; SourceLayer name column">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="&quot;CRM&quot;" name="SourceName" type="STRING"/>
+				<addedColumn expression="&quot;Customer&quot;" name="SourceLayerName" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="408,168,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="Create Source &amp; SourceLayer name column"/>
+		<target endpoint="in" step="Prepare Runtime Columns - Should be in GenericComponent on RecordSummary and Summary side."/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Prepare Runtime Columns - Should be in GenericComponent on RecordSummary and Summary side.) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="true" id="Prepare Runtime Columns - Should be in GenericComponent on RecordSummary and Summary side.">
+		<properties>
+			<addedColumns>
+				<addedColumn name="tmp_RuleConditionMet" type="BOOLEAN"/>
+				<addedColumn name="tmp_PreviousRuleConditionMet" type="BOOLEAN"/>
+				<addedColumn name="tmp_PreviousRuleCodeLA" type="STRING"/>
+				<addedColumn name="tmp_RuleCodeLA" type="STRING"/>
+				<addedColumn name="DQM_Score" type="INTEGER"/>
+				<addedColumn expression="SourceName + &quot;:&quot; + SourceLayerName + &quot;:&quot; + toString(RecID)" name="DQM_GlobalRecordID" type="STRING">
+					<comm:comment>unique record Id across systems for the sourcelayer - SourceName + &quot;:&quot; + SourceLayerName + &quot;:&quot; + toString(RecID) or (id in omni)</comm:comment>
+				</addedColumn>
+				<addedColumn expression="toString(RecID)" name="DQM_RecordID" type="STRING">
+					<comm:comment>unique record Id in system for the sourcelayer- toString(RecID) or (Source_Instance_id in omni)</comm:comment>
+				</addedColumn>
+				<addedColumn name="DQM_RecordScore" type="INTEGER"/>
+				<addedColumn name="DQM_RecordExplanation" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesApplied" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesAppliedLA" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesAppliedLAGuid" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesAppliedMappings" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesAppliedForFilter" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesAppliedLAForFilter" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesAppliedLAFiltered" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesFailed" type="STRING"/>
+				<addedColumn name="DQM_RuleCodesFailedLA" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="408,240,-1,-1"/>
+	</step>
+
+
+
+<!-- (in) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in">
+		<properties>
+			<columns>
+				<columnDef name="SourceName" type="STRING"/>
+				<columnDef name="SourceLayerName" type="STRING"/>
+				<columnDef name="tmp_RuleConditionMet" type="BOOLEAN"/>
+				<columnDef name="tmp_PreviousRuleConditionMet" type="BOOLEAN"/>
+				<columnDef name="tmp_PreviousRuleCodeLA" type="STRING"/>
+				<columnDef name="tmp_RuleCodeLA" type="STRING"/>
+				<columnDef name="DQM_Score" type="INTEGER"/>
+				<columnDef name="DQM_GlobalRecordID" type="STRING">
+					<comm:comment>unique record Id across systems for the sourcelayer - SourceName + &quot;:&quot; + SourceLayerName + &quot;:&quot; + toString(RecID) or (id in omni)</comm:comment>
+				</columnDef>
+				<columnDef name="DQM_RecordID" type="STRING">
+					<comm:comment>unique record Id in system for the sourcelayer- toString(RecID) or (Source_Instance_id in omni)</comm:comment>
+				</columnDef>
+				<columnDef name="DQM_RecordScore" type="INTEGER"/>
+				<columnDef name="DQM_RecordExplanation" type="STRING"/>
+				<columnDef name="DQM_RuleCodesApplied" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedLA" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedLAGuid" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedMappings" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedForFilter" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedLAForFilter" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedLAFiltered" type="STRING"/>
+				<columnDef name="DQM_RuleCodesFailed" type="STRING"/>
+				<columnDef name="DQM_RuleCodesFailedLA" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,72,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in"/>
+		<target endpoint="in" step="out"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (out) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,336,-1,-1"/>
+	</step>
+
+</purity-config>

@@ -1,0 +1,22 @@
+"SourceLayerExternalID";"SourceAttributeID";"SourceAttributeExternalID";"SourceAttributeName";"SourceAttributeProcessingName";"SourceAttributeColumnType";"SourceAttributeDescription";"SourceAttributeIsIdentifier"
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.RecID";"RecID";"RecID";"Integer";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.FullName";"FullName";"FullName";"String";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.Gender";"Gender";"Gender";"String";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.BirthDate";"BirthDate";"BirthDate";"String";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.Mobile";"Mobile";"Mobile";"String";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.Email";"Email";"Email";"String";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.DQM_Score";"DQM_Score";"DQM_Score";"Integer";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.DQM_Explanation";"DQM_Explanation";"DQM_Explanation";"String";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.DQC_Score";"DQC_Score";"DQC_Score";"Integer";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.DQM_RuleCodesApplied";"DQM_RuleCodesApplied";"DQM_RuleCodesApplied";"String";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.DQM_RuleFailureCount";"DQM_RuleFailureCount";"DQM_RuleFailureCount";"Integer";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.DQM_DataQualityPercentage";"DQM_DataQualityPercentage";"DQM_DataQualityPercentage";"Float";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.DQM_RuleCodesFailedLA";"DQM_RuleCodesFailedLA";"DQM_RuleCodesFailedLA";"String";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.DQM_NoOfRules";"DQM_NoOfRules";"DQM_NoOfRules";"String";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.DQM_RuleCodesFailed";"DQM_RuleCodesFailed";"DQM_RuleCodesFailed";"String";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.DQM_RuleCodesAppliedMappings";"DQM_RuleCodesAppliedMappings";"DQM_RuleCodesAppliedMappings";"String";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.DQM_RuleCodesAppliedLA";"DQM_RuleCodesAppliedLA";"DQM_RuleCodesAppliedLA";"String";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.DQM_RuleCodesAppliedLAFiltered";"DQM_RuleCodesAppliedLAFiltered";"DQM_RuleCodesAppliedLAFiltered";"String";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.DQM_RuleCodesAppliedLAGuid";"DQM_RuleCodesAppliedLAGuid";"DQM_RuleCodesAppliedLAGuid";"String";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.DQM_RuleCodesAppliedLAForFilter";"DQM_RuleCodesAppliedLAForFilter";"DQM_RuleCodesAppliedLAForFilter";"String";"No description provided";
+"_4mK9VfKHEeqNAochb262DA";;"_4mK9VfKHEeqNAochb262DA.DQM_RuleCodesAppliedForFilter";"DQM_RuleCodesAppliedForFilter";"DQM_RuleCodesAppliedForFilter";"String";"No description provided";

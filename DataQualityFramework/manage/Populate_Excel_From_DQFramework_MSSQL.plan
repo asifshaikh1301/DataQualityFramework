@@ -1,0 +1,707 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (Category) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="Category">
+		<properties queryString="select CategoryID, Name, Description, UpsertUserID, CreateDate, UpsertDate, EXT_CategoryID from dbo.Category" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="CategoryID" type="LONG"/>
+				<jdbcReaderColumn name="Name" type="STRING"/>
+				<jdbcReaderColumn name="Description" type="STRING"/>
+				<jdbcReaderColumn name="UpsertUserID" type="STRING"/>
+				<jdbcReaderColumn name="CreateDate" type="DATETIME"/>
+				<jdbcReaderColumn name="UpsertDate" type="DATETIME"/>
+				<jdbcReaderColumn name="EXT_CategoryID" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Category"/>
+		<target endpoint="Category" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (CategoryLayer) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="CategoryLayer">
+		<properties queryString="select CategoryLayerID, CategoryID, Name, Description, UpsertUserID, CreateDate, UpsertDate, ParentLayerID, EXT_CategoryLayerID from dbo.CategoryLayer" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="CategoryLayerID" type="LONG"/>
+				<jdbcReaderColumn name="CategoryID" type="LONG"/>
+				<jdbcReaderColumn name="Name" type="STRING"/>
+				<jdbcReaderColumn name="Description" type="STRING"/>
+				<jdbcReaderColumn name="UpsertUserID" type="STRING"/>
+				<jdbcReaderColumn name="CreateDate" type="DATETIME"/>
+				<jdbcReaderColumn name="UpsertDate" type="DATETIME"/>
+				<jdbcReaderColumn name="ParentLayerID" type="LONG"/>
+				<jdbcReaderColumn name="EXT_CategoryLayerID" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,192,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="CategoryLayer"/>
+		<target endpoint="CategoryLayer" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create RuleMapping columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create RuleMapping columns">
+		<properties>
+			<addedColumns>
+				<addedColumn name="RuleMapping" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="360,768,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create RuleMapping columns"/>
+		<target endpoint="in" step="SQL Select RuleMapping"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Data Quality Framework - Excel) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.msoffice.excel.write.ExcelFileWriter" disabled="false" id="Data Quality Framework - Excel">
+		<properties fileName="../data/out/DQFramework_Populated.xlsx" excel2007="true" templateFile="../data/ext/template/DQFramework_Template.xlsx" templateFormulaRecalculate="true">
+			<inputs>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="Rules" startCell="A2" writeAllColumns="false" inputName="Rules">
+					<columns>
+						<columnExprDef name="RuleID"/>
+						<columnExprDef name="EXT_RuleID"/>
+						<columnExprDef name="Name"/>
+						<columnExprDef name="GenericName"/>
+						<columnExprDef name="ShortDescription"/>
+						<columnExprDef name="LongDescription"/>
+						<columnExprDef name="Score"/>
+						<columnExprDef name="ScoreExplanation"/>
+						<columnExprDef name="ScopeID"/>
+						<columnExprDef name="CategoryLayerID"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="Category" startCell="A2" writeAllColumns="false" inputName="Category">
+					<columns>
+						<columnExprDef name="CategoryID"/>
+						<columnExprDef name="EXT_CategoryID"/>
+						<columnExprDef name="Name"/>
+						<columnExprDef name="Description"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="CategoryLayer" startCell="A2" writeAllColumns="false" inputName="CategoryLayer">
+					<columns>
+						<columnExprDef name="CategoryID"/>
+						<columnExprDef name="CategoryLayerID"/>
+						<columnExprDef name="EXT_CategoryLayerID"/>
+						<columnExprDef name="ParentLayerID"/>
+						<columnExprDef name="Name"/>
+						<columnExprDef name="Description"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="Source" startCell="A2" writeAllColumns="false" inputName="Source">
+					<columns>
+						<columnExprDef name="SourceID"/>
+						<columnExprDef name="EXT_SourceID"/>
+						<columnExprDef name="Name"/>
+						<columnExprDef name="PhysicalName"/>
+						<columnExprDef name="Description"/>
+						<columnExprDef name="UpsertUserID"/>
+						<columnExprDef name="SourceTypeID"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="SourceLayer" startCell="A2" writeAllColumns="false" inputName="SourceLayer">
+					<columns>
+						<columnExprDef name="SourceID"/>
+						<columnExprDef name="SourceLayerID"/>
+						<columnExprDef name="EXT_SourceLayerID"/>
+						<columnExprDef name="ParentLayerID"/>
+						<columnExprDef name="Name"/>
+						<columnExprDef name="PhysicalName"/>
+						<columnExprDef name="Description"/>
+						<columnExprDef name="SourceLayerTypeID"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="SourceAttribute" startCell="A2" writeAllColumns="false" inputName="SourceAttribute">
+					<columns>
+						<columnExprDef name="SourceLayerID"/>
+						<columnExprDef name="SourceAttributeID"/>
+						<columnExprDef name="EXT_SourceAttributeID"/>
+						<columnExprDef name="Name"/>
+						<columnExprDef name="PhysicalName"/>
+						<columnExprDef name="PhysicalDataType"/>
+						<columnExprDef name="ProcessingName"/>
+						<columnExprDef name="ProcessingDataType"/>
+						<columnExprDef name="Description"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="Domain" startCell="A2" writeAllColumns="false" inputName="Domain">
+					<columns>
+						<columnExprDef name="DomainID"/>
+						<columnExprDef name="EXT_DomainID"/>
+						<columnExprDef name="Name"/>
+						<columnExprDef name="Description"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="DomainLayer" startCell="A2" writeAllColumns="false" inputName="DomainLayer">
+					<columns>
+						<columnExprDef name="DomainID"/>
+						<columnExprDef name="DomainLayerID"/>
+						<columnExprDef name="EXT_DomainLayerID"/>
+						<columnExprDef name="ParentLayerID"/>
+						<columnExprDef name="Name"/>
+						<columnExprDef name="Description"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="DomainAttribute" startCell="A2" writeAllColumns="false" inputName="DomainAttribute">
+					<columns>
+						<columnExprDef name="DomainLayerID"/>
+						<columnExprDef name="DomainAttributeID"/>
+						<columnExprDef name="EXT_DomainAttributeID"/>
+						<columnExprDef name="Name"/>
+						<columnExprDef name="DataType"/>
+						<columnExprDef name="Description"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="SourceDomainAttributeMapping" startCell="A2" writeAllColumns="false" inputName="SourceDomainAttributeMapping">
+					<columns>
+						<columnExprDef name="SourceDomainAttributeID"/>
+						<columnExprDef name="EXT_SourceDomainAttributeID"/>
+						<columnExprDef name="SourceAttributeID"/>
+						<columnExprDef name="DomainAttributeID"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="Result_Rules" startCell="A2" writeAllColumns="false" inputName="Result_Rules">
+					<columns>
+						<columnExprDef name="DebugTraceID"/>
+						<columnExprDef name="SubmissionID"/>
+						<columnExprDef name="SubmissionDateTime"/>
+						<columnExprDef name="ReportDateTime"/>
+						<columnExprDef name="RuleID"/>
+						<columnExprDef name="SourceID"/>
+						<columnExprDef name="SourceName"/>
+						<columnExprDef name="SourceLayerID"/>
+						<columnExprDef name="SourceLayerName"/>
+						<columnExprDef name="SourceAttributeID"/>
+						<columnExprDef name="SourceAttributeName"/>
+						<columnExprDef name="TotalRecordsCount"/>
+						<columnExprDef name="FilteredRecordsCount"/>
+						<columnExprDef name="RuleRecordsCount"/>
+						<columnExprDef name="RuleSuccessCount"/>
+						<columnExprDef name="FilterRuleID"/>
+						<columnExprDef name="FilterSourceAttributeID"/>
+						<columnExprDef name="FilterSourceAttributeName"/>
+						<columnExprDef expression="&quot;&quot;" name="RuleMappingGroup"/>
+						<columnExprDef name="LoadType"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+			</inputs>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="696,384,-1,-1"/>
+	</step>
+
+
+
+<!-- (Domain) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="Domain">
+		<properties queryString="select DomainID, Name, Description, UpsertUserID, UpsertDate, CreateDate, EXT_DomainID from dbo.&quot;Domain&quot;" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="DomainID" type="LONG"/>
+				<jdbcReaderColumn name="Name" type="STRING"/>
+				<jdbcReaderColumn name="Description" type="STRING"/>
+				<jdbcReaderColumn name="UpsertUserID" type="STRING"/>
+				<jdbcReaderColumn name="UpsertDate" type="DATETIME"/>
+				<jdbcReaderColumn name="CreateDate" type="DATETIME"/>
+				<jdbcReaderColumn name="EXT_DomainID" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,576,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Domain"/>
+		<target endpoint="Domain" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (DomainAttribute) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="DomainAttribute">
+		<properties queryString="select DomainAttributeID, DomainLayerID, Name, DataType, Description, UpsertUserID, UpsertDate, CreateDate, EXT_DomainAttributeID from dbo.DomainAttribute" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="DomainAttributeID" type="LONG"/>
+				<jdbcReaderColumn name="DomainLayerID" type="LONG"/>
+				<jdbcReaderColumn name="Name" type="STRING"/>
+				<jdbcReaderColumn name="DataType" type="STRING"/>
+				<jdbcReaderColumn name="Description" type="STRING"/>
+				<jdbcReaderColumn name="UpsertUserID" type="STRING"/>
+				<jdbcReaderColumn name="UpsertDate" type="DATETIME"/>
+				<jdbcReaderColumn name="CreateDate" type="DATETIME"/>
+				<jdbcReaderColumn name="EXT_DomainAttributeID" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,768,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="DomainAttribute"/>
+		<target endpoint="DomainAttribute" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (DomainLayer) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="DomainLayer">
+		<properties queryString="select DomainLayerID, DomainID, Name, Description, UpsertUserID, UpsertDate, CreateDate, ParentLayerID, EXT_DomainLayerID from dbo.DomainLayer" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="DomainLayerID" type="LONG"/>
+				<jdbcReaderColumn name="DomainID" type="LONG"/>
+				<jdbcReaderColumn name="Name" type="STRING"/>
+				<jdbcReaderColumn name="Description" type="STRING"/>
+				<jdbcReaderColumn name="UpsertUserID" type="STRING"/>
+				<jdbcReaderColumn name="UpsertDate" type="DATETIME"/>
+				<jdbcReaderColumn name="CreateDate" type="DATETIME"/>
+				<jdbcReaderColumn name="ParentLayerID" type="LONG"/>
+				<jdbcReaderColumn name="EXT_DomainLayerID" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,672,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="DomainLayer"/>
+		<target endpoint="DomainLayer" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Representative Creator) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Representative Creator">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="DebugTraceID"/>
+					<keyComponent expression="SubmissionID"/>
+					<keyComponent expression="SubmissionDateTime"/>
+					<keyComponent expression="SubmissionDate"/>
+					<keyComponent expression="SubmissionHour"/>
+					<keyComponent expression="SubmissionMinute"/>
+					<keyComponent expression="SubmissionDay"/>
+					<keyComponent expression="SubmissionDayName"/>
+					<keyComponent expression="SubmissionWeek"/>
+					<keyComponent expression="SubmissionMonth"/>
+					<keyComponent expression="SubmissionYear"/>
+					<keyComponent expression="ReportDateTime"/>
+					<keyComponent expression="ReportDate"/>
+					<keyComponent expression="ReportHour"/>
+					<keyComponent expression="ReportMinute"/>
+					<keyComponent expression="ReportDay"/>
+					<keyComponent expression="ReportDayName"/>
+					<keyComponent expression="ReportWeek"/>
+					<keyComponent expression="ReportMonth"/>
+					<keyComponent expression="ReportYear"/>
+					<keyComponent expression="Ex_RequestStart"/>
+					<keyComponent expression="Ex_BeginAggregation"/>
+					<keyComponent expression="Ex_GetMetadata"/>
+					<keyComponent expression="Ex_BeginRulesUpdate"/>
+					<keyComponent expression="Ex_RuleResultInsert"/>
+					<keyComponent expression="DomainName"/>
+					<keyComponent expression="DomainLayerName"/>
+					<keyComponent expression="DomainAttributeName"/>
+					<keyComponent expression="DomainAttributeID"/>
+					<keyComponent expression="SourceID"/>
+					<keyComponent expression="SourceName"/>
+					<keyComponent expression="SourceLayerID"/>
+					<keyComponent expression="SourceLayerName"/>
+					<keyComponent expression="SourceAttributeID"/>
+					<keyComponent expression="SourceAttributeName"/>
+					<keyComponent expression="SourceAttributeProcessingDataType"/>
+					<keyComponent expression="RuleID"/>
+					<keyComponent expression="RuleName"/>
+					<keyComponent expression="TotalRecordsCount"/>
+					<keyComponent expression="FilteredRecordsCount"/>
+					<keyComponent expression="RuleRecordsCount"/>
+					<keyComponent expression="RuleSuccessCount"/>
+					<keyComponent expression="RuleFailCount"/>
+					<keyComponent expression="DataQualityPercentage"/>
+					<keyComponent expression="CategoryID"/>
+					<keyComponent expression="CategoryName"/>
+					<keyComponent expression="CategoryLayerID"/>
+					<keyComponent expression="CategoryLayerName"/>
+					<keyComponent expression="FilterRuleID"/>
+					<keyComponent expression="FilterRuleName"/>
+					<keyComponent expression="FilterDomainID"/>
+					<keyComponent expression="FilterDomainName"/>
+					<keyComponent expression="FilterDomainLayerID"/>
+					<keyComponent expression="FilterDomainLayerName"/>
+					<keyComponent expression="FilterDomainAttributeID"/>
+					<keyComponent expression="FilterDomainAttributeName"/>
+					<keyComponent expression="FilterSourceName"/>
+					<keyComponent expression="FilterSourceLayerName"/>
+					<keyComponent expression="FilterSourceAttributeName"/>
+					<keyComponent expression="FilterSourceAttributeDataType"/>
+					<keyComponent expression="FilterSourceAttributeID"/>
+					<keyComponent expression="LoadType"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.DebugTraceID" name="DebugTraceID"/>
+								<attributeCfgRepr expression="best.SubmissionID" name="SubmissionID"/>
+								<attributeCfgRepr expression="best.SubmissionDateTime" name="SubmissionDateTime"/>
+								<attributeCfgRepr expression="best.SubmissionDate" name="SubmissionDate"/>
+								<attributeCfgRepr expression="best.SubmissionHour" name="SubmissionHour"/>
+								<attributeCfgRepr expression="best.SubmissionMinute" name="SubmissionMinute"/>
+								<attributeCfgRepr expression="best.SubmissionDay" name="SubmissionDay"/>
+								<attributeCfgRepr expression="best.SubmissionDayName" name="SubmissionDayName"/>
+								<attributeCfgRepr expression="best.SubmissionWeek" name="SubmissionWeek"/>
+								<attributeCfgRepr expression="best.SubmissionMonth" name="SubmissionMonth"/>
+								<attributeCfgRepr expression="best.SubmissionYear" name="SubmissionYear"/>
+								<attributeCfgRepr expression="best.ReportDateTime" name="ReportDateTime"/>
+								<attributeCfgRepr expression="best.ReportDate" name="ReportDate"/>
+								<attributeCfgRepr expression="best.ReportHour" name="ReportHour"/>
+								<attributeCfgRepr expression="best.ReportMinute" name="ReportMinute"/>
+								<attributeCfgRepr expression="best.ReportDay" name="ReportDay"/>
+								<attributeCfgRepr expression="best.ReportDayName" name="ReportDayName"/>
+								<attributeCfgRepr expression="best.ReportWeek" name="ReportWeek"/>
+								<attributeCfgRepr expression="best.ReportMonth" name="ReportMonth"/>
+								<attributeCfgRepr expression="best.ReportYear" name="ReportYear"/>
+								<attributeCfgRepr expression="best.Ex_RequestStart" name="Ex_RequestStart"/>
+								<attributeCfgRepr expression="best.Ex_BeginAggregation" name="Ex_BeginAggregation"/>
+								<attributeCfgRepr expression="best.Ex_GetMetadata" name="Ex_GetMetadata"/>
+								<attributeCfgRepr expression="best.Ex_BeginRulesUpdate" name="Ex_BeginRulesUpdate"/>
+								<attributeCfgRepr expression="best.Ex_RuleResultInsert" name="Ex_RuleResultInsert"/>
+								<attributeCfgRepr expression="best.DomainName" name="DomainName"/>
+								<attributeCfgRepr expression="best.DomainLayerName" name="DomainLayerName"/>
+								<attributeCfgRepr expression="best.DomainAttributeName" name="DomainAttributeName"/>
+								<attributeCfgRepr expression="best.DomainAttributeID" name="DomainAttributeID"/>
+								<attributeCfgRepr expression="best.SourceID" name="SourceID"/>
+								<attributeCfgRepr expression="best.SourceName" name="SourceName"/>
+								<attributeCfgRepr expression="best.SourceLayerID" name="SourceLayerID"/>
+								<attributeCfgRepr expression="best.SourceLayerName" name="SourceLayerName"/>
+								<attributeCfgRepr expression="best.SourceAttributeID" name="SourceAttributeID"/>
+								<attributeCfgRepr expression="best.SourceAttributeName" name="SourceAttributeName"/>
+								<attributeCfgRepr expression="best.SourceAttributeProcessingDataType" name="SourceAttributeProcessingDataType"/>
+								<attributeCfgRepr expression="best.RuleID" name="RuleID"/>
+								<attributeCfgRepr expression="best.RuleName" name="RuleName"/>
+								<attributeCfgRepr expression="best.TotalRecordsCount" name="TotalRecordsCount"/>
+								<attributeCfgRepr expression="best.FilteredRecordsCount" name="FilteredRecordsCount"/>
+								<attributeCfgRepr expression="best.RuleRecordsCount" name="RuleRecordsCount"/>
+								<attributeCfgRepr expression="best.RuleSuccessCount" name="RuleSuccessCount"/>
+								<attributeCfgRepr expression="best.RuleFailCount" name="RuleFailCount"/>
+								<attributeCfgRepr expression="best.DataQualityPercentage" name="DataQualityPercentage"/>
+								<attributeCfgRepr expression="best.CategoryID" name="CategoryID"/>
+								<attributeCfgRepr expression="best.CategoryName" name="CategoryName"/>
+								<attributeCfgRepr expression="best.CategoryLayerID" name="CategoryLayerID"/>
+								<attributeCfgRepr expression="best.CategoryLayerName" name="CategoryLayerName"/>
+								<attributeCfgRepr expression="best.FilterRuleID" name="FilterRuleID"/>
+								<attributeCfgRepr expression="best.FilterRuleName" name="FilterRuleName"/>
+								<attributeCfgRepr expression="best.FilterDomainID" name="FilterDomainID"/>
+								<attributeCfgRepr expression="best.FilterDomainName" name="FilterDomainName"/>
+								<attributeCfgRepr expression="best.FilterDomainLayerID" name="FilterDomainLayerID"/>
+								<attributeCfgRepr expression="best.FilterDomainLayerName" name="FilterDomainLayerName"/>
+								<attributeCfgRepr expression="best.FilterDomainAttributeID" name="FilterDomainAttributeID"/>
+								<attributeCfgRepr expression="best.FilterDomainAttributeName" name="FilterDomainAttributeName"/>
+								<attributeCfgRepr expression="best.FilterSourceName" name="FilterSourceName"/>
+								<attributeCfgRepr expression="best.FilterSourceLayerName" name="FilterSourceLayerName"/>
+								<attributeCfgRepr expression="best.FilterSourceAttributeName" name="FilterSourceAttributeName"/>
+								<attributeCfgRepr expression="best.FilterSourceAttributeDataType" name="FilterSourceAttributeDataType"/>
+								<attributeCfgRepr expression="best.FilterSourceAttributeID" name="FilterSourceAttributeID"/>
+								<attributeCfgRepr expression="concatenate(RuleMapping)" name="RuleMapping"/>
+								<attributeCfgRepr expression="best.LoadType" name="LoadType"/>
+							</representativeAttributes>
+							<selectionRules/>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="552,672,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="Representative Creator"/>
+		<target endpoint="Result_Rules" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Results_Rules) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="Results_Rules">
+		<properties queryString="select DebugTraceID, SubmissionID, SubmissionDateTime, SubmissionDate, SubmissionHour, SubmissionMinute, SubmissionDay, SubmissionDayName, SubmissionWeek, SubmissionMonth, SubmissionYear, ReportDateTime, ReportDate, ReportHour, ReportMinute, ReportDay, ReportDayName, ReportWeek, ReportMonth, ReportYear, Ex_RequestStart, Ex_BeginAggregation, Ex_GetMetadata, Ex_BeginRulesUpdate, Ex_RuleResultInsert, DomainName, DomainLayerName, DomainAttributeName, DomainAttributeID, SourceID, SourceName, SourceLayerID, SourceLayerName, SourceAttributeID, SourceAttributeName, SourceAttributeProcessingDataType, RuleID, RuleName, TotalRecordsCount, FilteredRecordsCount, RuleRecordsCount, RuleSuccessCount, RuleFailCount, DataQualityPercentage, CategoryID, CategoryName, CategoryLayerID, CategoryLayerName, FilterRuleID, FilterRuleName, FilterDomainID, FilterDomainName, FilterDomainLayerID, FilterDomainLayerName, FilterDomainAttributeID, FilterDomainAttributeName, FilterSourceName, FilterSourceLayerName, FilterSourceAttributeName, FilterSourceAttributeDataType, FilterSourceAttributeID, LoadType from dbo.Results_Rules" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="DebugTraceID" type="STRING"/>
+				<jdbcReaderColumn name="SubmissionID" type="STRING"/>
+				<jdbcReaderColumn name="SubmissionDateTime" type="DATETIME"/>
+				<jdbcReaderColumn name="SubmissionDate" type="DAY"/>
+				<jdbcReaderColumn name="SubmissionHour" type="LONG"/>
+				<jdbcReaderColumn name="SubmissionMinute" type="LONG"/>
+				<jdbcReaderColumn name="SubmissionDay" type="LONG"/>
+				<jdbcReaderColumn name="SubmissionDayName" type="STRING"/>
+				<jdbcReaderColumn name="SubmissionWeek" type="LONG"/>
+				<jdbcReaderColumn name="SubmissionMonth" type="LONG"/>
+				<jdbcReaderColumn name="SubmissionYear" type="LONG"/>
+				<jdbcReaderColumn name="ReportDateTime" type="DATETIME"/>
+				<jdbcReaderColumn name="ReportDate" type="DAY"/>
+				<jdbcReaderColumn name="ReportHour" type="LONG"/>
+				<jdbcReaderColumn name="ReportMinute" type="LONG"/>
+				<jdbcReaderColumn name="ReportDay" type="LONG"/>
+				<jdbcReaderColumn name="ReportDayName" type="STRING"/>
+				<jdbcReaderColumn name="ReportWeek" type="LONG"/>
+				<jdbcReaderColumn name="ReportMonth" type="LONG"/>
+				<jdbcReaderColumn name="ReportYear" type="LONG"/>
+				<jdbcReaderColumn name="Ex_RequestStart" type="DATETIME"/>
+				<jdbcReaderColumn name="Ex_BeginAggregation" type="DATETIME"/>
+				<jdbcReaderColumn name="Ex_GetMetadata" type="DATETIME"/>
+				<jdbcReaderColumn name="Ex_BeginRulesUpdate" type="DATETIME"/>
+				<jdbcReaderColumn name="Ex_RuleResultInsert" type="DATETIME"/>
+				<jdbcReaderColumn name="DomainName" type="STRING"/>
+				<jdbcReaderColumn name="DomainLayerName" type="STRING"/>
+				<jdbcReaderColumn name="DomainAttributeName" type="STRING"/>
+				<jdbcReaderColumn name="DomainAttributeID" type="LONG"/>
+				<jdbcReaderColumn name="SourceID" type="LONG"/>
+				<jdbcReaderColumn name="SourceName" type="STRING"/>
+				<jdbcReaderColumn name="SourceLayerID" type="LONG"/>
+				<jdbcReaderColumn name="SourceLayerName" type="STRING"/>
+				<jdbcReaderColumn name="SourceAttributeID" type="LONG"/>
+				<jdbcReaderColumn name="SourceAttributeName" type="STRING"/>
+				<jdbcReaderColumn name="SourceAttributeProcessingDataType" type="STRING"/>
+				<jdbcReaderColumn name="RuleID" type="LONG"/>
+				<jdbcReaderColumn name="RuleName" type="STRING"/>
+				<jdbcReaderColumn name="TotalRecordsCount" type="LONG"/>
+				<jdbcReaderColumn name="FilteredRecordsCount" type="LONG"/>
+				<jdbcReaderColumn name="RuleRecordsCount" type="LONG"/>
+				<jdbcReaderColumn name="RuleSuccessCount" type="LONG"/>
+				<jdbcReaderColumn name="RuleFailCount" type="LONG"/>
+				<jdbcReaderColumn name="DataQualityPercentage" type="FLOAT"/>
+				<jdbcReaderColumn name="CategoryID" type="LONG"/>
+				<jdbcReaderColumn name="CategoryName" type="STRING"/>
+				<jdbcReaderColumn name="CategoryLayerID" type="LONG"/>
+				<jdbcReaderColumn name="CategoryLayerName" type="STRING"/>
+				<jdbcReaderColumn name="FilterRuleID" type="LONG"/>
+				<jdbcReaderColumn name="FilterRuleName" type="STRING"/>
+				<jdbcReaderColumn name="FilterDomainID" type="LONG"/>
+				<jdbcReaderColumn name="FilterDomainName" type="STRING"/>
+				<jdbcReaderColumn name="FilterDomainLayerID" type="LONG"/>
+				<jdbcReaderColumn name="FilterDomainLayerName" type="STRING"/>
+				<jdbcReaderColumn name="FilterDomainAttributeID" type="LONG"/>
+				<jdbcReaderColumn name="FilterDomainAttributeName" type="STRING"/>
+				<jdbcReaderColumn name="FilterSourceName" type="STRING"/>
+				<jdbcReaderColumn name="FilterSourceLayerName" type="STRING"/>
+				<jdbcReaderColumn name="FilterSourceAttributeName" type="STRING"/>
+				<jdbcReaderColumn name="FilterSourceAttributeDataType" type="STRING"/>
+				<jdbcReaderColumn name="FilterSourceAttributeID" type="LONG"/>
+				<jdbcReaderColumn name="LoadType" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,960,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Results_Rules"/>
+		<target endpoint="in" step="Create RuleMapping columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (RuleName) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="RuleName">
+		<properties queryString="select RuleID, CategoryLayerID, ScopeID, Name, GenericName, RuleType, LongDescription, ShortDescription, Expression, Score, ScoreExplanation, RuleComplexity, UpsertUserID, UpsertDate, CreateDate, EXT_RuleID from dbo.RuleName" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="RuleID" type="LONG"/>
+				<jdbcReaderColumn name="CategoryLayerID" type="LONG"/>
+				<jdbcReaderColumn name="ScopeID" type="LONG"/>
+				<jdbcReaderColumn name="Name" type="STRING"/>
+				<jdbcReaderColumn name="GenericName" type="STRING"/>
+				<jdbcReaderColumn name="RuleType" type="STRING"/>
+				<jdbcReaderColumn name="LongDescription" type="STRING"/>
+				<jdbcReaderColumn name="ShortDescription" type="STRING"/>
+				<jdbcReaderColumn name="Expression" type="STRING"/>
+				<jdbcReaderColumn name="Score" type="LONG"/>
+				<jdbcReaderColumn name="ScoreExplanation" type="STRING"/>
+				<jdbcReaderColumn name="RuleComplexity" type="STRING"/>
+				<jdbcReaderColumn name="UpsertUserID" type="STRING"/>
+				<jdbcReaderColumn name="UpsertDate" type="DATETIME"/>
+				<jdbcReaderColumn name="CreateDate" type="DATETIME"/>
+				<jdbcReaderColumn name="EXT_RuleID" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,0,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="RuleName"/>
+		<target endpoint="Rules" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL Select RuleMapping) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL Select RuleMapping">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="RuleMapping" dataColumn="RuleMapping"/>
+			</mappings>
+			<query>SELECT [RuleMapping]
+  FROM [DQFramework].[dbo].[RuleMappingGroup]
+  Where SubmissionID = ${SubmissionID}</query>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="456,720,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL Select RuleMapping"/>
+		<target endpoint="in" step="Representative Creator"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Source) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="Source">
+		<properties queryString="select SourceID, Name, PhysicalName, Description, UpsertUserID, UpsertDate, CreateDate, SourceTypeID, EXT_SourceID from dbo.Source" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="SourceID" type="LONG"/>
+				<jdbcReaderColumn name="Name" type="STRING"/>
+				<jdbcReaderColumn name="PhysicalName" type="STRING"/>
+				<jdbcReaderColumn name="Description" type="STRING"/>
+				<jdbcReaderColumn name="UpsertUserID" type="STRING"/>
+				<jdbcReaderColumn name="UpsertDate" type="DATETIME"/>
+				<jdbcReaderColumn name="CreateDate" type="DATETIME"/>
+				<jdbcReaderColumn name="SourceTypeID" type="INTEGER"/>
+				<jdbcReaderColumn name="EXT_SourceID" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,288,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Source"/>
+		<target endpoint="Source" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SourceAttribute) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="SourceAttribute">
+		<properties queryString="select SourceAttributeID, SourceLayerID, Name, PhysicalName, PhysicalDataType, ProcessingName, ProcessingDataType, Description, UpsertUserID, UpsertDate, CreateDate, IsIdentifier, EXT_SourceAttributeID from dbo.SourceAttribute" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="SourceAttributeID" type="LONG"/>
+				<jdbcReaderColumn name="SourceLayerID" type="LONG"/>
+				<jdbcReaderColumn name="Name" type="STRING"/>
+				<jdbcReaderColumn name="PhysicalName" type="STRING"/>
+				<jdbcReaderColumn name="PhysicalDataType" type="STRING"/>
+				<jdbcReaderColumn name="ProcessingName" type="STRING"/>
+				<jdbcReaderColumn name="ProcessingDataType" type="STRING"/>
+				<jdbcReaderColumn name="Description" type="STRING"/>
+				<jdbcReaderColumn name="UpsertUserID" type="STRING"/>
+				<jdbcReaderColumn name="UpsertDate" type="DATETIME"/>
+				<jdbcReaderColumn name="CreateDate" type="DATETIME"/>
+				<jdbcReaderColumn name="IsIdentifier" type="STRING"/>
+				<jdbcReaderColumn name="EXT_SourceAttributeID" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,480,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SourceAttribute"/>
+		<target endpoint="SourceAttribute" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SourceDomainAttribute) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="SourceDomainAttribute">
+		<properties queryString="select SourceDomainAttributeID, SourceAttributeID, DomainAttributeID, UpsertUserID, UpsertDate, CreateDate, EXT_SourceDomainAttributeID from dbo.SourceDomainAttribute" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="SourceDomainAttributeID" type="LONG"/>
+				<jdbcReaderColumn name="SourceAttributeID" type="LONG"/>
+				<jdbcReaderColumn name="DomainAttributeID" type="LONG"/>
+				<jdbcReaderColumn name="UpsertUserID" type="STRING"/>
+				<jdbcReaderColumn name="UpsertDate" type="DATETIME"/>
+				<jdbcReaderColumn name="CreateDate" type="DATETIME"/>
+				<jdbcReaderColumn name="EXT_SourceDomainAttributeID" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,864,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SourceDomainAttribute"/>
+		<target endpoint="SourceDomainAttributeMapping" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SourceLayer) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="SourceLayer">
+		<properties queryString="select SourceLayerID, SourceID, Name, PhysicalName, Description, UpsertUserID, UpsertDate, CreateDate, SourceLayerTypeID, ParentLayerID, EXT_SourceLayerID from dbo.SourceLayer" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="SourceLayerID" type="LONG"/>
+				<jdbcReaderColumn name="SourceID" type="LONG"/>
+				<jdbcReaderColumn name="Name" type="STRING"/>
+				<jdbcReaderColumn name="PhysicalName" type="STRING"/>
+				<jdbcReaderColumn name="Description" type="STRING"/>
+				<jdbcReaderColumn name="UpsertUserID" type="STRING"/>
+				<jdbcReaderColumn name="UpsertDate" type="DATETIME"/>
+				<jdbcReaderColumn name="CreateDate" type="DATETIME"/>
+				<jdbcReaderColumn name="SourceLayerTypeID" type="INTEGER"/>
+				<jdbcReaderColumn name="ParentLayerID" type="LONG"/>
+				<jdbcReaderColumn name="EXT_SourceLayerID" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="72,384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SourceLayer"/>
+		<target endpoint="SourceLayer" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+</purity-config>

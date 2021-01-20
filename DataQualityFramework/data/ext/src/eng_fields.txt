@@ -1,0 +1,13 @@
+OmniDefaultField,Type
+"eng_id","String"
+"eng_source_name","String"
+"eng_source_instance_id","String"
+"eng_source_instance_id_name","String"
+"eng_statuseng_status_reason","String"
+"eng_source_created_date","DATETIME"
+"eng_source_created_by","String"
+"eng_source_modified_date","DATETIME"
+"eng_source_modified_by","String"
+"eng_ocd_source_status_code","String"
+"eng_ocs_source_status_code","String"
+"eng_parent_id","String"

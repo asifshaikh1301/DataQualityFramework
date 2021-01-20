@@ -1,0 +1,311 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (Domains) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="Domains">
+		<properties queryString="select DomainName, DomainLayerName, DomainAttributeName from DQFramework.dbo.Domains" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="DomainName" type="STRING"/>
+				<jdbcReaderColumn name="DomainLayerName" type="STRING"/>
+				<jdbcReaderColumn name="DomainAttributeName" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="720,384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Domains"/>
+		<target endpoint="Domains" step="SourceDomainMappings.xlsx - Excel"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="743,480"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join 2">
+		<properties matchStrategy="MERGE" leftKey="Mapped_SourceAttributeName" rightKey="sourceAttributeName" joinType="INNER">
+			<columnDefinitions>
+				<columnDefinition expression="in_left.Mapped_SourceAttributeName" name="Mapped_SourceAttributeName"/>
+				<columnDefinition expression="in_left.Mapped_RuleAttributeName" name="Mapped_RuleAttributeName"/>
+				<columnDefinition expression="in_left.Mapped_RuleComponentName" name="Mapped_RuleComponentName"/>
+				<columnDefinition expression="in_left.Mapped_RuleComponentID" name="Mapped_RuleComponentID"/>
+				<columnDefinition expression="in_left.Mapped_RuleID" name="Mapped_RuleID"/>
+				<columnDefinition expression="in_right.sourceName" name="sourceName"/>
+				<columnDefinition expression="in_right.sourceLayerName" name="sourceLayerName"/>
+				<columnDefinition expression="in_right.sourceAttributeName" name="sourceAttributeName"/>
+				<columnDefinition expression="in_right.sourceAttributeDataType" name="sourceAttributeDataType"/>
+				<columnDefinition expression="in_right.sourceName + in_right.sourceLayerName + in_right.sourceAttributeName" name="JoinCol" type="STRING"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="480,288,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join 2"/>
+		<target endpoint="in_left" step="Join 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join 3">
+		<properties matchStrategy="MERGE" leftKey="JoinCol" rightKey="JoinCol" joinType="LEFT">
+			<columnDefinitions>
+				<columnDefinition expression="in_left.Mapped_SourceAttributeName" name="Mapped_SourceAttributeName"/>
+				<columnDefinition expression="in_left.Mapped_RuleAttributeName" name="Mapped_RuleAttributeName"/>
+				<columnDefinition expression="in_left.Mapped_RuleComponentName" name="Mapped_RuleComponentName"/>
+				<columnDefinition expression="in_left.Mapped_RuleComponentID" name="Mapped_RuleComponentID"/>
+				<columnDefinition expression="in_left.Mapped_RuleID" name="Mapped_RuleID"/>
+				<columnDefinition expression="in_left.sourceName" name="sourceName"/>
+				<columnDefinition expression="in_left.sourceLayerName" name="sourceLayerName"/>
+				<columnDefinition expression="in_left.sourceAttributeName" name="sourceAttributeName"/>
+				<columnDefinition expression="in_left.sourceAttributeDataType" name="sourceAttributeDataType"/>
+				<columnDefinition expression="in_right.MappingID" name="MappingID"/>
+				<columnDefinition expression="in_right.DomainName" name="DomainName"/>
+				<columnDefinition expression="in_right.DomainLayerName" name="DomainLayerName"/>
+				<columnDefinition expression="in_right.DomainAttributeName" name="DomainAttributeName"/>
+				<columnDefinition expression="in_right.SourceName" name="SourceName"/>
+				<columnDefinition expression="in_right.SourceLayerName" name="SourceLayerName"/>
+				<columnDefinition expression="in_right.SourceAttributeName" name="SourceAttributeName"/>
+				<columnDefinition expression="in_right.SourceAttributeDataType" name="SourceAttributeDataType"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="vertical" bounds="600,312,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join 3"/>
+		<target endpoint="SourceDomainMappings" step="SourceDomainMappings.xlsx - Excel"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Record Descriptor Join) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.RdJoin" disabled="false" id="Record Descriptor Join">
+		<properties joinMode="CHILD" parentKey="stepId" outer="false" childRecordDescriptor="stepRDC">
+			<columnDefinitions>
+				<columnDefinition name="sourceName">
+					<expression>case(
+parent.className ==&quot;com.ataccama.dqc.tasks.msoffice.excel.read.ExcelFileReader&quot;,trashNonLetters(word(parent.fileName,wordCount(parent.fileName,&quot;/&quot;)-1,&quot;/&quot;)),
+parent.fileName
+)</expression>
+				</columnDefinition>
+				<columnDefinition expression="parent.sheetName" name="sourceLayerName"/>
+				<columnDefinition expression="sourceAttributeName" name="sourceAttributeName"/>
+				<columnDefinition expression="sourceAttributeDataType" name="sourceAttributeDataType"/>
+				<columnDefinition expression="stepRDC" name="stepRDC"/>
+				<columnDefinition expression="parent.className" name="className"/>
+				<columnDefinition expression="parent.stepId" name="stepId"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="336,360,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Record Descriptor Join"/>
+		<target endpoint="in_right" step="Join 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Record Descriptor Join 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.RdJoin" disabled="false" id="Record Descriptor Join 2">
+		<properties joinMode="CHILD" parentKey="componentId" outer="false" childRecordDescriptor="componentRDC">
+			<columnDefinitions>
+				<columnDefinition expression="columnMappingsFrom" name="Mapped_SourceAttributeName"/>
+				<columnDefinition expression="columnMappingsTo" name="Mapped_RuleAttributeName"/>
+				<columnDefinition expression="componentRDC" name="Mapped_componentRDC"/>
+				<columnDefinition expression="word(parent.fileName,wordCount(parent.fileName,&quot;/&quot;)-1,&quot;/&quot;)" name="Mapped_RuleComponentName"/>
+				<columnDefinition expression="parent.componentId" name="Mapped_RuleComponentID"/>
+				<columnDefinition expression="trashNonDigits(word(parent.fileName,wordCount(parent.fileName,&quot;/&quot;)-1,&quot;/&quot;))" name="Mapped_RuleID"/>
+				<columnDefinition expression="parent.fileName" name="fileName"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="336,216,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Record Descriptor Join 2"/>
+		<target endpoint="in_left" step="Join 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SourceDomainMapping) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="SourceDomainMapping">
+		<properties queryString="select MappingID, DomainName, DomainLayerName, DomainAttributeName, SourceName, SourceLayerName, SourceAttributeName, SourceAttributeDataType from DQFramework.dbo.SourceDomainMapping" dataSourceName="DQMFramework">
+			<columns>
+				<jdbcReaderColumn name="MappingID" type="LONG"/>
+				<jdbcReaderColumn name="DomainName" type="STRING"/>
+				<jdbcReaderColumn name="DomainLayerName" type="STRING"/>
+				<jdbcReaderColumn name="DomainAttributeName" type="STRING"/>
+				<jdbcReaderColumn name="SourceName" type="STRING"/>
+				<jdbcReaderColumn name="SourceLayerName" type="STRING"/>
+				<jdbcReaderColumn name="SourceAttributeName" type="STRING"/>
+				<jdbcReaderColumn name="SourceAttributeDataType" type="STRING"/>
+			</columns>
+			<shadowColumns>
+				<shadowColumnDef defaultExpression="SourceName + SourceLayerName + SourceAttributeName" name="JoinCol" type="STRING"/>
+			</shadowColumns>
+		</properties>
+		<visual-constraints layout="vertical" bounds="720,216,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SourceDomainMapping"/>
+		<target endpoint="in_right" step="Join 3"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="743,312"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SourceDomainMappings.xlsx - Excel) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.msoffice.excel.write.ExcelFileWriter" disabled="false" id="SourceDomainMappings.xlsx - Excel">
+		<properties fileName="./SourceDomainMappings.xlsx" excel2007="true" templateFormulaRecalculate="true">
+			<inputs>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="SourceDomainMappings" startCell="A1" writeAllColumns="false" inputName="SourceDomainMappings">
+					<columns>
+						<columnExprDef name="SourceName"/>
+						<columnExprDef name="SourceLayerName"/>
+						<columnExprDef name="SourceAttributeName"/>
+						<columnExprDef name="SourceAttributeDataType"/>
+						<columnExprDef name="DomainName"/>
+						<columnExprDef name="DomainLayerName"/>
+						<columnExprDef name="DomainAttributeName"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="Domains" startCell="A1" writeAllColumns="false" inputName="Domains">
+					<columns>
+						<columnExprDef name="DomainName"/>
+						<columnExprDef name="DomainLayerName"/>
+						<columnExprDef name="DomainAttributeName"/>
+					</columns>
+				</excelSheetInput>
+			</inputs>
+		</properties>
+		<visual-constraints layout="vertical" bounds="624,480,-1,-1"/>
+	</step>
+
+
+
+<!-- (Trash 11) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.Trash" disabled="false" id="Trash 11">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="336,144,-1,-1"/>
+	</step>
+
+
+
+<!-- (Xml Reader 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.xml.reader.XmlReader" disabled="false" id="Xml Reader 2">
+		<properties fileName="../SourcePlan.comp">
+			<dataFormatParameters falseValue="false" dateTimeFormat="yy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+			<namespaces/>
+			<recordsOutputs>
+				<recordsOutput rowsRootXPath="purity-config" out="purity-config">
+					<attributes>
+						<attribute xpath="component/@id" xmlValue="false" name="componentID" type="STRING"/>
+					</attributes>
+					<recordsOutputs>
+						<recordsOutput rowsRootXPath="component" out="component">
+							<attributes>
+								<attribute xpath="properties/@fileName" xmlValue="false" name="fileName" type="STRING"/>
+								<attribute xpath="@id" xmlValue="false" name="componentId" type="STRING"/>
+							</attributes>
+							<recordsOutputs>
+								<recordsOutput recordDescriptor="componentRDC" parentIdColumn="component.componentId" rowsRootXPath="properties/mappings/mappingEndPoint[@name=&#39;in&#39;]/columnMappings/columnsMapping" out="columnMappings">
+									<attributes>
+										<attribute xpath="@from" xmlValue="false" name="columnMappingsFrom" type="STRING"/>
+										<attribute xpath="@to" xmlValue="false" name="columnMappingsTo" type="STRING"/>
+									</attributes>
+									<recordsOutputs/>
+									<shadowColumns>
+										<shadowColumnDef name="componentRDC" type="STRING"/>
+									</shadowColumns>
+								</recordsOutput>
+							</recordsOutputs>
+							<shadowColumns/>
+						</recordsOutput>
+						<recordsOutput rowsRootXPath="step[@className=&#39;com.ataccama.dqc.tasks.msoffice.excel.read.ExcelFileReader&#39;]" out="step">
+							<attributes>
+								<attribute xpath="@className" xmlValue="false" name="className" type="STRING"/>
+								<attribute xpath="properties/@fileName" xmlValue="false" name="fileName" type="STRING"/>
+								<attribute xpath="properties/@sheetName" xmlValue="false" name="sheetName" type="STRING"/>
+								<attribute xpath="@id" xmlValue="false" name="stepId" type="STRING"/>
+							</attributes>
+							<recordsOutputs>
+								<recordsOutput recordDescriptor="stepRDC" parentIdColumn="step.stepId" rowsRootXPath="properties/columns/columnDef" out="columnDef">
+									<attributes>
+										<attribute xpath="@name" xmlValue="false" name="sourceAttributeName" type="STRING"/>
+										<attribute xpath="@type" xmlValue="false" name="sourceAttributeDataType" type="STRING"/>
+									</attributes>
+									<shadowColumns>
+										<shadowColumnDef name="stepRDC" type="STRING"/>
+									</shadowColumns>
+								</recordsOutput>
+							</recordsOutputs>
+						</recordsOutput>
+					</recordsOutputs>
+					<shadowColumns/>
+				</recordsOutput>
+			</recordsOutputs>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="96,288,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="columnDef" step="Xml Reader 2"/>
+		<target endpoint="child" step="Record Descriptor Join"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="260,360"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="step" step="Xml Reader 2"/>
+		<target endpoint="parent" step="Record Descriptor Join"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="262,336"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="columnMappings" step="Xml Reader 2"/>
+		<target endpoint="child" step="Record Descriptor Join 2"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="256,312"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="component" step="Xml Reader 2"/>
+		<target endpoint="parent" step="Record Descriptor Join 2"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="257,288"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="purity-config" step="Xml Reader 2"/>
+		<target endpoint="in" step="Trash 11"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="161,168"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+</purity-config>

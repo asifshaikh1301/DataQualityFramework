@@ -1,0 +1,3 @@
+"SourceName";"SourceLayerName";"DQM_RuleCodesAppliedMappings"
+"OmniCRM";"og_customer";"1:Gender:Rule_Attribute_1.Gender 10:Gender:Rule_Attribute_1.Gender 1:Mobile:Rule_Attribute_1.Mobile"
+"OmniImInAMess";"og_customer";"1:Gender:Rule_Attribute_1.Gender 10:Gender:Rule_Attribute_1.Gender 1:Mobile:Rule_Attribute_1.Mobile"

@@ -1,0 +1,1035 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config-AllRules>
+	<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" xmlns:def="http://www.ataccama.com/purity/defaults" version="12.3.0.ga-2019-02-03">
+		<references/>
+		<component-mappings>
+			<propertyMappings>
+				<property name="tmp_useRuleFilter" insert="false" mappedTo="in/shadowColumns[2]/defaultExpression">
+					<def:default-value>
+						<defaultExpression>false</defaultExpression>
+					</def:default-value>
+				</property>
+				<property name="tmp_LeadingAttribute" insert="false" mappedTo="in/shadowColumns[0]/defaultExpression">
+					<def:default-value>
+						<defaultExpression>&quot;LeadingAttribute&quot;</defaultExpression>
+					</def:default-value>
+				</property>
+				<property name="tmp_RuleMappings" insert="false" mappedTo="in/shadowColumns[1]/defaultExpression">
+					<def:default-value>
+						<defaultExpression>&quot;RuleMappings&quot;</defaultExpression>
+					</def:default-value>
+				</property>
+			</propertyMappings>
+		</component-mappings>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.scoring.ScoringEngineStep" disabled="false" id="DQFramework_Scoring">
+			<properties defaultScoreColumn="DQM_RecordScore" defaultExplainColumn="DQM_RecordExplanation">
+				<rules>
+					<scoringEngineNode condition="tmp_RuleConditionMet" name="Column is populated">
+						<cases>
+							<scoringEngineCase score="0" correction="0" explanation="" defaultCase="false" value="true"/>
+							<scoringEngineCase score="10" correction="0" explanation="&quot;COLUMN_NOT_POPULATED&quot; + &quot;(&quot; + tmp_LeadingAttribute + &quot;)&quot;" defaultCase="true" value="false"/>
+						</cases>
+						<comm:comment>Created on 30-06-2020 11:01:56</comm:comment>
+					</scoringEngineNode>
+				</rules>
+			</properties>
+			<visual-constraints layout="vertical" bounds="360,480,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="DQFramework_Scoring"/>
+			<target endpoint="in" step="Union Same"/>
+			<visual-constraints>
+				<bendpoints>
+					<point location="383,576"/>
+				</bendpoints>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="Detail">
+			<properties>
+				<requiredColumns/>
+			</properties>
+			<visual-constraints layout="vertical" bounds="240,792,-1,-1"/>
+		</step>
+		<component mode="NORMAL" disabled="false" id="PostRuleGeneric">
+			<properties fileName="components/PostRuleGeneric.comp">
+				<mappings>
+					<mappingEndPoint name="in">
+						<columnMappings>
+							<columnsMapping from="DQM_RecordID" to="DQM_RecordID"/>
+							<columnsMapping from="DQM_RecordScore" to="DQM_RecordScore"/>
+							<columnsMapping from="DQM_RecordExplanation" to="DQM_RecordExplanation"/>
+							<columnsMapping from="DQM_RuleCodesApplied" to="DQM_RuleCodesApplied"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLA" to="DQM_RuleCodesAppliedLA"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAGuid" to="DQM_RuleCodesAppliedLAGuid"/>
+							<columnsMapping from="DQM_RuleCodesAppliedMappings" to="DQM_RuleCodesAppliedMappings"/>
+							<columnsMapping from="DQM_RuleCodesAppliedForFilter" to="DQM_RuleCodesAppliedForFilter"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAForFilter" to="DQM_RuleCodesAppliedLAForFilter"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAFiltered" to="DQM_RuleCodesAppliedLAFiltered"/>
+							<columnsMapping from="DQM_RuleCodesFailed" to="DQM_RuleCodesFailed"/>
+							<columnsMapping from="DQM_RuleCodesFailedLA" to="DQM_RuleCodesFailedLA"/>
+							<columnsMapping from="tmp_RuleConditionMet" to="tmp_RuleConditionMet"/>
+							<columnsMapping from="tmp_RuleCodeLA" to="tmp_RuleCodeLA"/>
+							<columnsMapping from="tmp_LeadingAttribute" to="tmp_LeadingAttribute"/>
+							<columnsMapping from="tmp_RuleMappings" to="tmp_RuleMappings"/>
+							<columnsMapping from="tmp_useRuleFilter" to="tmp_useRuleFilter"/>
+							<columnsMapping from="tmp_RuleCode" to="tmp_RuleCode"/>
+							<columnsMapping from="tmp_RuleCodeLAGuid" to="tmp_RuleCodeLAGuid"/>
+							<columnsMapping from="tmp_PreviousRuleConditionMet" to="tmp_PreviousRuleConditionMet"/>
+							<columnsMapping from="tmp_PreviousRuleCodeLA" to="tmp_PreviousRuleCodeLA"/>
+						</columnMappings>
+					</mappingEndPoint>
+					<mappingEndPoint name="out">
+						<columnMappings/>
+					</mappingEndPoint>
+				</mappings>
+				<parameters/>
+			</properties>
+			<visual-constraints layout="vertical" bounds="240,648,-1,-1"/>
+		</component>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="PostRuleGeneric"/>
+			<target endpoint="in" step="remove tmp columns"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<component mode="NORMAL" disabled="false" id="Previous Rule Consideration?">
+			<properties fileName="components/PreRuleGeneric.comp">
+				<mappings>
+					<mappingEndPoint name="in">
+						<columnMappings>
+							<columnsMapping from="DQM_RecordID" to="DQM_RecordID"/>
+							<columnsMapping from="DQM_RecordScore" to="DQM_RecordScore"/>
+							<columnsMapping from="DQM_RecordExplanation" to="DQM_RecordExplanation"/>
+							<columnsMapping from="DQM_RuleCodesApplied" to="DQM_RuleCodesApplied"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLA" to="DQM_RuleCodesAppliedLA"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAGuid" to="DQM_RuleCodesAppliedLAGuid"/>
+							<columnsMapping from="DQM_RuleCodesAppliedMappings" to="DQM_RuleCodesAppliedMappings"/>
+							<columnsMapping from="DQM_RuleCodesAppliedForFilter" to="DQM_RuleCodesAppliedForFilter"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAForFilter" to="DQM_RuleCodesAppliedLAForFilter"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAFiltered" to="DQM_RuleCodesAppliedLAFiltered"/>
+							<columnsMapping from="DQM_RuleCodesFailed" to="DQM_RuleCodesFailed"/>
+							<columnsMapping from="DQM_RuleCodesFailedLA" to="DQM_RuleCodesFailedLA"/>
+							<columnsMapping from="tmp_RuleConditionMet" to="tmp_RuleConditionMet"/>
+							<columnsMapping from="tmp_RuleCodeLA" to="tmp_RuleCodeLA"/>
+							<columnsMapping from="tmp_LeadingAttribute" to="tmp_LeadingAttribute"/>
+							<columnsMapping from="tmp_RuleMappings" to="tmp_RuleMappings"/>
+							<columnsMapping from="tmp_useRuleFilter" to="tmp_useRuleFilter"/>
+							<columnsMapping from="tmp_RuleCode" to="tmp_RuleCode"/>
+							<columnsMapping from="tmp_RuleCodeLAGuid" to="tmp_RuleCodeLAGuid"/>
+							<columnsMapping from="tmp_PreviousRuleConditionMet" to="tmp_PreviousRuleConditionMet"/>
+							<columnsMapping from="tmp_PreviousRuleCodeLA" to="tmp_PreviousRuleCodeLA"/>
+						</columnMappings>
+					</mappingEndPoint>
+					<mappingEndPoint name="false">
+						<columnMappings/>
+					</mappingEndPoint>
+					<mappingEndPoint name="true">
+						<columnMappings/>
+					</mappingEndPoint>
+				</mappings>
+				<parameters/>
+			</properties>
+			<visual-constraints layout="vertical" bounds="360,288,-1,-1"/>
+		</component>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="true" step="Previous Rule Consideration?"/>
+			<target endpoint="in" step="Set flag to true or false"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="false" step="Previous Rule Consideration?"/>
+			<target endpoint="in" step="Union Same"/>
+			<visual-constraints>
+				<bendpoints>
+					<point location="263,336"/>
+					<point location="263,420"/>
+				</bendpoints>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set flag to true or false">
+			<properties>
+				<assignments>
+					<assignment expression="//Please enter your rule expression here to evaluate to true or false (also add steps as required)." column="tmp_RuleConditionMet">
+						<scorer>
+							<scoringEntries/>
+						</scorer>
+					</assignment>
+				</assignments>
+			</properties>
+			<visual-constraints layout="vertical" bounds="360,384,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="Set flag to true or false"/>
+			<target endpoint="in" step="DQFramework_Scoring"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same">
+			<properties/>
+			<visual-constraints layout="vertical" bounds="240,576,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="Union Same"/>
+			<target endpoint="in" step="PostRuleGeneric"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in">
+			<properties>
+				<columns>
+					<columnDef name="DQM_RecordID" type="STRING"/>
+					<columnDef name="DQM_RecordScore" type="INTEGER"/>
+					<columnDef name="DQM_RecordExplanation" type="STRING"/>
+					<columnDef name="DQM_RuleCodesApplied" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedLA" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedLAGuid" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedMappings" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedForFilter" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedLAForFilter" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedLAFiltered" type="STRING"/>
+					<columnDef name="DQM_RuleCodesFailed" type="STRING"/>
+					<columnDef name="DQM_RuleCodesFailedLA" type="STRING"/>
+					<columnDef name="tmp_RuleConditionMet" type="BOOLEAN"/>
+					<columnDef name="tmp_RuleCodeLA" type="STRING"/>
+					<columnDef name="Rule_Attribute_1" type="STRING"/>
+				</columns>
+				<shadowColumns>
+					<shadowColumnDef defaultExpression="&quot;LeadingAttribute&quot;" name="tmp_LeadingAttribute" type="STRING"/>
+					<shadowColumnDef defaultExpression="&quot;RuleMappings&quot;" name="tmp_RuleMappings" type="STRING"/>
+					<shadowColumnDef defaultExpression="false" name="tmp_useRuleFilter" type="BOOLEAN"/>
+					<shadowColumnDef defaultExpression="&quot;1&quot;" name="tmp_RuleCode" type="STRING">
+						<comm:comment>These were in Alterformat</comm:comment>
+					</shadowColumnDef>
+					<shadowColumnDef defaultExpression="randomUUID()" name="tmp_RuleCodeLAGuid" type="STRING">
+						<comm:comment>These were in Alterformat</comm:comment>
+					</shadowColumnDef>
+					<shadowColumnDef defaultExpression="tmp_RuleConditionMet" name="tmp_PreviousRuleConditionMet" type="BOOLEAN">
+						<comm:comment>These were in Alterformat</comm:comment>
+					</shadowColumnDef>
+					<shadowColumnDef defaultExpression="tmp_RuleCodeLA" name="tmp_PreviousRuleCodeLA" type="STRING">
+						<comm:comment>These were in Alterformat</comm:comment>
+					</shadowColumnDef>
+				</shadowColumns>
+			</properties>
+			<visual-constraints layout="vertical" bounds="360,144,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="in"/>
+			<target endpoint="in" step="Previous Rule Consideration?"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="remove tmp columns">
+			<properties>
+				<addedColumns/>
+				<removedColumns>
+					<columnRef name="tmp_LeadingAttribute"/>
+					<columnRef name="tmp_RuleCode"/>
+					<columnRef name="tmp_RuleMappings"/>
+					<columnRef name="tmp_RuleCodeLAGuid"/>
+					<columnRef name="tmp_useRuleFilter"/>
+					<columnRef name="tmp_PreviousRuleConditionMet"/>
+					<columnRef name="tmp_PreviousRuleCodeLA"/>
+				</removedColumns>
+			</properties>
+			<visual-constraints layout="vertical" bounds="240,720,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="remove tmp columns"/>
+			<target endpoint="in" step="Detail"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<modelComment backgroundColor="128,255,255" borderColor="128,255,255" bounds="24,360,649,102" foregroundColor="51,51,51">Insert Rule expression/steps here. 
+RuleCode column must be set to TRUE or FALSE
+TRUE = Data passed the rule aka Data is good quality
+FALSE = Data failed the rule aka Data is bad quality
+Ensure all columns created (if any) are also removed.</modelComment>
+		<modelComment backgroundColor="255,255,180" borderColor="183,183,0" bounds="24,24,343,86" foregroundColor="51,51,51">Submitted for Development on : 14-01-2021 16:59:36
+Data Governance/External RuleID : 1
+DQFramework RuleID : 1
+Rule Name : Column is populated
+Generic Rule Name : empty or blank check</modelComment>
+	</purity-config>
+	<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" xmlns:def="http://www.ataccama.com/purity/defaults" version="12.3.0.ga-2019-02-03">
+		<references/>
+		<component-mappings>
+			<propertyMappings>
+				<property name="tmp_useRuleFilter" insert="false" mappedTo="in/shadowColumns[2]/defaultExpression">
+					<def:default-value>
+						<defaultExpression>false</defaultExpression>
+					</def:default-value>
+				</property>
+				<property name="tmp_LeadingAttribute" insert="false" mappedTo="in/shadowColumns[0]/defaultExpression">
+					<def:default-value>
+						<defaultExpression>&quot;LeadingAttribute&quot;</defaultExpression>
+					</def:default-value>
+				</property>
+				<property name="tmp_RuleMappings" insert="false" mappedTo="in/shadowColumns[1]/defaultExpression">
+					<def:default-value>
+						<defaultExpression>&quot;RuleMappings&quot;</defaultExpression>
+					</def:default-value>
+				</property>
+			</propertyMappings>
+		</component-mappings>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.scoring.ScoringEngineStep" disabled="false" id="DQFramework_Scoring">
+			<properties defaultScoreColumn="DQM_RecordScore" defaultExplainColumn="DQM_RecordExplanation">
+				<rules>
+					<scoringEngineNode condition="tmp_RuleConditionMet" name="Mobile number is valid syntax and structure">
+						<cases>
+							<scoringEngineCase score="0" correction="0" explanation="" defaultCase="false" value="true"/>
+							<scoringEngineCase score="5" correction="0" explanation="&quot;INVALID_MOBILE_NUMBER_STRUCTURE&quot; + &quot;(&quot; + tmp_LeadingAttribute + &quot;)&quot;" defaultCase="true" value="false"/>
+						</cases>
+						<comm:comment>Created on 30-06-2020 11:01:56</comm:comment>
+					</scoringEngineNode>
+				</rules>
+			</properties>
+			<visual-constraints layout="vertical" bounds="360,480,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="DQFramework_Scoring"/>
+			<target endpoint="in" step="Union Same"/>
+			<visual-constraints>
+				<bendpoints>
+					<point location="383,576"/>
+				</bendpoints>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="Detail">
+			<properties>
+				<requiredColumns/>
+			</properties>
+			<visual-constraints layout="vertical" bounds="240,792,-1,-1"/>
+		</step>
+		<component mode="NORMAL" disabled="false" id="PostRuleGeneric">
+			<properties fileName="components/PostRuleGeneric.comp">
+				<mappings>
+					<mappingEndPoint name="in">
+						<columnMappings>
+							<columnsMapping from="DQM_RecordID" to="DQM_RecordID"/>
+							<columnsMapping from="DQM_RecordScore" to="DQM_RecordScore"/>
+							<columnsMapping from="DQM_RecordExplanation" to="DQM_RecordExplanation"/>
+							<columnsMapping from="DQM_RuleCodesApplied" to="DQM_RuleCodesApplied"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLA" to="DQM_RuleCodesAppliedLA"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAGuid" to="DQM_RuleCodesAppliedLAGuid"/>
+							<columnsMapping from="DQM_RuleCodesAppliedMappings" to="DQM_RuleCodesAppliedMappings"/>
+							<columnsMapping from="DQM_RuleCodesAppliedForFilter" to="DQM_RuleCodesAppliedForFilter"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAForFilter" to="DQM_RuleCodesAppliedLAForFilter"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAFiltered" to="DQM_RuleCodesAppliedLAFiltered"/>
+							<columnsMapping from="DQM_RuleCodesFailed" to="DQM_RuleCodesFailed"/>
+							<columnsMapping from="DQM_RuleCodesFailedLA" to="DQM_RuleCodesFailedLA"/>
+							<columnsMapping from="tmp_RuleConditionMet" to="tmp_RuleConditionMet"/>
+							<columnsMapping from="tmp_RuleCodeLA" to="tmp_RuleCodeLA"/>
+							<columnsMapping from="tmp_LeadingAttribute" to="tmp_LeadingAttribute"/>
+							<columnsMapping from="tmp_RuleMappings" to="tmp_RuleMappings"/>
+							<columnsMapping from="tmp_useRuleFilter" to="tmp_useRuleFilter"/>
+							<columnsMapping from="tmp_RuleCode" to="tmp_RuleCode"/>
+							<columnsMapping from="tmp_RuleCodeLAGuid" to="tmp_RuleCodeLAGuid"/>
+							<columnsMapping from="tmp_PreviousRuleConditionMet" to="tmp_PreviousRuleConditionMet"/>
+							<columnsMapping from="tmp_PreviousRuleCodeLA" to="tmp_PreviousRuleCodeLA"/>
+						</columnMappings>
+					</mappingEndPoint>
+					<mappingEndPoint name="out">
+						<columnMappings/>
+					</mappingEndPoint>
+				</mappings>
+				<parameters/>
+			</properties>
+			<visual-constraints layout="vertical" bounds="240,648,-1,-1"/>
+		</component>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="PostRuleGeneric"/>
+			<target endpoint="in" step="remove tmp columns"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<component mode="NORMAL" disabled="false" id="Previous Rule Consideration?">
+			<properties fileName="components/PreRuleGeneric.comp">
+				<mappings>
+					<mappingEndPoint name="in">
+						<columnMappings>
+							<columnsMapping from="DQM_RecordID" to="DQM_RecordID"/>
+							<columnsMapping from="DQM_RecordScore" to="DQM_RecordScore"/>
+							<columnsMapping from="DQM_RecordExplanation" to="DQM_RecordExplanation"/>
+							<columnsMapping from="DQM_RuleCodesApplied" to="DQM_RuleCodesApplied"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLA" to="DQM_RuleCodesAppliedLA"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAGuid" to="DQM_RuleCodesAppliedLAGuid"/>
+							<columnsMapping from="DQM_RuleCodesAppliedMappings" to="DQM_RuleCodesAppliedMappings"/>
+							<columnsMapping from="DQM_RuleCodesAppliedForFilter" to="DQM_RuleCodesAppliedForFilter"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAForFilter" to="DQM_RuleCodesAppliedLAForFilter"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAFiltered" to="DQM_RuleCodesAppliedLAFiltered"/>
+							<columnsMapping from="DQM_RuleCodesFailed" to="DQM_RuleCodesFailed"/>
+							<columnsMapping from="DQM_RuleCodesFailedLA" to="DQM_RuleCodesFailedLA"/>
+							<columnsMapping from="tmp_RuleConditionMet" to="tmp_RuleConditionMet"/>
+							<columnsMapping from="tmp_RuleCodeLA" to="tmp_RuleCodeLA"/>
+							<columnsMapping from="tmp_LeadingAttribute" to="tmp_LeadingAttribute"/>
+							<columnsMapping from="tmp_RuleMappings" to="tmp_RuleMappings"/>
+							<columnsMapping from="tmp_useRuleFilter" to="tmp_useRuleFilter"/>
+							<columnsMapping from="tmp_RuleCode" to="tmp_RuleCode"/>
+							<columnsMapping from="tmp_RuleCodeLAGuid" to="tmp_RuleCodeLAGuid"/>
+							<columnsMapping from="tmp_PreviousRuleConditionMet" to="tmp_PreviousRuleConditionMet"/>
+							<columnsMapping from="tmp_PreviousRuleCodeLA" to="tmp_PreviousRuleCodeLA"/>
+						</columnMappings>
+					</mappingEndPoint>
+					<mappingEndPoint name="false">
+						<columnMappings/>
+					</mappingEndPoint>
+					<mappingEndPoint name="true">
+						<columnMappings/>
+					</mappingEndPoint>
+				</mappings>
+				<parameters/>
+			</properties>
+			<visual-constraints layout="vertical" bounds="360,288,-1,-1"/>
+		</component>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="true" step="Previous Rule Consideration?"/>
+			<target endpoint="in" step="Set flag to true or false"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="false" step="Previous Rule Consideration?"/>
+			<target endpoint="in" step="Union Same"/>
+			<visual-constraints>
+				<bendpoints>
+					<point location="263,336"/>
+					<point location="263,420"/>
+				</bendpoints>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set flag to true or false">
+			<properties>
+				<assignments>
+					<assignment expression="//Please enter your rule expression here to evaluate to true or false (also add steps as required)." column="tmp_RuleConditionMet">
+						<scorer>
+							<scoringEntries/>
+						</scorer>
+					</assignment>
+				</assignments>
+			</properties>
+			<visual-constraints layout="vertical" bounds="360,384,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="Set flag to true or false"/>
+			<target endpoint="in" step="DQFramework_Scoring"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same">
+			<properties/>
+			<visual-constraints layout="vertical" bounds="240,576,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="Union Same"/>
+			<target endpoint="in" step="PostRuleGeneric"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in">
+			<properties>
+				<columns>
+					<columnDef name="DQM_RecordID" type="STRING"/>
+					<columnDef name="DQM_RecordScore" type="INTEGER"/>
+					<columnDef name="DQM_RecordExplanation" type="STRING"/>
+					<columnDef name="DQM_RuleCodesApplied" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedLA" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedLAGuid" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedMappings" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedForFilter" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedLAForFilter" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedLAFiltered" type="STRING"/>
+					<columnDef name="DQM_RuleCodesFailed" type="STRING"/>
+					<columnDef name="DQM_RuleCodesFailedLA" type="STRING"/>
+					<columnDef name="tmp_RuleConditionMet" type="BOOLEAN"/>
+					<columnDef name="tmp_RuleCodeLA" type="STRING"/>
+					<columnDef name="Rule_Attribute_1" type="STRING"/>
+				</columns>
+				<shadowColumns>
+					<shadowColumnDef defaultExpression="&quot;LeadingAttribute&quot;" name="tmp_LeadingAttribute" type="STRING"/>
+					<shadowColumnDef defaultExpression="&quot;RuleMappings&quot;" name="tmp_RuleMappings" type="STRING"/>
+					<shadowColumnDef defaultExpression="false" name="tmp_useRuleFilter" type="BOOLEAN"/>
+					<shadowColumnDef defaultExpression="&quot;2&quot;" name="tmp_RuleCode" type="STRING">
+						<comm:comment>These were in Alterformat</comm:comment>
+					</shadowColumnDef>
+					<shadowColumnDef defaultExpression="randomUUID()" name="tmp_RuleCodeLAGuid" type="STRING">
+						<comm:comment>These were in Alterformat</comm:comment>
+					</shadowColumnDef>
+					<shadowColumnDef defaultExpression="tmp_RuleConditionMet" name="tmp_PreviousRuleConditionMet" type="BOOLEAN">
+						<comm:comment>These were in Alterformat</comm:comment>
+					</shadowColumnDef>
+					<shadowColumnDef defaultExpression="tmp_RuleCodeLA" name="tmp_PreviousRuleCodeLA" type="STRING">
+						<comm:comment>These were in Alterformat</comm:comment>
+					</shadowColumnDef>
+				</shadowColumns>
+			</properties>
+			<visual-constraints layout="vertical" bounds="360,144,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="in"/>
+			<target endpoint="in" step="Previous Rule Consideration?"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="remove tmp columns">
+			<properties>
+				<addedColumns/>
+				<removedColumns>
+					<columnRef name="tmp_LeadingAttribute"/>
+					<columnRef name="tmp_RuleCode"/>
+					<columnRef name="tmp_RuleMappings"/>
+					<columnRef name="tmp_RuleCodeLAGuid"/>
+					<columnRef name="tmp_useRuleFilter"/>
+					<columnRef name="tmp_PreviousRuleConditionMet"/>
+					<columnRef name="tmp_PreviousRuleCodeLA"/>
+				</removedColumns>
+			</properties>
+			<visual-constraints layout="vertical" bounds="240,720,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="remove tmp columns"/>
+			<target endpoint="in" step="Detail"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<modelComment backgroundColor="128,255,255" borderColor="128,255,255" bounds="24,360,649,102" foregroundColor="51,51,51">Insert Rule expression/steps here. 
+RuleCode column must be set to TRUE or FALSE
+TRUE = Data passed the rule aka Data is good quality
+FALSE = Data failed the rule aka Data is bad quality
+Ensure all columns created (if any) are also removed.</modelComment>
+		<modelComment backgroundColor="255,255,180" borderColor="183,183,0" bounds="24,24,343,86" foregroundColor="51,51,51">Submitted for Development on : 14-01-2021 16:59:36
+Data Governance/External RuleID : 2
+DQFramework RuleID : 2
+Rule Name : Mobile number is valid syntax and structure
+Generic Rule Name : Mobile</modelComment>
+	</purity-config>
+	<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" xmlns:def="http://www.ataccama.com/purity/defaults" version="12.3.0.ga-2019-02-03">
+		<references/>
+		<component-mappings>
+			<propertyMappings>
+				<property name="tmp_useRuleFilter" insert="false" mappedTo="in/shadowColumns[2]/defaultExpression">
+					<def:default-value>
+						<defaultExpression>false</defaultExpression>
+					</def:default-value>
+				</property>
+				<property name="tmp_LeadingAttribute" insert="false" mappedTo="in/shadowColumns[0]/defaultExpression">
+					<def:default-value>
+						<defaultExpression>&quot;LeadingAttribute&quot;</defaultExpression>
+					</def:default-value>
+				</property>
+				<property name="tmp_RuleMappings" insert="false" mappedTo="in/shadowColumns[1]/defaultExpression">
+					<def:default-value>
+						<defaultExpression>&quot;RuleMappings&quot;</defaultExpression>
+					</def:default-value>
+				</property>
+			</propertyMappings>
+		</component-mappings>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.scoring.ScoringEngineStep" disabled="false" id="DQFramework_Scoring">
+			<properties defaultScoreColumn="DQM_RecordScore" defaultExplainColumn="DQM_RecordExplanation">
+				<rules>
+					<scoringEngineNode condition="tmp_RuleConditionMet" name="Email address is valid syntax and structure">
+						<cases>
+							<scoringEngineCase score="0" correction="0" explanation="" defaultCase="false" value="true"/>
+							<scoringEngineCase score="5" correction="0" explanation="&quot;INVALID_EMAIL_STRUCTURE&quot; + &quot;(&quot; + tmp_LeadingAttribute + &quot;)&quot;" defaultCase="true" value="false"/>
+						</cases>
+						<comm:comment>Created on 30-06-2020 11:01:56</comm:comment>
+					</scoringEngineNode>
+				</rules>
+			</properties>
+			<visual-constraints layout="vertical" bounds="360,480,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="DQFramework_Scoring"/>
+			<target endpoint="in" step="Union Same"/>
+			<visual-constraints>
+				<bendpoints>
+					<point location="383,576"/>
+				</bendpoints>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="Detail">
+			<properties>
+				<requiredColumns/>
+			</properties>
+			<visual-constraints layout="vertical" bounds="240,792,-1,-1"/>
+		</step>
+		<component mode="NORMAL" disabled="false" id="PostRuleGeneric">
+			<properties fileName="components/PostRuleGeneric.comp">
+				<mappings>
+					<mappingEndPoint name="in">
+						<columnMappings>
+							<columnsMapping from="DQM_RecordID" to="DQM_RecordID"/>
+							<columnsMapping from="DQM_RecordScore" to="DQM_RecordScore"/>
+							<columnsMapping from="DQM_RecordExplanation" to="DQM_RecordExplanation"/>
+							<columnsMapping from="DQM_RuleCodesApplied" to="DQM_RuleCodesApplied"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLA" to="DQM_RuleCodesAppliedLA"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAGuid" to="DQM_RuleCodesAppliedLAGuid"/>
+							<columnsMapping from="DQM_RuleCodesAppliedMappings" to="DQM_RuleCodesAppliedMappings"/>
+							<columnsMapping from="DQM_RuleCodesAppliedForFilter" to="DQM_RuleCodesAppliedForFilter"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAForFilter" to="DQM_RuleCodesAppliedLAForFilter"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAFiltered" to="DQM_RuleCodesAppliedLAFiltered"/>
+							<columnsMapping from="DQM_RuleCodesFailed" to="DQM_RuleCodesFailed"/>
+							<columnsMapping from="DQM_RuleCodesFailedLA" to="DQM_RuleCodesFailedLA"/>
+							<columnsMapping from="tmp_RuleConditionMet" to="tmp_RuleConditionMet"/>
+							<columnsMapping from="tmp_RuleCodeLA" to="tmp_RuleCodeLA"/>
+							<columnsMapping from="tmp_LeadingAttribute" to="tmp_LeadingAttribute"/>
+							<columnsMapping from="tmp_RuleMappings" to="tmp_RuleMappings"/>
+							<columnsMapping from="tmp_useRuleFilter" to="tmp_useRuleFilter"/>
+							<columnsMapping from="tmp_RuleCode" to="tmp_RuleCode"/>
+							<columnsMapping from="tmp_RuleCodeLAGuid" to="tmp_RuleCodeLAGuid"/>
+							<columnsMapping from="tmp_PreviousRuleConditionMet" to="tmp_PreviousRuleConditionMet"/>
+							<columnsMapping from="tmp_PreviousRuleCodeLA" to="tmp_PreviousRuleCodeLA"/>
+						</columnMappings>
+					</mappingEndPoint>
+					<mappingEndPoint name="out">
+						<columnMappings/>
+					</mappingEndPoint>
+				</mappings>
+				<parameters/>
+			</properties>
+			<visual-constraints layout="vertical" bounds="240,648,-1,-1"/>
+		</component>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="PostRuleGeneric"/>
+			<target endpoint="in" step="remove tmp columns"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<component mode="NORMAL" disabled="false" id="Previous Rule Consideration?">
+			<properties fileName="components/PreRuleGeneric.comp">
+				<mappings>
+					<mappingEndPoint name="in">
+						<columnMappings>
+							<columnsMapping from="DQM_RecordID" to="DQM_RecordID"/>
+							<columnsMapping from="DQM_RecordScore" to="DQM_RecordScore"/>
+							<columnsMapping from="DQM_RecordExplanation" to="DQM_RecordExplanation"/>
+							<columnsMapping from="DQM_RuleCodesApplied" to="DQM_RuleCodesApplied"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLA" to="DQM_RuleCodesAppliedLA"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAGuid" to="DQM_RuleCodesAppliedLAGuid"/>
+							<columnsMapping from="DQM_RuleCodesAppliedMappings" to="DQM_RuleCodesAppliedMappings"/>
+							<columnsMapping from="DQM_RuleCodesAppliedForFilter" to="DQM_RuleCodesAppliedForFilter"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAForFilter" to="DQM_RuleCodesAppliedLAForFilter"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAFiltered" to="DQM_RuleCodesAppliedLAFiltered"/>
+							<columnsMapping from="DQM_RuleCodesFailed" to="DQM_RuleCodesFailed"/>
+							<columnsMapping from="DQM_RuleCodesFailedLA" to="DQM_RuleCodesFailedLA"/>
+							<columnsMapping from="tmp_RuleConditionMet" to="tmp_RuleConditionMet"/>
+							<columnsMapping from="tmp_RuleCodeLA" to="tmp_RuleCodeLA"/>
+							<columnsMapping from="tmp_LeadingAttribute" to="tmp_LeadingAttribute"/>
+							<columnsMapping from="tmp_RuleMappings" to="tmp_RuleMappings"/>
+							<columnsMapping from="tmp_useRuleFilter" to="tmp_useRuleFilter"/>
+							<columnsMapping from="tmp_RuleCode" to="tmp_RuleCode"/>
+							<columnsMapping from="tmp_RuleCodeLAGuid" to="tmp_RuleCodeLAGuid"/>
+							<columnsMapping from="tmp_PreviousRuleConditionMet" to="tmp_PreviousRuleConditionMet"/>
+							<columnsMapping from="tmp_PreviousRuleCodeLA" to="tmp_PreviousRuleCodeLA"/>
+						</columnMappings>
+					</mappingEndPoint>
+					<mappingEndPoint name="false">
+						<columnMappings/>
+					</mappingEndPoint>
+					<mappingEndPoint name="true">
+						<columnMappings/>
+					</mappingEndPoint>
+				</mappings>
+				<parameters/>
+			</properties>
+			<visual-constraints layout="vertical" bounds="360,288,-1,-1"/>
+		</component>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="true" step="Previous Rule Consideration?"/>
+			<target endpoint="in" step="Set flag to true or false"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="false" step="Previous Rule Consideration?"/>
+			<target endpoint="in" step="Union Same"/>
+			<visual-constraints>
+				<bendpoints>
+					<point location="263,336"/>
+					<point location="263,420"/>
+				</bendpoints>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set flag to true or false">
+			<properties>
+				<assignments>
+					<assignment expression="//Please enter your rule expression here to evaluate to true or false (also add steps as required)." column="tmp_RuleConditionMet">
+						<scorer>
+							<scoringEntries/>
+						</scorer>
+					</assignment>
+				</assignments>
+			</properties>
+			<visual-constraints layout="vertical" bounds="360,384,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="Set flag to true or false"/>
+			<target endpoint="in" step="DQFramework_Scoring"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same">
+			<properties/>
+			<visual-constraints layout="vertical" bounds="240,576,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="Union Same"/>
+			<target endpoint="in" step="PostRuleGeneric"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in">
+			<properties>
+				<columns>
+					<columnDef name="DQM_RecordID" type="STRING"/>
+					<columnDef name="DQM_RecordScore" type="INTEGER"/>
+					<columnDef name="DQM_RecordExplanation" type="STRING"/>
+					<columnDef name="DQM_RuleCodesApplied" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedLA" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedLAGuid" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedMappings" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedForFilter" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedLAForFilter" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedLAFiltered" type="STRING"/>
+					<columnDef name="DQM_RuleCodesFailed" type="STRING"/>
+					<columnDef name="DQM_RuleCodesFailedLA" type="STRING"/>
+					<columnDef name="tmp_RuleConditionMet" type="BOOLEAN"/>
+					<columnDef name="tmp_RuleCodeLA" type="STRING"/>
+					<columnDef name="Rule_Attribute_1" type="STRING"/>
+				</columns>
+				<shadowColumns>
+					<shadowColumnDef defaultExpression="&quot;LeadingAttribute&quot;" name="tmp_LeadingAttribute" type="STRING"/>
+					<shadowColumnDef defaultExpression="&quot;RuleMappings&quot;" name="tmp_RuleMappings" type="STRING"/>
+					<shadowColumnDef defaultExpression="false" name="tmp_useRuleFilter" type="BOOLEAN"/>
+					<shadowColumnDef defaultExpression="&quot;3&quot;" name="tmp_RuleCode" type="STRING">
+						<comm:comment>These were in Alterformat</comm:comment>
+					</shadowColumnDef>
+					<shadowColumnDef defaultExpression="randomUUID()" name="tmp_RuleCodeLAGuid" type="STRING">
+						<comm:comment>These were in Alterformat</comm:comment>
+					</shadowColumnDef>
+					<shadowColumnDef defaultExpression="tmp_RuleConditionMet" name="tmp_PreviousRuleConditionMet" type="BOOLEAN">
+						<comm:comment>These were in Alterformat</comm:comment>
+					</shadowColumnDef>
+					<shadowColumnDef defaultExpression="tmp_RuleCodeLA" name="tmp_PreviousRuleCodeLA" type="STRING">
+						<comm:comment>These were in Alterformat</comm:comment>
+					</shadowColumnDef>
+				</shadowColumns>
+			</properties>
+			<visual-constraints layout="vertical" bounds="360,144,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="in"/>
+			<target endpoint="in" step="Previous Rule Consideration?"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="remove tmp columns">
+			<properties>
+				<addedColumns/>
+				<removedColumns>
+					<columnRef name="tmp_LeadingAttribute"/>
+					<columnRef name="tmp_RuleCode"/>
+					<columnRef name="tmp_RuleMappings"/>
+					<columnRef name="tmp_RuleCodeLAGuid"/>
+					<columnRef name="tmp_useRuleFilter"/>
+					<columnRef name="tmp_PreviousRuleConditionMet"/>
+					<columnRef name="tmp_PreviousRuleCodeLA"/>
+				</removedColumns>
+			</properties>
+			<visual-constraints layout="vertical" bounds="240,720,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="remove tmp columns"/>
+			<target endpoint="in" step="Detail"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<modelComment backgroundColor="128,255,255" borderColor="128,255,255" bounds="24,360,649,102" foregroundColor="51,51,51">Insert Rule expression/steps here. 
+RuleCode column must be set to TRUE or FALSE
+TRUE = Data passed the rule aka Data is good quality
+FALSE = Data failed the rule aka Data is bad quality
+Ensure all columns created (if any) are also removed.</modelComment>
+		<modelComment backgroundColor="255,255,180" borderColor="183,183,0" bounds="24,24,343,86" foregroundColor="51,51,51">Submitted for Development on : 14-01-2021 16:59:36
+Data Governance/External RuleID : 4
+DQFramework RuleID : 3
+Rule Name : Email address is valid syntax and structure
+Generic Rule Name : Email</modelComment>
+	</purity-config>
+	<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" xmlns:def="http://www.ataccama.com/purity/defaults" version="12.3.0.ga-2019-02-03">
+		<references/>
+		<component-mappings>
+			<propertyMappings>
+				<property name="tmp_useRuleFilter" insert="false" mappedTo="in/shadowColumns[2]/defaultExpression">
+					<def:default-value>
+						<defaultExpression>false</defaultExpression>
+					</def:default-value>
+				</property>
+				<property name="tmp_LeadingAttribute" insert="false" mappedTo="in/shadowColumns[0]/defaultExpression">
+					<def:default-value>
+						<defaultExpression>&quot;LeadingAttribute&quot;</defaultExpression>
+					</def:default-value>
+				</property>
+				<property name="tmp_RuleMappings" insert="false" mappedTo="in/shadowColumns[1]/defaultExpression">
+					<def:default-value>
+						<defaultExpression>&quot;RuleMappings&quot;</defaultExpression>
+					</def:default-value>
+				</property>
+			</propertyMappings>
+		</component-mappings>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.scoring.ScoringEngineStep" disabled="false" id="DQFramework_Scoring">
+			<properties defaultScoreColumn="DQM_RecordScore" defaultExplainColumn="DQM_RecordExplanation">
+				<rules>
+					<scoringEngineNode condition="tmp_RuleConditionMet" name="Column is valid Gender value">
+						<cases>
+							<scoringEngineCase score="0" correction="0" explanation="" defaultCase="false" value="true"/>
+							<scoringEngineCase score="5" correction="0" explanation="&quot;INVALID_GENDER_VALUE&quot; + &quot;(&quot; + tmp_LeadingAttribute + &quot;)&quot;" defaultCase="true" value="false"/>
+						</cases>
+						<comm:comment>Created on 30-06-2020 11:01:56</comm:comment>
+					</scoringEngineNode>
+				</rules>
+			</properties>
+			<visual-constraints layout="vertical" bounds="360,480,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="DQFramework_Scoring"/>
+			<target endpoint="in" step="Union Same"/>
+			<visual-constraints>
+				<bendpoints>
+					<point location="383,576"/>
+				</bendpoints>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="Detail">
+			<properties>
+				<requiredColumns/>
+			</properties>
+			<visual-constraints layout="vertical" bounds="240,792,-1,-1"/>
+		</step>
+		<component mode="NORMAL" disabled="false" id="PostRuleGeneric">
+			<properties fileName="components/PostRuleGeneric.comp">
+				<mappings>
+					<mappingEndPoint name="in">
+						<columnMappings>
+							<columnsMapping from="DQM_RecordID" to="DQM_RecordID"/>
+							<columnsMapping from="DQM_RecordScore" to="DQM_RecordScore"/>
+							<columnsMapping from="DQM_RecordExplanation" to="DQM_RecordExplanation"/>
+							<columnsMapping from="DQM_RuleCodesApplied" to="DQM_RuleCodesApplied"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLA" to="DQM_RuleCodesAppliedLA"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAGuid" to="DQM_RuleCodesAppliedLAGuid"/>
+							<columnsMapping from="DQM_RuleCodesAppliedMappings" to="DQM_RuleCodesAppliedMappings"/>
+							<columnsMapping from="DQM_RuleCodesAppliedForFilter" to="DQM_RuleCodesAppliedForFilter"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAForFilter" to="DQM_RuleCodesAppliedLAForFilter"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAFiltered" to="DQM_RuleCodesAppliedLAFiltered"/>
+							<columnsMapping from="DQM_RuleCodesFailed" to="DQM_RuleCodesFailed"/>
+							<columnsMapping from="DQM_RuleCodesFailedLA" to="DQM_RuleCodesFailedLA"/>
+							<columnsMapping from="tmp_RuleConditionMet" to="tmp_RuleConditionMet"/>
+							<columnsMapping from="tmp_RuleCodeLA" to="tmp_RuleCodeLA"/>
+							<columnsMapping from="tmp_LeadingAttribute" to="tmp_LeadingAttribute"/>
+							<columnsMapping from="tmp_RuleMappings" to="tmp_RuleMappings"/>
+							<columnsMapping from="tmp_useRuleFilter" to="tmp_useRuleFilter"/>
+							<columnsMapping from="tmp_RuleCode" to="tmp_RuleCode"/>
+							<columnsMapping from="tmp_RuleCodeLAGuid" to="tmp_RuleCodeLAGuid"/>
+							<columnsMapping from="tmp_PreviousRuleConditionMet" to="tmp_PreviousRuleConditionMet"/>
+							<columnsMapping from="tmp_PreviousRuleCodeLA" to="tmp_PreviousRuleCodeLA"/>
+						</columnMappings>
+					</mappingEndPoint>
+					<mappingEndPoint name="out">
+						<columnMappings/>
+					</mappingEndPoint>
+				</mappings>
+				<parameters/>
+			</properties>
+			<visual-constraints layout="vertical" bounds="240,648,-1,-1"/>
+		</component>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="PostRuleGeneric"/>
+			<target endpoint="in" step="remove tmp columns"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<component mode="NORMAL" disabled="false" id="Previous Rule Consideration?">
+			<properties fileName="components/PreRuleGeneric.comp">
+				<mappings>
+					<mappingEndPoint name="in">
+						<columnMappings>
+							<columnsMapping from="DQM_RecordID" to="DQM_RecordID"/>
+							<columnsMapping from="DQM_RecordScore" to="DQM_RecordScore"/>
+							<columnsMapping from="DQM_RecordExplanation" to="DQM_RecordExplanation"/>
+							<columnsMapping from="DQM_RuleCodesApplied" to="DQM_RuleCodesApplied"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLA" to="DQM_RuleCodesAppliedLA"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAGuid" to="DQM_RuleCodesAppliedLAGuid"/>
+							<columnsMapping from="DQM_RuleCodesAppliedMappings" to="DQM_RuleCodesAppliedMappings"/>
+							<columnsMapping from="DQM_RuleCodesAppliedForFilter" to="DQM_RuleCodesAppliedForFilter"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAForFilter" to="DQM_RuleCodesAppliedLAForFilter"/>
+							<columnsMapping from="DQM_RuleCodesAppliedLAFiltered" to="DQM_RuleCodesAppliedLAFiltered"/>
+							<columnsMapping from="DQM_RuleCodesFailed" to="DQM_RuleCodesFailed"/>
+							<columnsMapping from="DQM_RuleCodesFailedLA" to="DQM_RuleCodesFailedLA"/>
+							<columnsMapping from="tmp_RuleConditionMet" to="tmp_RuleConditionMet"/>
+							<columnsMapping from="tmp_RuleCodeLA" to="tmp_RuleCodeLA"/>
+							<columnsMapping from="tmp_LeadingAttribute" to="tmp_LeadingAttribute"/>
+							<columnsMapping from="tmp_RuleMappings" to="tmp_RuleMappings"/>
+							<columnsMapping from="tmp_useRuleFilter" to="tmp_useRuleFilter"/>
+							<columnsMapping from="tmp_RuleCode" to="tmp_RuleCode"/>
+							<columnsMapping from="tmp_RuleCodeLAGuid" to="tmp_RuleCodeLAGuid"/>
+							<columnsMapping from="tmp_PreviousRuleConditionMet" to="tmp_PreviousRuleConditionMet"/>
+							<columnsMapping from="tmp_PreviousRuleCodeLA" to="tmp_PreviousRuleCodeLA"/>
+						</columnMappings>
+					</mappingEndPoint>
+					<mappingEndPoint name="false">
+						<columnMappings/>
+					</mappingEndPoint>
+					<mappingEndPoint name="true">
+						<columnMappings/>
+					</mappingEndPoint>
+				</mappings>
+				<parameters/>
+			</properties>
+			<visual-constraints layout="vertical" bounds="360,288,-1,-1"/>
+		</component>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="true" step="Previous Rule Consideration?"/>
+			<target endpoint="in" step="Set flag to true or false"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="false" step="Previous Rule Consideration?"/>
+			<target endpoint="in" step="Union Same"/>
+			<visual-constraints>
+				<bendpoints>
+					<point location="263,336"/>
+					<point location="263,420"/>
+				</bendpoints>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set flag to true or false">
+			<properties>
+				<assignments>
+					<assignment expression="//Please enter your rule expression here to evaluate to true or false (also add steps as required)." column="tmp_RuleConditionMet">
+						<scorer>
+							<scoringEntries/>
+						</scorer>
+					</assignment>
+				</assignments>
+			</properties>
+			<visual-constraints layout="vertical" bounds="360,384,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="Set flag to true or false"/>
+			<target endpoint="in" step="DQFramework_Scoring"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same">
+			<properties/>
+			<visual-constraints layout="vertical" bounds="240,576,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="Union Same"/>
+			<target endpoint="in" step="PostRuleGeneric"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in">
+			<properties>
+				<columns>
+					<columnDef name="DQM_RecordID" type="STRING"/>
+					<columnDef name="DQM_RecordScore" type="INTEGER"/>
+					<columnDef name="DQM_RecordExplanation" type="STRING"/>
+					<columnDef name="DQM_RuleCodesApplied" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedLA" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedLAGuid" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedMappings" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedForFilter" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedLAForFilter" type="STRING"/>
+					<columnDef name="DQM_RuleCodesAppliedLAFiltered" type="STRING"/>
+					<columnDef name="DQM_RuleCodesFailed" type="STRING"/>
+					<columnDef name="DQM_RuleCodesFailedLA" type="STRING"/>
+					<columnDef name="tmp_RuleConditionMet" type="BOOLEAN"/>
+					<columnDef name="tmp_RuleCodeLA" type="STRING"/>
+					<columnDef name="Rule_Attribute_1" type="STRING"/>
+				</columns>
+				<shadowColumns>
+					<shadowColumnDef defaultExpression="&quot;LeadingAttribute&quot;" name="tmp_LeadingAttribute" type="STRING"/>
+					<shadowColumnDef defaultExpression="&quot;RuleMappings&quot;" name="tmp_RuleMappings" type="STRING"/>
+					<shadowColumnDef defaultExpression="false" name="tmp_useRuleFilter" type="BOOLEAN"/>
+					<shadowColumnDef defaultExpression="&quot;4&quot;" name="tmp_RuleCode" type="STRING">
+						<comm:comment>These were in Alterformat</comm:comment>
+					</shadowColumnDef>
+					<shadowColumnDef defaultExpression="randomUUID()" name="tmp_RuleCodeLAGuid" type="STRING">
+						<comm:comment>These were in Alterformat</comm:comment>
+					</shadowColumnDef>
+					<shadowColumnDef defaultExpression="tmp_RuleConditionMet" name="tmp_PreviousRuleConditionMet" type="BOOLEAN">
+						<comm:comment>These were in Alterformat</comm:comment>
+					</shadowColumnDef>
+					<shadowColumnDef defaultExpression="tmp_RuleCodeLA" name="tmp_PreviousRuleCodeLA" type="STRING">
+						<comm:comment>These were in Alterformat</comm:comment>
+					</shadowColumnDef>
+				</shadowColumns>
+			</properties>
+			<visual-constraints layout="vertical" bounds="360,144,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="in"/>
+			<target endpoint="in" step="Previous Rule Consideration?"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="remove tmp columns">
+			<properties>
+				<addedColumns/>
+				<removedColumns>
+					<columnRef name="tmp_LeadingAttribute"/>
+					<columnRef name="tmp_RuleCode"/>
+					<columnRef name="tmp_RuleMappings"/>
+					<columnRef name="tmp_RuleCodeLAGuid"/>
+					<columnRef name="tmp_useRuleFilter"/>
+					<columnRef name="tmp_PreviousRuleConditionMet"/>
+					<columnRef name="tmp_PreviousRuleCodeLA"/>
+				</removedColumns>
+			</properties>
+			<visual-constraints layout="vertical" bounds="240,720,-1,-1"/>
+		</step>
+		<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+			<source endpoint="out" step="remove tmp columns"/>
+			<target endpoint="in" step="Detail"/>
+			<visual-constraints>
+				<bendpoints/>
+			</visual-constraints>
+		</connection>
+		<modelComment backgroundColor="128,255,255" borderColor="128,255,255" bounds="24,360,649,102" foregroundColor="51,51,51">Insert Rule expression/steps here. 
+RuleCode column must be set to TRUE or FALSE
+TRUE = Data passed the rule aka Data is good quality
+FALSE = Data failed the rule aka Data is bad quality
+Ensure all columns created (if any) are also removed.</modelComment>
+		<modelComment backgroundColor="255,255,180" borderColor="183,183,0" bounds="24,24,343,86" foregroundColor="51,51,51">Submitted for Development on : 14-01-2021 16:59:36
+Data Governance/External RuleID : 10
+DQFramework RuleID : 4
+Rule Name : Column is valid Gender value
+Generic Rule Name : Gender</modelComment>
+	</purity-config>
+</purity-config-AllRules>

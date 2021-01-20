@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (Fields to Share_v2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.msoffice.excel.read.ExcelFileReader" disabled="false" id="Fields to Share_v2">
+		<properties fileName="../Fields to Share_v2.xlsx" sheetName="Data" startCell="A2" skipEmptyRows="false" useModelApi="false">
+			<columns>
+				<columnDef name="Title_Code" type="STRING"/>
+				<columnDef name="Title" type="STRING"/>
+			</columns>
+			<shadowColumns>
+				<shadowColumnDef name="Key1" type="STRING"/>
+			</shadowColumns>
+		</properties>
+		<visual-constraints layout="vertical" bounds="408,192,32,32"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Fields to Share_v2"/>
+		<target endpoint="in" step="Lookup Builder"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Lookup Builder) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.builders.LookupBuilder" disabled="false" id="Lookup Builder">
+		<properties bestDistanceIndex="false" fileName="../lkp/titles.lkp" bidirectApproximativeIndex="false" duplicities="FIRST" approximativeIndex="false" compressed="false" key="Title_Code">
+			<additionalColumns>
+				<columnExprDef name="Title"/>
+			</additionalColumns>
+			<matchingValue doRemoveDia="false" doUpperCase="false" doSqueezeWS="false" doRemoveRepeatedChars="false"/>
+			<userMetadata>
+				<items/>
+			</userMetadata>
+		</properties>
+		<visual-constraints layout="vertical" bounds="408,384,-1,-1"/>
+	</step>
+
+</purity-config>

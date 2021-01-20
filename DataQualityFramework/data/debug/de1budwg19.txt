@@ -1,0 +1,1 @@
+"SourceLayerID";"SourceAttributeID";"EXT_SourceAttributeID";"SourceAttributeName";"PhysicalName";"PhysicalDataType";"ProcessingName";"ProcessingDataType";"Description";"Action";"Error";"SQL_SourceAttributeID";"UpsertUser"

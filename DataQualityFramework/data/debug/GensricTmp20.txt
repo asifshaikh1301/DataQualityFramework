@@ -1,0 +1,7 @@
+"SourceName";"SourceLayerName";"SourceAttributeName";"RuleID";"TotalRecordsProcessedByRule"
+"OmniCRM";"og_customer";"Gender";10;50
+"OmniCRM";"og_customer";"Gender";1;50
+"OmniImInAMess";"og_customer";"Gender";1;50
+"OmniImInAMess";"og_customer";"Gender";10;50
+"OmniImInAMess";"og_customer";"Mobile";1;50
+"OmniCRM";"og_customer";"Mobile";1;50

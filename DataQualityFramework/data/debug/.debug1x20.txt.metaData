@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<settings>
+  <connector>
+    <saved-state fixedSizes="false" escapeSequence="" fieldSeparator=";" stringQualifierEscapeSequence="&quot;" recordLength="-1" numberOfLinesInFooter="0" encoding="UTF-8" lineWithColumnNames="-1" ignoredRowRegEx="" recordSeparator="\r\n" stringQualifier="&quot;" numberOfLinesInHeader="0">
+      <columns>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="SourceID" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="SourceLayerID" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="EXT_SourceLayerID" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="ParentLayerID" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="SourceLayerName" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="PhysicalName" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="SourceLayerTypeID" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="Description" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="Action" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="Error" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="SQL_SourceLayerID" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="UpsertUser" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+      </columns>
+    </saved-state>
+  </connector>
+</settings>

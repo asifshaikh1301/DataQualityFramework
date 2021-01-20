@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<settings>
+  <multiSheet>
+    <saved-state defaultSheetName="Rules" class="com.ataccama.dqc.gui.msoffice.internal.ExcelMetaData$Data">
+      <sheets>
+        <excelSheetMetaData firstColumn="0" firstRow="1" name="Rules" empty="false">
+          <columns>
+            <iConnectorColumnMetaData dataType="INTEGER" name="RuleID" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Technical_Rule_Name" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Generic_Rule_Name" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Rule_Details" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="INTEGER" name="Score" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Explanation" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="RuleScope" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="DQ_Category" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Tags" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Action" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+          </columns>
+        </excelSheetMetaData>
+        <excelSheetMetaData firstColumn="0" firstRow="1" name="Rule DQ Category" empty="false">
+          <columns>
+            <iConnectorColumnMetaData dataType="INTEGER" name="CategoryID" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Category" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="INTEGER" name="SubCategoryID" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="SubCategory" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Description" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Action" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+          </columns>
+        </excelSheetMetaData>
+        <excelSheetMetaData firstColumn="0" firstRow="1" name="Rule - Type Category" empty="false">
+          <columns>
+            <iConnectorColumnMetaData dataType="STRING" name="Category" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Description" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Action" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+          </columns>
+        </excelSheetMetaData>
+        <excelSheetMetaData firstColumn="0" firstRow="1" name="SourceDetails" empty="false">
+          <columns>
+            <iConnectorColumnMetaData dataType="STRING" name="SourceName" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="SourceLayerName" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="SourceAttributeName" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="SourceAttributeDataType" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Action" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+          </columns>
+        </excelSheetMetaData>
+        <excelSheetMetaData firstColumn="0" firstRow="1" name="DomainDetails" empty="false">
+          <columns>
+            <iConnectorColumnMetaData dataType="STRING" name="DomainName" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="DomainLayerName" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="DomainAttributeName" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Action" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+          </columns>
+        </excelSheetMetaData>
+        <excelSheetMetaData firstColumn="0" firstRow="1" name="SourceDomainMapping" empty="false">
+          <columns>
+            <iConnectorColumnMetaData dataType="INTEGER" name="MappingID" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="SourceName" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="SourceLayerName" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="SourceAttributeName" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="SourceAttributeDataType" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="DomainAttributeName" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="DomainLayerName" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="DomainName" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Action" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+          </columns>
+        </excelSheetMetaData>
+        <excelSheetMetaData firstColumn="0" firstRow="1" name="Result_Rules" empty="false">
+          <columns>
+            <iConnectorColumnMetaData dataType="STRING" name="DebugTraceID" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="SubmissionID" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="DATETIME" name="SubmissionDateTime" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="DATETIME" name="ReportDateTime" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="INTEGER" name="RuleID" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="SourceName" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="SourceLayerName" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="SourceAttributeName" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="INTEGER" name="Success_Count" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="INTEGER" name="Total" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Action" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+          </columns>
+        </excelSheetMetaData>
+      </sheets>
+    </saved-state>
+  </multiSheet>
+</settings>

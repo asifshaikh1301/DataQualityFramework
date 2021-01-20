@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<settings>
+  <connector>
+    <saved-state fixedSizes="false" escapeSequence="" fieldSeparator=";" stringQualifierEscapeSequence="&quot;" recordLength="-1" numberOfLinesInFooter="0" encoding="UTF-8" lineWithColumnNames="1" ignoredRowRegEx="" recordSeparator="\r\n" stringQualifier="&quot;" numberOfLinesInHeader="1">
+      <columns>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" dateFormat="yyyy-MM-dd HH:mm:ss" booleanFalseValue="false" dataType="DATETIME" name="LastRead" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" dateFormat="yyyy-MM-dd" booleanFalseValue="false" dataType="DAY" name="ReportDate" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="ReportHour" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="ReportMinute" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="ReportDay" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="ReportDayName" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="ReportWeek" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="ReportMonth" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="ReportYear" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" dateFormat="yyyy-MM-dd" booleanFalseValue="false" dataType="DAY" name="CurrentDate" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="CurrentHour" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="CurrentMinute" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="CurrentDay" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="CurrentDayName" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="CurrentWeek" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="CurrentMonth" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="CurrentYear" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+      </columns>
+    </saved-state>
+  </connector>
+</settings>

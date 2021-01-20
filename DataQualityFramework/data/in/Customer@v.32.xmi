@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.iwaysoftware.omni.designer.emf.model:ProjectBundle xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.iwaysoftware.omni.designer.emf.model="http://com/iwaysoftware/omni/designer/emf/model" id="_0PU44PKHEeqNAochb262DA" version="5">
+  <inputDataModels id="_0PaYcPKHEeqNAochb262DA">
+    <list id="_4mJvMPKHEeqNAochb262DA" name="Customer">
+      <root id="_4mK9VfKHEeqNAochb262DA" name="Customer">
+        <fields id="_NfCCkPKIEeqNAochb262DA" name="RecID" type="Integer" isRequired="true">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:DefaultTypeInfo" id="_u2f9kPKIEeqNAochb262DA"/>
+        </fields>
+        <fields id="_vSbrofKIEeqNAochb262DA" name="FullName" isRequired="true">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:StringTypeInfo" id="_vSbrovKIEeqNAochb262DA">
+            <constraint id="_vSbro_KIEeqNAochb262DA"/>
+          </typeInfo>
+        </fields>
+        <fields id="_xBhqsPKIEeqNAochb262DA" name="Gender" isRequired="true">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:StringTypeInfo" id="_xBhqsfKIEeqNAochb262DA">
+            <constraint id="_xBhqsvKIEeqNAochb262DA"/>
+          </typeInfo>
+        </fields>
+        <fields id="_2DXM4fKIEeqNAochb262DA" name="BirthDate" isRequired="true">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:StringTypeInfo" id="_2DXM4vKIEeqNAochb262DA">
+            <constraint id="_2DXM4_KIEeqNAochb262DA"/>
+          </typeInfo>
+        </fields>
+        <fields id="_30xgIfKIEeqNAochb262DA" name="Mobile" isRequired="true">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:StringTypeInfo" id="_30xgIvKIEeqNAochb262DA">
+            <constraint id="_30xgI_KIEeqNAochb262DA"/>
+          </typeInfo>
+        </fields>
+        <fields id="_5mJ-MfKIEeqNAochb262DA" name="Email" isRequired="true">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:StringTypeInfo" id="_5mJ-MvKIEeqNAochb262DA">
+            <constraint id="_5mJ-M_KIEeqNAochb262DA"/>
+          </typeInfo>
+        </fields>
+        <fields id="_oXr-kBFqEeu9eZNldqxAZg" name="DQM_Score" type="Integer">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:DefaultTypeInfo" id="_p9FPEBFqEeu9eZNldqxAZg"/>
+        </fields>
+        <fields id="_qIo-0RFqEeu9eZNldqxAZg" name="DQM_Explanation">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:StringTypeInfo" id="_qIo-0hFqEeu9eZNldqxAZg">
+            <constraint id="_qIo-0xFqEeu9eZNldqxAZg"/>
+          </typeInfo>
+        </fields>
+        <fields id="_sMpd8RFqEeu9eZNldqxAZg" name="DQC_Score" type="Integer">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:DefaultTypeInfo" id="_u1d6UBFqEeu9eZNldqxAZg"/>
+        </fields>
+        <fields id="_yArdMRHaEeu9eZNldqxAZg" name="DQM_RuleCodesApplied">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:StringTypeInfo" id="_yArdMhHaEeu9eZNldqxAZg">
+            <constraint id="_yArdMxHaEeu9eZNldqxAZg"/>
+          </typeInfo>
+        </fields>
+        <fields id="_z14rURHaEeu9eZNldqxAZg" name="DQM_RuleFailureCount" type="Integer">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:DefaultTypeInfo" id="_1RHTMBHaEeu9eZNldqxAZg"/>
+        </fields>
+        <fields id="_4SO60RHaEeu9eZNldqxAZg" name="DQM_DataQualityPercentage" type="Float">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:FloatTypeInfo" id="_7_LtsBHaEeu9eZNldqxAZg">
+            <constraint id="_7_MUwBHaEeu9eZNldqxAZg"/>
+          </typeInfo>
+        </fields>
+        <fields id="_vUKsQRHdEeu9eZNldqxAZg" name="DQM_RuleCodesFailedLA">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:StringTypeInfo" id="_vUKsQhHdEeu9eZNldqxAZg">
+            <constraint id="_vUKsQxHdEeu9eZNldqxAZg"/>
+          </typeInfo>
+        </fields>
+        <fields id="_-vhxkRHeEeu9eZNldqxAZg" name="DQM_NoOfRules">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:StringTypeInfo" id="_-vhxkhHeEeu9eZNldqxAZg">
+            <constraint id="_-vhxkxHeEeu9eZNldqxAZg"/>
+          </typeInfo>
+        </fields>
+        <fields id="_cRT0cRHfEeu9eZNldqxAZg" name="DQM_RuleCodesFailed">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:StringTypeInfo" id="_cRT0chHfEeu9eZNldqxAZg">
+            <constraint id="_cRT0cxHfEeu9eZNldqxAZg"/>
+          </typeInfo>
+        </fields>
+        <fields id="_j2e2ERHfEeu9eZNldqxAZg" name="DQM_RuleCodesAppliedMappings">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:StringTypeInfo" id="_j2e2EhHfEeu9eZNldqxAZg">
+            <constraint id="_j2e2ExHfEeu9eZNldqxAZg"/>
+          </typeInfo>
+        </fields>
+        <fields id="_jkwvgBKFEeu9eZNldqxAZg" name="DQM_RuleCodesAppliedLA">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:StringTypeInfo" id="_jkwvgRKFEeu9eZNldqxAZg">
+            <constraint id="_jkwvghKFEeu9eZNldqxAZg"/>
+          </typeInfo>
+        </fields>
+        <fields id="_PR6E4BKGEeu9eZNldqxAZg" name="DQM_RuleCodesAppliedLAFiltered">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:StringTypeInfo" id="_PR6E4RKGEeu9eZNldqxAZg">
+            <constraint id="_PR6E4hKGEeu9eZNldqxAZg"/>
+          </typeInfo>
+        </fields>
+        <fields id="_Kv_jcRKHEeu9eZNldqxAZg" name="DQM_RuleCodesAppliedLAGuid">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:StringTypeInfo" id="_Kv_jchKHEeu9eZNldqxAZg">
+            <constraint id="_Kv_jcxKHEeu9eZNldqxAZg"/>
+          </typeInfo>
+        </fields>
+        <fields id="_pctIYRKHEeu9eZNldqxAZg" name="DQM_RuleCodesAppliedLAForFilter">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:StringTypeInfo" id="_pctIYhKHEeu9eZNldqxAZg">
+            <constraint id="_pctIYxKHEeu9eZNldqxAZg"/>
+          </typeInfo>
+        </fields>
+        <fields id="_yzzaoRKHEeu9eZNldqxAZg" name="DQM_RuleCodesAppliedForFilter">
+          <typeInfo xsi:type="com.iwaysoftware.omni.designer.emf.model:StringTypeInfo" id="_yzzaohKHEeu9eZNldqxAZg">
+            <constraint id="_yzzaoxKHEeu9eZNldqxAZg"/>
+          </typeInfo>
+        </fields>
+        <instanceModels id="_4mK9VvKHEeqNAochb262DA">
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_NfA0cPKIEeqNAochb262DA" field="//@inputDataModels/@list.0/@root/@fields.0"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_vSbroPKIEeqNAochb262DA" field="//@inputDataModels/@list.0/@root/@fields.1"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_xBhDoPKIEeqNAochb262DA" field="//@inputDataModels/@list.0/@root/@fields.2"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_2DXM4PKIEeqNAochb262DA" field="//@inputDataModels/@list.0/@root/@fields.3"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_30xgIPKIEeqNAochb262DA" field="//@inputDataModels/@list.0/@root/@fields.4"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_5mJ-MPKIEeqNAochb262DA" field="//@inputDataModels/@list.0/@root/@fields.5"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_sMpd8BFqEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.8"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_-vhxkBHeEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.13"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_yArdMBHaEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.9"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_jkvhYBKFEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.16"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_Kv_jcBKHEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.18"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_j2e2EBHfEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.15"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_yzzaoBKHEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.20"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_pctIYBKHEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.19"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_PR5d0BKGEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.17"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_cRT0cBHfEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.14"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_vUKsQBHdEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.12"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_z14rUBHaEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.10"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_4SO60BHaEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.11"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_oXrXgBFqEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.6"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:InstanceModel" id="_qIo-0BFqEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.7"/>
+          <comment id="_4mK9V_KHEeqNAochb262DA"/>
+        </instanceModels>
+        <masterModels id="_4mK9WPKHEeqNAochb262DA">
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_NfD3wPKIEeqNAochb262DA" field="//@inputDataModels/@list.0/@root/@fields.0"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_vSbrpPKIEeqNAochb262DA" field="//@inputDataModels/@list.0/@root/@fields.1"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_xBhqs_KIEeqNAochb262DA" field="//@inputDataModels/@list.0/@root/@fields.2"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_2DXM5PKIEeqNAochb262DA" field="//@inputDataModels/@list.0/@root/@fields.3"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_30xgJPKIEeqNAochb262DA" field="//@inputDataModels/@list.0/@root/@fields.4"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_5mJ-NPKIEeqNAochb262DA" field="//@inputDataModels/@list.0/@root/@fields.5"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_oXr-kxFqEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.6"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_qIo-1BFqEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.7"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_sMpd9BFqEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.8"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_yArdNBHaEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.9"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_z14rVBHaEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.10"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_4SO61BHaEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.11"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_vUKsRBHdEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.12"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_-vhxlBHeEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.13"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_cRT0dBHfEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.14"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_j2e2FBHfEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.15"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_jkwvgxKFEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.16"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_PR6E4xKGEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.17"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_Kv_jdBKHEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.18"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_pctIZBKHEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.19"/>
+          <list xsi:type="com.iwaysoftware.omni.designer.emf.model:ReferencedMasterModel" id="_yzzapBKHEeu9eZNldqxAZg" field="//@inputDataModels/@list.0/@root/@fields.20"/>
+          <comment id="_4mK9WfKHEeqNAochb262DA"/>
+        </masterModels>
+        <sourceDimensions id="_4mK9W_KHEeqNAochb262DA"/>
+        <cleansedDimensions id="_4mK9WvKHEeqNAochb262DA"/>
+      </root>
+      <dqComponents xsi:type="com.iwaysoftware.omni.designer.emf.model:DQPlan" id="_h2sB0PRBEeqbIJMgftnDGg" name="Match_Customer" order="1" createdDate="2020-09-11T17:14:47.021+0100" createdBy="super" planName="Match_Customer" type="Matching">
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_h2sB0fRBEeqbIJMgftnDGg" paramName="recid">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_evdyMvRBEeqbIJMgftnDGg" value="//@inputDataModels/@list.0/@root/@fields.0"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_h2so4PRBEeqbIJMgftnDGg" paramName="fullname">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_evdyNfRBEeqbIJMgftnDGg" value="//@inputDataModels/@list.0/@root/@fields.1"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_h2so4vRBEeqbIJMgftnDGg" paramName="email">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_evdyOPRBEeqbIJMgftnDGg" value="//@inputDataModels/@list.0/@root/@fields.5"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_h2so5PRBEeqbIJMgftnDGg" paramName="mobile">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_evdyO_RBEeqbIJMgftnDGg" value="//@inputDataModels/@list.0/@root/@fields.4"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_h2so5vRBEeqbIJMgftnDGg" paramName="gender">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_evdyPvRBEeqbIJMgftnDGg" value="//@inputDataModels/@list.0/@root/@fields.2"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_h2so6PRBEeqbIJMgftnDGg" paramName="birthdate">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_evdyQfRBEeqbIJMgftnDGg" value="//@inputDataModels/@list.0/@root/@fields.3"/>
+        </parameters>
+      </dqComponents>
+      <dqComponents xsi:type="com.iwaysoftware.omni.designer.emf.model:DQPlan" id="_k4atcPRBEeqbIJMgftnDGg" name="Merge_Customer" order="2" createdDate="2020-09-11T17:15:07.335+0100" createdBy="super" planName="Merge_Customer" type="Merging">
+        <parameters id="_k4atcfRBEeqbIJMgftnDGg" paramName="recid" type="Integer"/>
+        <parameters id="_k4atcvRBEeqbIJMgftnDGg" paramName="fullname"/>
+        <parameters id="_k4atc_RBEeqbIJMgftnDGg" paramName="gender"/>
+        <parameters id="_k4atdPRBEeqbIJMgftnDGg" paramName="birthdate"/>
+        <parameters id="_k4atdfRBEeqbIJMgftnDGg" paramName="mobile"/>
+        <parameters id="_k4atdvRBEeqbIJMgftnDGg" paramName="email"/>
+      </dqComponents>
+      <dqComponents xsi:type="com.iwaysoftware.omni.designer.emf.model:DQPlan" id="_tNw-cPmJEeqbIJMgftnDGg" shortDescription="Issues with soley the customer records" name="Customer" order="3" createdDate="2020-09-18T10:34:02.839+0100" createdBy="super" planName="Customer" type="Remediation">
+        <parameters id="_tNw-cfmJEeqbIJMgftnDGg" paramName="recid" type="Integer"/>
+        <parameters id="_tNw-cvmJEeqbIJMgftnDGg" paramName="fullname"/>
+        <parameters id="_tNw-c_mJEeqbIJMgftnDGg" paramName="gender"/>
+        <parameters id="_tNw-dPmJEeqbIJMgftnDGg" paramName="birthdate"/>
+        <parameters id="_tNw-dfmJEeqbIJMgftnDGg" paramName="mobile"/>
+        <parameters id="_tNw-dvmJEeqbIJMgftnDGg" paramName="email"/>
+      </dqComponents>
+      <dqComponents xsi:type="com.iwaysoftware.omni.designer.emf.model:DQPlan" id="_NbCGABKKEeu9eZNldqxAZg" name="DQM_Customer3" order="3" createdDate="2020-10-20T06:10:38.048+0100" createdBy="super" planName="DQM_Customer3">
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtEBKKEeu9eZNldqxAZg" paramName="RecID" type="Integer">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDbhKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.0"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtEhKKEeu9eZNldqxAZg" paramName="Mobile">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDdxKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.4"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtFBKKEeu9eZNldqxAZg" paramName="BirthDate">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDjBKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.3"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtFhKKEeu9eZNldqxAZg" paramName="Gender">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDlRKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.2"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtGBKKEeu9eZNldqxAZg" paramName="FullName">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDmBKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.1"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtGhKKEeu9eZNldqxAZg" paramName="Email">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDmxKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.5"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtHBKKEeu9eZNldqxAZg" paramName="DQC_Score" type="Integer">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDfRKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.8"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtHhKKEeu9eZNldqxAZg" paramName="DQM_NoOfRules" type="Integer">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:IntegerParameterValue" id="_J31FABKKEeu9eZNldqxAZg"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtIBKKEeu9eZNldqxAZg" paramName="DQM_RuleCodesApplied">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDdBKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.9"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtIhKKEeu9eZNldqxAZg" paramName="DQM_RuleCodesAppliedLA">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDaBKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.16"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtJBKKEeu9eZNldqxAZg" paramName="DQM_RuleCodesAppliedLAGuid">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDZRKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.18"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtJhKKEeu9eZNldqxAZg" paramName="DQM_RuleCodesAppliedMappings">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDcRKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.15"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtKBKKEeu9eZNldqxAZg" paramName="DQM_RuleCodesAppliedForFilter">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDiRKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.20"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtKhKKEeu9eZNldqxAZg" paramName="DQM_RuleCodesAppliedLAForFilter">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDaxKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.19"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtLBKKEeu9eZNldqxAZg" paramName="DQM_RuleCodesAppliedLAFiltered">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDjxKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.17"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtLhKKEeu9eZNldqxAZg" paramName="DQM_RuleCodesFailed">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDYhKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.14"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtMBKKEeu9eZNldqxAZg" paramName="DQM_RuleCodesFailedLA">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDgxKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.12"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtMhKKEeu9eZNldqxAZg" paramName="DQM_RuleFailureCount" type="Integer">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDgBKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.10"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtNBKKEeu9eZNldqxAZg" paramName="DQM_DataQualityPercentage" type="Float">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDkhKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.11"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtNhKKEeu9eZNldqxAZg" paramName="DQM_Score" type="Integer">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDnhKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.6"/>
+        </parameters>
+        <parameters xsi:type="com.iwaysoftware.omni.designer.emf.model:Parameter" id="_NbCtOBKKEeu9eZNldqxAZg" paramName="DQM_Explanation">
+          <value xsi:type="com.iwaysoftware.omni.designer.emf.model:FieldParameterValue" id="_Y2nDhhKIEeu9eZNldqxAZg" value="//@inputDataModels/@list.0/@root/@fields.7"/>
+        </parameters>
+      </dqComponents>
+    </list>
+  </inputDataModels>
+  <referenceDataModels id="_0Pa_gPKHEeqNAochb262DA"/>
+  <sourceSystems id="_H4YtsPKJEeqNAochb262DA" shortDescription="CustomerData" name="OmniImInAMess" identifier="OmniImInAMess.xlsx"/>
+  <sourceSystems id="_7AqN4BoHEeu9eZNldqxAZg" shortDescription="MoreCustomerData" name="OmniCRM" identifier="OmniCRM"/>
+  <remediationRules id="_0PbmkPKHEeqNAochb262DA">
+    <stateMachines id="_0PbmkfKHEeqNAochb262DA"/>
+    <customActions id="_0PbmkvKHEeqNAochb262DA"/>
+  </remediationRules>
+  <dqProject id="_zdadYPRAEeqbIJMgftnDGg" name="Customer" revision="138"/>
+</com.iwaysoftware.omni.designer.emf.model:ProjectBundle>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<runtimeconfig>
+  <contributedConfigs/>
+  <pathVariables>
+    <pathVariable name="GDPR_Components" value="C:\iWayDQS\iWay-dqs-12.3.0.ga-2019-02-03-win-x86_64\workspace\GDPR_Accelerator\GDPR_components"/>
+    <pathVariable name="DemoDataPrep" value="C:\iWay-dqs-10.6.1\iWay-dqs-10.6.1.ga-2016-11-20-win-x86_64\workspace\GDPR_Accelerator\GDPR_plans\DemoDataPrep"/>
+    <pathVariable name="GDPR_LKP_files" value="C:\iWayDQS\iWay-dqs-12.3.0.ga-2019-02-03-win-x86_64\workspace\GDPR_Accelerator\data\ext\lookup"/>
+    <pathVariable name="GDPR_Online_Services" value="C:\iWayDQS\iWay-dqs-12.3.0.ga-2019-02-03-win-x86_64\workspace\GDPR_Accelerator\GDPR_Online_Services"/>
+    <pathVariable name="GDPR_OUT_Data" value="C:\iWayDQS\iWay-dqs-12.3.0.ga-2019-02-03-win-x86_64\workspace\GDPR_Accelerator\data\out"/>
+    <pathVariable name="GDPR_OUT_Metadata" value="C:\iWayDQS\iWay-dqs-12.3.0.ga-2019-02-03-win-x86_64\workspace\GDPR_Accelerator\data\out\metadataoutputs"/>
+    <pathVariable name="GDPR_OUT_xmlgeneration" value="C:\iWayDQS\iWay-dqs-12.3.0.ga-2019-02-03-win-x86_64\workspace\GDPR_Accelerator\data\out\xmlgenerationoutputs"/>
+    <pathVariable name="GDPR_Plans" value="C:\iWayDQS\iWay-dqs-12.3.0.ga-2019-02-03-win-x86_64\workspace\GDPR_Accelerator\GDPR_plans"/>
+    <pathVariable name="GDPR_RuntimeCFG" value="C:\iWayDQS\iWay-dqs-12.3.0.ga-2019-02-03-win-x86_64\workspace\GDPR_Accelerator\RuntimeCFG"/>
+    <pathVariable name="GDPR_sub_components" value="C:\iWayDQS\iWay-dqs-12.3.0.ga-2019-02-03-win-x86_64\workspace\GDPR_Accelerator\GDPR_components\GDPR_sub_components"/>
+    <pathVariable name="GDPR_TablePlans" value="C:\iWayDQS\iWay-dqs-12.3.0.ga-2019-02-03-win-x86_64\workspace\GDPR_Accelerator\GDPR_plans\3.GDPR_TablePlans"/>
+    <pathVariable name="DATA" value="C:\iWayDQS\iWay-dqs-12.3.0.ga-2019-02-03-win-x86_64\workspace\GDPR_Accelerator\data"/>
+    <pathVariable name="COMPONENTS" value="C:\iWayDQS\iWay-dqs-12.3.0.ga-2019-02-03-win-x86_64\workspace\GDPR_Accelerator\components"/>
+    <pathVariable name="TESTS_ROOT" value="C:\iWayDQS\iWay-dqs-12.3.0.ga-2019-02-03-win-x86_64\workspace\GDPR_Accelerator\unit_tests"/>
+    <pathVariable name="DOCUMENTATION" value="C:\iWayDQS\iWay-dqs-12.3.0.ga-2019-02-03-win-x86_64\workspace\GDPR_Accelerator\doc"/>
+    <pathVariable name="WORKFLOWS" value="C:\iWayDQS\iWay-dqs-12.3.0.ga-2019-02-03-win-x86_64\workspace\GDPR_Accelerator\workflows"/>
+  </pathVariables>
+  <dataSources>
+    <dataSource password="crypted:AES:yhUUF93UqVdjvpAv2PnXtTPhUYTFQo+C+oJVM9YE0BQ=" name="myPL" driverclass="com.microsoft.sqlserver.jdbc.SQLServerDriver" user="sa" url="jdbc:sqlserver://localhost:1433;databaseName=myPL"/>
+    <dataSource password="crypted:AES:YAU+4jgz7OP6J0Ak03OwIuE6y1jY9KBXlw6f71lmnj8=" name="DQMFramework" driverclass="com.microsoft.sqlserver.jdbc.SQLServerDriver" user="sa" url="jdbc:sqlserver://localhost:1433;databaseName=DQMFramework"/>
+    <dataSource password="crypted:AES:jTtntco9oF706GJNp0KlPXwAUKWV4Tgqh4vkxyguuog=" name="AustralianExampleDatabase" driverclass="com.microsoft.sqlserver.jdbc.SQLServerDriver" user="sa" url="jdbc:sqlserver://localhost:1433;databaseName=AustralianExampleDatabase"/>
+    <dataSource password="crypted:AES:WKksgAzOICdRGsVOe0OBW5PRoyM8+3JFmP9NViQTsLw=" name="GDPR" driverclass="com.microsoft.sqlserver.jdbc.SQLServerDriver" user="sa" url="jdbc:sqlserver://localhost:1433;databaseName=GDPR"/>
+    <dataSource password="crypted:AES:+1emEbiyE6OHYEIUdBLIob/+6KRtyN2cBirr7xx5A8I=" name="DQMSimple" driverclass="com.microsoft.sqlserver.jdbc.SQLServerDriver" user="sa" url="jdbc:sqlserver://localhost:1433;databaseName=DQMSimple"/>
+    <dataSource password="crypted:AES:+tajz88VvmpyyfUxJDGJkvaGXRF8B6ttHTiGbTQJTA0=" name="DQMFramework1" driverclass="com.microsoft.sqlserver.jdbc.SQLServerDriver" user="sa" url="jdbc:sqlserver://localhost:1433"/>
+    <dataSource password="crypted:AES:TjfooOGgqvcejvydYs5vMcv0H0l/8da8QaYq35/kMC8=" name="CRM" driverclass="com.microsoft.sqlserver.jdbc.SQLServerDriver" user="sa" url="jdbc:sqlserver://UK-C3DHZM2:1433;databaseName=CRM"/>
+    <dataSource password="crypted:AES:KgyeYQ/aedTHNpRZNC6Ux6mbYnmdwcqYOVCbyMKvRd4=" name="Processing" driverclass="com.microsoft.sqlserver.jdbc.SQLServerDriver" user="sa" url="jdbc:sqlserver://UK-C3DHZM2:1433;databaseName=Processing"/>
+    <dataSource password="crypted:AES:NLLdqcW3pSh02kcLzACm16r8NqgaifIUQ4I34bJaekQ=" name="Application" driverclass="com.microsoft.sqlserver.jdbc.SQLServerDriver" user="sa" url="jdbc:sqlserver://UK-C3DHZM2:1433;databaseName=Application"/>
+    <dataSource password="crypted:AES:u0Yvu7HIzfm5Rs8tqpULB0A2FrXIw62mHFk9Lc5qGjw=" name="DWH" driverclass="com.microsoft.sqlserver.jdbc.SQLServerDriver" user="sa" url="jdbc:sqlserver://UK-C3DHZM2:1433;databaseName=DWH"/>
+    <dataSource password="crypted:AES:wKSmnjKro3U9OkIPPlf99Qe0DhOPoH1D5oGFo1AsshM=" name="DQFramework" driverclass="com.microsoft.sqlserver.jdbc.SQLServerDriver" user="sa" url="jdbc:sqlserver://localhost:1433;databaseName=DQFramework"/>
+    <dataSource password="crypted:AES:Jr2OhGd2fJv3dwIQdfjjJMn6GpF8v/9Di6GZHiVL0Ts=" name="Customer" driverclass="com.microsoft.sqlserver.jdbc.SQLServerDriver" user="sa" url="jdbc:sqlserver://localhost:1433;databaseName=Customer"/>
+  </dataSources>
+  <parallelismLevel>1</parallelismLevel>
+</runtimeconfig>

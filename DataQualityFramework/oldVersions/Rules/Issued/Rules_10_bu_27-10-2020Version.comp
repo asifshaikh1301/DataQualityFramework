@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" xmlns:def="http://www.ataccama.com/purity/defaults" version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings>
+			<property name="tmp_LeadingAttribute" insert="false" mappedTo="in/shadowColumns[1]/defaultExpression">
+				<def:default-value>
+					<defaultExpression>//please fill in leading attribute field name</defaultExpression>
+				</def:default-value>
+				<usedIns>
+					<usedIn insert="false" mappedTo="Create LeadingAttribute column/addedColumns[0]/expression"/>
+				</usedIns>
+			</property>
+		</propertyMappings>
+	</component-mappings>
+
+<!-- (Create LeadingAttribute column) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create LeadingAttribute column">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="//please fill in leading attribute field name" name="LeadingAttribute" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="480,528,48,48"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create LeadingAttribute column"/>
+		<target endpoint="in" step="Summary"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (DQFramework_DQI) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.dqi.DataQualityIndicator" disabled="false" id="DQFramework_DQI">
+		<properties explainedColumn="RuleCodes" outRecordsFilterType="ALL">
+			<rules>
+				<dQIRule code="10" expression="tmp_RuleConditionMet" name="Column is valid Gender value" description="Must be &quot;M&quot; or &quot;F&quot;" shortDescription="Gender"/>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="360,432,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="summary" step="DQFramework_DQI"/>
+		<target endpoint="in" step="Create LeadingAttribute column"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="503,480"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="DQFramework_DQI"/>
+		<target endpoint="in" step="remove tmp columns"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="263,480"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (DQFramework_Scoring) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.scoring.ScoringEngineStep" disabled="false" id="DQFramework_Scoring">
+		<properties defaultScoreColumn="RecordScore" defaultExplainColumn="RecordExplanation">
+			<rules>
+				<scoringEngineNode condition="tmp_RuleConditionMet" name="Column is valid Gender value">
+					<cases>
+						<scoringEngineCase score="0" correction="0" explanation="" defaultCase="false" value="true"/>
+						<scoringEngineCase score="10" correction="0" explanation="&quot;INVALID_GENDER_VALUE&quot; + &quot;(&quot; + tmp_LeadingAttribute + &quot;)&quot;" defaultCase="true" value="false"/>
+					</cases>
+					<comm:comment>Created on 01-07-2020 11:20:34</comm:comment>
+				</scoringEngineNode>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="360,360,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="DQFramework_Scoring"/>
+		<target endpoint="in" step="DQFramework_DQI"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Detail) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="Detail">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="240,624,-1,-1"/>
+	</step>
+
+
+
+<!-- (Set flag to true or false) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set flag to true or false">
+		<properties>
+			<assignments>
+				<assignment expression="upper(Rule_Attribute_1) in {&quot;M&quot;,&quot;F&quot;}" column="tmp_RuleConditionMet">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="360,264,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set flag to true or false"/>
+		<target endpoint="in" step="DQFramework_Scoring"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Summary) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="Summary">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="480,624,-1,-1"/>
+	</step>
+
+
+
+<!-- (in) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in">
+		<properties>
+			<columns>
+				<columnDef name="RecordID" type="STRING"/>
+				<columnDef name="RecordScore" type="INTEGER"/>
+				<columnDef name="RecordExplanation" type="STRING"/>
+				<columnDef name="RuleCodes" type="STRING"/>
+				<columnDef name="Rule_Attribute_1" type="STRING"/>
+			</columns>
+			<shadowColumns>
+				<shadowColumnDef name="tmp_RuleConditionMet" type="BOOLEAN"/>
+				<shadowColumnDef defaultExpression="//please fill in leading attribute field name" name="tmp_LeadingAttribute" type="STRING"/>
+			</shadowColumns>
+		</properties>
+		<visual-constraints layout="vertical" bounds="360,144,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in"/>
+		<target endpoint="in" step="Set flag to true or false"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (remove tmp columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="remove tmp columns">
+		<properties>
+			<addedColumns/>
+			<removedColumns>
+				<columnRef name="tmp_LeadingAttribute"/>
+			</removedColumns>
+		</properties>
+		<visual-constraints layout="vertical" bounds="240,528,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="remove tmp columns"/>
+		<target endpoint="in" step="Detail"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<modelComment backgroundColor="128,255,255" borderColor="128,255,255" bounds="24,240,649,102" foregroundColor="51,51,51">Insert Rule expression/steps here. 
+RuleCode column must be set to TRUE or FALSE
+TRUE = Data passed the rule aka Data is good quality
+FALSE = Data failed the rule aka Data is bad quality
+Ensure all columns created (if any) are also removed.</modelComment>
+
+
+
+<modelComment backgroundColor="255,255,180" borderColor="183,183,0" bounds="24,24,343,54" foregroundColor="51,51,51">Submitted for Development on : 01-07-2020 11:20:34
+Excel RuleID : 10
+Collibra RuleBook Id : 10
+Rule Name : Column is valid Gender value</modelComment>
+
+</purity-config>

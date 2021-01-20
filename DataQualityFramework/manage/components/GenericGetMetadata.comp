@@ -1,0 +1,620 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" xmlns:def="http://www.ataccama.com/purity/defaults" version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings>
+			<property name="Ex_GetMetadata" insert="false" mappedTo="in/shadowColumns[0]/defaultExpression">
+				<def:default-value>
+					<defaultExpression>now()</defaultExpression>
+				</def:default-value>
+			</property>
+		</propertyMappings>
+	</component-mappings>
+
+<!-- (Create Category columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create Category columns">
+		<properties>
+			<addedColumns>
+				<addedColumn name="CategoryID" type="INTEGER"/>
+				<addedColumn name="CategoryName" type="STRING"/>
+				<addedColumn name="CategoryLayerName" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,984,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create Category columns"/>
+		<target endpoint="in" step="SQL - Get Category details"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create Tmp columns 10) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create Tmp columns 10">
+		<properties>
+			<addedColumns>
+				<addedColumn name="DomainID" type="INTEGER"/>
+				<addedColumn name="DomainName" type="STRING"/>
+				<addedColumn name="DomainLayerID" type="INTEGER"/>
+				<addedColumn name="DomainLayerName" type="STRING"/>
+				<addedColumn name="DomainAttributeID" type="INTEGER"/>
+				<addedColumn name="DomainAttributeName" type="STRING"/>
+				<addedColumn name="FilterDomainID" type="INTEGER"/>
+				<addedColumn name="FilterDomainName" type="STRING"/>
+				<addedColumn name="FilterDomainLayerID" type="INTEGER"/>
+				<addedColumn name="FilterDomainLayerName" type="STRING"/>
+				<addedColumn name="FilterDomainAttributeID" type="INTEGER"/>
+				<addedColumn name="FilterDomainAttributeName" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,1128,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create Tmp columns 10"/>
+		<target endpoint="in" step="SQL - Get Domain Details"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create Tmp columns 11) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="true" id="Create Tmp columns 11">
+		<properties>
+			<addedColumns>
+				<addedColumn name="SourceID" type="INTEGER"/>
+				<addedColumn name="SourceLayerID" type="INTEGER"/>
+				<addedColumn name="SourceAttributeID" type="INTEGER"/>
+				<addedColumn name="SourceAttributeProcessingDataType" type="STRING"/>
+				<addedColumn name="FilterSourceID" type="INTEGER"/>
+				<addedColumn name="FilterSourceLayerID" type="INTEGER"/>
+				<addedColumn name="FilterSourceAttributeID" type="INTEGER"/>
+				<addedColumn name="FilterSourceAttributeProcessingDataType" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="384,552,-1,-1"/>
+	</step>
+
+
+
+<!-- (Create Tmp columns 9) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create Tmp columns 9">
+		<properties>
+			<addedColumns>
+				<addedColumn name="SourceID" type="INTEGER"/>
+				<addedColumn name="SourceLayerID" type="INTEGER"/>
+				<addedColumn name="SourceAttributeID" type="INTEGER"/>
+				<addedColumn name="SourceAttributeProcessingDataType" type="STRING"/>
+				<addedColumn name="FilterSourceID" type="INTEGER"/>
+				<addedColumn name="FilterSourceLayerID" type="INTEGER"/>
+				<addedColumn name="FilterSourceAttributeID" type="INTEGER"/>
+				<addedColumn name="FilterSourceAttributeProcessingDataType" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,552,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create Tmp columns 9"/>
+		<target endpoint="in" step="SQL Select - Get SourceID"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (DQFramework_Populated 11) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.msoffice.excel.read.ExcelFileReader" disabled="true" id="DQFramework_Populated 11">
+		<properties fileName="../../data/out/DQFramework_Populated.xlsx" sheetName="Result_Rules" startCell="A2" skipEmptyRows="false" useModelApi="false">
+			<columns>
+				<columnDef name="DebugTraceID" type="STRING"/>
+				<columnDef name="SubmissionID" type="STRING"/>
+				<columnDef name="SubmissionDateTime" type="DATETIME"/>
+				<columnDef name="ReportDateTime" type="DATETIME"/>
+				<columnDef name="RuleID" type="INTEGER"/>
+				<columnDef name="SourceID" type="INTEGER"/>
+				<columnDef name="SourceName" type="STRING"/>
+				<columnDef name="SourceLayerID" type="INTEGER"/>
+				<columnDef name="SourceLayerName" type="STRING"/>
+				<columnDef name="SourceAttributeID" type="INTEGER"/>
+				<columnDef name="SourceAttributeName" type="STRING"/>
+				<columnDef name="TotalRecordsCount" type="LONG"/>
+				<columnDef name="FilteredRecordsCount" type="LONG"/>
+				<columnDef name="RuleRecordsCount" type="LONG"/>
+				<columnDef name="RuleSuccessCount" type="LONG"/>
+				<columnDef name="FilterRuleID" type="INTEGER"/>
+				<columnDef name="FilterSourceAttributeID" type="INTEGER"/>
+				<columnDef name="FilterSourceAttributeName" type="STRING"/>
+				<columnDef name="RuleMappingGroup" type="STRING"/>
+				<columnDef name="LoadType" type="STRING"/>
+				<columnDef name="Action" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="336,24,-1,-1"/>
+	</step>
+
+
+
+<!-- (Multiplicator) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="216,1464,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="Rule Summary 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="out"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Rule Summary 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Rule Summary 2">
+		<properties writeHeader="true" fileName="../../Data/RuleS0mmary00.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="696,1320,-1,-1"/>
+	</step>
+
+
+
+<!-- (SQL - Get Category details) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL - Get Category details">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="CategoryID" dataColumn="CategoryID"/>
+				<columnMapping sqlColumn="CategoryName" dataColumn="CategoryName"/>
+				<columnMapping sqlColumn="CategoryLayerID" dataColumn="CategoryLayerID"/>
+				<columnMapping sqlColumn="CategoryLayerName" dataColumn="CategoryLayerName"/>
+			</mappings>
+			<query>SELECT 
+ C.Name AS CategoryName
+,C.CategoryID
+,CL.CategoryLayerID
+,CL.Name AS CategoryLayerName
+,RSC.RuleID
+FROM 
+[DQFramework].[dbo].[RuleName]				AS RSC	LEFT JOIN 
+[DQFramework].[dbo].[CategoryLayer]			AS CL	ON RSC.CategoryLayerID=CL.CategoryLayerID LEFT JOIN
+[DQFramework].[dbo].[Category]				AS C	ON CL.CategoryID=C.CategoryID
+Where RuleID = ${RuleID}</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,1056,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL - Get Category details"/>
+		<target endpoint="in" step="Create Tmp columns 10"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL - Get Domain Details) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL - Get Domain Details">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="DomainID" dataColumn="DomainID"/>
+				<columnMapping sqlColumn="DomainName" dataColumn="DomainName"/>
+				<columnMapping sqlColumn="DomainLayerID" dataColumn="DomainLayerID"/>
+				<columnMapping sqlColumn="DomainLayerName" dataColumn="DomainLayerName"/>
+				<columnMapping sqlColumn="DomainAttributeID" dataColumn="DomainAttributeID"/>
+				<columnMapping sqlColumn="DomainAttributeName" dataColumn="DomainAttributeName"/>
+			</mappings>
+			<query>SELECT 
+ D.DomainID
+,D.Name AS DomainName
+,DL.DomainLayerID
+,DL.Name AS DomainLayerName
+,DA.DomainAttributeID
+,DA.Name AS DomainAttributeName 
+FROM 
+[DQFramework].[dbo].[SourceDomainAttribute]		AS SDA	LEFT JOIN 
+[DQFramework].[dbo].[DomainAttribute]			AS DA	ON SDA.DomainAttributeID=DA.DomainAttributeID LEFT JOIN
+[DQFramework].[dbo].[DomainLayer]				AS DL	ON DA.DomainLayerID=DL.DomainLayerID LEFT JOIN
+[DQFramework].[dbo].[Domain]					AS D	ON DL.DomainID=D.DomainID
+Where SDA.SourceAttributeID = ${SourceAttributeID}</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,1200,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL - Get Domain Details"/>
+		<target endpoint="in" step="only do this if filtered records is more than 1 or filter has been applied"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL - Get FilterDomain Details 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL - Get FilterDomain Details 2">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="DomainID" dataColumn="FilterDomainID"/>
+				<columnMapping sqlColumn="DomainName" dataColumn="FilterDomainName"/>
+				<columnMapping sqlColumn="DomainLayerID" dataColumn="FilterDomainLayerID"/>
+				<columnMapping sqlColumn="DomainLayerName" dataColumn="FilterDomainLayerName"/>
+				<columnMapping sqlColumn="DomainAttributeID" dataColumn="FilterDomainAttributeID"/>
+				<columnMapping sqlColumn="DomainAttributeName" dataColumn="FilterDomainAttributeName"/>
+			</mappings>
+			<query>SELECT 
+ D.DomainID
+,D.Name AS DomainName
+,DL.DomainLayerID
+,DL.Name AS DomainLayerName
+,DA.DomainAttributeID
+,DA.Name AS DomainAttributeName 
+FROM 
+[DQFramework].[dbo].[SourceDomainAttribute]		AS SDA	LEFT JOIN 
+[DQFramework].[dbo].[DomainAttribute]			AS DA	ON SDA.DomainAttributeID=DA.DomainAttributeID LEFT JOIN
+[DQFramework].[dbo].[DomainLayer]				AS DL	ON DA.DomainLayerID=DL.DomainLayerID LEFT JOIN
+[DQFramework].[dbo].[Domain]					AS D	ON DL.DomainID=D.DomainID
+Where SDA.SourceAttributeID = ${FilterSourceAttributeID}</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="168,1344,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL - Get FilterDomain Details 2"/>
+		<target endpoint="in" step="Union Same"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="167,1416"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL - Get Rule details) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL - Get Rule details">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="Name" dataColumn="RuleName"/>
+				<columnMapping sqlColumn="GenericName" dataColumn="GenericName"/>
+				<columnMapping sqlColumn="LongDescription" dataColumn="LongDescription"/>
+				<columnMapping sqlColumn="ShortDescription" dataColumn="ShortDescription"/>
+				<columnMapping sqlColumn="CategoryLayerID" dataColumn="CategoryLayerID"/>
+			</mappings>
+			<query>select RuleID, Name, GenericName, ShortDescription, LongDescription,Score, ScoreExplanation, ScopeID, CategoryLayerID from dbo.RuleName
+where RuleID = ${RuleID}</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,192,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL - Get Rule details"/>
+		<target endpoint="in" step="create generic columns 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL - Get Rule details 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL - Get Rule details 2">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="Name" dataColumn="FilterRuleName"/>
+				<columnMapping sqlColumn="GenericName" dataColumn="FilterGenericName"/>
+				<columnMapping sqlColumn="LongDescription" dataColumn="FilterLongDescription"/>
+				<columnMapping sqlColumn="ShortDescription" dataColumn="FilterShortDescription"/>
+				<columnMapping sqlColumn="CategoryLayerID" dataColumn="FilterCategoryLayerID"/>
+			</mappings>
+			<query>select RuleID, Name, GenericName, ShortDescription, LongDescription, Score, ScoreExplanation, ScopeID, CategoryLayerID from dbo.RuleName
+where RuleID = ${FilterRuleID}</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="168,408,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL - Get Rule details 2"/>
+		<target endpoint="in" step="Union Same 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL Select - Get FilterSourceAttributeID 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL Select - Get FilterSourceAttributeID 2">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="SourceAttributeID" dataColumn="FilterSourceAttributeID"/>
+				<columnMapping sqlColumn="ProcessingDataType" dataColumn="FilterSourceAttributeProcessingDataType"/>
+			</mappings>
+			<query>Select SourceAttributeID, ProcessingDataType from SourceAttribute
+Where Name = ${FilterSourceAttributeName}
+AND SourceLayerID = ${SourceLayerID}</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,840,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL Select - Get FilterSourceAttributeID 2"/>
+		<target endpoint="in" step="update Filters cols - no need to requery as same source tables "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL Select - Get SourceAttributeID) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL Select - Get SourceAttributeID">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="SourceAttributeID" dataColumn="SourceAttributeID"/>
+				<columnMapping sqlColumn="ProcessingDataType" dataColumn="SourceAttributeProcessingDataType"/>
+			</mappings>
+			<query>Select SourceAttributeID, ProcessingDataType from SourceAttribute
+Where Name = ${SourceAttributeName}
+AND SourceLayerID = ${SourceLayerID}</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,768,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL Select - Get SourceAttributeID"/>
+		<target endpoint="in" step="SQL Select - Get FilterSourceAttributeID 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL Select - Get SourceID) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL Select - Get SourceID">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="SourceID" dataColumn="SourceID"/>
+			</mappings>
+			<query>Select SourceID from Source 
+Where Name = ${SourceName}</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,624,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL Select - Get SourceID"/>
+		<target endpoint="in" step="SQL Select - Get SourceLayerID"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL Select - Get SourceLayerID) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL Select - Get SourceLayerID">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="SourceLayerID" dataColumn="SourceLayerID"/>
+			</mappings>
+			<query>Select SourceLayerID from SourceLayer
+Where Name = ${SourceLayerName}
+AND SourceID = ${SourceID}</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,696,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL Select - Get SourceLayerID"/>
+		<target endpoint="in" step="SQL Select - Get SourceAttributeID"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union Same) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="144,1416,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union Same"/>
+		<target endpoint="in" step="Multiplicator"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union Same 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same 2">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="144,480,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union Same 2"/>
+		<target endpoint="in" step="Create Tmp columns 9"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (create generic columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="create generic columns">
+		<properties>
+			<addedColumns>
+				<addedColumn name="RuleName" type="STRING"/>
+				<addedColumn name="ShortDescription" type="STRING"/>
+				<addedColumn name="GenericName" type="STRING"/>
+				<addedColumn name="LongDescription" type="STRING"/>
+				<addedColumn name="CategoryLayerID" type="INTEGER"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,120,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="create generic columns"/>
+		<target endpoint="in" step="SQL - Get Rule details"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (create generic columns 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="create generic columns 2">
+		<properties>
+			<addedColumns>
+				<addedColumn name="FilterRuleName" type="STRING"/>
+				<addedColumn name="FilterShortDescription" type="STRING"/>
+				<addedColumn name="FilterGenericName" type="STRING"/>
+				<addedColumn name="FilterLongDescription" type="STRING"/>
+				<addedColumn name="FilterCategoryLayerID" type="INTEGER"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,264,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="create generic columns 2"/>
+		<target endpoint="in" step="only do this if filtered records is more than 1 or filter has been applied 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in">
+		<properties>
+			<columns>
+				<columnDef name="SourceName" type="STRING"/>
+				<columnDef name="SourceLayerName" type="STRING"/>
+				<columnDef name="SourceAttributeName" type="STRING"/>
+				<columnDef name="FilterSourceLayerName" type="STRING"/>
+				<columnDef name="FilterSourceName" type="STRING"/>
+				<columnDef name="FilterSourceAttributeName" type="STRING"/>
+				<columnDef name="RuleID" type="INTEGER"/>
+				<columnDef name="FilterRuleID" type="INTEGER"/>
+			</columns>
+			<shadowColumns>
+				<shadowColumnDef defaultExpression="now()" name="Ex_GetMetadata" type="DATETIME"/>
+			</shadowColumns>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in"/>
+		<target endpoint="in" step="create generic columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (only do this if filtered records is more than 1 or filter has been applied) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="only do this if filtered records is more than 1 or filter has been applied">
+		<properties condition="FilterRuleID is not null"/>
+		<visual-constraints layout="vertical" bounds="144,1272,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="only do this if filtered records is more than 1 or filter has been applied"/>
+		<target endpoint="in" step="SQL - Get FilterDomain Details 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="only do this if filtered records is more than 1 or filter has been applied"/>
+		<target endpoint="in" step="Union Same"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="144,1416"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (only do this if filtered records is more than 1 or filter has been applied 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="only do this if filtered records is more than 1 or filter has been applied 2">
+		<properties condition="FilterRuleID is not null"/>
+		<visual-constraints layout="vertical" bounds="144,336,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="only do this if filtered records is more than 1 or filter has been applied 2"/>
+		<target endpoint="in" step="SQL - Get Rule details 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="only do this if filtered records is more than 1 or filter has been applied 2"/>
+		<target endpoint="in" step="Union Same 2"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="144,480"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (out) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,1536,-1,-1"/>
+	</step>
+
+
+
+<!-- (update Filters cols - no need to requery as same source tables ) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="update Filters cols - no need to requery as same source tables ">
+		<properties>
+			<assignments>
+				<assignment expression="SourceID" column="FilterSourceID">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="SourceName" column="FilterSourceName">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="SourceLayerID" column="FilterSourceLayerID">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="SourceLayerName" column="FilterSourceLayerName">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="FilterSourceAttributeName" column="FilterSourceAttributeName">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+					<comm:comment>FilterLeadingAttribute</comm:comment>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,912,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="update Filters cols - no need to requery as same source tables "/>
+		<target endpoint="in" step="Create Category columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+</purity-config>

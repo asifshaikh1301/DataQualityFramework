@@ -1,0 +1,908 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (ADD SubDomain-Output - debug9.txt 17) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="ADD SubDomain-Output - debug9.txt 17">
+		<properties writeHeader="false" fileName="../debug/debug1ax20.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1313,845,-1,-1"/>
+	</step>
+
+
+
+<!-- (ADD SubDomain-Output - debug9.txt 18) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="ADD SubDomain-Output - debug9.txt 18">
+		<properties writeHeader="true" fileName="../debug/de1budwg19.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1649,557,-1,-1"/>
+	</step>
+
+
+
+<!-- (ADD SubDomain-Output - debug9.txt 19) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="ADD SubDomain-Output - debug9.txt 19">
+		<properties writeHeader="true" fileName="../debug/de2wbsug9.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1866,1683,-1,-1"/>
+	</step>
+
+
+
+<!-- (ADD SubDomain-Output - debug9.txt 8) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="ADD SubDomain-Output - debug9.txt 8">
+		<properties writeHeader="true" fileName="../debug/de1aug21.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1170,435,-1,-1"/>
+	</step>
+
+
+
+<!-- (Add Domain - debug8.txt 5) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Add Domain - debug8.txt 5">
+		<properties writeHeader="true" fileName="../debug/desbsdug8.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="2130,99,-1,-1"/>
+	</step>
+
+
+
+<!-- (Add Domain - debug8.txt 6) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Add Domain - debug8.txt 6">
+		<properties writeHeader="true" fileName="../debug/debssuwg14.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="2178,1011,-1,-1"/>
+	</step>
+
+
+
+<!-- (Add? 5) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="Add? 5">
+		<properties condition="upper(Action) is &quot;ADD&quot;"/>
+		<visual-constraints layout="vertical" bounds="1770,51,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="Add? 5"/>
+		<target endpoint="in" step="Multiplicator 50"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="Add? 5"/>
+		<target endpoint="in" step="Update? 7"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create Tmp columns 5) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create Tmp columns 5">
+		<properties>
+			<addedColumns>
+				<addedColumn name="Error" type="STRING"/>
+				<addedColumn name="SQL_DomainAttributeID" type="INTEGER"/>
+				<addedColumn expression="getParameterValue(&quot;user.name&quot;)" name="UpsertUser" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1770,-161,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create Tmp columns 5"/>
+		<target endpoint="in" step="Add? 5"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (DELETE Output - debug12 4) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="DELETE Output - debug12 4">
+		<properties writeHeader="true" fileName="../debug/deb1aug12.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="498,195,-1,-1"/>
+	</step>
+
+
+
+<!-- (DQFramework_Populated) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.msoffice.excel.read.ExcelFileReader" disabled="false" id="DQFramework_Populated">
+		<properties fileName="DQFramework_Populated.xlsx" sheetName="DomainAttribute" startCell="A2" skipEmptyRows="false" useModelApi="false">
+			<columns>
+				<columnDef name="DomainLayerID" type="INTEGER"/>
+				<columnDef name="DomainAttributeID" type="INTEGER"/>
+				<columnDef name="EXT_DomainAttributeID" type="STRING"/>
+				<columnDef name="DomainAttributeName" type="STRING"/>
+				<columnDef name="PhysicalName" type="STRING"/>
+				<columnDef name="PhysicalDataType" type="STRING"/>
+				<columnDef name="ProcessingName" type="STRING"/>
+				<columnDef name="ProcessingDataType" type="STRING"/>
+				<columnDef name="Description" type="STRING"/>
+				<columnDef name="Action" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1770,-309,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="DQFramework_Populated"/>
+		<target endpoint="in" step="Remove NoAction records 5"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Delete Domain-Output - debug12.txt 11) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Delete Domain-Output - debug12.txt 11">
+		<properties writeHeader="true" fileName="../debug/debu1g1dw3.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="762,627,-1,-1"/>
+	</step>
+
+
+
+<!-- (Delete DomainAttriute Details) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLExecute" disabled="false" id="Delete DomainAttriute Details">
+		<properties commitSize="0" batchSize="1000" dataSourceName="DQFramework">
+			<errorHandler afterFailStrategy="COMMIT_AND_CONTINUE" errorColumn="Error_DeleteDomainLayer"/>
+			<query>DELETE FROM [DQFramework].[dbo].[DomainAttribute]
+           
+
+
+WHERE DomainLayerID = ${DomainLayerID}
+
+
+</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="642,243,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="err" step="Delete DomainAttriute Details"/>
+		<target endpoint="in" step="Populate Error Col 14"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Delete DomainAttriute Details"/>
+		<target endpoint="in" step="Union Same 20"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Insert SubDomain Details 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLExecute" disabled="false" id="Insert SubDomain Details 3">
+		<properties commitSize="0" batchSize="1000" dataSourceName="DQFramework">
+			<errorHandler afterFailStrategy="COMMIT_AND_CONTINUE" errorColumn="Error_AddDomainLayer"/>
+			<query>INSERT INTO [DomainAttribute]
+
+           ([DomainLayerID],
+           [Name],
+           [PhysicalName],
+           [PhysicalDataType],
+           [ProcessingName],
+           [ProcessingDataType],
+           [Description],
+           [UpsertUserID],[EXT_DomainLayerID]
+       )
+     VALUES
+           ({DomainLayerID},
+			{DomainLayerName},
+			{PhysicalName},
+			{PhysicalDataType},
+			{ProcessingName},
+			{ProcessingDataType},
+		   	{Description},
+		   	{UpsertUser},
+			{EXT_DomainLayerID}
+
+)</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="2034,1179,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="err" step="Insert SubDomain Details 3"/>
+		<target endpoint="in" step="Populate Error Col 16"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Insert SubDomain Details 3"/>
+		<target endpoint="in" step="SQL Check if DomainName exist 7"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Main Rules Output 5) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Main Rules Output 5">
+		<properties writeHeader="true" fileName="../debug/MainDQDomaindOutput.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1097,1445,-1,-1"/>
+	</step>
+
+
+
+<!-- (Multiplicator 37) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 37">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="618,579,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 37"/>
+		<target endpoint="in" step="Delete Domain-Output - debug12.txt 11"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 37"/>
+		<target endpoint="in" step="Union Same 21"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 38) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 38">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="642,147,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 38"/>
+		<target endpoint="in" step="DELETE Output - debug12 4"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 38"/>
+		<target endpoint="in" step="Delete DomainAttriute Details"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 39) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 39">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="1122,987,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 39"/>
+		<target endpoint="in" step="Union Same 21"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 39"/>
+		<target endpoint="in" step="UpdateDomain-Output - debug11.txt 7"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 40) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 40">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="1146,171,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 40"/>
+		<target endpoint="in" step="DomainLayerID is not null and DomainID is not null? 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 40"/>
+		<target endpoint="in" step="Update Domain-Output - debug10.txt 12"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 44) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 44">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="1097,1373,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 44"/>
+		<target endpoint="in" step="Main Rules Output 5"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 45) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 45">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="1288,679,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 45"/>
+		<target endpoint="in" step="ADD SubDomain-Output - debug9.txt 17"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 45"/>
+		<target endpoint="in" step="Union Same 22"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 46) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 46">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="1290,387,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 46"/>
+		<target endpoint="in" step="ADD SubDomain-Output - debug9.txt 8"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 46"/>
+		<target endpoint="in" step="Union Same 23"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 47) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 47">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="1530,507,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 47"/>
+		<target endpoint="in" step="ADD SubDomain-Output - debug9.txt 18"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 47"/>
+		<target endpoint="in" step="Union Same 23"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 48) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 48">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="1866,1611,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 48"/>
+		<target endpoint="in" step="ADD SubDomain-Output - debug9.txt 19"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 48"/>
+		<target endpoint="in" step="Union Same 21"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 49) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 49">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="1890,963,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 49"/>
+		<target endpoint="in" step="Add Domain - debug8.txt 6"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 49"/>
+		<target endpoint="in" step="SQL_DomainAttributerID is null? 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 50) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 50">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="1890,75,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 50"/>
+		<target endpoint="in" step="Add Domain - debug8.txt 5"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 50"/>
+		<target endpoint="in" step="SQL Check if DomainAttributeID exist  4"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Populate Error Col 14) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Populate Error Col 14">
+		<properties>
+			<assignments>
+				<assignment expression="Error_DeleteDomainLayer" column="Error">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="666,339,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Populate Error Col 14"/>
+		<target endpoint="in" step="Rem Error Add Domain Col 7"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Populate Error Col 15) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Populate Error Col 15">
+		<properties>
+			<assignments>
+				<assignment expression="Error_UpdateDomainLayer" column="Error">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1530,363,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Populate Error Col 15"/>
+		<target endpoint="in" step="Rem Error Add DomainLayer Col 6"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Populate Error Col 16) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Populate Error Col 16">
+		<properties>
+			<assignments>
+				<assignment expression="Error_AddDomainLayer" column="Error">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="2226,1227,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Populate Error Col 16"/>
+		<target endpoint="in" step="Rem Error Add DomainLayer Col 7"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Populate Error Col. 6) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Populate Error Col. 6">
+		<properties>
+			<assignments>
+				<assignment expression="&quot;DomainLayerName already exist in the database. with DomainID and ParentLayerID combination&quot;" column="Error">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1866,1251,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Populate Error Col. 6"/>
+		<target endpoint="in" step="Union Same 24"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Rem Error Add Domain Col 7) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Rem Error Add Domain Col 7">
+		<properties>
+			<addedColumns/>
+			<removedColumns>
+				<columnRef name="Error_DeleteDomainLayer"/>
+			</removedColumns>
+		</properties>
+		<visual-constraints layout="vertical" bounds="666,411,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Rem Error Add Domain Col 7"/>
+		<target endpoint="in" step="Union Same 20"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Rem Error Add DomainLayer Col 6) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Rem Error Add DomainLayer Col 6">
+		<properties>
+			<addedColumns/>
+			<removedColumns>
+				<columnRef name="Error_UpdateDomainLayer"/>
+			</removedColumns>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1530,435,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Rem Error Add DomainLayer Col 6"/>
+		<target endpoint="in" step="Multiplicator 47"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Rem Error Add DomainLayer Col 7) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Rem Error Add DomainLayer Col 7">
+		<properties>
+			<addedColumns/>
+			<removedColumns>
+				<columnRef name="Error_AddDomainLayer"/>
+			</removedColumns>
+		</properties>
+		<visual-constraints layout="vertical" bounds="2226,1299,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Rem Error Add DomainLayer Col 7"/>
+		<target endpoint="in" step="Union Same 24"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="2249,1395"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Remove NoAction records 5) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Remove NoAction records 5">
+		<properties condition="upper(Action) is in {&quot;ADD&quot;,&quot;UPDATE&quot;,&quot;DELETE&quot;}"/>
+		<visual-constraints layout="vertical" bounds="1770,-233,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Remove NoAction records 5"/>
+		<target endpoint="in" step="Create Tmp columns 5"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL Check if DomainAttributeID exist  4) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL Check if DomainAttributeID exist  4">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="DomainAttributeID" dataColumn="SQL_DomainAttributeID"/>
+			</mappings>
+			<query>SELECT DomainAttributeID From DQFramework.dbo.DomainAttributeID
+where Name = ${DomainAttributeName} 
+AND DomainLayerID = ${DomainLayerID} </query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1890,891,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL Check if DomainAttributeID exist  4"/>
+		<target endpoint="in" step="Multiplicator 49"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL Check if DomainName exist 7) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL Check if DomainName exist 7">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="DomainAttributeID" dataColumn="SQL_DomainAttributeID"/>
+			</mappings>
+			<query>SELECT DomainAttributeID From DQFramework.dbo.DomainAttribute
+where Name = ${DomainAttributeName} 
+AND DomainLayerID = ${DomainLayerID} </query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="2010,1251,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL Check if DomainName exist 7"/>
+		<target endpoint="in" step="Union Same 24"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="2033,1395"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL_DomainAttributerID is null? 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="SQL_DomainAttributerID is null? 3">
+		<properties condition="SQL_DomainAttributeID is null"/>
+		<visual-constraints layout="vertical" bounds="1890,1131,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="SQL_DomainAttributerID is null? 3"/>
+		<target endpoint="in" step="Insert SubDomain Details 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="SQL_DomainAttributerID is null? 3"/>
+		<target endpoint="in" step="Populate Error Col. 6"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (DomainLayerID is not null and DomainID is not null? 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="DomainLayerID is not null and DomainID is not null? 3">
+		<properties condition="DomainAttributeID is not null and DomainLayerID is not null"/>
+		<visual-constraints layout="vertical" bounds="1146,267,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="DomainLayerID is not null and DomainID is not null? 3"/>
+		<target endpoint="in" step="Union Same 22"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="DomainLayerID is not null and DomainID is not null? 3"/>
+		<target endpoint="in" step="Update DomainAttribute Details 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Transform PMC 'Cashflow_ID' to YARDI 'CashflowID' strcuture 6) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Transform PMC &#39;Cashflow_ID&#39; to YARDI &#39;CashflowID&#39; strcuture 6">
+		<properties>
+			<assignments>
+				<assignment expression="SQL_DomainAttributeID" column="DomainAttributeID">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1866,1539,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Transform PMC &#39;Cashflow_ID&#39; to YARDI &#39;CashflowID&#39; strcuture 6"/>
+		<target endpoint="in" step="Multiplicator 48"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union Same 20) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same 20">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="618,483,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union Same 20"/>
+		<target endpoint="in" step="Multiplicator 37"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union Same 21) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same 21">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="1097,1301,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union Same 21"/>
+		<target endpoint="in" step="Multiplicator 44"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union Same 22) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same 22">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="1122,915,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union Same 22"/>
+		<target endpoint="in" step="Multiplicator 39"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union Same 23) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same 23">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="1290,555,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union Same 23"/>
+		<target endpoint="in" step="Multiplicator 45"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union Same 24) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same 24">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="1866,1395,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union Same 24"/>
+		<target endpoint="in" step="Transform PMC &#39;Cashflow_ID&#39; to YARDI &#39;CashflowID&#39; strcuture 6"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Update Domain-Output - debug10.txt 12) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Update Domain-Output - debug10.txt 12">
+		<properties writeHeader="true" fileName="../debug/debusgsss10.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1290,219,-1,-1"/>
+	</step>
+
+
+
+<!-- (Update DomainAttribute Details 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLExecute" disabled="false" id="Update DomainAttribute Details 3">
+		<properties commitSize="0" batchSize="1000" dataSourceName="DQFramework">
+			<errorHandler afterFailStrategy="COMMIT_AND_CONTINUE" errorColumn="Error_UpdateDomainLayer"/>
+			<query>UPDATE [DQFramework].[dbo].[DomainAttribute]
+           
+           SET 	[DomainLayerID] = ${DomainLayerID},
+				[Name] = ${DomainAttributeName},
+				[PhysicalName] = ${PhysicalName},
+				[PhysicalDataType] = ${PhysicalDataType},
+				[ProcessingName] = ${ProcessingName},
+				[ProcessingDataType] = ${ProcessingDataType},
+				[Description] = ${Description},
+				[UpsertUser] = ${UpsertUser}
+--           		[EXT_DomainLayerID] = ${EXT_DomainLayerID}
+
+WHERE DomainLayerID = ${DomainLayerID}
+
+
+
+</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1314,315,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Update DomainAttribute Details 3"/>
+		<target endpoint="in" step="Multiplicator 46"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="err" step="Update DomainAttribute Details 3"/>
+		<target endpoint="in" step="Populate Error Col 15"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Update? 7) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="Update? 7">
+		<properties condition="upper(Action) is &quot;UPDATE&quot;"/>
+		<visual-constraints layout="vertical" bounds="1122,99,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="Update? 7"/>
+		<target endpoint="in" step="Multiplicator 38"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="Update? 7"/>
+		<target endpoint="in" step="Multiplicator 40"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (UpdateDomain-Output - debug11.txt 7) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="UpdateDomain-Output - debug11.txt 7">
+		<properties writeHeader="true" fileName="../debug/dedb1ug11.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1217,1061,-1,-1"/>
+	</step>
+
+
+
+<modelComment backgroundColor="128,255,255" borderColor="183,183,0" bounds="498,-309,2017,2113" foregroundColor="51,51,51">DomainAttribute</modelComment>
+
+
+
+<modelComment backgroundColor="255,255,180" borderColor="183,183,0" bounds="2010,1155,433,217" foregroundColor="51,51,51">
+
+
+
+
+
+
+
+
+
+DomainID is unique
+Domain Name is unique</modelComment>
+
+</purity-config>

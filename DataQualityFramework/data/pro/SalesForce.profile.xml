@@ -1,0 +1,1956 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<profileExport>
+  <input name="ImInAMess">
+    <drillThrough limited="false" table="Prof1__c28f7e47_0_0">
+      <mapping column="S_0" name="RecID" type="INTEGER"/>
+      <mapping column="S_1" name="FullName" type="STRING"/>
+      <mapping column="S_2" name="GD" type="STRING"/>
+      <mapping column="S_3" name="CalculatedDate" type="STRING"/>
+      <mapping column="S_4" name="BirthDate" type="STRING"/>
+      <mapping column="S_5" name="Description" type="STRING"/>
+      <mapping column="S_6" name="Mobile" type="STRING"/>
+      <mapping column="S_7" name="Landline" type="STRING"/>
+      <mapping column="S_8" name="Email" type="STRING"/>
+      <mapping column="S_9" name="dpadirectmailingoptoutcode" type="STRING"/>
+      <mapping column="S_10" name="dpaemailoptoutcode" type="STRING"/>
+      <mapping column="S_11" name="dpatelephonecommunicationoptoutcode" type="STRING"/>
+      <mapping column="S_12" name="titleCode" type="STRING"/>
+      <mapping column="S_13" name="tmp_RuleConditionMet" type="BOOLEAN"/>
+      <mapping column="S_14" name="RecordScore" type="INTEGER"/>
+      <mapping column="S_15" name="RecordExplanation" type="STRING"/>
+      <mapping column="S_16" name="RuleCodes" type="STRING"/>
+      <mapping column="S_17" name="RecordID" type="STRING"/>
+      <mapping column="S_18" name="CountRuleFailureCodes" type="INTEGER"/>
+      <mapping column="S_19" name="DataQualityPercentage" type="FLOAT"/>
+      <mapping column="E_20" name="FullName_fa" type="STRING"/>
+      <mapping column="E_21" name="GD_fa" type="STRING"/>
+      <mapping column="E_22" name="CalculatedDate_fa" type="STRING"/>
+      <mapping column="E_23" name="BirthDate_fa" type="STRING"/>
+      <mapping column="E_24" name="Description_fa" type="STRING"/>
+      <mapping column="E_25" name="Mobile_fa" type="STRING"/>
+      <mapping column="E_26" name="Landline_fa" type="STRING"/>
+      <mapping column="E_27" name="Email_fa" type="STRING"/>
+      <mapping column="E_28" name="dpadirectmailingoptoutcode_fa" type="STRING"/>
+      <mapping column="E_29" name="dpaemailoptoutcode_fa" type="STRING"/>
+      <mapping column="E_30" name="dpatelephonecommunicationoptoutcode_fa" type="STRING"/>
+      <mapping column="E_31" name="titleCode_fa" type="STRING"/>
+      <mapping column="E_32" name="RecordExplanation_fa" type="STRING"/>
+      <mapping column="E_33" name="RuleCodes_fa" type="STRING"/>
+      <mapping column="P_34" name="pd_0" type="LONG"/>
+      <mapping column="P_35" name="pd_1" type="LONG"/>
+      <mapping column="P_36" name="pd_2" type="LONG"/>
+      <mapping column="P_37" name="pd_3" type="LONG"/>
+      <mapping column="P_38" name="pd_4" type="LONG"/>
+      <mapping column="P_39" name="pd_5" type="LONG"/>
+      <mapping column="P_40" name="pd_6" type="LONG"/>
+      <mapping column="P_41" name="pd_7" type="LONG"/>
+      <mapping column="P_42" name="pd_8" type="LONG"/>
+      <mapping column="P_43" name="pd_9" type="LONG"/>
+      <mapping column="P_44" name="pd_10" type="LONG"/>
+      <mapping column="P_45" name="pd_11" type="LONG"/>
+      <mapping column="P_46" name="pd_12" type="LONG"/>
+      <mapping column="P_47" name="pd_13" type="LONG"/>
+      <mapping column="P_48" name="pd_14" type="LONG"/>
+      <mapping column="P_49" name="pd_15" type="LONG"/>
+      <mapping column="P_50" name="pd_16" type="LONG"/>
+      <mapping column="P_51" name="pd_17" type="LONG"/>
+    </drillThrough>
+    <dataAnalyses>
+      <dataAnalyse indColumn="P_34" columnType="INTEGER" column="S_0">
+        <expression>RecID</expression>
+        <statistics>
+          <stat multiple="false" type="count">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="count_nulls">
+            <item value="0"/>
+          </stat>
+          <stat multiple="false" type="count_not_nulls">
+            <item value="100"/>
+          </stat>
+          <stat multiple="true" type="first_x">
+            <item count="1" index="0" value="1"/>
+            <item count="1" index="1" value="2"/>
+            <item count="1" index="2" value="3"/>
+            <item count="1" index="3" value="4"/>
+            <item count="1" index="4" value="5"/>
+          </stat>
+          <stat multiple="true" type="last_x">
+            <item count="1" index="99" value="100"/>
+            <item count="1" index="98" value="99"/>
+            <item count="1" index="97" value="98"/>
+            <item count="1" index="96" value="97"/>
+            <item count="1" index="95" value="96"/>
+          </stat>
+          <stat multiple="true" type="quantiles">
+            <item index="0" value="1" percent="0%"/>
+            <item index="9" value="10" percent="10%"/>
+            <item index="19" value="20" percent="20%"/>
+            <item index="29" value="30" percent="30%"/>
+            <item index="39" value="40" percent="40%"/>
+            <item index="49" value="50" percent="50%"/>
+            <item index="59" value="60" percent="60%"/>
+            <item index="69" value="70" percent="70%"/>
+            <item index="79" value="80" percent="80%"/>
+            <item index="89" value="90" percent="90%"/>
+            <item index="99" value="100" percent="100%"/>
+          </stat>
+          <stat multiple="false" type="distinct">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="unique">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="min">
+            <item count="1" index="0" value="1"/>
+          </stat>
+          <stat multiple="false" type="max">
+            <item count="1" index="99" value="100"/>
+          </stat>
+          <stat multiple="false" type="median">
+            <item count="1" index="50" value="51"/>
+          </stat>
+          <stat multiple="false" type="sum">
+            <item value="5050"/>
+          </stat>
+          <stat multiple="false" type="avg">
+            <item index="48" value="50.5"/>
+          </stat>
+          <stat multiple="false" type="std">
+            <item value="28.8660700477"/>
+          </stat>
+          <stat multiple="false" type="var">
+            <item value="833.25"/>
+          </stat>
+          <stat multiple="false" type="non_unique">
+            <item index="0" value="0"/>
+          </stat>
+          <stat multiple="false" type="duplicate">
+            <item index="0" value="0"/>
+          </stat>
+        </statistics>
+        <frequencies column="S_0">
+          <items>
+            <item count="1" percent="1%" value="1"/>
+            <item count="1" percent="1%" value="2"/>
+            <item count="1" percent="1%" value="3"/>
+            <item count="1" percent="1%" value="4"/>
+            <item count="1" percent="1%" value="5"/>
+            <item count="1" percent="1%" value="6"/>
+            <item count="1" percent="1%" value="7"/>
+            <item count="1" percent="1%" value="8"/>
+            <item count="1" percent="1%" value="9"/>
+            <item count="1" percent="1%" value="10"/>
+            <item count="1" percent="1%" value="11"/>
+            <item count="1" percent="1%" value="12"/>
+            <item count="1" percent="1%" value="13"/>
+            <item count="1" percent="1%" value="14"/>
+            <item count="1" percent="1%" value="15"/>
+            <item count="1" percent="1%" value="16"/>
+            <item count="1" percent="1%" value="17"/>
+            <item count="1" percent="1%" value="18"/>
+            <item count="1" percent="1%" value="19"/>
+            <item count="1" percent="1%" value="20"/>
+            <item count="1" percent="1%" value="21"/>
+            <item count="1" percent="1%" value="22"/>
+            <item count="1" percent="1%" value="23"/>
+            <item count="1" percent="1%" value="24"/>
+            <item count="1" percent="1%" value="25"/>
+            <item count="1" percent="1%" value="26"/>
+            <item count="1" percent="1%" value="27"/>
+            <item count="1" percent="1%" value="28"/>
+            <item count="1" percent="1%" value="29"/>
+            <item count="1" percent="1%" value="30"/>
+            <item count="1" percent="1%" value="31"/>
+            <item count="1" percent="1%" value="32"/>
+            <item count="1" percent="1%" value="33"/>
+            <item count="1" percent="1%" value="34"/>
+            <item count="1" percent="1%" value="35"/>
+            <item count="1" percent="1%" value="36"/>
+            <item count="1" percent="1%" value="37"/>
+            <item count="1" percent="1%" value="38"/>
+            <item count="1" percent="1%" value="39"/>
+            <item count="1" percent="1%" value="40"/>
+            <item count="1" percent="1%" value="41"/>
+            <item count="1" percent="1%" value="42"/>
+            <item count="1" percent="1%" value="43"/>
+            <item count="1" percent="1%" value="44"/>
+            <item count="1" percent="1%" value="45"/>
+            <item count="1" percent="1%" value="46"/>
+            <item count="1" percent="1%" value="47"/>
+            <item count="1" percent="1%" value="48"/>
+            <item count="1" percent="1%" value="49"/>
+            <item count="1" percent="1%" value="50"/>
+            <item count="1" percent="1%" value="51"/>
+            <item count="1" percent="1%" value="52"/>
+            <item count="1" percent="1%" value="53"/>
+            <item count="1" percent="1%" value="54"/>
+            <item count="1" percent="1%" value="55"/>
+            <item count="1" percent="1%" value="56"/>
+            <item count="1" percent="1%" value="57"/>
+            <item count="1" percent="1%" value="58"/>
+            <item count="1" percent="1%" value="59"/>
+            <item count="1" percent="1%" value="60"/>
+            <item count="1" percent="1%" value="61"/>
+            <item count="1" percent="1%" value="62"/>
+            <item count="1" percent="1%" value="63"/>
+            <item count="1" percent="1%" value="64"/>
+            <item count="1" percent="1%" value="65"/>
+            <item count="1" percent="1%" value="66"/>
+            <item count="1" percent="1%" value="67"/>
+            <item count="1" percent="1%" value="68"/>
+            <item count="1" percent="1%" value="69"/>
+            <item count="1" percent="1%" value="70"/>
+            <item count="1" percent="1%" value="71"/>
+            <item count="1" percent="1%" value="72"/>
+            <item count="1" percent="1%" value="73"/>
+            <item count="1" percent="1%" value="74"/>
+            <item count="1" percent="1%" value="75"/>
+            <item count="1" percent="1%" value="76"/>
+            <item count="1" percent="1%" value="77"/>
+            <item count="1" percent="1%" value="78"/>
+            <item count="1" percent="1%" value="79"/>
+            <item count="1" percent="1%" value="80"/>
+            <item count="1" percent="1%" value="81"/>
+            <item count="1" percent="1%" value="82"/>
+            <item count="1" percent="1%" value="83"/>
+            <item count="1" percent="1%" value="84"/>
+            <item count="1" percent="1%" value="85"/>
+            <item count="1" percent="1%" value="86"/>
+            <item count="1" percent="1%" value="87"/>
+            <item count="1" percent="1%" value="88"/>
+            <item count="1" percent="1%" value="89"/>
+            <item count="1" percent="1%" value="90"/>
+            <item count="1" percent="1%" value="91"/>
+            <item count="1" percent="1%" value="92"/>
+            <item count="1" percent="1%" value="93"/>
+            <item count="1" percent="1%" value="94"/>
+            <item count="1" percent="1%" value="95"/>
+            <item count="1" percent="1%" value="96"/>
+            <item count="1" percent="1%" value="97"/>
+            <item count="1" percent="1%" value="98"/>
+            <item count="1" percent="1%" value="99"/>
+            <item count="1" percent="1%" value="100"/>
+          </items>
+        </frequencies>
+        <groupSizeAnalysis>
+          <items>
+            <item count="100" percent="100%" value="1"/>
+          </items>
+        </groupSizeAnalysis>
+      </dataAnalyse>
+      <dataAnalyse indColumn="P_35" columnType="STRING" column="S_1">
+        <expression>FullName</expression>
+        <domainAnalysis>
+          <domainAnalyse name="pattern">
+            <examples>
+              <example numCases="2" numValues="2" value="L. W"/>
+              <example numCases="2" numValues="2" value="W.W W"/>
+              <example numCases="1" numValues="1" value="W L. W"/>
+              <example numCases="10" numValues="10" value="W. W W"/>
+              <example numCases="1" numValues="1" value="W. L.L. W"/>
+              <example numCases="30" numValues="30" value="W W W"/>
+              <example numCases="1" numValues="1" value="W W L.W"/>
+              <example numCases="1" numValues="1" value="W. W W L.L."/>
+              <example numCases="52" numValues="52" value="W W"/>
+            </examples>
+          </domainAnalyse>
+        </domainAnalysis>
+        <statistics>
+          <stat multiple="false" type="count">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="count_nulls">
+            <item value="0"/>
+          </stat>
+          <stat multiple="false" type="count_not_nulls">
+            <item value="100"/>
+          </stat>
+          <stat multiple="true" type="first_x">
+            <item count="1" index="0" value="A. Whitman"/>
+            <item count="1" index="1" value="Adam Whitman RPA"/>
+            <item count="1" index="2" value="Aguila Ammie"/>
+            <item count="1" index="3" value="Alease Cusworth"/>
+            <item count="1" index="4" value="Aleshia Kaszton"/>
+          </stat>
+          <stat multiple="true" type="last_x">
+            <item count="1" index="99" value="Zoll Kelvin"/>
+            <item count="1" index="98" value="wyomi neles Ms"/>
+            <item count="1" index="97" value="Whitney Bhatnagar"/>
+            <item count="1" index="96" value="Wertman Annemarie"/>
+            <item count="1" index="95" value="Watson Jane CPA"/>
+          </stat>
+          <stat multiple="true" type="quantiles">
+            <item index="0" value="A. Whitman" percent="0%"/>
+            <item index="9" value="Carline McPheron" percent="10%"/>
+            <item index="19" value="Dirkse Jazmine" percent="20%"/>
+            <item index="29" value="Handon Donette" percent="30%"/>
+            <item index="39" value="Karen Wolf" percent="40%"/>
+            <item index="49" value="Maryln Szigethy" percent="50%"/>
+            <item index="59" value="Mrs Jehlicka Lorenza" percent="60%"/>
+            <item index="69" value="Ms. Chelsie Channel" percent="70%"/>
+            <item index="79" value="Raza Mattie" percent="80%"/>
+            <item index="89" value="Tisch Elizebeth" percent="90%"/>
+            <item index="99" value="Zoll Kelvin" percent="100%"/>
+          </stat>
+          <stat multiple="false" type="distinct">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="unique">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="min">
+            <item count="1" index="0" value="A. Whitman"/>
+          </stat>
+          <stat multiple="false" type="max">
+            <item count="1" index="99" value="Zoll Kelvin"/>
+          </stat>
+          <stat multiple="false" type="median">
+            <item count="1" index="50" value="Mestrovich Jolanda"/>
+          </stat>
+          <stat multiple="false" type="min_positive_length">
+            <item value="8"/>
+          </stat>
+          <stat multiple="false" type="min_length">
+            <item value="8"/>
+          </stat>
+          <stat multiple="false" type="max_length">
+            <item value="21"/>
+          </stat>
+          <stat multiple="false" type="avg_length">
+            <item value="15.36"/>
+          </stat>
+          <stat multiple="false" type="median_length">
+            <item value="15"/>
+          </stat>
+          <stat multiple="false" type="non_unique">
+            <item index="0" value="0"/>
+          </stat>
+          <stat multiple="false" type="duplicate">
+            <item index="0" value="0"/>
+          </stat>
+        </statistics>
+        <frequencies column="S_1">
+          <items>
+            <item count="1" percent="1%" value="A. Whitman"/>
+            <item count="1" percent="1%" value="Adam Whitman RPA"/>
+            <item count="1" percent="1%" value="Aguila Ammie"/>
+            <item count="1" percent="1%" value="Alease Cusworth"/>
+            <item count="1" percent="1%" value="Aleshia Kaszton"/>
+            <item count="1" percent="1%" value="Alyson Haaz Mr"/>
+            <item count="1" percent="1%" value="Armstead Eryn"/>
+            <item count="1" percent="1%" value="Bail Gustavo DDS"/>
+            <item count="1" percent="1%" value="Bockelmann Amalia"/>
+            <item count="1" percent="1%" value="Carline McPheron"/>
+            <item count="1" percent="1%" value="Caspers Belia"/>
+            <item count="1" percent="1%" value="Catherine Whitbread"/>
+            <item count="1" percent="1%" value="Choulnard Mollie"/>
+            <item count="1" percent="1%" value="Condell Leandra"/>
+            <item count="1" percent="1%" value="Cryderman Felton"/>
+            <item count="1" percent="1%" value="Cuculich Kristofer"/>
+            <item count="1" percent="1%" value="Daniel Right Mr"/>
+            <item count="1" percent="1%" value="Deemer Wenona Mrs"/>
+            <item count="1" percent="1%" value="Denisse Smith"/>
+            <item count="1" percent="1%" value="Dirkse Jazmine"/>
+            <item count="1" percent="1%" value="Doerner Ema"/>
+            <item count="1" percent="1%" value="Dr. J.W. Smith"/>
+            <item count="1" percent="1%" value="Dr. John Smith"/>
+            <item count="1" percent="1%" value="Edythe Hodgen"/>
+            <item count="1" percent="1%" value="Elizbeth Kazmer R.Ph"/>
+            <item count="1" percent="1%" value="Esteban Foussell"/>
+            <item count="1" percent="1%" value="Fleisner Edward CIA"/>
+            <item count="1" percent="1%" value="Glynis Schnitzer BDS"/>
+            <item count="1" percent="1%" value="Halpain Vania Ms"/>
+            <item count="1" percent="1%" value="Handon Donette"/>
+            <item count="1" percent="1%" value="Harmeyer Karen"/>
+            <item count="1" percent="1%" value="Hrabal Lucy"/>
+            <item count="1" percent="1%" value="Idiart Renaldo"/>
+            <item count="1" percent="1%" value="J. Smith"/>
+            <item count="1" percent="1%" value="Jane Smith"/>
+            <item count="1" percent="1%" value="Janette Smith"/>
+            <item count="1" percent="1%" value="Jeanett Dicecco Mrs"/>
+            <item count="1" percent="1%" value="John Smiht Mr"/>
+            <item count="1" percent="1%" value="John William Smith"/>
+            <item count="1" percent="1%" value="Karen Wolf"/>
+            <item count="1" percent="1%" value="Laverne Clumpner"/>
+            <item count="1" percent="1%" value="Lebrecht Jacinto Mr"/>
+            <item count="1" percent="1%" value="Lita Leitze"/>
+            <item count="1" percent="1%" value="Loriann Blaydon"/>
+            <item count="1" percent="1%" value="Lorretta Garavaglia"/>
+            <item count="1" percent="1%" value="Lupita Isidoro"/>
+            <item count="1" percent="1%" value="Mable Grill Ms"/>
+            <item count="1" percent="1%" value="Magill Melodie"/>
+            <item count="1" percent="1%" value="Maldanado Madge"/>
+            <item count="1" percent="1%" value="Maryln Szigethy"/>
+            <item count="1" percent="1%" value="Mestrovich Jolanda"/>
+            <item count="1" percent="1%" value="Mr Denver Rotty"/>
+            <item count="1" percent="1%" value="Mr Loren Sowinski"/>
+            <item count="1" percent="1%" value="Mr Peter Jenkins"/>
+            <item count="1" percent="1%" value="Mr Smith John"/>
+            <item count="1" percent="1%" value="Mr. John Smith"/>
+            <item count="1" percent="1%" value="Mr. Redler Ezequiel"/>
+            <item count="1" percent="1%" value="MR. Rolff Kellye"/>
+            <item count="1" percent="1%" value="Mr. Teodora Ramagano"/>
+            <item count="1" percent="1%" value="Mrs Jehlicka Lorenza"/>
+            <item count="1" percent="1%" value="Mrs Nicol Lowthert"/>
+            <item count="1" percent="1%" value="Mrs Reichart Carlotta"/>
+            <item count="1" percent="1%" value="Mrs Sar Maragret"/>
+            <item count="1" percent="1%" value="Mrs Valorie Finnel"/>
+            <item count="1" percent="1%" value="Ms Babbin Tiffani"/>
+            <item count="1" percent="1%" value="Ms Blaszczyk Chantel"/>
+            <item count="1" percent="1%" value="Ms Krystle Kulseth"/>
+            <item count="1" percent="1%" value="Ms Sauber Candis"/>
+            <item count="1" percent="1%" value="Ms. Amy Coll O.D."/>
+            <item count="1" percent="1%" value="Ms. Chelsie Channel"/>
+            <item count="1" percent="1%" value="Ms. Jane Watson"/>
+            <item count="1" percent="1%" value="Ms. Keesha Bonanni"/>
+            <item count="1" percent="1%" value="Ms. Maryln Kishimoto"/>
+            <item count="1" percent="1%" value="Ms. Song Stong"/>
+            <item count="1" percent="1%" value="Ms.Christen Klinker"/>
+            <item count="1" percent="1%" value="Ms.Patsy Hemmeke"/>
+            <item count="1" percent="1%" value="Nogoda Garth"/>
+            <item count="1" percent="1%" value="Overland Spring"/>
+            <item count="1" percent="1%" value="Penalver Margarite"/>
+            <item count="1" percent="1%" value="Raza Mattie"/>
+            <item count="1" percent="1%" value="Rebecca May"/>
+            <item count="1" percent="1%" value="Sarmiento Olene"/>
+            <item count="1" percent="1%" value="Shinabery Tamie"/>
+            <item count="1" percent="1%" value="Shute Arlie"/>
+            <item count="1" percent="1%" value="Slonecker Esther"/>
+            <item count="1" percent="1%" value="Smith Denisse"/>
+            <item count="1" percent="1%" value="Smith W. John"/>
+            <item count="1" percent="1%" value="Steven Govin"/>
+            <item count="1" percent="1%" value="Stoneman Willa"/>
+            <item count="1" percent="1%" value="Tisch Elizebeth"/>
+            <item count="1" percent="1%" value="Tomas Kloberdanz Mr"/>
+            <item count="1" percent="1%" value="Tryninewski Honey"/>
+            <item count="1" percent="1%" value="Turnley Denae Mr"/>
+            <item count="1" percent="1%" value="Volle Elbert"/>
+            <item count="1" percent="1%" value="Walter Rottinghaus"/>
+            <item count="1" percent="1%" value="Watson Jane CPA"/>
+            <item count="1" percent="1%" value="Wertman Annemarie"/>
+            <item count="1" percent="1%" value="Whitney Bhatnagar"/>
+            <item count="1" percent="1%" value="wyomi neles Ms"/>
+            <item count="1" percent="1%" value="Zoll Kelvin"/>
+          </items>
+        </frequencies>
+        <frequenciesMasked column="E_20" mask="characters">
+          <items>
+            <item count="5" percent="5%" value="LLLLLL LLLLLLL"/>
+            <item count="3" percent="3%" value="LL. LLLL LLLLL"/>
+            <item count="3" percent="3%" value="LLLL LLLLLL"/>
+            <item count="3" percent="3%" value="LLLLLL LLLLL"/>
+            <item count="3" percent="3%" value="LLLLLLL LLLLL"/>
+            <item count="3" percent="3%" value="LLLLLLL LLLLLLL"/>
+            <item count="3" percent="3%" value="LLLLLLL LLLLLLLL"/>
+            <item count="3" percent="3%" value="LLLLLLLLL LLLLL"/>
+            <item count="3" percent="3%" value="LLLLLLLLL LLLLLL"/>
+            <item count="2" percent="2%" value="LLLL LLLLLLL LLL"/>
+            <item count="2" percent="2%" value="LLLLL LLLLL LL"/>
+            <item count="2" percent="2%" value="LLLLLL LLLLLLLL"/>
+            <item count="2" percent="2%" value="LLLLLLL LLL"/>
+            <item count="2" percent="2%" value="LLLLLLL LLLLL LL"/>
+            <item count="2" percent="2%" value="LLLLLLL LLLLLLLLL"/>
+            <item count="2" percent="2%" value="LLLLLLLL LLLLL"/>
+            <item count="2" percent="2%" value="LLLLLLLL LLLLLLLLL"/>
+            <item count="1" percent="1%" value="L. LLLLL"/>
+            <item count="1" percent="1%" value="L. LLLLLLL"/>
+            <item count="1" percent="1%" value="LL LLLLL LLLL"/>
+            <item count="1" percent="1%" value="LL LLLLL LLLLLLL"/>
+            <item count="1" percent="1%" value="LL LLLLL LLLLLLLL"/>
+            <item count="1" percent="1%" value="LL LLLLLL LLLLL"/>
+            <item count="1" percent="1%" value="LL LLLLLL LLLLLL"/>
+            <item count="1" percent="1%" value="LL LLLLLL LLLLLLL"/>
+            <item count="1" percent="1%" value="LL LLLLLLL LLLLLLL"/>
+            <item count="1" percent="1%" value="LL LLLLLLLLL LLLLLLL"/>
+            <item count="1" percent="1%" value="LL. L.L. LLLLL"/>
+            <item count="1" percent="1%" value="LL. LLL LLLL L.L."/>
+            <item count="1" percent="1%" value="LL. LLLL LLLLLL"/>
+            <item count="1" percent="1%" value="LL. LLLLL LLLLLL"/>
+            <item count="1" percent="1%" value="LL. LLLLLL LLLLLLL"/>
+            <item count="1" percent="1%" value="LL. LLLLLL LLLLLLLL"/>
+            <item count="1" percent="1%" value="LL. LLLLLL LLLLLLLLL"/>
+            <item count="1" percent="1%" value="LL. LLLLLLL LLLLLLL"/>
+            <item count="1" percent="1%" value="LL. LLLLLLL LLLLLLLL"/>
+            <item count="1" percent="1%" value="LL.LLLLL LLLLLLL"/>
+            <item count="1" percent="1%" value="LL.LLLLLLLL LLLLLLL"/>
+            <item count="1" percent="1%" value="LLL LLL LLLLLLLL"/>
+            <item count="1" percent="1%" value="LLL LLLLL LLLLLLLL"/>
+            <item count="1" percent="1%" value="LLL LLLLLLL LLLLLL"/>
+            <item count="1" percent="1%" value="LLL LLLLLLLL LLLLLLL"/>
+            <item count="1" percent="1%" value="LLL LLLLLLLL LLLLLLLL"/>
+            <item count="1" percent="1%" value="LLLL LLLLL"/>
+            <item count="1" percent="1%" value="LLLL LLLLL LL"/>
+            <item count="1" percent="1%" value="LLLL LLLLLLL LLLLL"/>
+            <item count="1" percent="1%" value="LLLLL L. LLLL"/>
+            <item count="1" percent="1%" value="LLLLL LLLL"/>
+            <item count="1" percent="1%" value="LLLLL LLLLL"/>
+            <item count="1" percent="1%" value="LLLLL LLLLLL"/>
+            <item count="1" percent="1%" value="LLLLL LLLLLLL"/>
+            <item count="1" percent="1%" value="LLLLL LLLLLLLLL"/>
+            <item count="1" percent="1%" value="LLLLL LLLLLLLLLL LL"/>
+            <item count="1" percent="1%" value="LLLLLL LLLL"/>
+            <item count="1" percent="1%" value="LLLLLL LLLL LL"/>
+            <item count="1" percent="1%" value="LLLLLL LLLL LLL"/>
+            <item count="1" percent="1%" value="LLLLLL LLLLL LL"/>
+            <item count="1" percent="1%" value="LLLLLL LLLLLL"/>
+            <item count="1" percent="1%" value="LLLLLL LLLLLL LLL"/>
+            <item count="1" percent="1%" value="LLLLLL LLLLLLLLL LLL"/>
+            <item count="1" percent="1%" value="LLLLLL LLLLLLLLLLL"/>
+            <item count="1" percent="1%" value="LLLLLLL LLLLLLL LLL"/>
+            <item count="1" percent="1%" value="LLLLLLLL LLLL"/>
+            <item count="1" percent="1%" value="LLLLLLLL LLLLLL"/>
+            <item count="1" percent="1%" value="LLLLLLLL LLLLLL L.LL"/>
+            <item count="1" percent="1%" value="LLLLLLLL LLLLLL LLL"/>
+            <item count="1" percent="1%" value="LLLLLLLL LLLLLLL LL"/>
+            <item count="1" percent="1%" value="LLLLLLLL LLLLLLLLLL"/>
+            <item count="1" percent="1%" value="LLLLLLLLL LLLLLLLLL"/>
+            <item count="1" percent="1%" value="LLLLLLLLLL LLLLLL"/>
+            <item count="1" percent="1%" value="LLLLLLLLLL LLLLLLL"/>
+            <item count="1" percent="1%" value="LLLLLLLLLLL LLLLL"/>
+          </items>
+        </frequenciesMasked>
+        <groupSizeAnalysis>
+          <items>
+            <item count="100" percent="100%" value="1"/>
+          </items>
+        </groupSizeAnalysis>
+      </dataAnalyse>
+      <dataAnalyse indColumn="P_36" columnType="STRING" column="S_2">
+        <expression>GD</expression>
+        <domainAnalysis>
+          <domainAnalyse name="enum">
+            <examples>
+              <example numCases="7" index="0" numValues="1" value="f"/>
+              <example numCases="16" index="7" numValues="1" value="F"/>
+              <example numCases="1" index="23" numValues="1" value="fem"/>
+              <example numCases="1" index="24" numValues="1" value="Fem"/>
+              <example numCases="3" index="25" numValues="1" value="Femail"/>
+              <example numCases="1" index="28" numValues="1" value="femal"/>
+              <example numCases="6" index="29" numValues="1" value="Female"/>
+              <example numCases="1" index="35" numValues="1" value="FEMALE"/>
+              <example numCases="1" index="36" numValues="1" value="femle"/>
+              <example numCases="2" index="37" numValues="1" value="fmale"/>
+              <example numCases="1" index="39" numValues="1" value="m"/>
+              <example numCases="7" index="40" numValues="1" value="M"/>
+              <example numCases="1" index="47" numValues="1" value="mail"/>
+              <example numCases="3" index="48" numValues="1" value="Mail"/>
+              <example numCases="2" index="51" numValues="1" value="mal"/>
+              <example numCases="2" index="53" numValues="1" value="Mal"/>
+              <example numCases="2" index="55" numValues="1" value="male"/>
+              <example numCases="1" index="57" numValues="1" value="Male"/>
+              <example numCases="2" index="58" numValues="1" value="mle"/>
+              <example numCases="1" index="60" numValues="1" value="phemail"/>
+            </examples>
+          </domainAnalyse>
+          <domainAnalyse name="pattern">
+            <examples>
+              <example numCases="61" numValues="20" value="W"/>
+            </examples>
+          </domainAnalyse>
+        </domainAnalysis>
+        <statistics>
+          <stat multiple="false" type="count">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="count_nulls">
+            <item value="39"/>
+          </stat>
+          <stat multiple="false" type="count_not_nulls">
+            <item value="61"/>
+          </stat>
+          <stat multiple="true" type="first_x">
+            <item count="7" index="0" value="f"/>
+            <item count="16" index="7" value="F"/>
+            <item count="1" index="23" value="fem"/>
+            <item count="1" index="24" value="Fem"/>
+            <item count="3" index="25" value="Femail"/>
+          </stat>
+          <stat multiple="true" type="last_x">
+            <item count="1" index="60" value="phemail"/>
+            <item count="2" index="58" value="mle"/>
+            <item count="1" index="57" value="Male"/>
+            <item count="2" index="55" value="male"/>
+            <item count="2" index="53" value="Mal"/>
+          </stat>
+          <stat multiple="true" type="quantiles">
+            <item index="0" value="f" percent="0%"/>
+            <item index="0" value="f" percent="10%"/>
+            <item index="7" value="F" percent="20%"/>
+            <item index="7" value="F" percent="30%"/>
+            <item index="24" value="Fem" percent="40%"/>
+            <item index="29" value="Female" percent="50%"/>
+            <item index="36" value="femle" percent="60%"/>
+            <item index="40" value="M" percent="70%"/>
+            <item index="48" value="Mail" percent="80%"/>
+            <item index="53" value="Mal" percent="90%"/>
+            <item index="60" value="phemail" percent="100%"/>
+          </stat>
+          <stat multiple="false" type="distinct">
+            <item value="20"/>
+          </stat>
+          <stat multiple="false" type="unique">
+            <item value="9"/>
+          </stat>
+          <stat multiple="false" type="min">
+            <item count="7" index="0" value="f"/>
+          </stat>
+          <stat multiple="false" type="max">
+            <item count="1" index="60" value="phemail"/>
+          </stat>
+          <stat multiple="false" type="median">
+            <item count="6" index="30" value="Female"/>
+          </stat>
+          <stat multiple="false" type="min_positive_length">
+            <item value="1"/>
+          </stat>
+          <stat multiple="false" type="min_length">
+            <item value="1"/>
+          </stat>
+          <stat multiple="false" type="max_length">
+            <item value="7"/>
+          </stat>
+          <stat multiple="false" type="avg_length">
+            <item value="2.7868852459"/>
+          </stat>
+          <stat multiple="false" type="median_length">
+            <item value="1"/>
+          </stat>
+          <stat multiple="false" type="non_unique">
+            <item index="0" value="11"/>
+          </stat>
+          <stat multiple="false" type="duplicate">
+            <item index="0" value="41"/>
+          </stat>
+        </statistics>
+        <frequencies column="S_2">
+          <items>
+            <item count="39" percent="39%"/>
+            <item count="16" percent="16%" value="F"/>
+            <item count="7" percent="7%" value="f"/>
+            <item count="7" percent="7%" value="M"/>
+            <item count="6" percent="6%" value="Female"/>
+            <item count="3" percent="3%" value="Femail"/>
+            <item count="3" percent="3%" value="Mail"/>
+            <item count="2" percent="2%" value="fmale"/>
+            <item count="2" percent="2%" value="mal"/>
+            <item count="2" percent="2%" value="Mal"/>
+            <item count="2" percent="2%" value="male"/>
+            <item count="2" percent="2%" value="mle"/>
+            <item count="1" percent="1%" value="fem"/>
+            <item count="1" percent="1%" value="Fem"/>
+            <item count="1" percent="1%" value="femal"/>
+            <item count="1" percent="1%" value="FEMALE"/>
+            <item count="1" percent="1%" value="femle"/>
+            <item count="1" percent="1%" value="m"/>
+            <item count="1" percent="1%" value="mail"/>
+            <item count="1" percent="1%" value="Male"/>
+            <item count="1" percent="1%" value="phemail"/>
+          </items>
+        </frequencies>
+        <frequenciesMasked column="E_21" mask="characters">
+          <items>
+            <item count="39" percent="39%"/>
+            <item count="31" percent="31%" value="L"/>
+            <item count="10" percent="10%" value="LLLLLL"/>
+            <item count="8" percent="8%" value="LLL"/>
+            <item count="7" percent="7%" value="LLLL"/>
+            <item count="4" percent="4%" value="LLLLL"/>
+            <item count="1" percent="1%" value="LLLLLLL"/>
+          </items>
+        </frequenciesMasked>
+        <groupSizeAnalysis>
+          <items>
+            <item count="9" percent="45%" value="1"/>
+            <item count="5" percent="25%" value="2"/>
+            <item count="2" percent="10%" value="7"/>
+            <item count="2" percent="10%" value="3"/>
+            <item count="1" percent="5%" value="16"/>
+            <item count="1" percent="5%" value="6"/>
+          </items>
+        </groupSizeAnalysis>
+      </dataAnalyse>
+      <dataAnalyse indColumn="P_38" columnType="STRING" column="S_4">
+        <expression>BirthDate</expression>
+        <domainAnalysis>
+          <domainAnalyse name="day">
+            <count records="90" keys="62" description="valid"/>
+            <count records="8" keys="5" description="invalid"/>
+            <exceptions>
+              <example numCases="1" index="7" numValues="1" value="1933-09-00"/>
+              <example numCases="1" index="27" numValues="1" value="1958-02-00"/>
+              <example numCases="1" index="42" numValues="1" value="1978-16-12"/>
+              <example numCases="2" index="93" numValues="1" value="N/A"/>
+              <example numCases="3" index="95" numValues="1" value="NULL"/>
+            </exceptions>
+          </domainAnalyse>
+          <domainAnalyse name="pattern">
+            <examples>
+              <example numCases="68" numValues="57" value="N-N-N"/>
+              <example numCases="3" numValues="1" value="NNN"/>
+              <example numCases="1" numValues="1" value="L. N-N-N"/>
+              <example numCases="3" numValues="1" value="W"/>
+              <example numCases="3" numValues="2" value="N"/>
+              <example numCases="2" numValues="1" value="L/L"/>
+              <example numCases="18" numValues="4" value="N.N.N"/>
+            </examples>
+          </domainAnalyse>
+        </domainAnalysis>
+        <statistics>
+          <stat multiple="false" type="count">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="count_nulls">
+            <item value="2"/>
+          </stat>
+          <stat multiple="false" type="count_not_nulls">
+            <item value="98"/>
+          </stat>
+          <stat multiple="true" type="first_x">
+            <item count="3" index="0" value="01\\01\\1998"/>
+            <item count="2" index="3" value="16.11.1978"/>
+            <item count="1" index="5" value="16.12.1978"/>
+            <item count="1" index="6" value="1905-06-03"/>
+            <item count="1" index="7" value="1933-09-00"/>
+          </stat>
+          <stat multiple="true" type="last_x">
+            <item count="3" index="95" value="NULL"/>
+            <item count="2" index="93" value="N/A"/>
+            <item count="1" index="92" value="B. 1982-01-05"/>
+            <item count="2" index="90" value="791216"/>
+            <item count="1" index="89" value="781216"/>
+          </stat>
+          <stat multiple="true" type="quantiles">
+            <item index="0" value="01\\01\\1998" percent="0%"/>
+            <item index="9" value="1940-02-10" percent="10%"/>
+            <item index="19" value="1952-12-19" percent="20%"/>
+            <item index="29" value="1959-12-05" percent="30%"/>
+            <item index="39" value="1978-07-21" percent="40%"/>
+            <item index="48" value="1989-05-03" percent="50%"/>
+            <item index="58" value="2001-06-14" percent="60%"/>
+            <item index="59" value="2001.07.01" percent="70%"/>
+            <item index="73" value="2003-12-06" percent="80%"/>
+            <item index="86" value="5.1.1982" percent="90%"/>
+            <item index="95" value="NULL" percent="100%"/>
+          </stat>
+          <stat multiple="false" type="distinct">
+            <item value="67"/>
+          </stat>
+          <stat multiple="false" type="unique">
+            <item value="59"/>
+          </stat>
+          <stat multiple="false" type="min">
+            <item count="3" index="0" value="01\\01\\1998"/>
+          </stat>
+          <stat multiple="false" type="max">
+            <item count="3" index="95" value="NULL"/>
+          </stat>
+          <stat multiple="false" type="median">
+            <item count="1" index="49" value="1992-04-29"/>
+          </stat>
+          <stat multiple="false" type="min_positive_length">
+            <item value="3"/>
+          </stat>
+          <stat multiple="false" type="min_length">
+            <item value="3"/>
+          </stat>
+          <stat multiple="false" type="max_length">
+            <item value="13"/>
+          </stat>
+          <stat multiple="false" type="avg_length">
+            <item value="9.5204081633"/>
+          </stat>
+          <stat multiple="false" type="median_length">
+            <item value="10"/>
+          </stat>
+          <stat multiple="false" type="non_unique">
+            <item index="0" value="8"/>
+          </stat>
+          <stat multiple="false" type="duplicate">
+            <item index="0" value="31"/>
+          </stat>
+        </statistics>
+        <frequencies column="S_4">
+          <items>
+            <item count="2" percent="2%"/>
+            <item count="12" percent="12%" value="2001.07.01"/>
+            <item count="12" percent="12%" value="2003-12-06"/>
+            <item count="3" percent="3%" value="01\\01\\1998"/>
+            <item count="3" percent="3%" value="5.1.1982"/>
+            <item count="3" percent="3%" value="NULL"/>
+            <item count="2" percent="2%" value="16.11.1978"/>
+            <item count="2" percent="2%" value="791216"/>
+            <item count="2" percent="2%" value="N/A"/>
+            <item count="1" percent="1%" value="16.12.1978"/>
+            <item count="1" percent="1%" value="1905-06-03"/>
+            <item count="1" percent="1%" value="1933-09-00"/>
+            <item count="1" percent="1%" value="1939-05-12"/>
+            <item count="1" percent="1%" value="1940-02-10"/>
+            <item count="1" percent="1%" value="1941-06-29"/>
+            <item count="1" percent="1%" value="1943-05-18"/>
+            <item count="1" percent="1%" value="1944-08-06"/>
+            <item count="1" percent="1%" value="1946-08-03"/>
+            <item count="1" percent="1%" value="1947-09-24"/>
+            <item count="1" percent="1%" value="1949-03-14"/>
+            <item count="1" percent="1%" value="1949-03-30"/>
+            <item count="1" percent="1%" value="1949-12-18"/>
+            <item count="1" percent="1%" value="1952-08-08"/>
+            <item count="1" percent="1%" value="1952-12-19"/>
+            <item count="1" percent="1%" value="1953-06-23"/>
+            <item count="1" percent="1%" value="1953-07-14"/>
+            <item count="1" percent="1%" value="1956-05-03"/>
+            <item count="1" percent="1%" value="1956-05-16"/>
+            <item count="1" percent="1%" value="1956-05-17"/>
+            <item count="1" percent="1%" value="1957-07-21"/>
+            <item count="1" percent="1%" value="1957-10-11"/>
+            <item count="1" percent="1%" value="1958-02-00"/>
+            <item count="1" percent="1%" value="1959-09-06"/>
+            <item count="1" percent="1%" value="1959-12-05"/>
+            <item count="1" percent="1%" value="1960-07-16"/>
+            <item count="1" percent="1%" value="1960-09-16"/>
+            <item count="1" percent="1%" value="1963-03-14"/>
+            <item count="1" percent="1%" value="1966-04-12"/>
+            <item count="1" percent="1%" value="1968-12-11"/>
+            <item count="1" percent="1%" value="1971-03-28"/>
+            <item count="1" percent="1%" value="1972-09-01"/>
+            <item count="1" percent="1%" value="1973-04-02"/>
+            <item count="1" percent="1%" value="1975-01-20"/>
+            <item count="1" percent="1%" value="1978-07-21"/>
+            <item count="1" percent="1%" value="1978-11-15"/>
+            <item count="1" percent="1%" value="1978-11-16"/>
+            <item count="1" percent="1%" value="1978-16-12"/>
+            <item count="1" percent="1%" value="1979-11-17"/>
+            <item count="1" percent="1%" value="1981-01-13"/>
+            <item count="1" percent="1%" value="1984-05-22"/>
+            <item count="1" percent="1%" value="1985-04-05"/>
+            <item count="1" percent="1%" value="1988-10-26"/>
+            <item count="1" percent="1%" value="1989-05-03"/>
+            <item count="1" percent="1%" value="1992-04-29"/>
+            <item count="1" percent="1%" value="1992-06-16"/>
+            <item count="1" percent="1%" value="1993-03-05"/>
+            <item count="1" percent="1%" value="1997-06-16"/>
+            <item count="1" percent="1%" value="1997-12-04"/>
+            <item count="1" percent="1%" value="1999-06-14"/>
+            <item count="1" percent="1%" value="2001-01-02"/>
+            <item count="1" percent="1%" value="2001-04-15"/>
+            <item count="1" percent="1%" value="2001-05-07"/>
+            <item count="1" percent="1%" value="2001-06-14"/>
+            <item count="1" percent="1%" value="2003-06-05"/>
+            <item count="1" percent="1%" value="2003-10-05"/>
+            <item count="1" percent="1%" value="4038-11-21"/>
+            <item count="1" percent="1%" value="781216"/>
+            <item count="1" percent="1%" value="B. 1982-01-05"/>
+          </items>
+        </frequencies>
+        <frequenciesMasked column="E_23" mask="characters">
+          <items>
+            <item count="2" percent="2%"/>
+            <item count="68" percent="68%" value="DDDD-DD-DD"/>
+            <item count="12" percent="12%" value="DDDD.DD.DD"/>
+            <item count="3" percent="3%" value="D.D.DDDD"/>
+            <item count="3" percent="3%" value="DD.DD.DDDD"/>
+            <item count="3" percent="3%" value="DD\\DD\\DDDD"/>
+            <item count="3" percent="3%" value="DDDDDD"/>
+            <item count="3" percent="3%" value="LLLL"/>
+            <item count="2" percent="2%" value="L/L"/>
+            <item count="1" percent="1%" value="L. DDDD-DD-DD"/>
+          </items>
+        </frequenciesMasked>
+        <groupSizeAnalysis>
+          <items>
+            <item count="59" percent="88.0597014925%" value="1"/>
+            <item count="3" percent="4.4776119403%" value="3"/>
+            <item count="3" percent="4.4776119403%" value="2"/>
+            <item count="2" percent="2.9850746269%" value="12"/>
+          </items>
+        </groupSizeAnalysis>
+      </dataAnalyse>
+      <dataAnalyse indColumn="P_40" columnType="STRING" column="S_6">
+        <expression>Mobile</expression>
+        <domainAnalysis>
+          <domainAnalyse name="enum">
+            <examples>
+              <example numCases="39" index="0" numValues="1" value="+447801211963"/>
+              <example numCases="1" index="39" numValues="1" value="+447a01211963, 44 7700 900005"/>
+              <example numCases="1" index="40" numValues="1" value="44 7700 900005 44 7700 900489"/>
+              <example numCases="1" index="41" numValues="1" value="44 7700 900028"/>
+              <example numCases="1" index="42" numValues="1" value="44 7700 900059,44 7700 900059"/>
+              <example numCases="1" index="43" numValues="1" value="44 7700 900109,44 7700 900005"/>
+              <example numCases="1" index="44" numValues="1" value="44 7700 900188"/>
+              <example numCases="1" index="45" numValues="1" value="44 7700 900301,44 7700 900059"/>
+              <example numCases="1" index="46" numValues="1" value="44 7700 900389"/>
+              <example numCases="1" index="47" numValues="1" value="44 7700 900489 44 7700 900489"/>
+              <example numCases="1" index="48" numValues="1" value="44 7700 900552 44 7700 900489"/>
+              <example numCases="1" index="49" numValues="1" value="44 7700 900556"/>
+              <example numCases="3" index="50" numValues="1" value="44 7700 900561"/>
+              <example numCases="1" index="53" numValues="1" value="44 7700 900990 44 7700 900489"/>
+              <example numCases="1" index="54" numValues="1" value="44 7700 900991, 44 7700 900005"/>
+              <example numCases="12" index="55" numValues="1" value="447700 900696 , +447a01211963"/>
+              <example numCases="1" index="67" numValues="1" value="447700-900696 , +447801211963"/>
+            </examples>
+          </domainAnalyse>
+          <domainAnalyse name="pattern">
+            <examples>
+              <example numCases="7" numValues="5" value="N N N"/>
+              <example numCases="39" numValues="1" value="+N"/>
+              <example numCases="1" numValues="1" value="N N N, N N N"/>
+              <example numCases="3" numValues="3" value="N N N,N N N"/>
+              <example numCases="1" numValues="1" value="+NLN, N N N"/>
+              <example numCases="4" numValues="4" value="N N N N N N"/>
+              <example numCases="12" numValues="1" value="N N , +NLN"/>
+              <example numCases="1" numValues="1" value="N-N , +N"/>
+            </examples>
+          </domainAnalyse>
+        </domainAnalysis>
+        <statistics>
+          <stat multiple="false" type="count">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="count_nulls">
+            <item value="32"/>
+          </stat>
+          <stat multiple="false" type="count_not_nulls">
+            <item value="68"/>
+          </stat>
+          <stat multiple="true" type="first_x">
+            <item count="39" index="0" value="+447801211963"/>
+            <item count="1" index="39" value="+447a01211963, 44 7700 900005"/>
+            <item count="1" index="40" value="44 7700 900005 44 7700 900489"/>
+            <item count="1" index="41" value="44 7700 900028"/>
+            <item count="1" index="42" value="44 7700 900059,44 7700 900059"/>
+          </stat>
+          <stat multiple="true" type="last_x">
+            <item count="1" index="67" value="447700-900696 , +447801211963"/>
+            <item count="12" index="55" value="447700 900696 , +447a01211963"/>
+            <item count="1" index="54" value="44 7700 900991, 44 7700 900005"/>
+            <item count="1" index="53" value="44 7700 900990 44 7700 900489"/>
+            <item count="3" index="50" value="44 7700 900561"/>
+          </stat>
+          <stat multiple="true" type="quantiles">
+            <item index="0" value="+447801211963" percent="0%"/>
+            <item index="0" value="+447801211963" percent="10%"/>
+            <item index="0" value="+447801211963" percent="20%"/>
+            <item index="0" value="+447801211963" percent="30%"/>
+            <item index="0" value="+447801211963" percent="40%"/>
+            <item index="0" value="+447801211963" percent="50%"/>
+            <item index="40" value="44 7700 900005 44 7700 900489" percent="60%"/>
+            <item index="47" value="44 7700 900489 44 7700 900489" percent="70%"/>
+            <item index="54" value="44 7700 900991, 44 7700 900005" percent="80%"/>
+            <item index="55" value="447700 900696 , +447a01211963" percent="90%"/>
+            <item index="67" value="447700-900696 , +447801211963" percent="100%"/>
+          </stat>
+          <stat multiple="false" type="distinct">
+            <item value="17"/>
+          </stat>
+          <stat multiple="false" type="unique">
+            <item value="14"/>
+          </stat>
+          <stat multiple="false" type="min">
+            <item count="39" index="0" value="+447801211963"/>
+          </stat>
+          <stat multiple="false" type="max">
+            <item count="1" index="67" value="447700-900696 , +447801211963"/>
+          </stat>
+          <stat multiple="false" type="median">
+            <item count="39" index="34" value="+447801211963"/>
+          </stat>
+          <stat multiple="false" type="min_positive_length">
+            <item value="13"/>
+          </stat>
+          <stat multiple="false" type="min_length">
+            <item value="13"/>
+          </stat>
+          <stat multiple="false" type="max_length">
+            <item value="30"/>
+          </stat>
+          <stat multiple="false" type="avg_length">
+            <item value="18.2941176471"/>
+          </stat>
+          <stat multiple="false" type="median_length">
+            <item value="13"/>
+          </stat>
+          <stat multiple="false" type="non_unique">
+            <item index="0" value="3"/>
+          </stat>
+          <stat multiple="false" type="duplicate">
+            <item index="0" value="51"/>
+          </stat>
+        </statistics>
+        <frequencies column="S_6">
+          <items>
+            <item count="32" percent="32%"/>
+            <item count="39" percent="39%" value="+447801211963"/>
+            <item count="12" percent="12%" value="447700 900696 , +447a01211963"/>
+            <item count="3" percent="3%" value="44 7700 900561"/>
+            <item count="1" percent="1%" value="+447a01211963, 44 7700 900005"/>
+            <item count="1" percent="1%" value="44 7700 900005 44 7700 900489"/>
+            <item count="1" percent="1%" value="44 7700 900028"/>
+            <item count="1" percent="1%" value="44 7700 900059,44 7700 900059"/>
+            <item count="1" percent="1%" value="44 7700 900109,44 7700 900005"/>
+            <item count="1" percent="1%" value="44 7700 900188"/>
+            <item count="1" percent="1%" value="44 7700 900301,44 7700 900059"/>
+            <item count="1" percent="1%" value="44 7700 900389"/>
+            <item count="1" percent="1%" value="44 7700 900489 44 7700 900489"/>
+            <item count="1" percent="1%" value="44 7700 900552 44 7700 900489"/>
+            <item count="1" percent="1%" value="44 7700 900556"/>
+            <item count="1" percent="1%" value="44 7700 900990 44 7700 900489"/>
+            <item count="1" percent="1%" value="44 7700 900991, 44 7700 900005"/>
+            <item count="1" percent="1%" value="447700-900696 , +447801211963"/>
+          </items>
+        </frequencies>
+        <frequenciesMasked column="E_25" mask="characters">
+          <items>
+            <item count="32" percent="32%"/>
+            <item count="39" percent="39%" value="+DDDDDDDDDDDD"/>
+            <item count="12" percent="12%" value="DDDDDD DDDDDD , +DDDLDDDDDDDD"/>
+            <item count="7" percent="7%" value="DD DDDD DDDDDD"/>
+            <item count="4" percent="4%" value="DD DDDD DDDDDD DD DDDD DDDDDD"/>
+            <item count="3" percent="3%" value="DD DDDD DDDDDD,DD DDDD DDDDDD"/>
+            <item count="1" percent="1%" value="+DDDLDDDDDDDD, DD DDDD DDDDDD"/>
+            <item count="1" percent="1%" value="DD DDDD DDDDDD, DD DDDD DDDDDD"/>
+            <item count="1" percent="1%" value="DDDDDD-DDDDDD , +DDDDDDDDDDDD"/>
+          </items>
+        </frequenciesMasked>
+        <groupSizeAnalysis>
+          <items>
+            <item count="14" percent="82.3529411765%" value="1"/>
+            <item count="1" percent="5.8823529412%" value="39"/>
+            <item count="1" percent="5.8823529412%" value="12"/>
+            <item count="1" percent="5.8823529412%" value="3"/>
+          </items>
+        </groupSizeAnalysis>
+      </dataAnalyse>
+      <dataAnalyse indColumn="P_41" columnType="STRING" column="S_7">
+        <expression>Landline</expression>
+        <domainAnalysis>
+          <domainAnalyse name="pattern">
+            <examples>
+              <example numCases="6" numValues="6" value="N-N-N-N, N-N-N-N"/>
+              <example numCases="75" numValues="75" value="N-N-N-N"/>
+              <example numCases="2" numValues="2" value="N-N-N-N ,N-N-N-N"/>
+              <example numCases="7" numValues="7" value="N-N-N-N,N-N-N-N"/>
+              <example numCases="10" numValues="10" value="N-N-N-N N-N-N-N"/>
+            </examples>
+          </domainAnalyse>
+        </domainAnalysis>
+        <statistics>
+          <stat multiple="false" type="count">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="count_nulls">
+            <item value="0"/>
+          </stat>
+          <stat multiple="false" type="count_not_nulls">
+            <item value="100"/>
+          </stat>
+          <stat multiple="true" type="first_x">
+            <item count="1" index="0" value="44-715-550-2445"/>
+            <item count="1" index="1" value="44-715-550-7462"/>
+            <item count="1" index="2" value="44-715-551-9922"/>
+            <item count="1" index="3" value="44-715-553-5678"/>
+            <item count="1" index="4" value="44-715-554-8750"/>
+          </stat>
+          <stat multiple="true" type="last_x">
+            <item count="1" index="99" value="44-795-558-0782"/>
+            <item count="1" index="98" value="44-795-557-8320"/>
+            <item count="1" index="97" value="44-795-554-2353"/>
+            <item count="1" index="96" value="44-795-553-9707 44-715-554-8750"/>
+            <item count="1" index="95" value="44-795-552-6507"/>
+          </stat>
+          <stat multiple="true" type="quantiles">
+            <item index="0" value="44-715-550-2445" percent="0%"/>
+            <item index="9" value="44-715-559-5489" percent="10%"/>
+            <item index="19" value="44-735-550-6232" percent="20%"/>
+            <item index="29" value="44-735-557-6210,44-765-558-4808" percent="30%"/>
+            <item index="39" value="44-745-555-4565" percent="40%"/>
+            <item index="49" value="44-755-554-8023" percent="50%"/>
+            <item index="59" value="44-765-552-2659,44-765-558-4808" percent="60%"/>
+            <item index="69" value="44-775-551-0928" percent="70%"/>
+            <item index="79" value="44-775-557-8176" percent="80%"/>
+            <item index="89" value="44-785-558-2465" percent="90%"/>
+            <item index="99" value="44-795-558-0782" percent="100%"/>
+          </stat>
+          <stat multiple="false" type="distinct">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="unique">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="min">
+            <item count="1" index="0" value="44-715-550-2445"/>
+          </stat>
+          <stat multiple="false" type="max">
+            <item count="1" index="99" value="44-795-558-0782"/>
+          </stat>
+          <stat multiple="false" type="median">
+            <item count="1" index="50" value="44-755-555-1074"/>
+          </stat>
+          <stat multiple="false" type="min_positive_length">
+            <item value="15"/>
+          </stat>
+          <stat multiple="false" type="min_length">
+            <item value="15"/>
+          </stat>
+          <stat multiple="false" type="max_length">
+            <item value="32"/>
+          </stat>
+          <stat multiple="false" type="avg_length">
+            <item value="19.08"/>
+          </stat>
+          <stat multiple="false" type="median_length">
+            <item value="15"/>
+          </stat>
+          <stat multiple="false" type="non_unique">
+            <item index="0" value="0"/>
+          </stat>
+          <stat multiple="false" type="duplicate">
+            <item index="0" value="0"/>
+          </stat>
+        </statistics>
+        <frequencies column="S_7">
+          <items>
+            <item count="1" percent="1%" value="44-715-550-2445"/>
+            <item count="1" percent="1%" value="44-715-550-7462"/>
+            <item count="1" percent="1%" value="44-715-551-9922"/>
+            <item count="1" percent="1%" value="44-715-553-5678"/>
+            <item count="1" percent="1%" value="44-715-554-8750"/>
+            <item count="1" percent="1%" value="44-715-555-8033, 44-715-559-2709"/>
+            <item count="1" percent="1%" value="44-715-558-1321"/>
+            <item count="1" percent="1%" value="44-715-559-0679 44-775-558-4131"/>
+            <item count="1" percent="1%" value="44-715-559-2709"/>
+            <item count="1" percent="1%" value="44-715-559-5489"/>
+            <item count="1" percent="1%" value="44-725-550-0862 44-715-554-8750"/>
+            <item count="1" percent="1%" value="44-725-551-8341 44-775-558-4131"/>
+            <item count="1" percent="1%" value="44-725-552-3129"/>
+            <item count="1" percent="1%" value="44-725-552-7511"/>
+            <item count="1" percent="1%" value="44-725-553-8386"/>
+            <item count="1" percent="1%" value="44-725-554-6676"/>
+            <item count="1" percent="1%" value="44-725-556-2404,44-765-558-4808"/>
+            <item count="1" percent="1%" value="44-725-556-4644"/>
+            <item count="1" percent="1%" value="44-735-550-2117"/>
+            <item count="1" percent="1%" value="44-735-550-6232"/>
+            <item count="1" percent="1%" value="44-735-550-8788"/>
+            <item count="1" percent="1%" value="44-735-551-2978"/>
+            <item count="1" percent="1%" value="44-735-551-7456"/>
+            <item count="1" percent="1%" value="44-735-553-0025 44-775-558-4131"/>
+            <item count="1" percent="1%" value="44-735-555-3177"/>
+            <item count="1" percent="1%" value="44-735-555-8434, 44-715-559-2709"/>
+            <item count="1" percent="1%" value="44-735-556-2395 44-765-550-5516"/>
+            <item count="1" percent="1%" value="44-735-556-4452, 44-715-559-2709"/>
+            <item count="1" percent="1%" value="44-735-557-3619"/>
+            <item count="1" percent="1%" value="44-735-557-6210,44-765-558-4808"/>
+            <item count="1" percent="1%" value="44-735-557-9232"/>
+            <item count="1" percent="1%" value="44-735-559-5617"/>
+            <item count="1" percent="1%" value="44-735-559-7587"/>
+            <item count="1" percent="1%" value="44-745-550-6336 ,44-765-559-4923"/>
+            <item count="1" percent="1%" value="44-745-550-9342"/>
+            <item count="1" percent="1%" value="44-745-550-9499"/>
+            <item count="1" percent="1%" value="44-745-553-2785"/>
+            <item count="1" percent="1%" value="44-745-553-6370"/>
+            <item count="1" percent="1%" value="44-745-555-4092"/>
+            <item count="1" percent="1%" value="44-745-555-4565"/>
+            <item count="1" percent="1%" value="44-745-556-7697"/>
+            <item count="1" percent="1%" value="44-745-558-2207,44-765-558-4808"/>
+            <item count="1" percent="1%" value="44-745-559-3650"/>
+            <item count="1" percent="1%" value="44-755-550-1466 44-775-558-4131"/>
+            <item count="1" percent="1%" value="44-755-550-3803"/>
+            <item count="1" percent="1%" value="44-755-552-2006"/>
+            <item count="1" percent="1%" value="44-755-552-8359"/>
+            <item count="1" percent="1%" value="44-755-552-9595"/>
+            <item count="1" percent="1%" value="44-755-553-2265"/>
+            <item count="1" percent="1%" value="44-755-554-8023"/>
+            <item count="1" percent="1%" value="44-755-555-1074"/>
+            <item count="1" percent="1%" value="44-755-555-6533"/>
+            <item count="1" percent="1%" value="44-755-555-8274"/>
+            <item count="1" percent="1%" value="44-755-557-8916"/>
+            <item count="1" percent="1%" value="44-755-559-3560"/>
+            <item count="1" percent="1%" value="44-765-550-5516, 44-715-559-2709"/>
+            <item count="1" percent="1%" value="44-765-550-9806"/>
+            <item count="1" percent="1%" value="44-765-551-8257"/>
+            <item count="1" percent="1%" value="44-765-552-0454"/>
+            <item count="1" percent="1%" value="44-765-552-2659,44-765-558-4808"/>
+            <item count="1" percent="1%" value="44-765-555-3849"/>
+            <item count="1" percent="1%" value="44-765-555-4762"/>
+            <item count="1" percent="1%" value="44-765-556-3646, 44-715-559-2709"/>
+            <item count="1" percent="1%" value="44-765-557-6880"/>
+            <item count="1" percent="1%" value="44-765-558-4808,44-765-558-4808"/>
+            <item count="1" percent="1%" value="44-765-559-4923"/>
+            <item count="1" percent="1%" value="44-765-559-8242 44-775-558-4131"/>
+            <item count="1" percent="1%" value="44-775-550-0270"/>
+            <item count="1" percent="1%" value="44-775-550-7313"/>
+            <item count="1" percent="1%" value="44-775-551-0928"/>
+            <item count="1" percent="1%" value="44-775-552-0522"/>
+            <item count="1" percent="1%" value="44-775-552-3230"/>
+            <item count="1" percent="1%" value="44-775-552-5239"/>
+            <item count="1" percent="1%" value="44-775-553-8468"/>
+            <item count="1" percent="1%" value="44-775-554-3661"/>
+            <item count="1" percent="1%" value="44-775-554-6703, 44-765-559-4923"/>
+            <item count="1" percent="1%" value="44-775-556-1811 44-725-552-7511"/>
+            <item count="1" percent="1%" value="44-775-556-2673"/>
+            <item count="1" percent="1%" value="44-775-556-3227"/>
+            <item count="1" percent="1%" value="44-775-557-8176"/>
+            <item count="1" percent="1%" value="44-775-558-4131 44-775-558-4131"/>
+            <item count="1" percent="1%" value="44-775-559-0965"/>
+            <item count="1" percent="1%" value="44-775-559-5480,44-765-558-4808"/>
+            <item count="1" percent="1%" value="44-785-550-1774"/>
+            <item count="1" percent="1%" value="44-785-550-7076"/>
+            <item count="1" percent="1%" value="44-785-551-5072"/>
+            <item count="1" percent="1%" value="44-785-556-2291"/>
+            <item count="1" percent="1%" value="44-785-556-7991"/>
+            <item count="1" percent="1%" value="44-785-557-6458"/>
+            <item count="1" percent="1%" value="44-785-558-2465"/>
+            <item count="1" percent="1%" value="44-795-550-3606"/>
+            <item count="1" percent="1%" value="44-795-551-5726 ,44-765-559-4923"/>
+            <item count="1" percent="1%" value="44-795-551-8769,44-765-558-4808"/>
+            <item count="1" percent="1%" value="44-795-552-0034"/>
+            <item count="1" percent="1%" value="44-795-552-3701"/>
+            <item count="1" percent="1%" value="44-795-552-6507"/>
+            <item count="1" percent="1%" value="44-795-553-9707 44-715-554-8750"/>
+            <item count="1" percent="1%" value="44-795-554-2353"/>
+            <item count="1" percent="1%" value="44-795-557-8320"/>
+            <item count="1" percent="1%" value="44-795-558-0782"/>
+          </items>
+        </frequencies>
+        <frequenciesMasked column="E_26" mask="characters">
+          <items>
+            <item count="75" percent="75%" value="DD-DDD-DDD-DDDD"/>
+            <item count="10" percent="10%" value="DD-DDD-DDD-DDDD DD-DDD-DDD-DDDD"/>
+            <item count="7" percent="7%" value="DD-DDD-DDD-DDDD,DD-DDD-DDD-DDDD"/>
+            <item count="6" percent="6%" value="DD-DDD-DDD-DDDD, DD-DDD-DDD-DDDD"/>
+            <item count="2" percent="2%" value="DD-DDD-DDD-DDDD ,DD-DDD-DDD-DDDD"/>
+          </items>
+        </frequenciesMasked>
+        <groupSizeAnalysis>
+          <items>
+            <item count="100" percent="100%" value="1"/>
+          </items>
+        </groupSizeAnalysis>
+      </dataAnalyse>
+      <dataAnalyse indColumn="P_42" columnType="STRING" column="S_8">
+        <expression>Email</expression>
+        <domainAnalysis>
+          <domainAnalyse name="enum">
+            <examples>
+              <example numCases="9" index="0" numValues="1" value="dr.john.smith@gmail.c"/>
+              <example numCases="18" index="9" numValues="1" value="jane.watson@gmail.com"/>
+              <example numCases="9" index="27" numValues="1" value="john.smith@.com"/>
+              <example numCases="9" index="36" numValues="1" value="john.smith@gmail.com"/>
+              <example numCases="9" index="45" numValues="1" value="john.w.smith@gmail.com"/>
+              <example numCases="9" index="54" numValues="1" value="john.will.smith@gmail.com"/>
+              <example numCases="9" index="63" numValues="1" value="smith.john@gmail.com"/>
+            </examples>
+          </domainAnalyse>
+          <domainAnalyse name="pattern">
+            <examples>
+              <example numCases="27" numValues="3" value="W.W.W@W.W"/>
+              <example numCases="36" numValues="3" value="W.W@W.W"/>
+              <example numCases="9" numValues="1" value="W.W@.W"/>
+            </examples>
+          </domainAnalyse>
+        </domainAnalysis>
+        <statistics>
+          <stat multiple="false" type="count">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="count_nulls">
+            <item value="28"/>
+          </stat>
+          <stat multiple="false" type="count_not_nulls">
+            <item value="72"/>
+          </stat>
+          <stat multiple="true" type="first_x">
+            <item count="9" index="0" value="dr.john.smith@gmail.c"/>
+            <item count="18" index="9" value="jane.watson@gmail.com"/>
+            <item count="9" index="27" value="john.smith@.com"/>
+            <item count="9" index="36" value="john.smith@gmail.com"/>
+            <item count="9" index="45" value="john.w.smith@gmail.com"/>
+          </stat>
+          <stat multiple="true" type="last_x">
+            <item count="9" index="63" value="smith.john@gmail.com"/>
+            <item count="9" index="54" value="john.will.smith@gmail.com"/>
+            <item count="9" index="45" value="john.w.smith@gmail.com"/>
+            <item count="9" index="36" value="john.smith@gmail.com"/>
+            <item count="9" index="27" value="john.smith@.com"/>
+          </stat>
+          <stat multiple="true" type="quantiles">
+            <item index="0" value="dr.john.smith@gmail.c" percent="0%"/>
+            <item index="0" value="dr.john.smith@gmail.c" percent="10%"/>
+            <item index="9" value="jane.watson@gmail.com" percent="20%"/>
+            <item index="9" value="jane.watson@gmail.com" percent="30%"/>
+            <item index="27" value="john.smith@.com" percent="40%"/>
+            <item index="27" value="john.smith@.com" percent="50%"/>
+            <item index="36" value="john.smith@gmail.com" percent="60%"/>
+            <item index="45" value="john.w.smith@gmail.com" percent="70%"/>
+            <item index="54" value="john.will.smith@gmail.com" percent="80%"/>
+            <item index="63" value="smith.john@gmail.com" percent="90%"/>
+            <item index="63" value="smith.john@gmail.com" percent="100%"/>
+          </stat>
+          <stat multiple="false" type="distinct">
+            <item value="7"/>
+          </stat>
+          <stat multiple="false" type="unique">
+            <item value="0"/>
+          </stat>
+          <stat multiple="false" type="min">
+            <item count="9" index="0" value="dr.john.smith@gmail.c"/>
+          </stat>
+          <stat multiple="false" type="max">
+            <item count="9" index="63" value="smith.john@gmail.com"/>
+          </stat>
+          <stat multiple="false" type="median">
+            <item count="9" index="36" value="john.smith@gmail.com"/>
+          </stat>
+          <stat multiple="false" type="min_positive_length">
+            <item value="15"/>
+          </stat>
+          <stat multiple="false" type="min_length">
+            <item value="15"/>
+          </stat>
+          <stat multiple="false" type="max_length">
+            <item value="25"/>
+          </stat>
+          <stat multiple="false" type="avg_length">
+            <item value="20.625"/>
+          </stat>
+          <stat multiple="false" type="median_length">
+            <item value="21"/>
+          </stat>
+          <stat multiple="false" type="non_unique">
+            <item index="0" value="7"/>
+          </stat>
+          <stat multiple="false" type="duplicate">
+            <item index="0" value="65"/>
+          </stat>
+        </statistics>
+        <frequencies column="S_8">
+          <items>
+            <item count="28" percent="28%"/>
+            <item count="18" percent="18%" value="jane.watson@gmail.com"/>
+            <item count="9" percent="9%" value="dr.john.smith@gmail.c"/>
+            <item count="9" percent="9%" value="john.smith@.com"/>
+            <item count="9" percent="9%" value="john.smith@gmail.com"/>
+            <item count="9" percent="9%" value="john.w.smith@gmail.com"/>
+            <item count="9" percent="9%" value="john.will.smith@gmail.com"/>
+            <item count="9" percent="9%" value="smith.john@gmail.com"/>
+          </items>
+        </frequencies>
+        <frequenciesMasked column="E_27" mask="characters">
+          <items>
+            <item count="28" percent="28%"/>
+            <item count="18" percent="18%" value="LLLL.LLLLLL@LLLLL.LLL"/>
+            <item count="9" percent="9%" value="LL.LLLL.LLLLL@LLLLL.L"/>
+            <item count="9" percent="9%" value="LLLL.L.LLLLL@LLLLL.LLL"/>
+            <item count="9" percent="9%" value="LLLL.LLLL.LLLLL@LLLLL.LLL"/>
+            <item count="9" percent="9%" value="LLLL.LLLLL@.LLL"/>
+            <item count="9" percent="9%" value="LLLL.LLLLL@LLLLL.LLL"/>
+            <item count="9" percent="9%" value="LLLLL.LLLL@LLLLL.LLL"/>
+          </items>
+        </frequenciesMasked>
+        <groupSizeAnalysis>
+          <items>
+            <item count="6" percent="85.7142857143%" value="9"/>
+            <item count="1" percent="14.2857142857%" value="18"/>
+          </items>
+        </groupSizeAnalysis>
+      </dataAnalyse>
+      <dataAnalyse indColumn="P_47" columnType="INTEGER" column="S_14">
+        <expression>RecordScore</expression>
+        <domainAnalysis>
+          <domainAnalyse name="enum">
+            <examples>
+              <example numCases="11" index="0" numValues="1" value="0"/>
+              <example numCases="1" index="11" numValues="1" value="3"/>
+              <example numCases="35" index="12" numValues="1" value="10"/>
+              <example numCases="3" index="47" numValues="1" value="17"/>
+              <example numCases="3" index="50" numValues="1" value="19"/>
+              <example numCases="25" index="53" numValues="1" value="20"/>
+              <example numCases="9" index="78" numValues="1" value="27"/>
+              <example numCases="6" index="87" numValues="1" value="28"/>
+              <example numCases="4" index="93" numValues="1" value="29"/>
+              <example numCases="1" index="97" numValues="1" value="30"/>
+              <example numCases="2" index="98" numValues="1" value="38"/>
+            </examples>
+          </domainAnalyse>
+        </domainAnalysis>
+        <statistics>
+          <stat multiple="false" type="count">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="count_nulls">
+            <item value="0"/>
+          </stat>
+          <stat multiple="false" type="count_not_nulls">
+            <item value="100"/>
+          </stat>
+          <stat multiple="true" type="first_x">
+            <item count="11" index="0" value="0"/>
+            <item count="1" index="11" value="3"/>
+            <item count="35" index="12" value="10"/>
+            <item count="3" index="47" value="17"/>
+            <item count="3" index="50" value="19"/>
+          </stat>
+          <stat multiple="true" type="last_x">
+            <item count="2" index="98" value="38"/>
+            <item count="1" index="97" value="30"/>
+            <item count="4" index="93" value="29"/>
+            <item count="6" index="87" value="28"/>
+            <item count="9" index="78" value="27"/>
+          </stat>
+          <stat multiple="true" type="quantiles">
+            <item index="0" value="0" percent="0%"/>
+            <item index="0" value="0" percent="10%"/>
+            <item index="12" value="10" percent="20%"/>
+            <item index="12" value="10" percent="30%"/>
+            <item index="12" value="10" percent="40%"/>
+            <item index="47" value="17" percent="50%"/>
+            <item index="53" value="20" percent="60%"/>
+            <item index="53" value="20" percent="70%"/>
+            <item index="78" value="27" percent="80%"/>
+            <item index="87" value="28" percent="90%"/>
+            <item index="98" value="38" percent="100%"/>
+          </stat>
+          <stat multiple="false" type="distinct">
+            <item value="11"/>
+          </stat>
+          <stat multiple="false" type="unique">
+            <item value="2"/>
+          </stat>
+          <stat multiple="false" type="min">
+            <item count="11" index="0" value="0"/>
+          </stat>
+          <stat multiple="false" type="max">
+            <item count="2" index="98" value="38"/>
+          </stat>
+          <stat multiple="false" type="median">
+            <item count="3" index="50" value="19"/>
+          </stat>
+          <stat multiple="false" type="sum">
+            <item value="1594"/>
+          </stat>
+          <stat multiple="false" type="avg">
+            <item index="47" value="15.94"/>
+          </stat>
+          <stat multiple="false" type="std">
+            <item value="9.2019780482"/>
+          </stat>
+          <stat multiple="false" type="var">
+            <item value="84.6764"/>
+          </stat>
+          <stat multiple="false" type="non_unique">
+            <item index="0" value="9"/>
+          </stat>
+          <stat multiple="false" type="duplicate">
+            <item index="0" value="89"/>
+          </stat>
+        </statistics>
+        <frequencies column="S_14">
+          <items>
+            <item count="35" percent="35%" value="10"/>
+            <item count="25" percent="25%" value="20"/>
+            <item count="11" percent="11%" value="0"/>
+            <item count="9" percent="9%" value="27"/>
+            <item count="6" percent="6%" value="28"/>
+            <item count="4" percent="4%" value="29"/>
+            <item count="3" percent="3%" value="17"/>
+            <item count="3" percent="3%" value="19"/>
+            <item count="2" percent="2%" value="38"/>
+            <item count="1" percent="1%" value="3"/>
+            <item count="1" percent="1%" value="30"/>
+          </items>
+        </frequencies>
+        <groupSizeAnalysis>
+          <items>
+            <item count="2" percent="18.1818181818%" value="3"/>
+            <item count="2" percent="18.1818181818%" value="1"/>
+            <item count="1" percent="9.0909090909%" value="35"/>
+            <item count="1" percent="9.0909090909%" value="25"/>
+            <item count="1" percent="9.0909090909%" value="11"/>
+            <item count="1" percent="9.0909090909%" value="9"/>
+            <item count="1" percent="9.0909090909%" value="6"/>
+            <item count="1" percent="9.0909090909%" value="4"/>
+            <item count="1" percent="9.0909090909%" value="2"/>
+          </items>
+        </groupSizeAnalysis>
+      </dataAnalyse>
+      <dataAnalyse indColumn="P_48" columnType="STRING" column="S_15">
+        <expression>RecordExplanation</expression>
+        <domainAnalysis>
+          <domainAnalyse name="enum">
+            <examples>
+              <example numCases="12" index="0" numValues="1" value="COLUMN_NOT_POPULATED(GD)"/>
+              <example numCases="16" index="12" numValues="1" value="COLUMN_NOT_POPULATED(GD) COLUMN_NOT_POPULATED(Mobile)"/>
+              <example numCases="1" index="28" numValues="1" value="COLUMN_NOT_POPULATED(GD)INVALID_MOBILE_PHONE_SYNTAX-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) NOT_CORRECT_START_OF_MOBILE_PHONE-(4) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+              <example numCases="5" index="29" numValues="1" value="COLUMN_NOT_POPULATED(GD)NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) INVALID_MOBILE_PHONE_SYNTAX-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+              <example numCases="3" index="34" numValues="1" value="COLUMN_NOT_POPULATED(GD)NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+              <example numCases="2" index="37" numValues="1" value="COLUMN_NOT_POPULATED(GD)NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) NOT_CORRECT_START_OF_MOBILE_PHONE-(4) NOT_CORRECT_START_OF_MOBILE_PHONE-(5) NOT_CORRECT_START_OF_MOBILE_PHONE-(6) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+              <example numCases="7" index="39" numValues="1" value="COLUMN_NOT_POPULATED(Mobile)"/>
+              <example numCases="16" index="46" numValues="1" value="INVALID_GENDER_VALUE(GD)"/>
+              <example numCases="9" index="62" numValues="1" value="INVALID_GENDER_VALUE(GD) COLUMN_NOT_POPULATED(Mobile)"/>
+              <example numCases="4" index="71" numValues="1" value="INVALID_GENDER_VALUE(GD)NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) INVALID_MOBILE_PHONE_SYNTAX-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+              <example numCases="1" index="75" numValues="1" value="INVALID_GENDER_VALUE(GD)NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+              <example numCases="1" index="76" numValues="1" value="NOT_CORRECT_START_OF_MOBILE_PHONE-(1)"/>
+              <example numCases="3" index="77" numValues="1" value="NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) INVALID_MOBILE_PHONE_SYNTAX-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+              <example numCases="3" index="80" numValues="1" value="NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+              <example numCases="6" index="83" numValues="1" value="NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) NOT_CORRECT_START_OF_MOBILE_PHONE-(4) NOT_CORRECT_START_OF_MOBILE_PHONE-(5) NOT_CORRECT_START_OF_MOBILE_PHONE-(6) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+            </examples>
+          </domainAnalyse>
+          <domainAnalyse name="pattern">
+            <examples>
+              <example numCases="4" numValues="2" value="W_W_W(W)W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W(W)"/>
+              <example numCases="1" numValues="1" value="W_W_W_W_W_W-(D)"/>
+              <example numCases="3" numValues="1" value="W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W(W)"/>
+              <example numCases="3" numValues="1" value="W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W-(D) W_W_W_W(W)"/>
+              <example numCases="9" numValues="2" value="W_W_W(W)W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W-(D) W_W_W_W(W)"/>
+              <example numCases="6" numValues="1" value="W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W(W)"/>
+              <example numCases="1" numValues="1" value="W_W_W(W)W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W(W)"/>
+              <example numCases="25" numValues="2" value="W_W_W(W) W_W_W(W)"/>
+              <example numCases="2" numValues="1" value="W_W_W(W)W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W_W_W-(D) W_W_W_W(W)"/>
+              <example numCases="35" numValues="3" value="W_W_W(W)"/>
+            </examples>
+          </domainAnalyse>
+        </domainAnalysis>
+        <statistics>
+          <stat multiple="false" type="count">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="count_nulls">
+            <item value="11"/>
+          </stat>
+          <stat multiple="false" type="count_not_nulls">
+            <item value="89"/>
+          </stat>
+          <stat multiple="true" type="first_x">
+            <item count="12" index="0" value="COLUMN_NOT_POPULATED(GD)"/>
+            <item count="16" index="12" value="COLUMN_NOT_POPULATED(GD) COLUMN_NOT_POPULATED(Mobile)"/>
+            <item count="1" index="28" value="COLUMN_NOT_POPULATED(GD)INVALID_MOBILE_PHONE_SYNTAX-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) NOT_CORRECT_START_OF_MOBILE_PHONE-(4) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+            <item count="5" index="29" value="COLUMN_NOT_POPULATED(GD)NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) INVALID_MOBILE_PHONE_SYNTAX-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+            <item count="3" index="34" value="COLUMN_NOT_POPULATED(GD)NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+          </stat>
+          <stat multiple="true" type="last_x">
+            <item count="6" index="83" value="NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) NOT_CORRECT_START_OF_MOBILE_PHONE-(4) NOT_CORRECT_START_OF_MOBILE_PHONE-(5) NOT_CORRECT_START_OF_MOBILE_PHONE-(6) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+            <item count="3" index="80" value="NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+            <item count="3" index="77" value="NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) INVALID_MOBILE_PHONE_SYNTAX-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+            <item count="1" index="76" value="NOT_CORRECT_START_OF_MOBILE_PHONE-(1)"/>
+            <item count="1" index="75" value="INVALID_GENDER_VALUE(GD)NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+          </stat>
+          <stat multiple="true" type="quantiles">
+            <item index="0" value="COLUMN_NOT_POPULATED(GD)" percent="0%"/>
+            <item index="0" value="COLUMN_NOT_POPULATED(GD)" percent="10%"/>
+            <item index="12" value="COLUMN_NOT_POPULATED(GD) COLUMN_NOT_POPULATED(Mobile)" percent="20%"/>
+            <item index="12" value="COLUMN_NOT_POPULATED(GD) COLUMN_NOT_POPULATED(Mobile)" percent="30%"/>
+            <item index="34" value="COLUMN_NOT_POPULATED(GD)NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)" percent="40%"/>
+            <item index="39" value="COLUMN_NOT_POPULATED(Mobile)" percent="50%"/>
+            <item index="46" value="INVALID_GENDER_VALUE(GD)" percent="60%"/>
+            <item index="62" value="INVALID_GENDER_VALUE(GD) COLUMN_NOT_POPULATED(Mobile)" percent="70%"/>
+            <item index="71" value="INVALID_GENDER_VALUE(GD)NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) INVALID_MOBILE_PHONE_SYNTAX-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)" percent="80%"/>
+            <item index="80" value="NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)" percent="90%"/>
+            <item index="83" value="NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) NOT_CORRECT_START_OF_MOBILE_PHONE-(4) NOT_CORRECT_START_OF_MOBILE_PHONE-(5) NOT_CORRECT_START_OF_MOBILE_PHONE-(6) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)" percent="100%"/>
+          </stat>
+          <stat multiple="false" type="distinct">
+            <item value="15"/>
+          </stat>
+          <stat multiple="false" type="unique">
+            <item value="3"/>
+          </stat>
+          <stat multiple="false" type="min">
+            <item count="12" index="0" value="COLUMN_NOT_POPULATED(GD)"/>
+          </stat>
+          <stat multiple="false" type="max">
+            <item count="6" index="83" value="NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) NOT_CORRECT_START_OF_MOBILE_PHONE-(4) NOT_CORRECT_START_OF_MOBILE_PHONE-(5) NOT_CORRECT_START_OF_MOBILE_PHONE-(6) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+          </stat>
+          <stat multiple="false" type="median">
+            <item count="7" index="44" value="COLUMN_NOT_POPULATED(Mobile)"/>
+          </stat>
+          <stat multiple="false" type="min_positive_length">
+            <item value="24"/>
+          </stat>
+          <stat multiple="false" type="min_length">
+            <item value="24"/>
+          </stat>
+          <stat multiple="false" type="max_length">
+            <item value="291"/>
+          </stat>
+          <stat multiple="false" type="avg_length">
+            <item value="87.3033707865"/>
+          </stat>
+          <stat multiple="false" type="median_length">
+            <item value="53"/>
+          </stat>
+          <stat multiple="false" type="non_unique">
+            <item index="0" value="12"/>
+          </stat>
+          <stat multiple="false" type="duplicate">
+            <item index="0" value="74"/>
+          </stat>
+        </statistics>
+        <frequencies column="S_15">
+          <items>
+            <item count="11" percent="11%"/>
+            <item count="16" percent="16%" value="COLUMN_NOT_POPULATED(GD) COLUMN_NOT_POPULATED(Mobile)"/>
+            <item count="16" percent="16%" value="INVALID_GENDER_VALUE(GD)"/>
+            <item count="12" percent="12%" value="COLUMN_NOT_POPULATED(GD)"/>
+            <item count="9" percent="9%" value="INVALID_GENDER_VALUE(GD) COLUMN_NOT_POPULATED(Mobile)"/>
+            <item count="7" percent="7%" value="COLUMN_NOT_POPULATED(Mobile)"/>
+            <item count="6" percent="6%" value="NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) NOT_CORRECT_START_OF_MOBILE_PHONE-(4) NOT_CORRECT_START_OF_MOBILE_PHONE-(5) NOT_CORRECT_START_OF_MOBILE_PHONE-(6) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+            <item count="5" percent="5%" value="COLUMN_NOT_POPULATED(GD)NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) INVALID_MOBILE_PHONE_SYNTAX-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+            <item count="4" percent="4%" value="INVALID_GENDER_VALUE(GD)NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) INVALID_MOBILE_PHONE_SYNTAX-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+            <item count="3" percent="3%" value="COLUMN_NOT_POPULATED(GD)NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+            <item count="3" percent="3%" value="NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) INVALID_MOBILE_PHONE_SYNTAX-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+            <item count="3" percent="3%" value="NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+            <item count="2" percent="2%" value="COLUMN_NOT_POPULATED(GD)NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) NOT_CORRECT_START_OF_MOBILE_PHONE-(4) NOT_CORRECT_START_OF_MOBILE_PHONE-(5) NOT_CORRECT_START_OF_MOBILE_PHONE-(6) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+            <item count="1" percent="1%" value="COLUMN_NOT_POPULATED(GD)INVALID_MOBILE_PHONE_SYNTAX-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) NOT_CORRECT_START_OF_MOBILE_PHONE-(4) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+            <item count="1" percent="1%" value="INVALID_GENDER_VALUE(GD)NOT_CORRECT_START_OF_MOBILE_PHONE-(1) NOT_CORRECT_START_OF_MOBILE_PHONE-(2) NOT_CORRECT_START_OF_MOBILE_PHONE-(3) INVALID_MOBILE_NUMBER_STRUCTURE(Mobile)"/>
+            <item count="1" percent="1%" value="NOT_CORRECT_START_OF_MOBILE_PHONE-(1)"/>
+          </items>
+        </frequencies>
+        <frequenciesMasked column="E_32" mask="characters">
+          <items>
+            <item count="11" percent="11%"/>
+            <item count="16" percent="16%" value="LLLLLL_LLL_LLLLLLLLL(LL) LLLLLL_LLL_LLLLLLLLL(LLLLLL)"/>
+            <item count="16" percent="16%" value="LLLLLLL_LLLLLL_LLLLL(LL)"/>
+            <item count="12" percent="12%" value="LLLLLL_LLL_LLLLLLLLL(LL)"/>
+            <item count="9" percent="9%" value="LLLLLLL_LLLLLL_LLLLL(LL) LLLLLL_LLL_LLLLLLLLL(LLLLLL)"/>
+            <item count="7" percent="7%" value="LLLLLL_LLL_LLLLLLLLL(LLLLLL)"/>
+            <item count="6" percent="6%" value="LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLLLLLL_LLLLLL_LLLLLL_LLLLLLLLL(LLLLLL)"/>
+            <item count="5" percent="5%" value="LLLLLL_LLL_LLLLLLLLL(LL)LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLLLLLL_LLLLLL_LLLLL_LLLLLL-(D) LLLLLLL_LLLLLL_LLLLLL_LLLLLLLLL(LLLLLL)"/>
+            <item count="4" percent="4%" value="LLLLLLL_LLLLLL_LLLLL(LL)LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLLLLLL_LLLLLL_LLLLL_LLLLLL-(D) LLLLLLL_LLLLLL_LLLLLL_LLLLLLLLL(LLLLLL)"/>
+            <item count="3" percent="3%" value="LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLLLLLL_LLLLLL_LLLLLL_LLLLLLLLL(LLLLLL)"/>
+            <item count="3" percent="3%" value="LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLLLLLL_LLLLLL_LLLLL_LLLLLL-(D) LLLLLLL_LLLLLL_LLLLLL_LLLLLLLLL(LLLLLL)"/>
+            <item count="3" percent="3%" value="LLLLLL_LLL_LLLLLLLLL(LL)LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLLLLLL_LLLLLL_LLLLLL_LLLLLLLLL(LLLLLL)"/>
+            <item count="2" percent="2%" value="LLLLLL_LLL_LLLLLLLLL(LL)LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLLLLLL_LLLLLL_LLLLLL_LLLLLLLLL(LLLLLL)"/>
+            <item count="1" percent="1%" value="LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D)"/>
+            <item count="1" percent="1%" value="LLLLLL_LLL_LLLLLLLLL(LL)LLLLLLL_LLLLLL_LLLLL_LLLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLLLLLL_LLLLLL_LLLLLL_LLLLLLLLL(LLLLLL)"/>
+            <item count="1" percent="1%" value="LLLLLLL_LLLLLL_LLLLL(LL)LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLL_LLLLLLL_LLLLL_LL_LLLLLL_LLLLL-(D) LLLLLLL_LLLLLL_LLLLLL_LLLLLLLLL(LLLLLL)"/>
+          </items>
+        </frequenciesMasked>
+        <groupSizeAnalysis>
+          <items>
+            <item count="3" percent="20%" value="3"/>
+            <item count="3" percent="20%" value="1"/>
+            <item count="2" percent="13.3333333333%" value="16"/>
+            <item count="1" percent="6.6666666667%" value="12"/>
+            <item count="1" percent="6.6666666667%" value="9"/>
+            <item count="1" percent="6.6666666667%" value="7"/>
+            <item count="1" percent="6.6666666667%" value="6"/>
+            <item count="1" percent="6.6666666667%" value="5"/>
+            <item count="1" percent="6.6666666667%" value="4"/>
+            <item count="1" percent="6.6666666667%" value="2"/>
+          </items>
+        </groupSizeAnalysis>
+      </dataAnalyse>
+      <dataAnalyse indColumn="P_49" columnType="STRING" column="S_16">
+        <expression>RuleCodes</expression>
+        <domainAnalysis>
+          <domainAnalyse name="enum">
+            <examples>
+              <example numCases="19" index="0" numValues="1" value="1"/>
+              <example numCases="16" index="19" numValues="1" value="1 1"/>
+              <example numCases="11" index="35" numValues="1" value="1 2"/>
+              <example numCases="16" index="46" numValues="1" value="10"/>
+              <example numCases="9" index="62" numValues="1" value="10 1"/>
+              <example numCases="5" index="71" numValues="1" value="10 2"/>
+              <example numCases="12" index="76" numValues="1" value="2"/>
+            </examples>
+          </domainAnalyse>
+          <domainAnalyse name="pattern">
+            <examples>
+              <example numCases="41" numValues="4" value="N D"/>
+              <example numCases="47" numValues="3" value="N"/>
+            </examples>
+          </domainAnalyse>
+        </domainAnalysis>
+        <statistics>
+          <stat multiple="false" type="count">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="count_nulls">
+            <item value="12"/>
+          </stat>
+          <stat multiple="false" type="count_not_nulls">
+            <item value="88"/>
+          </stat>
+          <stat multiple="true" type="first_x">
+            <item count="19" index="0" value="1"/>
+            <item count="16" index="19" value="1 1"/>
+            <item count="11" index="35" value="1 2"/>
+            <item count="16" index="46" value="10"/>
+            <item count="9" index="62" value="10 1"/>
+          </stat>
+          <stat multiple="true" type="last_x">
+            <item count="12" index="76" value="2"/>
+            <item count="5" index="71" value="10 2"/>
+            <item count="9" index="62" value="10 1"/>
+            <item count="16" index="46" value="10"/>
+            <item count="11" index="35" value="1 2"/>
+          </stat>
+          <stat multiple="true" type="quantiles">
+            <item index="0" value="1" percent="0%"/>
+            <item index="0" value="1" percent="10%"/>
+            <item index="0" value="1" percent="20%"/>
+            <item index="19" value="1 1" percent="30%"/>
+            <item index="35" value="1 2" percent="40%"/>
+            <item index="35" value="1 2" percent="50%"/>
+            <item index="46" value="10" percent="60%"/>
+            <item index="46" value="10" percent="70%"/>
+            <item index="62" value="10 1" percent="80%"/>
+            <item index="76" value="2" percent="90%"/>
+            <item index="76" value="2" percent="100%"/>
+          </stat>
+          <stat multiple="false" type="distinct">
+            <item value="7"/>
+          </stat>
+          <stat multiple="false" type="unique">
+            <item value="0"/>
+          </stat>
+          <stat multiple="false" type="min">
+            <item count="19" index="0" value="1"/>
+          </stat>
+          <stat multiple="false" type="max">
+            <item count="12" index="76" value="2"/>
+          </stat>
+          <stat multiple="false" type="median">
+            <item count="11" index="44" value="1 2"/>
+          </stat>
+          <stat multiple="false" type="min_positive_length">
+            <item value="1"/>
+          </stat>
+          <stat multiple="false" type="min_length">
+            <item value="1"/>
+          </stat>
+          <stat multiple="false" type="max_length">
+            <item value="4"/>
+          </stat>
+          <stat multiple="false" type="avg_length">
+            <item value="2.2727272727"/>
+          </stat>
+          <stat multiple="false" type="median_length">
+            <item value="2"/>
+          </stat>
+          <stat multiple="false" type="non_unique">
+            <item index="0" value="7"/>
+          </stat>
+          <stat multiple="false" type="duplicate">
+            <item index="0" value="81"/>
+          </stat>
+        </statistics>
+        <frequencies column="S_16">
+          <items>
+            <item count="12" percent="12%"/>
+            <item count="19" percent="19%" value="1"/>
+            <item count="16" percent="16%" value="1 1"/>
+            <item count="16" percent="16%" value="10"/>
+            <item count="12" percent="12%" value="2"/>
+            <item count="11" percent="11%" value="1 2"/>
+            <item count="9" percent="9%" value="10 1"/>
+            <item count="5" percent="5%" value="10 2"/>
+          </items>
+        </frequencies>
+        <frequenciesMasked column="E_33" mask="characters">
+          <items>
+            <item count="12" percent="12%"/>
+            <item count="31" percent="31%" value="D"/>
+            <item count="27" percent="27%" value="D D"/>
+            <item count="16" percent="16%" value="DD"/>
+            <item count="14" percent="14%" value="DD D"/>
+          </items>
+        </frequenciesMasked>
+        <groupSizeAnalysis>
+          <items>
+            <item count="2" percent="28.5714285714%" value="16"/>
+            <item count="1" percent="14.2857142857%" value="19"/>
+            <item count="1" percent="14.2857142857%" value="12"/>
+            <item count="1" percent="14.2857142857%" value="11"/>
+            <item count="1" percent="14.2857142857%" value="9"/>
+            <item count="1" percent="14.2857142857%" value="5"/>
+          </items>
+        </groupSizeAnalysis>
+      </dataAnalyse>
+      <dataAnalyse indColumn="P_50" columnType="INTEGER" column="S_18">
+        <expression>CountRuleFailureCodes</expression>
+        <domainAnalysis>
+          <domainAnalyse name="enum">
+            <examples>
+              <example numCases="12" index="0" numValues="1" value="0"/>
+              <example numCases="47" index="12" numValues="1" value="1"/>
+              <example numCases="41" index="59" numValues="1" value="2"/>
+            </examples>
+          </domainAnalyse>
+        </domainAnalysis>
+        <statistics>
+          <stat multiple="false" type="count">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="count_nulls">
+            <item value="0"/>
+          </stat>
+          <stat multiple="false" type="count_not_nulls">
+            <item value="100"/>
+          </stat>
+          <stat multiple="true" type="first_x">
+            <item count="12" index="0" value="0"/>
+            <item count="47" index="12" value="1"/>
+            <item count="41" index="59" value="2"/>
+          </stat>
+          <stat multiple="true" type="last_x">
+            <item count="41" index="59" value="2"/>
+            <item count="47" index="12" value="1"/>
+            <item count="12" index="0" value="0"/>
+          </stat>
+          <stat multiple="true" type="quantiles">
+            <item index="0" value="0" percent="0%"/>
+            <item index="0" value="0" percent="10%"/>
+            <item index="12" value="1" percent="20%"/>
+            <item index="12" value="1" percent="30%"/>
+            <item index="12" value="1" percent="40%"/>
+            <item index="12" value="1" percent="50%"/>
+            <item index="59" value="2" percent="60%"/>
+            <item index="59" value="2" percent="70%"/>
+            <item index="59" value="2" percent="80%"/>
+            <item index="59" value="2" percent="90%"/>
+            <item index="59" value="2" percent="100%"/>
+          </stat>
+          <stat multiple="false" type="distinct">
+            <item value="3"/>
+          </stat>
+          <stat multiple="false" type="unique">
+            <item value="0"/>
+          </stat>
+          <stat multiple="false" type="min">
+            <item count="12" index="0" value="0"/>
+          </stat>
+          <stat multiple="false" type="max">
+            <item count="41" index="59" value="2"/>
+          </stat>
+          <stat multiple="false" type="median">
+            <item count="47" index="50" value="1"/>
+          </stat>
+          <stat multiple="false" type="sum">
+            <item value="129"/>
+          </stat>
+          <stat multiple="false" type="avg">
+            <item index="0" value="1.29"/>
+          </stat>
+          <stat multiple="false" type="std">
+            <item value="0.667757441"/>
+          </stat>
+          <stat multiple="false" type="var">
+            <item value="0.4459"/>
+          </stat>
+          <stat multiple="false" type="non_unique">
+            <item index="0" value="3"/>
+          </stat>
+          <stat multiple="false" type="duplicate">
+            <item index="0" value="97"/>
+          </stat>
+        </statistics>
+        <frequencies column="S_18">
+          <items>
+            <item count="47" percent="47%" value="1"/>
+            <item count="41" percent="41%" value="2"/>
+            <item count="12" percent="12%" value="0"/>
+          </items>
+        </frequencies>
+        <groupSizeAnalysis>
+          <items>
+            <item count="1" percent="33.3333333333%" value="47"/>
+            <item count="1" percent="33.3333333333%" value="41"/>
+            <item count="1" percent="33.3333333333%" value="12"/>
+          </items>
+        </groupSizeAnalysis>
+      </dataAnalyse>
+      <dataAnalyse indColumn="P_51" columnType="FLOAT" column="S_19">
+        <expression>DataQualityPercentage</expression>
+        <domainAnalysis>
+          <domainAnalyse name="enum">
+            <examples>
+              <example numCases="41" index="0" numValues="1" value="85.7"/>
+              <example numCases="47" index="41" numValues="1" value="92.9"/>
+              <example numCases="12" index="88" numValues="1" value="100"/>
+            </examples>
+          </domainAnalyse>
+        </domainAnalysis>
+        <statistics>
+          <stat multiple="false" type="count">
+            <item value="100"/>
+          </stat>
+          <stat multiple="false" type="count_nulls">
+            <item value="0"/>
+          </stat>
+          <stat multiple="false" type="count_not_nulls">
+            <item value="100"/>
+          </stat>
+          <stat multiple="true" type="first_x">
+            <item count="41" index="0" value="85.7"/>
+            <item count="47" index="41" value="92.9"/>
+            <item count="12" index="88" value="100"/>
+          </stat>
+          <stat multiple="true" type="last_x">
+            <item count="12" index="88" value="100"/>
+            <item count="47" index="41" value="92.9"/>
+            <item count="41" index="0" value="85.7"/>
+          </stat>
+          <stat multiple="true" type="quantiles">
+            <item index="0" value="85.7" percent="0%"/>
+            <item index="0" value="85.7" percent="10%"/>
+            <item index="0" value="85.7" percent="20%"/>
+            <item index="0" value="85.7" percent="30%"/>
+            <item index="0" value="85.7" percent="40%"/>
+            <item index="41" value="92.9" percent="50%"/>
+            <item index="41" value="92.9" percent="60%"/>
+            <item index="41" value="92.9" percent="70%"/>
+            <item index="41" value="92.9" percent="80%"/>
+            <item index="88" value="100" percent="90%"/>
+            <item index="88" value="100" percent="100%"/>
+          </stat>
+          <stat multiple="false" type="distinct">
+            <item value="3"/>
+          </stat>
+          <stat multiple="false" type="unique">
+            <item value="0"/>
+          </stat>
+          <stat multiple="false" type="min">
+            <item count="41" index="0" value="85.7"/>
+          </stat>
+          <stat multiple="false" type="max">
+            <item count="12" index="88" value="100"/>
+          </stat>
+          <stat multiple="false" type="median">
+            <item count="47" index="50" value="92.9"/>
+          </stat>
+          <stat multiple="false" type="sum">
+            <item value="9080"/>
+          </stat>
+          <stat multiple="false" type="avg">
+            <item index="41" value="90.8"/>
+          </stat>
+          <stat multiple="false" type="std">
+            <item value="4.7847256975"/>
+          </stat>
+          <stat multiple="false" type="var">
+            <item value="22.8936"/>
+          </stat>
+          <stat multiple="false" type="non_unique">
+            <item index="0" value="3"/>
+          </stat>
+          <stat multiple="false" type="duplicate">
+            <item index="0" value="97"/>
+          </stat>
+        </statistics>
+        <frequencies column="S_19">
+          <items>
+            <item count="47" percent="47%" value="92.9"/>
+            <item count="41" percent="41%" value="85.7"/>
+            <item count="12" percent="12%" value="100"/>
+          </items>
+        </frequencies>
+        <groupSizeAnalysis>
+          <items>
+            <item count="1" percent="33.3333333333%" value="47"/>
+            <item count="1" percent="33.3333333333%" value="41"/>
+            <item count="1" percent="33.3333333333%" value="12"/>
+          </items>
+        </groupSizeAnalysis>
+      </dataAnalyse>
+    </dataAnalyses>
+  </input>
+</profileExport>

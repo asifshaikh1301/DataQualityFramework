@@ -1,0 +1,17 @@
+"SourceID";"SourceLayerID";"SourceAttributeID";"ReportYear";"LoadType";"TimeInterval";"Perspective";"DomainID";"DomainLayerID";"DomainAttributeID";"CategoryID";"CategoryLayerID";"RuleID";"DebugTraceID";"AggregationDateTime";"SourceName";"SourceLayerName";"SourceAttributeName";"ListDistinctRules";"CountDistinctRules";"CountDistinctRulesApplication";"MinDataQualityPercentage";"AvgDataQualityPercentage";"MaxDataQualityPercentage";"NoOfDomains";"NoOfDomainLayers";"NoOfDomainAttributeNames";"NoOfSources";"NoOfSourceLayers";"NoOfSourceAttributeNames";"NoOfCategories";"NoOfCategoryLayers";"DomainName";"DomainLayerName";"DomainAttributeName";"CategoryName";"CategoryLayerName";"RuleName";"ListDistinctSourceID";"ListDistinctSourceLayerID";"ListDistinctSourceAttributeID";"ListDistinctDomainID";"ListDistinctDomainLayerID";"ListDistinctDomainAttributeID"
+2;3;14;2020;"System";"YEAR";"SourceAttribute";;;;;;;"Asif Shaikh";2021-01-13 15:05:51;"CRM";"CustomerTable";"Mobile";"1,2";2;2;25;46.5;68;1;1;1;1;1;1;1;2;;;;;;;;;;;;
+2;3;3;2020;"System";"YEAR";"SourceAttribute";;;;;;;"Asif Shaikh";2021-01-13 15:05:51;"CRM";"CustomerTable";"GD";"1,4";2;2;33;47;61;1;1;1;1;1;1;1;2;;;;;;;;;;;;
+2;3;;2020;"System";"YEAR";"SourceLayer";;;;;;;"Asif Shaikh";2021-01-13 15:05:51;"CRM";"CustomerTable";;"1,4,2";3;4;25;46.75;68;1;2;2;1;1;2;1;2;;;;;;;;;;;;
+2;;;2020;"System";"YEAR";"Source";;;;;;;"Asif Shaikh";2021-01-13 15:05:51;"CRM";;;"1,4,2";3;4;25;46.75;68;1;2;2;1;1;2;1;2;;;;;;;;;;;;
+;;;2020;"System";"YEAR";"DomainAttribute";2;3;7;;;;"Asif Shaikh";2021-01-13 15:05:51;;;;"1,4";2;2;33;47;61;1;1;1;1;1;1;1;2;"Customer";"Personal";"Gender";;;;;;;;;
+;;;2020;"System";"YEAR";"DomainAttribute";2;4;4;;;;"Asif Shaikh";2021-01-13 15:05:51;;;;"1,2";2;2;25;46.5;68;1;1;1;1;1;1;1;2;"Customer";"Contact";"Mobile";;;;;;;;;
+;;;2020;"System";"YEAR";"DomainLayer";2;3;;;;;"Asif Shaikh";2021-01-13 15:05:51;;;;"1,4";2;2;33;47;61;1;1;1;1;1;1;1;2;"Customer";"Personal";;;;;;;;;;
+;;;2020;"System";"YEAR";"DomainLayer";2;4;;;;;"Asif Shaikh";2021-01-13 15:05:51;;;;"1,2";2;2;25;46.5;68;1;1;1;1;1;1;1;2;"Customer";"Contact";;;;;;;;;;
+;;;2020;"System";"YEAR";"Domain";2;;;;;;"Asif Shaikh";2021-01-13 15:05:51;;;;"1,4,2";3;4;25;46.75;68;1;2;2;1;1;2;1;2;"Customer";;;;;;;;;;;
+;;;2020;"System";"YEAR";"CategoryLayer";;;;1;1179;;"Asif Shaikh";2021-01-13 15:05:51;;;;"1";1;2;61;64.5;68;1;2;2;1;1;2;1;1;;;;"Data Quality";"Completeness";;;;;;;
+;;;2020;"System";"YEAR";"CategoryLayer";;;;1;1175;;"Asif Shaikh";2021-01-13 15:05:51;;;;"4,2";2;2;25;29;33;1;2;2;1;1;2;1;1;;;;"Data Quality";"Validity";;;;;;;
+;;;2020;"System";"YEAR";"Category";;;;1;;;"Asif Shaikh";2021-01-13 15:05:51;;;;"1,4,2";3;4;25;46.75;68;1;2;2;1;1;2;1;2;;;;"Data Quality";;;;;;;;
+;;;2020;"System";"YEAR";"Rule";;;;;;2;"Asif Shaikh";2021-01-13 15:05:51;;;;;1;1;25;25;25;1;1;1;1;1;1;1;1;;;;"Data Quality";"Validity";"Mobile number is valid syntax and structure";"2";"3";"14";"2";"4";"4"
+;;;2020;"System";"YEAR";"Rule";;;;;;1;"Asif Shaikh";2021-01-13 15:05:51;;;;;1;2;61;64.5;68;1;2;2;1;1;2;1;1;;;;"Data Quality";"Completeness";"Column is populated";"2";"3";"3,14";"2";"3,4";"7,4"
+;;;2020;"System";"YEAR";"Rule";;;;;;4;"Asif Shaikh";2021-01-13 15:05:51;;;;;1;1;33;33;33;1;1;1;1;1;1;1;1;;;;"Data Quality";"Validity";"Column is valid Gender value";"2";"3";"3";"2";"3";"7"
+;;;2020;"System";"YEAR";"Date";;;;;;;"Asif Shaikh";2021-01-13 15:05:51;;;;;3;4;25;46.75;68;1;2;2;1;1;2;1;2;;;;"Data Quality";"Completeness";"Column is populated";"2";"3";"3,14";"2";"3,4";"7,4"

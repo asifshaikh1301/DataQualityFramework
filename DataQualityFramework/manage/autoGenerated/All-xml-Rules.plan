@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+	<step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="168,288,-1,-1"/>
+	</step>
+	<step mode="NORMAL" className="com.ataccama.dqc.tasks.io.xml.reader.XmlReader" disabled="false" id="Xml Reader">
+		<properties fileName="./All-xml-Rules.xml">
+			<dataFormatParameters falseValue="false" dateTimeFormat="yy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+			<namespaces/>
+			<recordsOutputs>
+				<recordsOutput rowsRootXPath="purity-config-AllRules/purity-config" out="out">
+					<attributes>
+						<attribute xpath=".." xmlValue="true" name="purity-config" type="STRING"/>
+						<attribute xpath="step[@id=&#39;in&#39;]/properties/shadowColumns/shadowColumnDef[@name=&#39;tmp_RuleCode&#39;]/@defaultExpression" xmlValue="false" name="RuleID" type="STRING"/>
+					</attributes>
+				</recordsOutput>
+			</recordsOutputs>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="48,288,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Xml Reader"/>
+		<target endpoint="in" step="Multiplicator"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="TextFileWriter RuleID 1">
+		<properties writeHeader="false" fileName="../../rules/development/Rules_1.comp" fieldSeparator=";" generateMetadata="false" writeAllColumns="false" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" useStringQualifierOnAllColumns="false">
+			<columns>
+				<textWriterColumn name="purity-config"/>
+			</columns>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="408,240,-1,-1"/>
+	</step>
+	<step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter RuleID 1">
+		<properties condition="toInteger(trashNonDigits(RuleID)) in {1}"/>
+		<visual-constraints layout="horizontal" bounds="288,240,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter RuleID 1"/>
+		<target endpoint="in" step="TextFileWriter RuleID 1"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="Filter RuleID 1"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="TextFileWriter RuleID 2">
+		<properties writeHeader="false" fileName="../../rules/development/Rules_2.comp" fieldSeparator=";" generateMetadata="false" writeAllColumns="false" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" useStringQualifierOnAllColumns="false">
+			<columns>
+				<textWriterColumn name="purity-config"/>
+			</columns>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="408,240,-1,-1"/>
+	</step>
+	<step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter RuleID 2">
+		<properties condition="toInteger(trashNonDigits(RuleID)) in {2}"/>
+		<visual-constraints layout="horizontal" bounds="288,240,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter RuleID 2"/>
+		<target endpoint="in" step="TextFileWriter RuleID 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="Filter RuleID 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="TextFileWriter RuleID 3">
+		<properties writeHeader="false" fileName="../../rules/development/Rules_3.comp" fieldSeparator=";" generateMetadata="false" writeAllColumns="false" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" useStringQualifierOnAllColumns="false">
+			<columns>
+				<textWriterColumn name="purity-config"/>
+			</columns>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="408,240,-1,-1"/>
+	</step>
+	<step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter RuleID 3">
+		<properties condition="toInteger(trashNonDigits(RuleID)) in {3}"/>
+		<visual-constraints layout="horizontal" bounds="288,240,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter RuleID 3"/>
+		<target endpoint="in" step="TextFileWriter RuleID 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="Filter RuleID 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="TextFileWriter RuleID 4">
+		<properties writeHeader="false" fileName="../../rules/development/Rules_4.comp" fieldSeparator=";" generateMetadata="false" writeAllColumns="false" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" useStringQualifierOnAllColumns="false">
+			<columns>
+				<textWriterColumn name="purity-config"/>
+			</columns>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="408,240,-1,-1"/>
+	</step>
+	<step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter RuleID 4">
+		<properties condition="toInteger(trashNonDigits(RuleID)) in {4}"/>
+		<visual-constraints layout="horizontal" bounds="288,240,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter RuleID 4"/>
+		<target endpoint="in" step="TextFileWriter RuleID 4"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="Filter RuleID 4"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+</purity-config>

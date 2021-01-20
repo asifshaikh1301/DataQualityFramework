@@ -1,0 +1,7 @@
+"SourceName";"SourceLayerName";"SourceAttributeName";"RuleMappings";"RuleID";"TotalRecordsProcessedByRule";"Fail_Count";"AggJoinCol";"DQM_RuleCodesAppliedLAForFilter";"FilterRuleID";"FilterRecordsCount";"FilterLeadingAttribute";"DQM_RuleCodesAppliedLAFiltered";"FilteredRuleID";"FilteredRecordsCount";"FilteredLeadingAttribute";"Success_Count";"Code"
+"OmniCRM";"og_customer";"Mobile";"Rule_Attribute_1.Mobile";1;50;22;"OmniCRMog_customerMobile1";;;;;;;;;28;"1"
+"OmniImInAMess";"og_customer";"Gender";"Rule_Attribute_1.Gender";1;50;10;"OmniImInAMessog_customerGender1";;;;;;;;;40;"1"
+"OmniImInAMess";"og_customer";"Mobile";"Rule_Attribute_1.Mobile";1;50;10;"OmniImInAMessog_customerMobile1";;;;;;;;;40;"1"
+"OmniCRM";"og_customer";"Gender";"Rule_Attribute_1.Gender";10;21;12;"OmniCRMog_customerGender10";"1.Gender*10.Gender";1;50;"Gender";"1.Gender*10.Gender";1;21;"Gender";9;"10"
+"OmniCRM";"og_customer";"Gender";"Rule_Attribute_1.Gender";1;50;29;"OmniCRMog_customerGender1";;;;;;;;;21;"1"
+"OmniImInAMess";"og_customer";"Gender";"Rule_Attribute_1.Gender";10;40;16;"OmniImInAMessog_customerGender10";"1.Gender*10.Gender";1;50;"Gender";"1.Gender*10.Gender";1;40;"Gender";24;"10"

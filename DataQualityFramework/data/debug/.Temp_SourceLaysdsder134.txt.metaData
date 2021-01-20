@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<settings>
+  <connector>
+    <saved-state fixedSizes="false" escapeSequence="" fieldSeparator=";" stringQualifierEscapeSequence="&quot;" recordLength="-1" numberOfLinesInFooter="0" encoding="UTF-8" lineWithColumnNames="1" ignoredRowRegEx="" recordSeparator="\r\n" stringQualifier="&quot;" numberOfLinesInHeader="1">
+      <columns>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="SourceSystemName" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="SourceSystemExternalID" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="SourceSystemDescription" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="SourceSchemaName" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="SourceSchemaExternalID" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="SourceID" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="SourceExternalID" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="SourceName" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="INTEGER" name="SourceTypeID" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="SourceDescription" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="SourceLayerName" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="SourceLayerType" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="SourceLayerDescription" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="jdbc_ConnectionName" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="DQFramework_DBType" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="Omni_DBType" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+      </columns>
+    </saved-state>
+  </connector>
+</settings>

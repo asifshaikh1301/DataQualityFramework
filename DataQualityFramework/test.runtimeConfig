@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<runtimeconfig>
+
+  <dataSources>
+    <dataSource password="crypted:AES:tz08xX1Pc/0I1t78NZpCAfpVP9jaHtn7nDyXKgNhXWI=" name="myPL" driverclass="com.microsoft.sqlserver.jdbc.SQLServerDriver" user="sa" url="jdbc:sqlserver://localhost:1433;databaseName=myPL"/>
+  </dataSources>
+
+  <parallelismLevel>1</parallelismLevel>
+</runtimeconfig>

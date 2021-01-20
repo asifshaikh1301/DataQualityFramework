@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (Union Same - Filter) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same - Filter">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="360,624,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union Same - Filter"/>
+		<target endpoint="in" step="true"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Update RuleFilter columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Update RuleFilter columns">
+		<properties>
+			<assignments>
+				<assignment expression="DQM_RuleCodesAppliedLAFiltered + &quot; &quot; + tmp_PreviousRuleCodeLA + &quot;*&quot; + tmp_RuleCodeLA" column="DQM_RuleCodesAppliedLAFiltered">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="384,552,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Update RuleFilter columns"/>
+		<target endpoint="in" step="Union Same - Filter"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="383,600"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Update RuleFilter columns 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Update RuleFilter columns 2">
+		<properties>
+			<assignments>
+				<assignment expression="DQM_RuleCodesAppliedForFilter + &quot; &quot; + word(tmp_PreviousRuleCodeLA,0,&quot;.&quot;) + &quot;*&quot; + tmp_RuleCode" column="DQM_RuleCodesAppliedForFilter">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="DQM_RuleCodesAppliedLAForFilter + &quot; &quot; + tmp_PreviousRuleCodeLA + &quot;*&quot; + tmp_RuleCodeLA" column="DQM_RuleCodesAppliedLAForFilter">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="360,408,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Update RuleFilter columns 2"/>
+		<target endpoint="in" step="tmp_PreviousRuleConditionMet?"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Update tmp_RuleCodeLA) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Update tmp_RuleCodeLA">
+		<properties>
+			<assignments>
+				<assignment expression="null" column="tmp_RuleConditionMet">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="tmp_RuleCode +&quot;.&quot;+ tmp_LeadingAttribute" column="tmp_RuleCodeLA">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="360,264,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Update tmp_RuleCodeLA"/>
+		<target endpoint="in" step="useRuleFilter?"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (false) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="false">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="240,693,-1,-1"/>
+	</step>
+
+
+
+<!-- (in) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in">
+		<properties>
+			<columns>
+				<columnDef name="DQM_RecordID" type="STRING"/>
+				<columnDef name="DQM_RecordScore" type="INTEGER"/>
+				<columnDef name="DQM_RecordExplanation" type="STRING"/>
+				<columnDef name="DQM_RuleCodesApplied" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedLA" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedLAGuid" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedMappings" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedForFilter" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedLAForFilter" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedLAFiltered" type="STRING"/>
+				<columnDef name="DQM_RuleCodesFailed" type="STRING"/>
+				<columnDef name="DQM_RuleCodesFailedLA" type="STRING"/>
+				<columnDef name="tmp_RuleConditionMet" type="BOOLEAN"/>
+				<columnDef name="tmp_RuleCodeLA" type="STRING"/>
+				<columnDef name="tmp_LeadingAttribute" type="STRING"/>
+				<columnDef name="tmp_RuleMappings" type="STRING"/>
+				<columnDef name="tmp_useRuleFilter" type="BOOLEAN"/>
+				<columnDef name="tmp_RuleCode" type="STRING"/>
+				<columnDef name="tmp_RuleCodeLAGuid" type="STRING"/>
+				<columnDef name="tmp_PreviousRuleConditionMet" type="BOOLEAN"/>
+				<columnDef name="tmp_PreviousRuleCodeLA" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="360,192,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in"/>
+		<target endpoint="in" step="Update tmp_RuleCodeLA"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (tmp_PreviousRuleConditionMet?) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="tmp_PreviousRuleConditionMet?">
+		<properties condition="tmp_PreviousRuleConditionMet"/>
+		<visual-constraints layout="vertical" bounds="360,480,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="tmp_PreviousRuleConditionMet?"/>
+		<target endpoint="in" step="Update RuleFilter columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="tmp_PreviousRuleConditionMet?"/>
+		<target endpoint="in" step="false"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="263,528"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (true) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="true">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="360,696,-1,-1"/>
+	</step>
+
+
+
+<!-- (useRuleFilter?) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="useRuleFilter?">
+		<properties condition="tmp_useRuleFilter is true"/>
+		<visual-constraints layout="vertical" bounds="360,336,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="useRuleFilter?"/>
+		<target endpoint="in" step="Union Same - Filter"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="293,384"/>
+				<point location="293,624"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="useRuleFilter?"/>
+		<target endpoint="in" step="Update RuleFilter columns 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+</purity-config>

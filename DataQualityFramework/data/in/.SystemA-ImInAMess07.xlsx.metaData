@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<settings>
+  <multiSheet>
+    <saved-state class="com.ataccama.dqc.gui.msoffice.internal.ExcelMetaData$Data">
+      <sheets>
+        <excelSheetMetaData firstColumn="0" firstRow="1" name="Sheet1" empty="false">
+          <columns>
+            <iConnectorColumnMetaData dataType="INTEGER" name="RecID" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="FullName" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="GD" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="CalculatedDate" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="BirthDate" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Description" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Mobile" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Landline" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Email" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="dpadirectmailingoptoutcode" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="dpaemailoptoutcode" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="dpatelephonecommunicationoptoutcode" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="titleCode" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+          </columns>
+        </excelSheetMetaData>
+      </sheets>
+    </saved-state>
+  </multiSheet>
+</settings>

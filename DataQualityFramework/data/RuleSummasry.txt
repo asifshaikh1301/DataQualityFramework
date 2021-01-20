@@ -1,0 +1,3 @@
+"LastRead";"ReportDate";"ReportHour";"ReportMinute";"ReportDay";"ReportDayName";"ReportWeek";"ReportMonth";"ReportYear";"CurrentDate";"CurrentHour";"CurrentMinute";"CurrentDay";"CurrentDayName";"CurrentWeek";"CurrentMonth";"CurrentYear"
+2020-06-01 23:00:00;2020-06-01;23;0;153;"Mon";23;6;2020;2021-01-13;15;5;13;"Wed";2;1;2021
+2020-07-01 23:00:00;2020-07-01;23;0;183;"Wed";27;7;2020;2021-01-13;15;5;13;"Wed";2;1;2021

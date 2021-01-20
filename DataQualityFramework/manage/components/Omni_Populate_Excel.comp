@@ -1,0 +1,2097 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (Alter Format 10) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Alter Format 10">
+		<properties>
+			<addedColumns>
+				<addedColumn name="SourceID" type="STRING"/>
+				<addedColumn expression="sourceSystemName " name="SourceName" type="STRING"/>
+				<addedColumn name="SourceExternalID" type="STRING"/>
+				<addedColumn expression="&quot;Omni&quot;" name="SourceType" type="STRING"/>
+				<addedColumn expression="&quot;Omni-Gen DQ Edition&quot;" name="SourceDescription" type="STRING"/>
+			</addedColumns>
+			<removedColumns>
+				<columnRef name="sourceSystemsID"/>
+				<columnRef name="sourceSystemName"/>
+				<columnRef name="sourceSystemShortDesc"/>
+				<columnRef name="sourceSystemIdentifier"/>
+			</removedColumns>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="48,720,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Alter Format 10"/>
+		<target endpoint="in" step="Multiplicator 11"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Alter Format 11) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Alter Format 11">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="SourceLayerExternalID" name="DomainLayerID" type="STRING"/>
+				<addedColumn expression="SourceAttributeExternalID" name="DomainAttributeID" type="STRING"/>
+				<addedColumn expression="SourceAttributeName" name="DomainAttributeName" type="STRING"/>
+			</addedColumns>
+			<removedColumns>
+				<columnRef name="SourceLayerExternalID"/>
+				<columnRef name="SourceAttributeID"/>
+				<columnRef name="SourceAttributeExternalID"/>
+				<columnRef name="SourceAttributeName"/>
+				<columnRef name="SourceAttributeProcessingName"/>
+				<columnRef name="SourceAttributeColumnType"/>
+				<columnRef name="SourceAttributeDescription"/>
+				<columnRef name="SourceAttributeIsIdentifier"/>
+			</removedColumns>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="432,1608,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Alter Format 11"/>
+		<target endpoint="in" step="Multiplicator 35"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Alter Format 12) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Alter Format 12">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="word(Child1ColumnsRDC,0,&quot;:&quot;)" name="SourceLayerExternalID" type="STRING"/>
+				<addedColumn name="SourceAttributeID" type="INTEGER"/>
+				<addedColumn expression="word(Child1ColumnsRDC,0,&quot;:&quot;) + &quot;.&quot; + Child1ColumnName" name="SourceAttributeExternalID" type="STRING"/>
+				<addedColumn expression="Child1ColumnName" name="SourceAttributeName" type="STRING"/>
+				<addedColumn expression="Child1ColumnName" name="SourceAttributeProcessingName" type="STRING"/>
+				<addedColumn name="SourceAttributeColumnType" type="STRING">
+					<expression>
+case (
+Child1ColumnType is null,&quot;String&quot;,
+lower(Child1ColumnType) == &quot;identifier&quot;,&quot;String&quot;,
+lower(Child1ColumnType) == &quot;date&quot;,&quot;DAY&quot;,
+Child1ColumnType)</expression>
+				</addedColumn>
+				<addedColumn expression="&quot;No description provided&quot;" name="SourceAttributeDescription" type="STRING"/>
+				<addedColumn expression="iiF(lower(Child1ColumnType) == &quot;identifier&quot;,&quot;Y&quot;,null)" name="SourceAttributeIsIdentifier" type="STRING"/>
+			</addedColumns>
+			<removedColumns>
+				<columnRef name="Child1ColumnName"/>
+				<columnRef name="Child1ColumnType"/>
+				<columnRef name="Child1ColumnsRDC"/>
+			</removedColumns>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,1464,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Alter Format 12"/>
+		<target endpoint="in" step="Multiplicator 28"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Alter Format 13) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Alter Format 13">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="word(Child2ColumnsRDC,0,&quot;:&quot;)" name="SourceLayerExternalID" type="STRING"/>
+				<addedColumn name="SourceAttributeID" type="INTEGER"/>
+				<addedColumn expression="word(Child2ColumnsRDC,0,&quot;:&quot;) + &quot;.&quot; + Child2ColumnName" name="SourceAttributeExternalID" type="STRING"/>
+				<addedColumn expression="Child2ColumnName" name="SourceAttributeName" type="STRING"/>
+				<addedColumn expression="Child2ColumnName" name="SourceAttributeProcessingName" type="STRING"/>
+				<addedColumn name="SourceAttributeColumnType" type="STRING">
+					<expression>
+case (
+Child2ColumnType is null,&quot;String&quot;,
+lower(Child2ColumnType) == &quot;identifier&quot;,&quot;String&quot;,
+lower(Child2ColumnType) == &quot;date&quot;,&quot;DAY&quot;,
+Child2ColumnType)</expression>
+				</addedColumn>
+				<addedColumn expression="&quot;No description provided&quot;" name="SourceAttributeDescription" type="STRING"/>
+				<addedColumn expression="iiF(lower(Child2ColumnType) == &quot;identifier&quot;,&quot;Y&quot;,null)" name="SourceAttributeIsIdentifier" type="STRING"/>
+			</addedColumns>
+			<removedColumns>
+				<columnRef name="Child2ColumnName"/>
+				<columnRef name="Child2ColumnType"/>
+				<columnRef name="Child2ColumnsRDC"/>
+			</removedColumns>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,1608,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Alter Format 13"/>
+		<target endpoint="in" step="Multiplicator 32"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Alter Format 6) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Alter Format 6">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="word(RootFieldsRDC,0,&quot;:&quot;)" name="SourceLayerExternalID" type="STRING"/>
+				<addedColumn name="SourceAttributeID" type="INTEGER"/>
+				<addedColumn expression="word(RootFieldsRDC,0,&quot;:&quot;) + &quot;.&quot; + RootColumnName" name="SourceAttributeExternalID" type="STRING"/>
+				<addedColumn expression="RootColumnName" name="SourceAttributeName" type="STRING"/>
+				<addedColumn expression="RootColumnName" name="SourceAttributeProcessingName" type="STRING"/>
+				<addedColumn name="SourceAttributeColumnType" type="STRING">
+					<expression>
+case (
+RootColumnType is null,&quot;String&quot;,
+lower(RootColumnType) == &quot;identifier&quot;,&quot;String&quot;,
+lower(RootColumnType) == &quot;date&quot;,&quot;DAY&quot;,
+RootColumnType)</expression>
+				</addedColumn>
+				<addedColumn expression="&quot;No description provided&quot;" name="SourceAttributeDescription" type="STRING"/>
+				<addedColumn expression="iiF(lower(RootColumnType) == &quot;identifier&quot;,&quot;Y&quot;,null)" name="SourceAttributeIsIdentifier" type="STRING"/>
+			</addedColumns>
+			<removedColumns>
+				<columnRef name="RootColumnName"/>
+				<columnRef name="RootColumnType"/>
+				<columnRef name="RootFieldsRDC"/>
+			</removedColumns>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,1368,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Alter Format 6"/>
+		<target endpoint="in" step="Multiplicator 31"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Alter Format 7) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Alter Format 7">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="SourceLayerExternalID" name="DomainLayerID" type="STRING"/>
+				<addedColumn expression="SourceAttributeExternalID" name="DomainAttributeID" type="STRING"/>
+				<addedColumn expression="SourceAttributeName" name="DomainAttributeName" type="STRING"/>
+			</addedColumns>
+			<removedColumns>
+				<columnRef name="SourceLayerExternalID"/>
+				<columnRef name="SourceAttributeID"/>
+				<columnRef name="SourceAttributeExternalID"/>
+				<columnRef name="SourceAttributeName"/>
+				<columnRef name="SourceAttributeProcessingName"/>
+				<columnRef name="SourceAttributeColumnType"/>
+				<columnRef name="SourceAttributeDescription"/>
+				<columnRef name="SourceAttributeIsIdentifier"/>
+			</removedColumns>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="432,1368,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Alter Format 7"/>
+		<target endpoint="in" step="Multiplicator 33"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Alter Format 8) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Alter Format 8">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="SourceLayerExternalID" name="DomainLayerID" type="STRING"/>
+				<addedColumn expression="SourceAttributeExternalID" name="DomainAttributeID" type="STRING"/>
+				<addedColumn expression="SourceAttributeName" name="DomainAttributeName" type="STRING"/>
+			</addedColumns>
+			<removedColumns>
+				<columnRef name="SourceLayerExternalID"/>
+				<columnRef name="SourceAttributeID"/>
+				<columnRef name="SourceAttributeExternalID"/>
+				<columnRef name="SourceAttributeName"/>
+				<columnRef name="SourceAttributeProcessingName"/>
+				<columnRef name="SourceAttributeColumnType"/>
+				<columnRef name="SourceAttributeDescription"/>
+				<columnRef name="SourceAttributeIsIdentifier"/>
+			</removedColumns>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="432,1464,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Alter Format 8"/>
+		<target endpoint="in" step="Multiplicator 34"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Alter Format 9) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Alter Format 9">
+		<properties>
+			<addedColumns/>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,816,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Alter Format 9"/>
+		<target endpoint="in" step="Multiplicator 7"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ColumnMappings - DB - Errors 5) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="true" id="ColumnMappings - DB - Errors 5">
+		<properties writeHeader="true" fileName="../data/debug/GRUSources - DB - Errors.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1320,2064,-1,-1"/>
+	</step>
+
+
+
+<!-- (Creaste ParentID column 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Creaste ParentID column 2">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="word(DataModelRDC,0,&quot;:&quot;)" name="DataModelID" type="STRING"/>
+				<addedColumn expression="RootEntityName" name="DomainName" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,1008,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Creaste ParentID column 2"/>
+		<target endpoint="in" step="Multiplicator 9"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Creaste ParentID column 4) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Creaste ParentID column 4">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="word(RootEntityRDC,0,&quot;:&quot;)" name="RootEntityID" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,1104,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Creaste ParentID column 4"/>
+		<target endpoint="in" step="Multiplicator 26"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Creaste ParentID column 6) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Creaste ParentID column 6">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="word(InputDataModelRDC,0,&quot;:&quot;)" name="InputDataModelID" type="STRING"/>
+				<addedColumn expression="DataModelName" name="Domain" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,912,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Creaste ParentID column 6"/>
+		<target endpoint="in" step="Multiplicator 8"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Creaste ParentID column 7) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Creaste ParentID column 7">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="word(Child1EntitiesRDC,0,&quot;:&quot;)" name="Child1EntityID" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,1224,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Creaste ParentID column 7"/>
+		<target endpoint="in" step="Multiplicator 27"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create Joined fields) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create Joined fields">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="replace(lower(substr(SourceLayerName,3)) + lower(SourceAttributeName),&quot;_&quot;,&quot;&quot;)" name="J1" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="2928,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create Joined fields"/>
+		<target endpoint="in" step="Multiplicator 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create Joined fields 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create Joined fields 2">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="replace(lower(DomainLayerName) + lower(DomainAttributeName),&quot;_&quot;,&quot;&quot;)" name="J1" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1896,1872,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create Joined fields 2"/>
+		<target endpoint="in" step="Multiplicator 55"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create Tmp columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create Tmp columns">
+		<properties>
+			<addedColumns>
+				<addedColumn name="OmniDB_SourceAttributeName" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="3144,936,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create Tmp columns"/>
+		<target endpoint="in" step="Update SourceAttributeName "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Data Quality Framework - Excel) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.msoffice.excel.write.ExcelFileWriter" disabled="true" id="Data Quality Framework - Excel">
+		<properties fileName="../../data/out/DQFramework_Populated.xlsx" excel2007="true" templateFile="../../data/ext/template/DQFramework_Template.xlsx" templateFormulaRecalculate="true">
+			<inputs>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="SourceDetails" startCell="A2" writeAllColumns="false" inputName="SourceDetails">
+					<columns>
+						<columnExprDef expression="SourceName" name="SourceName"/>
+						<columnExprDef expression="SourceLayerName" name="SourceLayerName"/>
+						<columnExprDef expression="SourceAttributeName" name="SourceAttributeName"/>
+						<columnExprDef expression="upper(SourceAttributeDataType)" name="SourceAttributeDataType"/>
+						<columnExprDef expression="OmniDB_SourceAttributeName" name="OmniDB_SourceAttributeName"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="DomainDetails" startCell="A2" writeAllColumns="false" inputName="DomainDetails">
+					<columns>
+						<columnExprDef name="DomainName"/>
+						<columnExprDef name="DomainLayerName"/>
+						<columnExprDef name="DomainAttributeName"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="SourceDomainMapping" startCell="A2" writeAllColumns="false" inputName="SourceDomainMapping">
+					<columns>
+						<columnExprDef expression="&quot;&quot;" name="MappingID"/>
+						<columnExprDef expression="SourceName" name="SourceName"/>
+						<columnExprDef expression="SourceLayerName" name="SourceLayerName"/>
+						<columnExprDef expression="SourceAttributeName" name="SourceAttributeName"/>
+						<columnExprDef expression="upper(SourceAttributeDataType)" name="SourceAttributeDataType"/>
+						<columnExprDef expression="OmniDB_SourceAttributeName" name="OmniDB_SourceAttributeName"/>
+						<columnExprDef expression="DomainName" name="DomainName"/>
+						<columnExprDef expression="DomainLayerName" name="DomainLayerName"/>
+						<columnExprDef expression="DomainAttributeName" name="DomainAttributeName"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+			</inputs>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="3504,936,-1,-1"/>
+	</step>
+
+
+
+<!-- (Data Quality Framework - Excel 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.msoffice.excel.write.ExcelFileWriter" disabled="true" id="Data Quality Framework - Excel 2">
+		<properties fileName="DQFramework_Populated.xlsx" excel2007="true" templateFile="DQFramework_Template.xlsx" templateFormulaRecalculate="true">
+			<inputs>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="Rules" startCell="A2" writeAllColumns="false" inputName="Rules">
+					<columns>
+						<columnExprDef name="RuleID"/>
+						<columnExprDef name="Technical_RuleName"/>
+						<columnExprDef name="Generic_RuleName"/>
+						<columnExprDef name="Rule_Details"/>
+						<columnExprDef name="Score"/>
+						<columnExprDef name="Explanation"/>
+						<columnExprDef name="RuleScope"/>
+						<columnExprDef expression="HierarchyCategoryID" name="DQCategory"/>
+						<columnExprDef name="Tags"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="DQ Category" startCell="A2" writeAllColumns="false" inputName="DQ Category">
+					<columns>
+						<columnExprDef name="CategoryID"/>
+						<columnExprDef name="Category"/>
+						<columnExprDef name="HierarchyCategoryID"/>
+						<columnExprDef name="HierarchyCategory"/>
+						<columnExprDef name="Description"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="SourceDetails" startCell="A2" writeAllColumns="false" inputName="SourceDetails">
+					<columns>
+						<columnExprDef name="SourceName"/>
+						<columnExprDef name="SourceLayerName"/>
+						<columnExprDef name="SourceAttributeName"/>
+						<columnExprDef name="SourceAttributeDataType"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="DomainDetails" startCell="A2" writeAllColumns="false" inputName="DomainDetails">
+					<columns>
+						<columnExprDef name="DomainName"/>
+						<columnExprDef name="DomainLayerName"/>
+						<columnExprDef name="DomainAttributeName"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="SourceDomainMapping" startCell="A2" writeAllColumns="false" inputName="SourceDomainMapping">
+					<columns>
+						<columnExprDef name="MappingID"/>
+						<columnExprDef name="SourceName"/>
+						<columnExprDef name="SourceLayerName"/>
+						<columnExprDef name="SourceAttributeName"/>
+						<columnExprDef name="SourceAttributeDataType"/>
+						<columnExprDef name="DomainName"/>
+						<columnExprDef name="DomainLayerName"/>
+						<columnExprDef name="DomainAttributeName"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+				<excelSheetInput writeHeader="false" clearSheet="false" sheetName="Result_Rules" startCell="A2" writeAllColumns="false" inputName="Result_Rules">
+					<columns>
+						<columnExprDef name="DebugTraceID"/>
+						<columnExprDef name="SubmissionID"/>
+						<columnExprDef name="SubmissionDateTime"/>
+						<columnExprDef name="ReportDateTime"/>
+						<columnExprDef name="RuleID"/>
+						<columnExprDef name="SourceName"/>
+						<columnExprDef name="SourceLayerName"/>
+						<columnExprDef name="SourceAttributeName"/>
+						<columnExprDef name="Success_Count"/>
+						<columnExprDef name="Total"/>
+						<columnExprDef expression="&quot;NoAction&quot;" name="Action"/>
+					</columns>
+				</excelSheetInput>
+			</inputs>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="3360,552,-1,-1"/>
+	</step>
+
+
+
+<!-- (DomainLayerID is not null) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="DomainLayerID is not null">
+		<properties condition="DomainLayerID is not null"/>
+		<visual-constraints layout="horizontal" bounds="1008,1176,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="DomainLayerID is not null"/>
+		<target endpoint="in" step="Multiplicator 14"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join 16) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join 16">
+		<properties matchStrategy="MERGE" leftKey="1" rightKey="1" joinType="INNER">
+			<columnDefinitions>
+				<columnDefinition expression="in_left.DomainName" name="DomainName"/>
+				<columnDefinition expression="in_left.DomainLayerName" name="DomainLayerName"/>
+				<columnDefinition expression="in_right.OmniDefaultField" name="DomainAttributeName"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1752,1776,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join 16"/>
+		<target endpoint="in" step="Union Same 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join 17) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join 17">
+		<properties matchStrategy="MERGE" leftKey="1" rightKey="1" joinType="INNER">
+			<columnDefinitions>
+				<columnDefinition expression="in_left.SourceName" name="SourceName"/>
+				<columnDefinition expression="in_left.SourceLayerName" name="SourceLayerName"/>
+				<columnDefinition expression="in_right.OmniDefaultField" name="SourceAttributeName"/>
+				<columnDefinition expression="in_right.Type" name="SourceAttributeDataType"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="2688,72,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join 17"/>
+		<target endpoint="in" step="Union Same"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join 2">
+		<properties matchStrategy="MERGE" leftKey="J1" rightKey="J1" joinType="OUTER">
+			<columnDefinitions>
+				<columnDefinition expression="in_right.DomainName" name="DomainName"/>
+				<columnDefinition expression="in_right.DomainLayerName" name="DomainLayerName"/>
+				<columnDefinition expression="in_right.DomainAttributeName" name="DomainAttributeName"/>
+				<columnDefinition expression="in_right.J1" name="DomainJ1"/>
+				<columnDefinition expression="in_left.SourceName" name="SourceName"/>
+				<columnDefinition expression="in_left.SourceLayerName" name="SourceLayerName"/>
+				<columnDefinition expression="in_left.SourceAttributeName" name="SourceAttributeName"/>
+				<columnDefinition expression="in_left.SourceAttributeDataType" name="SourceAttributeDataType"/>
+				<columnDefinition expression="in_left.J1" name="SourceJ1"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="3048,936,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join 2"/>
+		<target endpoint="in" step="Create Tmp columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join 3">
+		<properties matchStrategy="MERGE" leftKey="RootEntityID" rightKey="RootEntityID" joinType="LEFT">
+			<columnDefinitions>
+				<columnDefinition expression="in_left.RootEntityID" name="DomainID"/>
+				<columnDefinition expression="in_left.RootEntityName" name="DomainName"/>
+				<columnDefinition expression="iif(in_right.Child1EntityID is null,in_left.RootEntityID,in_right.Child1EntityID)" name="DomainLayerID"/>
+				<columnDefinition expression="iif(in_right.Child1EntityID is null,in_left.RootEntityName,in_right.Child1EntityName)" name="DomainLayerName"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,1056,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join 3"/>
+		<target endpoint="in" step="Multiplicator 10"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join 4) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join 4">
+		<properties matchStrategy="MERGE" leftKey="InputDataModelID" rightKey="InputDataModelID" joinType="RIGHT">
+			<columnDefinitions>
+				<columnDefinition expression="in_right.InputDataModelID" name="InputDataModelID"/>
+				<columnDefinition expression="in_right.DataModelID" name="DataModelID"/>
+				<columnDefinition expression="in_right.DataModelName" name="DataModelName"/>
+				<columnDefinition expression="in_right.InputDataModelRDC" name="InputDataModelRDC"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="432,816,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join 4"/>
+		<target endpoint="in" step="Multiplicator 21"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join 5) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join 5">
+		<properties matchStrategy="MERGE" leftKey="DomainLayerID" rightKey="Child2EntityID" joinType="LEFT">
+			<columnDefinitions>
+				<columnDefinition expression="in_left.DomainID" name="DomainID"/>
+				<columnDefinition expression="in_left.DomainName" name="DomainName"/>
+				<columnDefinition expression="in_right.Child2EntityID" name="DomainLayerID"/>
+				<columnDefinition expression="iif(in_right.Child2EntityID is null,null,in_left.DomainLayerName + &quot;.&quot;+ in_right.Child2EntityName)" name="DomainLayerName"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="672,1176,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join 5"/>
+		<target endpoint="in" step="Multiplicator 12"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join 6) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join 6">
+		<properties matchStrategy="MERGE" leftKey="DomainLayerID" rightKey="DomainLayerID" joinType="LEFT">
+			<columnDefinitions>
+				<columnDefinition expression="in_left.DomainID" name="DomainID"/>
+				<columnDefinition expression="in_left.DomainName" name="DomainName"/>
+				<columnDefinition expression="in_left.DomainLayerID" name="DomainLayerID"/>
+				<columnDefinition expression="in_left.DomainLayerName" name="DomainLayerName"/>
+				<columnDefinition expression="in_right.DomainAttributeID" name="DomainAttributeID"/>
+				<columnDefinition expression="in_right.DomainAttributeName" name="DomainAttributeName"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1152,1464,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join 6"/>
+		<target endpoint="in" step="Multiplicator 37"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join 7) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join 7">
+		<properties matchStrategy="MERGE" leftKey="1" rightKey="1" joinType="LEFT">
+			<columnDefinitions>
+				<columnDefinition expression="in_left.SourceName" name="SourceName"/>
+				<columnDefinition expression="in_right.SourceLayerName" name="SourceLayerName"/>
+				<columnDefinition expression="in_right.SourceName" name="SourceNameright"/>
+				<columnDefinition expression="in_right.SourceAttributeName" name="SourceAttributeName"/>
+				<columnDefinition expression="in_right.SourceAttributeDataType" name="SourceAttributeDataType"/>
+				<columnDefinition expression="in_right.J1" name="J1"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="vertical" bounds="3024,744,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join 7"/>
+		<target endpoint="in" step="Multiplicator 16"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 10) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 10">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="624,1056,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 10"/>
+		<target endpoint="in_left" step="Join 5"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 10"/>
+		<target endpoint="in" step="Union Same 4"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 10"/>
+		<target endpoint="in" step="out 16"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 11) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 11">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="168,720,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 11"/>
+		<target endpoint="in" step="Multiplicator 15"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 11"/>
+		<target endpoint="in" step="out 14"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 12) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 12">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="816,1176,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 12"/>
+		<target endpoint="in" step="Union Same 4"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 12"/>
+		<target endpoint="in" step="out 18"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 14) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 14">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="1104,1176,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 14"/>
+		<target endpoint="in_left" step="Join 6"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 14"/>
+		<target endpoint="in" step="out 20"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 15) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 15">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="1344,720,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 15"/>
+		<target endpoint="in_left" step="Join 7"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 16) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 16">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="3024,816,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 16"/>
+		<target endpoint="in_left" step="Join 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 16"/>
+		<target endpoint="in" step="Temp_SourceLayer121 9"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 21) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 21">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="528,816,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 21"/>
+		<target endpoint="in" step="out 11"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 26) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 26">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="264,1104,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 26"/>
+		<target endpoint="in_right" step="Join 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 26"/>
+		<target endpoint="in" step="out 9"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 27) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 27">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="264,1224,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 27"/>
+		<target endpoint="in_right" step="Join 5"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 27"/>
+		<target endpoint="in" step="out 15"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 28) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 28">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="288,1464,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 28"/>
+		<target endpoint="in" step="Alter Format 8"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 28"/>
+		<target endpoint="in" step="out 17"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 3">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="3024,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 3"/>
+		<target endpoint="in_right" step="Join 7"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 3"/>
+		<target endpoint="in" step="Temp_SourceLayer121 7"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 31) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 31">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="288,1368,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 31"/>
+		<target endpoint="in" step="Alter Format 7"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 31"/>
+		<target endpoint="in" step="out 13"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 32) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 32">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="288,1608,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 32"/>
+		<target endpoint="in" step="Alter Format 11"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 32"/>
+		<target endpoint="in" step="out 19"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 33) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 33">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="528,1368,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 33"/>
+		<target endpoint="in" step="Union Same 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 33"/>
+		<target endpoint="in" step="out 21"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 34) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 34">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="528,1464,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 34"/>
+		<target endpoint="in" step="Union Same 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 34"/>
+		<target endpoint="in" step="out 22"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 35) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 35">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="528,1608,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 35"/>
+		<target endpoint="in" step="Union Same 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 35"/>
+		<target endpoint="in" step="out 23"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 36) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 36">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="864,1488,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 36"/>
+		<target endpoint="in_right" step="Join 6"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 36"/>
+		<target endpoint="in" step="out 26"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 37) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 37">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="1248,1464,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 37"/>
+		<target endpoint="in" step="filter og_ 6"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 37"/>
+		<target endpoint="in" step="out 27"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 49) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 49">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="1464,1752,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="Multiplicator 49"/>
+		<target endpoint="in" step="Sources 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 49"/>
+		<target endpoint="in" step="Union Same 2"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1484,1894"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 49"/>
+		<target endpoint="in" step="out 32"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 55) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 55">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="2016,1872,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 55"/>
+		<target endpoint="in_right" step="Join 2"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="3045,1894"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 55"/>
+		<target endpoint="in" step="out 35"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 56) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 56">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="1704,1632,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 56"/>
+		<target endpoint="in_left" step="Join 16"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 56"/>
+		<target endpoint="in" step="out 36"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 6) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 6">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="3336,936,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="Multiplicator 6"/>
+		<target endpoint="DomainDetails" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="Multiplicator 6"/>
+		<target endpoint="SourceDetails" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="Multiplicator 6"/>
+		<target endpoint="SourceDomainMapping" step="Data Quality Framework - Excel"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 6"/>
+		<target endpoint="in" step="Temp_SourceLayer121 8"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 6"/>
+		<target endpoint="in" step="out"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 7) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 7">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="264,816,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 7"/>
+		<target endpoint="in_left" step="Join 4"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 7"/>
+		<target endpoint="in" step="out 12"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 8) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 8">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="264,912,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 8"/>
+		<target endpoint="in_right" step="Join 4"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="372,935"/>
+				<point location="372,854"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 8"/>
+		<target endpoint="in" step="out 6"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 9) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 9">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="264,1008,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 9"/>
+		<target endpoint="in_left" step="Join 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 9"/>
+		<target endpoint="in" step="out 7"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Representative Creator 4) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Representative Creator 4">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="DomainName"/>
+					<keyComponent expression="DomainLayerName"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.DomainName" name="DomainName"/>
+								<attributeCfgRepr expression="best.DomainLayerName" name="DomainLayerName"/>
+							</representativeAttributes>
+							<selectionRules/>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1584,1608,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="Representative Creator 4"/>
+		<target endpoint="in" step="Multiplicator 56"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Representative Creator 4"/>
+		<target endpoint="in" step="Representative Creator 6"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Representative Creator 5) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Representative Creator 5">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="SourceName"/>
+					<keyComponent expression="SourceLayerName"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.SourceName" name="SourceName"/>
+								<attributeCfgRepr expression="best.SourceLayerName" name="SourceLayerName"/>
+							</representativeAttributes>
+							<selectionRules/>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="2544,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="Representative Creator 5"/>
+		<target endpoint="in_left" step="Join 17"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="2685,60"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Representative Creator 5"/>
+		<target endpoint="in" step="Union Same"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Representative Creator 6) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Representative Creator 6">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="DomainName"/>
+					<keyComponent expression="DomainLayerName"/>
+					<keyComponent expression="DomainAttributeName"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.DomainName" name="DomainName"/>
+								<attributeCfgRepr expression="best.DomainLayerName" name="DomainLayerName"/>
+								<attributeCfgRepr expression="best.DomainAttributeName" name="DomainAttributeName"/>
+							</representativeAttributes>
+							<selectionRules/>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1440,1656,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="Representative Creator 6"/>
+		<target endpoint="in" step="Multiplicator 49"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Sources 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.write.JdbcWriter" disabled="true" id="Sources 3">
+		<properties commitSize="0" writeAllColumns="false" batchSize="1000" dataSourceName="DQFramework" tableName="DQFramework.dbo.Sources">
+			<columns>
+				<columnExprDef expression="SourceName" name="SourceName"/>
+				<columnExprDef expression="SourceLayerName" name="SourceLayerName"/>
+				<columnExprDef expression="SourceAttributeName" name="SourceAttributeName"/>
+				<columnExprDef expression="SourceAttributeColumnType" name="SourceAttributeDataType"/>
+			</columns>
+			<errorHandler errorReporting="NONE" errorFieldName="Error" errorAction="CONTINUE_AND_DESCRIBE_ERRORS"/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1320,1920,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out_err" step="Sources 3"/>
+		<target endpoint="in" step="ColumnMappings - DB - Errors 5"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Temp_SourceLayer121 7) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Temp_SourceLayer121 7">
+		<properties writeHeader="true" fileName="../../data/debug/Tempds_SourceLsayer122.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="3072,-72,-1,-1"/>
+	</step>
+
+
+
+<!-- (Temp_SourceLayer121 8) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Temp_SourceLayer121 8">
+		<properties writeHeader="true" fileName="../../data/debug/Tempds_SosurceLsayer122.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="3384,864,-1,-1"/>
+	</step>
+
+
+
+<!-- (Temp_SourceLayer121 9) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Temp_SourceLayer121 9">
+		<properties writeHeader="true" fileName="../../data/debug/Tempds_SourceLsasyer122.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="2880,864,-1,-1"/>
+	</step>
+
+
+
+<!-- (Union Same) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="2808,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union Same"/>
+		<target endpoint="in" step="Create Joined fields"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union Same 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same 2">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="1776,1872,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union Same 2"/>
+		<target endpoint="in" step="Create Joined fields 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union Same 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same 3">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="744,1488,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union Same 3"/>
+		<target endpoint="in" step="Multiplicator 36"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union Same 4) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same 4">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="912,1176,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union Same 4"/>
+		<target endpoint="in" step="DomainLayerID is not null"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Update SourceAttributeName ) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Update SourceAttributeName ">
+		<properties>
+			<assignments>
+				<assignment expression="SourceAttributeName" column="OmniDB_SourceAttributeName">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="iif(DomainAttributeName is not null AND SourceAttributeName is not null,DomainAttributeName,SourceAttributeName)" column="SourceAttributeName">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+			<comm:comment>this is done because the plans have the model names coming through while the DB names are different. just keeping it same as the plan names.</comm:comment>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="3240,936,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Update SourceAttributeName "/>
+		<target endpoint="in" step="Multiplicator 6"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Xml Reader) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.xml.reader.XmlReader" disabled="false" id="Xml Reader">
+		<properties fileName="../../data/in/Customer@v.32.xmi">
+			<dataFormatParameters falseValue="false" dateTimeFormat="yy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+			<namespaces>
+				<prefixNamespacePair prefix="com.iwaysoftware.omni.designer.emf.model" namespace="http://com/iwaysoftware/omni/designer/emf/model"/>
+			</namespaces>
+			<recordsOutputs>
+				<recordsOutput rowsRootXPath="/com.iwaysoftware.omni.designer.emf.model:ProjectBundle/inputDataModels" out="inputDataModels">
+					<attributes>
+						<attribute xpath="@id" xmlValue="false" name="InputDataModelID" type="STRING"/>
+					</attributes>
+					<recordsOutputs>
+						<recordsOutput recordDescriptor="InputDataModelRDC" parentIdColumn="inputDataModels.InputDataModelID" rowsRootXPath="list" out="list">
+							<attributes>
+								<attribute xpath="@id" xmlValue="false" name="DataModelID" type="STRING"/>
+								<attribute xpath="@name" xmlValue="false" name="DataModelName" type="STRING"/>
+							</attributes>
+							<recordsOutputs>
+								<recordsOutput recordDescriptor="DataModelRDC" parentIdColumn="list.DataModelID" rowsRootXPath="root" out="root">
+									<attributes>
+										<attribute xpath="@id" xmlValue="false" name="RootEntityID" type="STRING"/>
+										<attribute xpath="@name" xmlValue="false" name="RootEntityName" type="STRING"/>
+									</attributes>
+									<recordsOutputs>
+										<recordsOutput recordDescriptor="RootFieldsRDC" parentIdColumn="root.RootEntityID" rowsRootXPath="fields" out="rootColumns">
+											<attributes>
+												<attribute xpath="@name" xmlValue="false" name="RootColumnName" type="STRING"/>
+												<attribute xpath="@type" xmlValue="false" name="RootColumnType" type="STRING"/>
+											</attributes>
+											<recordsOutputs/>
+											<shadowColumns>
+												<shadowColumnDef name="RootFieldsRDC" type="STRING"/>
+											</shadowColumns>
+										</recordsOutput>
+										<recordsOutput recordDescriptor="RootEntityRDC" parentIdColumn="root.RootEntityID" rowsRootXPath="children" out="Child1">
+											<attributes>
+												<attribute xpath="@id" xmlValue="false" name="Child1EntityID" type="STRING"/>
+												<attribute xpath="@name" xmlValue="false" name="Child1EntityName" type="STRING"/>
+											</attributes>
+											<recordsOutputs>
+												<recordsOutput recordDescriptor="Child1ColumnsRDC" parentIdColumn="Child1.Child1EntityID" rowsRootXPath="fields" out="Child1Columns">
+													<attributes>
+														<attribute xpath="@name" xmlValue="false" name="Child1ColumnName" type="STRING"/>
+														<attribute xpath="@type" xmlValue="false" name="Child1ColumnType" type="STRING"/>
+													</attributes>
+													<shadowColumns>
+														<shadowColumnDef name="Child1ColumnsRDC" type="STRING"/>
+													</shadowColumns>
+												</recordsOutput>
+												<recordsOutput recordDescriptor="Child1EntitiesRDC" parentIdColumn="Child1.Child1EntityID" rowsRootXPath="children" out="Child2">
+													<attributes>
+														<attribute xpath="@id" xmlValue="false" name="Child2EntityID" type="STRING"/>
+														<attribute xpath="@name" xmlValue="false" name="Child2EntityName" type="STRING"/>
+													</attributes>
+													<recordsOutputs>
+														<recordsOutput recordDescriptor="Child2ColumnsRDC" parentIdColumn="Child2.Child2EntityID" rowsRootXPath="fields" out="Child2Columns">
+															<attributes>
+																<attribute xpath="@name" xmlValue="false" name="Child2ColumnName" type="STRING"/>
+																<attribute xpath="@type" xmlValue="false" name="Child2ColumnType" type="STRING"/>
+															</attributes>
+															<shadowColumns>
+																<shadowColumnDef name="Child2ColumnsRDC" type="STRING"/>
+															</shadowColumns>
+														</recordsOutput>
+													</recordsOutputs>
+													<shadowColumns>
+														<shadowColumnDef name="Child1EntitiesRDC" type="STRING"/>
+													</shadowColumns>
+												</recordsOutput>
+											</recordsOutputs>
+											<shadowColumns>
+												<shadowColumnDef name="RootEntityRDC" type="STRING"/>
+											</shadowColumns>
+										</recordsOutput>
+									</recordsOutputs>
+									<shadowColumns>
+										<shadowColumnDef name="DataModelRDC" type="STRING"/>
+									</shadowColumns>
+								</recordsOutput>
+							</recordsOutputs>
+							<shadowColumns>
+								<shadowColumnDef name="InputDataModelRDC" type="STRING"/>
+							</shadowColumns>
+						</recordsOutput>
+					</recordsOutputs>
+					<shadowColumns/>
+				</recordsOutput>
+				<recordsOutput rowsRootXPath="/com.iwaysoftware.omni.designer.emf.model:ProjectBundle/sourceSystems" out="sourceSystems">
+					<attributes>
+						<attribute xpath="@id" xmlValue="false" name="sourceSystemsID" type="STRING"/>
+						<attribute xpath="@name" xmlValue="false" name="sourceSystemName" type="STRING"/>
+						<attribute xpath="@shortDescription" xmlValue="false" name="sourceSystemShortDesc" type="STRING"/>
+						<attribute xpath="@identifier" xmlValue="false" name="sourceSystemIdentifier" type="STRING"/>
+					</attributes>
+					<recordsOutputs/>
+					<shadowColumns/>
+				</recordsOutput>
+			</recordsOutputs>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="-24,1008,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="sourceSystems" step="Xml Reader"/>
+		<target endpoint="in" step="Alter Format 10"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="Child1Columns" step="Xml Reader"/>
+		<target endpoint="in" step="Alter Format 12"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="66,1068"/>
+				<point location="66,1486"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="Child2Columns" step="Xml Reader"/>
+		<target endpoint="in" step="Alter Format 13"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="41,1631"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="rootColumns" step="Xml Reader"/>
+		<target endpoint="in" step="Alter Format 6"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="85,1020"/>
+				<point location="85,1391"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="inputDataModels" step="Xml Reader"/>
+		<target endpoint="in" step="Alter Format 9"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="41,839"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="root" step="Xml Reader"/>
+		<target endpoint="in" step="Creaste ParentID column 2"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="143,1008"/>
+				<point location="143,1031"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="Child1" step="Xml Reader"/>
+		<target endpoint="in" step="Creaste ParentID column 4"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="72,1056"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="list" step="Xml Reader"/>
+		<target endpoint="in" step="Creaste ParentID column 6"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="80,984"/>
+				<point location="132,984"/>
+				<point location="132,976"/>
+				<point location="132,935"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="Child2" step="Xml Reader"/>
+		<target endpoint="in" step="Creaste ParentID column 7"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="113,1092"/>
+				<point location="113,1247"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (eng_fields 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.read.TextFileReader" disabled="false" id="eng_fields 2">
+		<properties lineMaxReadLength="65536" fileName="../../data/ext/src/eng_fields.txt" fieldSeparator="," stringQualifierEscape="&quot;" numberOfLinesInFooter="0" compression="NONE" encoding="ISO-8859-1" lineSeparator="\r\n" stringQualifier="&quot;" numberOfLinesInHeader="1">
+			<columns>
+				<textReaderColumn name="OmniDefaultField" ignore="false" type="STRING"/>
+				<textReaderColumn name="Type" ignore="false" type="STRING"/>
+			</columns>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+			<errorHandlingStrategy rejectFileName="../rejected.txt">
+				<errorInstructions>
+					<errorInstruction dataStrategy="READ_POSSIBLE" errorType="EXTRA_DATA" putToLog="true" putToReject="false"/>
+					<errorInstruction dataStrategy="STOP" errorType="LONG_LINE" putToLog="true" putToReject="true"/>
+					<errorInstruction dataStrategy="STOP" errorType="PROCESSING_ERROR" putToLog="true" putToReject="false"/>
+					<errorInstruction dataStrategy="READ_POSSIBLE" errorType="INVALID_DATE" putToLog="true" putToReject="false"/>
+					<errorInstruction dataStrategy="READ_POSSIBLE" errorType="SHORT_LINE" putToLog="true" putToReject="true"/>
+					<errorInstruction dataStrategy="NULL_VALUE" errorType="UNPARSABLE_FIELD" putToLog="true" putToReject="false"/>
+				</errorInstructions>
+			</errorHandlingStrategy>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1848,1728,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="eng_fields 2"/>
+		<target endpoint="in_right" step="Join 16"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (eng_fields 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.read.TextFileReader" disabled="false" id="eng_fields 3">
+		<properties lineMaxReadLength="65536" fileName="../../data/ext/src/eng_fields.txt" fieldSeparator="," stringQualifierEscape="&quot;" numberOfLinesInFooter="0" compression="NONE" encoding="ISO-8859-1" lineSeparator="\r\n" stringQualifier="&quot;" numberOfLinesInHeader="1">
+			<columns>
+				<textReaderColumn name="OmniDefaultField" ignore="false" type="STRING"/>
+				<textReaderColumn name="Type" ignore="false" type="STRING"/>
+			</columns>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+			<errorHandlingStrategy rejectFileName="../rejected.txt">
+				<errorInstructions>
+					<errorInstruction dataStrategy="READ_POSSIBLE" errorType="EXTRA_DATA" putToLog="true" putToReject="false"/>
+					<errorInstruction dataStrategy="STOP" errorType="LONG_LINE" putToLog="true" putToReject="true"/>
+					<errorInstruction dataStrategy="STOP" errorType="PROCESSING_ERROR" putToLog="true" putToReject="false"/>
+					<errorInstruction dataStrategy="READ_POSSIBLE" errorType="INVALID_DATE" putToLog="true" putToReject="false"/>
+					<errorInstruction dataStrategy="READ_POSSIBLE" errorType="SHORT_LINE" putToLog="true" putToReject="true"/>
+					<errorInstruction dataStrategy="NULL_VALUE" errorType="UNPARSABLE_FIELD" putToLog="true" putToReject="false"/>
+				</errorInstructions>
+			</errorHandlingStrategy>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="2640,168,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="eng_fields 3"/>
+		<target endpoint="in_right" step="Join 17"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (filter og_ 4) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="filter og_ 4">
+		<properties condition="lower(substr(DomainAttributeName,0,4)) not in {&quot;dqm_&quot;,&quot;dqc_&quot;}"/>
+		<visual-constraints layout="horizontal" bounds="1488,1464,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="filter og_ 4"/>
+		<target endpoint="in" step="filter og_ 5"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (filter og_ 5) --><step mode="BYPASS" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="filter og_ 5">
+		<properties>
+			<condition>lower(SourceAttributeName) not in {
+&quot;id&quot;
+,&quot;status&quot;
+,&quot;status_reason&quot;
+,&quot;source_name&quot;
+,&quot;source_instance_id&quot;
+,&quot;source_instance_id_name&quot;
+,&quot;master_id&quot;
+,&quot;source_status_code&quot;
+,&quot;source_created_date&quot;
+,&quot;source_created_by&quot;
+,&quot;source_modified_date&quot;
+,&quot;source_modified_by&quot;
+,&quot;match_can_group_id&quot;
+,&quot;match_role&quot;
+,&quot;match_quality_score&quot;
+,&quot;match_rule&quot;
+,&quot;match_quality_detail&quot;
+,&quot;match_proc_tstamp&quot;
+,&quot;prev_master_id&quot;
+,&quot;id_hsh&quot;
+,&quot;transaction_id&quot;
+,&quot;replace_id&quot;
+,&quot;meta_cleanse&quot;
+,&quot;meta_tags&quot;
+,&quot;omni_created_date&quot;
+,&quot;omni_modified_date&quot;}</condition>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1560,1464,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="filter og_ 5"/>
+		<target endpoint="in" step="Representative Creator 4"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (filter og_ 6) --><step mode="BYPASS" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="filter og_ 6">
+		<properties condition="lower(substr(SourceLayerName,0,3)) in {&quot;og_&quot;} AND lower(substr(SourceLayerName,length(SourceLayerName)-2)) not in {&quot;_r&quot;,&quot;_m&quot;,&quot;_s&quot;}"/>
+		<visual-constraints layout="horizontal" bounds="1368,1464,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="filter og_ 6"/>
+		<target endpoint="in" step="filter og_ 4"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in">
+		<properties>
+			<columns>
+				<columnDef name="SourceName" type="STRING"/>
+				<columnDef name="SourceLayerName" type="STRING"/>
+				<columnDef name="SourceAttributeName" type="STRING"/>
+				<columnDef name="SourceAttributeDataType" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="2544,-72,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in"/>
+		<target endpoint="in" step="Representative Creator 5"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (out) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="3504,1032,48,48"/>
+	</step>
+
+
+
+<!-- (out 11) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 11">
+		<properties writeHeader="true" fileName="../../data/debug/join1.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="624,816,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 12) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 12">
+		<properties writeHeader="true" fileName="../../data/debug/joinxd1.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="312,840,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 13) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 13">
+		<properties writeHeader="true" fileName="../../data/debug/childreyn.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="336,1416,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 14) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 14">
+		<properties writeHeader="true" fileName="../../data/debug/joinxdsourcesystem1.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="216,648,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 15) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 15">
+		<properties writeHeader="true" fileName="../../data/debug/chihkldren.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="432,1224,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 16) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 16">
+		<properties writeHeader="true" fileName="../../data/debug/cha]ihkldren.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="816,1056,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 17) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 17">
+		<properties writeHeader="true" fileName="../../data/debug/childrkeyn.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="336,1536,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 18) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 18">
+		<properties writeHeader="true" fileName="../../data/debug/cha]ihklsdren.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="864,1296,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 19) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 19">
+		<properties writeHeader="true" fileName="../../data/debug/childsdrkeyn.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="336,1680,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 20) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 20">
+		<properties writeHeader="true" fileName="../../data/debug/cha]ihklssdren.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1200,1176,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 21) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 21">
+		<properties writeHeader="true" fileName="../../data/debug/childdreyn.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="576,1416,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 22) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 22">
+		<properties writeHeader="true" fileName="../../data/debug/childddreyn.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="576,1512,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 23) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 23">
+		<properties writeHeader="true" fileName="../../data/debug/childsddreyn.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="576,1656,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 26) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 26">
+		<properties writeHeader="true" fileName="../../data/debug/childqsddreyn.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="912,1584,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 27) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 27">
+		<properties writeHeader="true" fileName="../../data/debug/childqjsddreyn.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1296,1560,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 32) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 32">
+		<properties writeHeader="true" fileName="../../data/debug/joindsedrjeedfsdzxsfdf2.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1344,1800,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 35) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 35">
+		<properties writeHeader="true" fileName="../../data/debug/joindsedrjeesddfsdzxsfdf2.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="2040,1992,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 36) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 36">
+		<properties writeHeader="true" fileName="../../data/debug/joindsesdrjeesddfsdzxsfdf2.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1824,1632,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 6) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 6">
+		<properties writeHeader="true" fileName="../../data/debug/list.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="432,912,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 7) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 7">
+		<properties writeHeader="true" fileName="../../data/debug/root.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="432,1008,-1,-1"/>
+	</step>
+
+
+
+<!-- (out 9) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out 9">
+		<properties writeHeader="true" fileName="../../data/debug/children.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="432,1104,-1,-1"/>
+	</step>
+
+
+
+<modelComment backgroundColor="255,255,180" borderColor="183,183,0" bounds="0,1728,348,73" foregroundColor="51,51,51">Convert the Attribute Types to the relevant Data Types in
+DQS</modelComment>
+
+
+
+<modelComment backgroundColor="255,255,180" borderColor="183,183,0" bounds="792,888,314,121" foregroundColor="51,51,51">Using the XMI file exported from Omni Designer to 
+get the Subject and Attribute details.</modelComment>
+
+</purity-config>

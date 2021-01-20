@@ -1,0 +1,1 @@
+"SourceLayerExternalID";"SourceAttributeID";"SourceAttributeExternalID";"SourceAttributeName";"SourceAttributeProcessingName";"SourceAttributeColumnType";"SourceAttributeDescription";"SourceAttributeIsIdentifier"

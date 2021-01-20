@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<settings>
+  <multiSheet>
+    <saved-state class="com.ataccama.dqc.gui.msoffice.internal.ExcelMetaData$Data">
+      <sheets>
+        <excelSheetMetaData firstColumn="0" firstRow="0" name="Rules" empty="false">
+          <columns>
+            <iConnectorColumnMetaData dataType="STRING" name="Field_A" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Field_B" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Field_C" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Field_D" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+          </columns>
+        </excelSheetMetaData>
+        <excelSheetMetaData firstColumn="0" firstRow="1" name="Data" empty="false">
+          <columns>
+            <iConnectorColumnMetaData dataType="STRING" name="Title_Code" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Title" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+          </columns>
+        </excelSheetMetaData>
+        <excelSheetMetaData firstColumn="0" firstRow="1" name="Catalog Column Names" empty="false">
+          <columns>
+            <iConnectorColumnMetaData dataType="STRING" name="Data_Domain" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+          </columns>
+        </excelSheetMetaData>
+        <excelSheetMetaData firstColumn="0" firstRow="1" name="Column Classification" empty="false">
+          <columns>
+            <iConnectorColumnMetaData dataType="STRING" name="Root_Classification" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Classifciation_Tags" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+          </columns>
+        </excelSheetMetaData>
+        <excelSheetMetaData firstColumn="0" firstRow="0" name="Mappings - Columns" empty="false">
+          <columns>
+            <iConnectorColumnMetaData dataType="STRING" name="Field_A" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Field_B" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Field_C" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Field_D" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Field_E" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Field_F" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+          </columns>
+        </excelSheetMetaData>
+        <excelSheetMetaData firstColumn="0" firstRow="1" name="Rule Normalisation" empty="false">
+          <columns>
+            <iConnectorColumnMetaData dataType="STRING" name="Customer_Rule_Name" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Customer_Rule_Details" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Normalised_Rule_Name" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="RuleID" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Score" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Explanation" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="RuleScope" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="DQ_Category" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Tags" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+          </columns>
+        </excelSheetMetaData>
+        <excelSheetMetaData firstColumn="0" firstRow="1" name="Rule DQ Category" empty="false">
+          <columns>
+            <iConnectorColumnMetaData dataType="STRING" name="Topic" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Category" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Description" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+          </columns>
+        </excelSheetMetaData>
+        <excelSheetMetaData firstColumn="0" firstRow="1" name="Rule - Type Category" empty="false">
+          <columns>
+            <iConnectorColumnMetaData dataType="STRING" name="Category" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+            <iConnectorColumnMetaData dataType="STRING" name="Description" class="com.ataccama.dqc.gui.msoffice.internal.SheetColumnMetaData"/>
+          </columns>
+        </excelSheetMetaData>
+      </sheets>
+    </saved-state>
+  </multiSheet>
+</settings>

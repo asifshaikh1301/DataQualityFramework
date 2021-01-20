@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (DataMart_SourceAttribute 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.write.JdbcWriter" disabled="false" id="DataMart_SourceAttribute 3">
+		<properties commitSize="0" writeAllColumns="false" batchSize="1000" dataSourceName="DQFramework" tableName="DQFramework.dbo.DataQualityMart_SourceAttribute">
+			<columns>
+				<columnExprDef name="SourceID"/>
+				<columnExprDef name="SourceLayerID"/>
+				<columnExprDef name="SourceAttributeID"/>
+				<columnExprDef name="ReportYear"/>
+				<columnExprDef name="LoadType"/>
+				<columnExprDef name="TimeInterval"/>
+				<columnExprDef name="Perspective"/>
+				<columnExprDef name="DebugTraceID"/>
+				<columnExprDef name="AggregationDateTime"/>
+				<columnExprDef name="SourceName"/>
+				<columnExprDef name="SourceLayerName"/>
+				<columnExprDef name="SourceAttributeName"/>
+				<columnExprDef name="ListDistinctRules"/>
+				<columnExprDef name="CountDistinctRules"/>
+				<columnExprDef name="CountDistinctRulesApplication"/>
+				<columnExprDef name="MinDataQualityPercentage"/>
+				<columnExprDef name="AvgDataQualityPercentage"/>
+				<columnExprDef name="MaxDataQualityPercentage"/>
+				<columnExprDef name="NoOfDomains"/>
+				<columnExprDef name="NoOfDomainLayers"/>
+				<columnExprDef name="NoOfDomainAttributeNames"/>
+				<columnExprDef name="NoOfSources"/>
+				<columnExprDef name="NoOfSourceLayers"/>
+				<columnExprDef name="NoOfSourceAttributeNames"/>
+				<columnExprDef name="NoOfCategories"/>
+				<columnExprDef name="NoOfCategoryLayers"/>
+			</columns>
+			<errorHandler errorReporting="ERROR" errorFieldName="Error" errorAction="CONTINUE"/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="864,384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_err" step="DataMart_SourceAttribute 3"/>
+		<target endpoint="in" step="Rule Summary 28"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Perspective is SourceAttribute? - YEAR) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="Perspective is SourceAttribute? - YEAR">
+		<properties condition="Perspective is &quot;SourceAttribute&quot;"/>
+		<visual-constraints layout="horizontal" bounds="840,192,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="Perspective is SourceAttribute? - YEAR"/>
+		<target endpoint="in" step="SQL Execute 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="Perspective is SourceAttribute? - YEAR"/>
+		<target endpoint="in" step="Trash"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Rule Summary 28) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Rule Summary 28">
+		<properties writeHeader="true" fileName="../Data/DBSrsso1sucec.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="864,456,-1,-1"/>
+	</step>
+
+
+
+<!-- (RuleSusmmawry) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.read.TextFileReader" disabled="false" id="RuleSusmmawry">
+		<properties lineMaxReadLength="65536" fileName="../data/RuleSusmmawry.txt" fieldSeparator=";" stringQualifierEscape="&quot;" numberOfLinesInFooter="0" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" numberOfLinesInHeader="1">
+			<columns>
+				<textReaderColumn name="SourceID" ignore="false" type="LONG">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="SourceLayerID" ignore="false" type="LONG">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="SourceAttributeID" ignore="false" type="LONG">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="ReportYear" ignore="false" type="LONG">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="LoadType" ignore="false" type="STRING"/>
+				<textReaderColumn name="TimeInterval" ignore="false" type="STRING"/>
+				<textReaderColumn name="Perspective" ignore="false" type="STRING"/>
+				<textReaderColumn name="DomainID" ignore="false" type="LONG">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="DomainLayerID" ignore="false" type="LONG">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="DomainAttributeID" ignore="false" type="LONG">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="CategoryID" ignore="false" type="LONG">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="CategoryLayerID" ignore="false" type="LONG">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="RuleID" ignore="false" type="LONG">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="DebugTraceID" ignore="false" type="STRING"/>
+				<textReaderColumn name="AggregationDateTime" ignore="false" type="DATETIME">
+					<dataFormatParameters dateTimeFormat="yyyy-MM-dd HH:mm:ss" dateFormatLocale="en_US"/>
+				</textReaderColumn>
+				<textReaderColumn name="SourceName" ignore="false" type="STRING"/>
+				<textReaderColumn name="SourceLayerName" ignore="false" type="STRING"/>
+				<textReaderColumn name="SourceAttributeName" ignore="false" type="STRING"/>
+				<textReaderColumn name="ListDistinctRules" ignore="false" type="STRING"/>
+				<textReaderColumn name="CountDistinctRules" ignore="false" type="INTEGER">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="CountDistinctRulesApplication" ignore="false" type="INTEGER">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="MinDataQualityPercentage" ignore="false" type="FLOAT">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="AvgDataQualityPercentage" ignore="false" type="FLOAT">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="MaxDataQualityPercentage" ignore="false" type="FLOAT">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="NoOfDomains" ignore="false" type="INTEGER">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="NoOfDomainLayers" ignore="false" type="INTEGER">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="NoOfDomainAttributeNames" ignore="false" type="INTEGER">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="NoOfSources" ignore="false" type="INTEGER">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="NoOfSourceLayers" ignore="false" type="INTEGER">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="NoOfSourceAttributeNames" ignore="false" type="INTEGER">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="NoOfCategories" ignore="false" type="INTEGER">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="NoOfCategoryLayers" ignore="false" type="INTEGER">
+					<dataFormatParameters decimalSeparator="." thousandsSeparator=""/>
+				</textReaderColumn>
+				<textReaderColumn name="DomainName" ignore="false" type="STRING"/>
+				<textReaderColumn name="DomainLayerName" ignore="false" type="STRING"/>
+				<textReaderColumn name="DomainAttributeName" ignore="false" type="STRING"/>
+				<textReaderColumn name="CategoryName" ignore="false" type="STRING"/>
+				<textReaderColumn name="CategoryLayerName" ignore="false" type="STRING"/>
+				<textReaderColumn name="RuleName" ignore="false" type="STRING"/>
+				<textReaderColumn name="ListDistinctSourceID" ignore="false" type="STRING"/>
+				<textReaderColumn name="ListDistinctSourceLayerID" ignore="false" type="STRING"/>
+				<textReaderColumn name="ListDistinctSourceAttributeID" ignore="false" type="STRING"/>
+				<textReaderColumn name="ListDistinctDomainID" ignore="false" type="STRING"/>
+				<textReaderColumn name="ListDistinctDomainLayerID" ignore="false" type="STRING"/>
+				<textReaderColumn name="ListDistinctDomainAttributeID" ignore="false" type="STRING"/>
+			</columns>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+			<errorHandlingStrategy rejectFileName="rejected.txt">
+				<errorInstructions>
+					<errorInstruction dataStrategy="READ_POSSIBLE" errorType="EXTRA_DATA" putToLog="true" putToReject="false"/>
+					<errorInstruction dataStrategy="STOP" errorType="LONG_LINE" putToLog="true" putToReject="true"/>
+					<errorInstruction dataStrategy="STOP" errorType="PROCESSING_ERROR" putToLog="true" putToReject="false"/>
+					<errorInstruction dataStrategy="READ_POSSIBLE" errorType="INVALID_DATE" putToLog="true" putToReject="false"/>
+					<errorInstruction dataStrategy="READ_POSSIBLE" errorType="SHORT_LINE" putToLog="true" putToReject="true"/>
+					<errorInstruction dataStrategy="NULL_VALUE" errorType="UNPARSABLE_FIELD" putToLog="true" putToReject="false"/>
+				</errorInstructions>
+			</errorHandlingStrategy>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="672,48,32,32"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="RuleSusmmawry"/>
+		<target endpoint="in" step="Perspective is SourceAttribute? - YEAR"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL Execute 3) --><step mode="BYPASS" className="com.ataccama.dqc.tasks.jdbc.execute.SQLExecute" disabled="false" id="SQL Execute 3">
+		<properties commitSize="0" batchSize="1000" dataSourceName="DQFramework">
+			<query>DELETE FROM  DQFramework.dbo.DataQualityMart_SourceAttribute
+WHERE 
+SourceAttributeID = ${SourceAttributeID} AND 
+ReportYear = ${ReportYear} AND 
+LoadType = ${LoadType} AND
+TimeInterval = &#39;Year&#39;
+</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="864,312,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL Execute 3"/>
+		<target endpoint="in" step="DataMart_SourceAttribute 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Trash) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.Trash" disabled="false" id="Trash">
+		<properties/>
+		<visual-constraints layout="horizontal" bounds="984,195,-1,-1"/>
+	</step>
+
+</purity-config>

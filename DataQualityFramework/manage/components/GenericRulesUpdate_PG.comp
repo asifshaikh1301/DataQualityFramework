@@ -1,0 +1,920 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" xmlns:def="http://www.ataccama.com/purity/defaults" version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings>
+			<property name="DebugTraceID" insert="false" mappedTo="create generic columns/addedColumns[0]/expression">
+				<def:default-value/>
+			</property>
+			<property name="InputRecordingDateTime" insert="false" mappedTo="create InputRecordingDateTime column/addedColumns[0]/expression">
+				<def:default-value>
+					<expression>//getRequestTime()
+&quot;20-06-2020 23:00:00&quot;</expression>
+				</def:default-value>
+			</property>
+		</propertyMappings>
+	</component-mappings>
+
+<!-- (ColumnMappings) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="true" id="ColumnMappings">
+		<properties writeHeader="true" fileName="../../data/debug/GRUColumnMappinags.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,1560,-1,-1"/>
+	</step>
+
+
+
+<!-- (ColumnMappings - DB - Errors) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="true" id="ColumnMappings - DB - Errors">
+		<properties writeHeader="true" fileName="../../data/debug/GRUColumnMappings - DB - Errors.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="24,1704,-1,-1"/>
+	</step>
+
+
+
+<!-- (Create Category columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create Category columns">
+		<properties>
+			<addedColumns>
+				<addedColumn name="Results_SourceAttribute_RDC" type="STRING"/>
+				<addedColumn name="Results_SourceLayer_RDC" type="STRING"/>
+				<addedColumn name="Results_Sourcer_RDC" type="STRING"/>
+				<addedColumn name="Results_DomainAttribute_RDC" type="STRING"/>
+				<addedColumn name="Results_DomainLayer_RDC" type="STRING"/>
+				<addedColumn name="Results_Domain_RDC" type="STRING"/>
+				<addedColumn name="Results_SourceAttribute_Mapped_RuleIDs" type="STRING"/>
+				<addedColumn name="Results_SourceAttribute_NoOfRules" type="INTEGER"/>
+				<addedColumn name="Results_SourceAttribute_AveragePercentage" type="FLOAT"/>
+				<addedColumn name="Results_SourceAttribute_MaxPercentage" type="FLOAT"/>
+				<addedColumn name="Results_SourceAttribute_MinPercentage" type="FLOAT"/>
+				<addedColumn name="Results_SourceLayer_Mapped_RuleIDs" type="STRING"/>
+				<addedColumn name="Results_SourceLayer_NoOfRules" type="INTEGER"/>
+				<addedColumn name="Results_SourceLayer_AveragePercentage" type="FLOAT"/>
+				<addedColumn name="Results_SourceLayer_MaxPercentage" type="FLOAT"/>
+				<addedColumn name="Results_SourceLayer_MinPercentage" type="FLOAT"/>
+				<addedColumn name="Results_SourceLayer_NoOfDomainLayers" type="INTEGER"/>
+				<addedColumn name="Results_SourceAttribute_NoOfDomains" type="INTEGER"/>
+				<addedColumn name="Results_SourceAttribute_NoOfDomainLayers" type="INTEGER"/>
+				<addedColumn name="Results_SourceAttribute_NoOfDomainAttributeNames" type="INTEGER"/>
+				<addedColumn name="Results_SourceAttribute_NoOfSources" type="INTEGER"/>
+				<addedColumn name="Results_SourceAttribute_NoOfSourceLayers" type="INTEGER"/>
+				<addedColumn name="Results_SourceAttribute_NoOfSourceAttributeNames" type="INTEGER"/>
+				<addedColumn name="Results_SourceLayer_NoOfDomains" type="INTEGER"/>
+				<addedColumn name="Results_SourceLayer_NoOfDomainAttributeNames" type="INTEGER"/>
+				<addedColumn name="Results_SourceLayer_NoOfSources" type="INTEGER"/>
+				<addedColumn name="Results_SourceLayer_NoOfSourceLayers" type="INTEGER"/>
+				<addedColumn name="Results_SourceLayer_NoOfSourceAttributeNames" type="INTEGER"/>
+				<addedColumn name="Results_Source_Mapped_RuleIDs" type="STRING"/>
+				<addedColumn name="Results_Source_NoOfRules" type="INTEGER"/>
+				<addedColumn name="Results_Source_AveragePercentage" type="FLOAT"/>
+				<addedColumn name="Results_Source_MaxPercentage" type="FLOAT"/>
+				<addedColumn name="Results_Source_MinPercentage" type="FLOAT"/>
+				<addedColumn name="Results_Source_NoOfDomainLayers" type="INTEGER"/>
+				<addedColumn name="Results_Source_NoOfDomains" type="INTEGER"/>
+				<addedColumn name="Results_Source_NoOfDomainAttributeNames" type="INTEGER"/>
+				<addedColumn name="Results_Source_NoOfSources" type="INTEGER"/>
+				<addedColumn name="Results_Source_NoOfSourceLayers" type="INTEGER"/>
+				<addedColumn name="Results_Source_NoOfSourceAttributeNames" type="INTEGER"/>
+				<addedColumn name="Results_Category_RDC" type="STRING"/>
+				<addedColumn name="Results_HierarchyCategory_RDC" type="STRING"/>
+				<addedColumn name="Category" type="STRING"/>
+				<addedColumn name="CategoryID" type="STRING"/>
+				<addedColumn name="Hierarchy" type="STRING"/>
+				<addedColumn name="HierarchyCategoryID" type="STRING"/>
+				<addedColumn name="HierarchyCategory" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="480,1152,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create Category columns"/>
+		<target endpoint="in" step="SQL - Get Category details"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create Tmp columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create Tmp columns">
+		<properties>
+			<addedColumns>
+				<addedColumn name="splitted_RuleMappings" type="STRING"/>
+				<addedColumn name="splitted_RuleMappings_RDC" type="STRING"/>
+				<addedColumn name="RuleAttributeName" type="STRING"/>
+				<addedColumn name="Mapped_SourceAttributeName" type="STRING"/>
+				<addedColumn name="Mapped_RuleAttributeName" type="STRING"/>
+				<addedColumn name="Mapped_SourceAttributeDataType" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="24,1152,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create Tmp columns"/>
+		<target endpoint="in" step="Splitter 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create Tmp columns 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="true" id="Create Tmp columns 2">
+		<properties>
+			<addedColumns>
+				<addedColumn name="FilteredLeadingAttribute" type="STRING"/>
+				<addedColumn name="FilteredRuleID" type="LONG"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,528,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="Create Tmp columns 2"/>
+		<target endpoint="in" step="Create par &#39;Filtered&#39; columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create Tmp columns 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="true" id="Create Tmp columns 3">
+		<properties>
+			<addedColumns>
+				<addedColumn name="FilterRuleID" type="LONG"/>
+				<addedColumn name="FilterLeadingAttribute" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="Create Tmp columns 3"/>
+		<target endpoint="in" step="Create par &#39;Filter&#39; columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create Tmp columns 9) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create Tmp columns 9">
+		<properties>
+			<addedColumns>
+				<addedColumn name="DomainName" type="STRING"/>
+				<addedColumn name="DomainLayerName" type="STRING"/>
+				<addedColumn name="DomainAttributeName" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="480,1296,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create Tmp columns 9"/>
+		<target endpoint="in" step="SQL - Get Domain Details"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create par 'Filter' columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="true" id="Create par &#39;Filter&#39; columns">
+		<properties>
+			<assignments>
+				<assignment expression="toLong(word(word(DQM_RuleCodesAppliedLAForFilter,0,&quot;*&quot;),0,&quot;.&quot;))" column="FilterRuleID">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="word(word(DQM_RuleCodesAppliedLAForFilter,0,&quot;*&quot;),1,&quot;.&quot;)" column="FilterLeadingAttribute">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,456,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="Create par &#39;Filter&#39; columns"/>
+		<target endpoint="in" step="Create Tmp columns 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create par 'Filtered' columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="true" id="Create par &#39;Filtered&#39; columns">
+		<properties>
+			<assignments>
+				<assignment expression="toLong(word(word(DQM_RuleCodesAppliedLAFiltered,0,&quot;*&quot;),0,&quot;.&quot;))" column="FilteredRuleID">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="word(word(DQM_RuleCodesAppliedLAFiltered,0,&quot;*&quot;),1,&quot;.&quot;)" column="FilteredLeadingAttribute">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,600,-1,-1"/>
+	</step>
+
+
+
+<!-- (Create par columns 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Create par columns 3">
+		<properties>
+			<assignments>
+				<assignment column="Mapped_RuleAttributeName">
+					<expression>word(splitted_RuleMappings,0,&quot;.&quot;)
+
+</expression>
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="word(splitted_RuleMappings,1,&quot;.&quot;)" column="Mapped_SourceAttributeName">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="24,1296,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create par columns 3"/>
+		<target endpoint="in" step="SQL - Get SourceAttributeDataType  3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (DQFramework.dbo.RuleMappings - DB) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.write.JdbcWriter" disabled="false" id="DQFramework.dbo.RuleMappings - DB">
+		<properties commitSize="0" writeAllColumns="false" batchSize="1000" dataSourceName="DQFramework" tableName="&quot;dbo&quot;.&quot;RuleMappings&quot;">
+			<columns>
+				<columnExprDef expression="SubmissionID" name="&quot;SubmissionID&quot;"/>
+				<columnExprDef expression="SubmissionDateTime" name="&quot;SubmissionDateTime&quot;"/>
+				<columnExprDef expression="SubmissionDate" name="&quot;SubmissionDate&quot;"/>
+				<columnExprDef expression="SubmissionWeek" name="&quot;SubmissionWeek&quot;"/>
+				<columnExprDef expression="SubmissionMonth" name="&quot;SubmissionMonth&quot;"/>
+				<columnExprDef expression="SubmissionYear" name="&quot;SubmissionYear&quot;"/>
+				<columnExprDef expression="ReportDateTime" name="&quot;ReportDateTime&quot;"/>
+				<columnExprDef expression="ReportDate" name="&quot;ReportDate&quot;"/>
+				<columnExprDef expression="ReportWeek" name="&quot;ReportWeek&quot;"/>
+				<columnExprDef expression="ReportMonth" name="&quot;ReportMonth&quot;"/>
+				<columnExprDef expression="ReportYear" name="&quot;ReportYear&quot;"/>
+				<columnExprDef expression="Ex_CallerRequestTime" name="&quot;Ex_CallerRequestTime&quot;"/>
+				<columnExprDef expression="Ex_RuleProcessingCompletion_Timestamp" name="&quot;Ex_RuleProcessingCompletion_Timestamp&quot;"/>
+				<columnExprDef expression="DebugTraceID" name="&quot;DebugTraceID&quot;"/>
+				<columnExprDef expression="SourceName" name="&quot;SourceName&quot;"/>
+				<columnExprDef expression="SourceLayerName" name="&quot;SourceLayerName&quot;"/>
+				<columnExprDef expression="LeadingAttribute" name="&quot;SourceAttributeName&quot;"/>
+				<columnExprDef expression="Mapped_SourceAttributeDataType" name="&quot;SourceAttributeDataType&quot;"/>
+				<columnExprDef expression="Mapped_SourceAttributeName" name="&quot;Mapped_SourceAttributeName&quot;"/>
+				<columnExprDef expression="Mapped_RuleAttributeName" name="&quot;Mapped_RuleAttributeName&quot;"/>
+				<columnExprDef expression="&quot;Rule&quot; + RuleID + &quot;.comp&quot;" name="&quot;Mapped_RuleComponentName&quot;"/>
+				<columnExprDef expression="RuleID" name="&quot;Mapped_RuleComponentID&quot;"/>
+				<columnExprDef expression="RuleID" name="&quot;Mapped_RuleID&quot;"/>
+				<columnExprDef expression="Technical_RuleName" name="&quot;RuleName&quot;"/>
+				<columnExprDef expression="RuleID" name="&quot;RuleID&quot;"/>
+				<columnExprDef expression="RuleID" name="&quot;RuleCode&quot;"/>
+			</columns>
+		</properties>
+		<visual-constraints layout="vertical" bounds="24,1632,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out_err" step="DQFramework.dbo.RuleMappings - DB"/>
+		<target endpoint="in" step="ColumnMappings - DB - Errors"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Domain.txt 5) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="true" id="Domain.txt 5">
+		<properties writeHeader="true" fileName="../../data/debug/Results.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="480,1512,-1,-1"/>
+	</step>
+
+
+
+<!-- (Multiplicator) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="264,1104,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="Create Category columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="Create Tmp columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="Rule Summary text write"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 10) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 10">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="24,1512,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="Multiplicator 10"/>
+		<target endpoint="in" step="ColumnMappings"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 10"/>
+		<target endpoint="in" step="DQFramework.dbo.RuleMappings - DB"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator 19) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator 19">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="480,1440,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="Multiplicator 19"/>
+		<target endpoint="in" step="Domain.txt 5"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator 19"/>
+		<target endpoint="in" step="Results_Rules - DB"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Results_Rules - DB) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.write.JdbcWriter" disabled="false" id="Results_Rules - DB">
+		<properties commitSize="0" writeAllColumns="false" batchSize="1000" dataSourceName="DQFramework" tableName="&quot;dbo&quot;.&quot;Results_Rules&quot;">
+			<columns>
+				<columnExprDef expression="DebugTraceID" name="&quot;DebugTraceID&quot;"/>
+				<columnExprDef expression="SubmissionID" name="&quot;SubmissionID&quot;"/>
+				<columnExprDef expression="SubmissionDateTime" name="&quot;SubmissionDateTime&quot;"/>
+				<columnExprDef expression="SubmissionDate" name="&quot;SubmissionDate&quot;"/>
+				<columnExprDef expression="SubmissionWeek" name="&quot;SubmissionWeek&quot;"/>
+				<columnExprDef expression="SubmissionMonth" name="&quot;SubmissionMonth&quot;"/>
+				<columnExprDef expression="SubmissionYear" name="&quot;SubmissionYear&quot;"/>
+				<columnExprDef expression="ReportDateTime" name="&quot;ReportDateTime&quot;"/>
+				<columnExprDef expression="ReportDate" name="&quot;ReportDate&quot;"/>
+				<columnExprDef expression="ReportWeek" name="&quot;ReportWeek&quot;"/>
+				<columnExprDef expression="ReportMonth" name="&quot;ReportMonth&quot;"/>
+				<columnExprDef expression="ReportYear" name="&quot;ReportYear&quot;"/>
+				<columnExprDef expression="Ex_CallerRequestTime" name="&quot;Ex_CallerRequestTime&quot;"/>
+				<columnExprDef expression="Ex_RuleProcessingCompletion_Timestamp" name="&quot;Ex_RuleProcessingCompletion_Timestamp&quot;"/>
+				<columnExprDef expression="iif(DomainName is null,&quot;NotMapped&quot;,DomainName)" name="&quot;DomainName&quot;"/>
+				<columnExprDef expression="iif(DomainLayerName is null,&quot;NotMapped&quot;,DomainLayerName)" name="&quot;DomainLayerName&quot;"/>
+				<columnExprDef expression="iif(DomainAttributeName is null,&quot;NotMapped&quot;,DomainAttributeName)" name="&quot;DomainAttributeName&quot;"/>
+				<columnExprDef expression="SourceName" name="&quot;SourceName&quot;"/>
+				<columnExprDef expression="SourceLayerName" name="&quot;SourceLayerName&quot;"/>
+				<columnExprDef expression="LeadingAttribute" name="&quot;SourceAttributeName&quot;"/>
+				<columnExprDef expression="SourceAttributeDataType" name="&quot;SourceAttributeDataType&quot;"/>
+				<columnExprDef expression="LeadingAttribute" name="&quot;LeadingAttribute&quot;"/>
+				<columnExprDef expression="RuleID" name="&quot;RuleID&quot;"/>
+				<columnExprDef expression="RuleID" name="&quot;RuleCode&quot;"/>
+				<columnExprDef expression="Technical_RuleName" name="&quot;RuleName&quot;"/>
+				<columnExprDef expression="Short_Description" name="&quot;Short_Description&quot;"/>
+				<columnExprDef expression="Description" name="&quot;Description&quot;"/>
+				<columnExprDef expression="&quot;&quot;" name="&quot;Expression&quot;"/>
+				<columnExprDef expression="Success_Count" name="&quot;Success_Count&quot;"/>
+				<columnExprDef expression="Fail_Count" name="&quot;Fail_Count&quot;"/>
+				<columnExprDef expression="Total" name="&quot;Total&quot;"/>
+				<columnExprDef expression="Percentage" name="&quot;Percentage&quot;"/>
+				<columnExprDef expression="Results_SourceAttribute_RDC" name="&quot;Results_SourceAttribute_RDC&quot;"/>
+				<columnExprDef expression="Results_SourceLayer_RDC" name="&quot;Results_SourceLayer_RDC&quot;"/>
+				<columnExprDef expression="Results_Sourcer_RDC" name="&quot;Results_Sourcer_RDC&quot;"/>
+				<columnExprDef expression="Results_DomainAttribute_RDC" name="&quot;Results_DomainAttribute_RDC&quot;"/>
+				<columnExprDef expression="Results_DomainLayer_RDC" name="&quot;Results_DomainLayer_RDC&quot;"/>
+				<columnExprDef expression="Results_Domain_RDC" name="&quot;Results_Domain_RDC&quot;"/>
+				<columnExprDef expression="Results_SourceAttribute_Mapped_RuleIDs" name="&quot;Results_SourceAttribute_Mapped_RuleIDs&quot;"/>
+				<columnExprDef expression="Results_SourceAttribute_NoOfRules" name="&quot;Results_SourceAttribute_NoOfRules&quot;"/>
+				<columnExprDef expression="Results_SourceAttribute_AveragePercentage" name="&quot;Results_SourceAttribute_AveragePercentage&quot;"/>
+				<columnExprDef expression="Results_SourceAttribute_MaxPercentage" name="&quot;Results_SourceAttribute_MaxPercentage&quot;"/>
+				<columnExprDef expression="Results_SourceAttribute_MinPercentage" name="&quot;Results_SourceAttribute_MinPercentage&quot;"/>
+				<columnExprDef expression="Results_SourceLayer_Mapped_RuleIDs" name="&quot;Results_SourceLayer_Mapped_RuleIDs&quot;"/>
+				<columnExprDef expression="Results_SourceLayer_NoOfRules" name="&quot;Results_SourceLayer_NoOfRules&quot;"/>
+				<columnExprDef expression="Results_SourceLayer_AveragePercentage" name="&quot;Results_SourceLayer_AveragePercentage&quot;"/>
+				<columnExprDef expression="Results_SourceLayer_MaxPercentage" name="&quot;Results_SourceLayer_MaxPercentage&quot;"/>
+				<columnExprDef expression="Results_SourceLayer_MinPercentage" name="&quot;Results_SourceLayer_MinPercentage&quot;"/>
+				<columnExprDef expression="Results_SourceLayer_NoOfDomainLayers" name="&quot;Results_SourceLayer_NoOfDomainLayers&quot;"/>
+				<columnExprDef expression="Results_SourceAttribute_NoOfDomains" name="&quot;Results_SourceAttribute_NoOfDomains&quot;"/>
+				<columnExprDef expression="Results_SourceAttribute_NoOfDomainLayers" name="&quot;Results_SourceAttribute_NoOfDomainLayers&quot;"/>
+				<columnExprDef expression="Results_SourceAttribute_NoOfDomainAttributeNames" name="&quot;Results_SourceAttribute_NoOfDomainAttributeNames&quot;"/>
+				<columnExprDef expression="Results_SourceAttribute_NoOfSources" name="&quot;Results_SourceAttribute_NoOfSources&quot;"/>
+				<columnExprDef expression="Results_SourceAttribute_NoOfSourceLayers" name="&quot;Results_SourceAttribute_NoOfSourceLayers&quot;"/>
+				<columnExprDef expression="Results_SourceAttribute_NoOfSourceAttributeNames" name="&quot;Results_SourceAttribute_NoOfSourceAttributeNames&quot;"/>
+				<columnExprDef expression="Results_SourceLayer_NoOfDomains" name="&quot;Results_SourceLayer_NoOfDomains&quot;"/>
+				<columnExprDef expression="Results_SourceLayer_NoOfDomainAttributeNames" name="&quot;Results_SourceLayer_NoOfDomainAttributeNames&quot;"/>
+				<columnExprDef expression="Results_SourceLayer_NoOfSources" name="&quot;Results_SourceLayer_NoOfSources&quot;"/>
+				<columnExprDef expression="Results_SourceLayer_NoOfSourceLayers" name="&quot;Results_SourceLayer_NoOfSourceLayers&quot;"/>
+				<columnExprDef expression="Results_SourceLayer_NoOfSourceAttributeNames" name="&quot;Results_SourceLayer_NoOfSourceAttributeNames&quot;"/>
+				<columnExprDef expression="Results_Source_Mapped_RuleIDs" name="&quot;Results_Source_Mapped_RuleIDs&quot;"/>
+				<columnExprDef expression="Results_Source_NoOfRules" name="&quot;Results_Source_NoOfRules&quot;"/>
+				<columnExprDef expression="Results_Source_AveragePercentage" name="&quot;Results_Source_AveragePercentage&quot;"/>
+				<columnExprDef expression="Results_Source_MaxPercentage" name="&quot;Results_Source_MaxPercentage&quot;"/>
+				<columnExprDef expression="Results_Source_MinPercentage" name="&quot;Results_Source_MinPercentage&quot;"/>
+				<columnExprDef expression="Results_Source_NoOfDomainLayers" name="&quot;Results_Source_NoOfDomainLayers&quot;"/>
+				<columnExprDef expression="Results_Source_NoOfDomains" name="&quot;Results_Source_NoOfDomains&quot;"/>
+				<columnExprDef expression="Results_Source_NoOfDomainAttributeNames" name="&quot;Results_Source_NoOfDomainAttributeNames&quot;"/>
+				<columnExprDef expression="Results_Source_NoOfSources" name="&quot;Results_Source_NoOfSources&quot;"/>
+				<columnExprDef expression="Results_Source_NoOfSourceLayers" name="&quot;Results_Source_NoOfSourceLayers&quot;"/>
+				<columnExprDef expression="Results_Source_NoOfSourceAttributeNames" name="&quot;Results_Source_NoOfSourceAttributeNames&quot;"/>
+				<columnExprDef expression="Category" name="&quot;Category&quot;"/>
+				<columnExprDef expression="tointeger(Hierarchy)" name="&quot;Hierarchy&quot;"/>
+				<columnExprDef expression="HierarchyCategory" name="&quot;HierarchyCategory&quot;"/>
+			</columns>
+		</properties>
+		<visual-constraints layout="vertical" bounds="720,1512,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out_err" step="Results_Rules - DB"/>
+		<target endpoint="in" step="Results_Rules- DB - Errors 8"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Results_Rules- DB - Errors 8) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="true" id="Results_Rules- DB - Errors 8">
+		<properties writeHeader="true" fileName="../../data/debug/Results_Rules.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="720,1584,-1,-1"/>
+	</step>
+
+
+
+<!-- (Rule Summary) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="Rule Summary">
+		<properties>
+			<columns>
+				<columnDef name="Success_Count" type="LONG"/>
+				<columnDef name="Total" type="LONG"/>
+				<columnDef name="SourceLayerName" type="STRING"/>
+				<columnDef name="SourceName" type="STRING"/>
+				<columnDef name="LeadingAttribute" type="STRING"/>
+				<columnDef name="RuleMappings" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedLAForFilter" type="STRING"/>
+				<columnDef name="FilterRuleID" type="LONG"/>
+				<columnDef name="FilterRecordsCount" type="INTEGER"/>
+				<columnDef name="FilterLeadingAttribute" type="STRING"/>
+				<columnDef name="DQM_RuleCodesAppliedLAFiltered" type="STRING"/>
+				<columnDef name="FilteredRuleID" type="LONG"/>
+				<columnDef name="FilteredRecordsCount" type="INTEGER"/>
+				<columnDef name="FilteredLeadingAttribute" type="STRING"/>
+				<columnDef name="RuleID" type="INTEGER"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Rule Summary"/>
+		<target endpoint="in" step="create InputRecordingDateTime column"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Rule Summary text write) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="true" id="Rule Summary text write">
+		<properties writeHeader="true" fileName="../../data/debug/tmpgr1.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,1200,-1,-1"/>
+	</step>
+
+
+
+<!-- (SQL - Delete Old RuleMappings from DB) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLExecute" disabled="false" id="SQL - Delete Old RuleMappings from DB">
+		<properties commitSize="0" batchSize="1000" dataSourceName="DQFramework">
+			<query>delete from &quot;dbo&quot;.&quot;RuleMappings&quot; where &quot;SourceName&quot; = ${SourceName} AND &quot;SourceLayerName&quot; = ${SourceLayerName} 
+AND &quot;RuleID&quot; = ${RuleID}</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="24,1440,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL - Delete Old RuleMappings from DB"/>
+		<target endpoint="in" step="Multiplicator 10"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL - Get Category details) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL - Get Category details">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="Category" dataColumn="Category"/>
+				<columnMapping sqlColumn="CategoryID" dataColumn="CategoryID"/>
+				<columnMapping sqlColumn="Hierarchy" dataColumn="Hierarchy"/>
+				<columnMapping sqlColumn="HierarchyCategoryID" dataColumn="HierarchyCategoryID"/>
+				<columnMapping sqlColumn="HierarchyCategory" dataColumn="HierarchyCategory"/>
+			</mappings>
+			<query>SELECT 
+ &quot;C&quot;.&quot;Category&quot;
+,&quot;C&quot;.&quot;CategoryID&quot;
+,&quot;SC&quot;.&quot;Hierarchy&quot;
+,&quot;SC&quot;.&quot;HierarchyCategoryID&quot;
+,&quot;SC&quot;.&quot;HierarchyCategory&quot;
+,&quot;RSC&quot;.&quot;RuleID&quot;
+FROM 
+&quot;dbo&quot;.&quot;RuleDQCategory&quot;		AS &quot;RSC&quot;	LEFT JOIN 
+&quot;dbo&quot;.&quot;DQCategoryHierarchy&quot;	AS &quot;SC&quot;	ON &quot;RSC&quot;.&quot;HeirarchyCategoryID&quot;=&quot;SC&quot;.&quot;HierarchyCategoryID&quot; LEFT JOIN
+&quot;dbo&quot;.&quot;DQCategory&quot;			AS &quot;C&quot;	ON &quot;SC&quot;.&quot;CategoryID&quot;=&quot;C&quot;.&quot;CategoryID&quot;
+Where &quot;RuleID&quot; = ${RuleID}</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="480,1224,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL - Get Category details"/>
+		<target endpoint="in" step="Create Tmp columns 9"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL - Get Domain Details) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL - Get Domain Details">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="DomainName" dataColumn="DomainName"/>
+				<columnMapping sqlColumn="DomainLayerName" dataColumn="DomainLayerName"/>
+				<columnMapping sqlColumn="DomainAttributeName" dataColumn="DomainAttributeName"/>
+			</mappings>
+			<query>Select &quot;DomainName&quot;, &quot;DomainLayerName&quot;, &quot;DomainAttributeName&quot;,&quot;SourceAttributeDataType&quot; from &quot;dbo&quot;.&quot;SourceDomainMapping&quot;
+WHERE &quot;SourceName&quot; = ${SourceName} 
+AND &quot;SourceLayerName&quot; = ${SourceLayerName}
+AND &quot;SourceAttributeName&quot; = ${LeadingAttribute}
+</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="480,1368,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL - Get Domain Details"/>
+		<target endpoint="in" step="Multiplicator 19"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL - Get Rule details 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL - Get Rule details 2">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="Technical_RuleName" dataColumn="Technical_RuleName"/>
+				<columnMapping sqlColumn="RuleID" dataColumn="RuleID"/>
+				<columnMapping sqlColumn="Rule_Details" dataColumn="Short_Description"/>
+				<columnMapping sqlColumn="Rule_Details" dataColumn="Description"/>
+			</mappings>
+			<query>select &quot;RuleID&quot;, &quot;Generic_RuleName&quot;, &quot;Rule_Details&quot;, &quot;Technical_RuleName&quot;, &quot;Score&quot;, &quot;Explanation&quot;, &quot;RuleScope&quot;, &quot;DQCategory&quot;, &quot;Tags&quot;, &quot;Date&quot;, &quot;Comment&quot;, &quot;HierarchyCategoryID&quot; from &quot;dbo&quot;.&quot;Rules&quot;
+where &quot;RuleID&quot; = ${RuleID}
+</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="288,744,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL - Get Rule details 2"/>
+		<target endpoint="in" step="SQL - Get SourceAttributeDataType  2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="SQL - Get Rule details 2"/>
+		<target endpoint="in" step="Union Same"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="287,792"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL - Get SourceAttributeDataType  2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL - Get SourceAttributeDataType  2">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="SourceAttributeDataType" dataColumn="SourceAttributeDataType"/>
+			</mappings>
+			<query>Select &quot;SourceAttributeDataType&quot; from &quot;dbo&quot;.&quot;Sources&quot; 
+WHERE &quot;SourceName&quot; = ${SourceName} 
+AND &quot;SourceLayerName&quot; = ${SourceLayerName}
+AND &quot;SourceAttributeName&quot; = ${LeadingAttribute}</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="288,960,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL - Get SourceAttributeDataType  2"/>
+		<target endpoint="in" step="Multiplicator"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="SQL - Get SourceAttributeDataType  2"/>
+		<target endpoint="in" step="Union Same 2"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="287,1008"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (SQL - Get SourceAttributeDataType  3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.jdbc.execute.SQLSelect" disabled="false" id="SQL - Get SourceAttributeDataType  3">
+		<properties autocommit="false" includeEmpty="true" dataSourceName="DQFramework">
+			<mappings>
+				<columnMapping sqlColumn="SourceAttributeDataType" dataColumn="Mapped_SourceAttributeDataType"/>
+			</mappings>
+			<query>Select &quot;SourceAttributeDataType&quot; from &quot;dbo&quot;.&quot;Sources&quot;
+WHERE &quot;SourceName&quot; = ${SourceName} 
+AND &quot;SourceLayerName&quot; = ${SourceLayerName}
+AND &quot;SourceAttributeName&quot; = ${LeadingAttribute}</query>
+		</properties>
+		<visual-constraints layout="vertical" bounds="24,1368,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="SQL - Get SourceAttributeDataType  3"/>
+		<target endpoint="in" step="SQL - Delete Old RuleMappings from DB"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Splitter 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.text.Splitter" disabled="false" id="Splitter 2">
+		<properties recordDescriptorColumn="splitted_RuleMappings_RDC" allSentenceColumn="RuleMappings" oneWordColumn="splitted_RuleMappings">
+			<separatorConfig upperCaseLetters="false" digits="false" includeSeparators="~" lowerCaseLetters="false" excludeSeparators="!&quot;£$%^&amp;*()_+=-,.&lt;&gt;/?&#39;@#]}[{|\¬`:; "/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="24,1224,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Splitter 2"/>
+		<target endpoint="in" step="Create par columns 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union Same) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="true" id="Union Same">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="264,816,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="Union Same"/>
+		<target endpoint="in" step="is SourceAttributeDataType null?"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union Same 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="true" id="Union Same 2">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="264,1032,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="Union Same 2"/>
+		<target endpoint="in" step="Multiplicator"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (create InputRecordingDateTime column) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="create InputRecordingDateTime column">
+		<properties>
+			<addedColumns>
+				<addedColumn name="InputRecordingDateTime" type="STRING">
+					<expression>//getRequestTime()
+&quot;20-06-2020 23:00:00&quot;</expression>
+					<comm:comment>toDateTime(&quot;15-06-2020 23:00:00&quot;, &quot;dd-MM-yyyy HH:mm:ss&quot;) - use this to create datetime in the past.</comm:comment>
+				</addedColumn>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="create InputRecordingDateTime column"/>
+		<target endpoint="in" step="create RecordingDateTime column"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (create RecordingDateTime column) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="create RecordingDateTime column">
+		<properties>
+			<addedColumns>
+				<addedColumn name="RecordingDateTime" type="DATETIME">
+					<expression>//getRequestTime()
+toDateTime(InputRecordingDateTime, &quot;dd-MM-yyyy HH:mm:ss&quot;)</expression>
+					<comm:comment>toDateTime(&quot;15-06-2020 23:00:00&quot;, &quot;dd-MM-yyyy HH:mm:ss&quot;) - use this to create datetime in the past.</comm:comment>
+				</addedColumn>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,168,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="create RecordingDateTime column"/>
+		<target endpoint="in" step="create SubmissionID column"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (create SubmissionID column) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="create SubmissionID column">
+		<properties>
+			<addedColumns>
+				<addedColumn name="SubmissionID" type="STRING">
+					<expression>//toString(RecordingDateTime,&quot;MMddyyyy&quot;)
+randomUUID()</expression>
+					<comm:comment>Comes from metadata - ReportDate</comm:comment>
+				</addedColumn>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,240,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="create SubmissionID column"/>
+		<target endpoint="in" step="create generic columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (create generic columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="create generic columns">
+		<properties>
+			<addedColumns>
+				<addedColumn name="DebugTraceID" type="STRING">
+					<comm:comment>Comes from process flow</comm:comment>
+				</addedColumn>
+				<addedColumn expression="RecordingDateTime" name="SubmissionDateTime" type="DATETIME">
+					<comm:comment>Comes from metadata</comm:comment>
+				</addedColumn>
+				<addedColumn expression="toDate(RecordingDateTime)" name="SubmissionDate" type="DAY">
+					<comm:comment>Comes from metadata</comm:comment>
+				</addedColumn>
+				<addedColumn expression="toInteger(toString(RecordingDateTime,&quot;w&quot;))" name="SubmissionWeek" type="INTEGER">
+					<comm:comment>datePart(toDate(RecordingDateTime),&quot;MONTH&quot;)</comm:comment>
+				</addedColumn>
+				<addedColumn expression="datePart(toDate(RecordingDateTime),&quot;MONTH&quot;)" name="SubmissionMonth" type="INTEGER"/>
+				<addedColumn expression="datePart(toDate(RecordingDateTime),&quot;YEAR&quot;)" name="SubmissionYear" type="INTEGER"/>
+				<addedColumn expression="RecordingDateTime" name="ReportDateTime" type="DATETIME">
+					<comm:comment>Comes from metadata</comm:comment>
+				</addedColumn>
+				<addedColumn expression="toDate(RecordingDateTime)" name="ReportDate" type="DAY">
+					<comm:comment>Comes from metadata</comm:comment>
+				</addedColumn>
+				<addedColumn expression="toInteger(toString(RecordingDateTime,&quot;w&quot;))" name="ReportWeek" type="INTEGER">
+					<comm:comment>datePart(toDate(RecordingDateTime),&quot;MONTH&quot;)</comm:comment>
+				</addedColumn>
+				<addedColumn expression="datePart(toDate(RecordingDateTime),&quot;MONTH&quot;)" name="ReportMonth" type="INTEGER"/>
+				<addedColumn expression="datePart(toDate(RecordingDateTime),&quot;YEAR&quot;)" name="ReportYear" type="INTEGER"/>
+				<addedColumn expression="Success_Count/Total*100" name="Percentage" type="FLOAT">
+					<comm:comment>Derived/Processing Columns</comm:comment>
+				</addedColumn>
+				<addedColumn expression="Total - Success_Count" name="Fail_Count" type="LONG">
+					<comm:comment>Derived/Processing Columns</comm:comment>
+				</addedColumn>
+				<addedColumn expression="RecordingDateTime" name="Ex_CallerRequestTime" type="DATETIME">
+					<comm:comment>Derived/Processing Columns</comm:comment>
+				</addedColumn>
+				<addedColumn expression="now()" name="Ex_RuleProcessingCompletion_Timestamp" type="DATETIME">
+					<comm:comment>Derived/Processing Columns</comm:comment>
+				</addedColumn>
+				<addedColumn name="Technical_RuleName" type="STRING"/>
+				<addedColumn name="Short_Description" type="STRING"/>
+				<addedColumn name="Description" type="STRING"/>
+				<addedColumn name="SourceAttributeDataType" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,312,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="create generic columns"/>
+		<target endpoint="in" step="SQL - Get Rule details 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="create generic columns"/>
+		<target endpoint="in" step="is RuleName null - no rule details?"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (is RuleName null - no rule details?) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="true" id="is RuleName null - no rule details?">
+		<properties condition="Name is null"/>
+		<visual-constraints layout="vertical" bounds="264,672,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out_true" step="is RuleName null - no rule details?"/>
+		<target endpoint="in" step="SQL - Get Rule details 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out_false" step="is RuleName null - no rule details?"/>
+		<target endpoint="in" step="Union Same"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="264,816"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (is SourceAttributeDataType null?) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="true" id="is SourceAttributeDataType null?">
+		<properties condition="SourceAttributeDataType is null"/>
+		<visual-constraints layout="vertical" bounds="264,888,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out_true" step="is SourceAttributeDataType null?"/>
+		<target endpoint="in" step="SQL - Get SourceAttributeDataType  2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out_false" step="is SourceAttributeDataType null?"/>
+		<target endpoint="in" step="Union Same 2"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="264,1032"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+</purity-config>

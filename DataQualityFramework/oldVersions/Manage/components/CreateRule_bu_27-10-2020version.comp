@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (Create columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create columns">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="toString(now(),&quot;dd-MM-YYYY HH:mm:ss&quot;)" name="DateString" type="STRING"/>
+				<addedColumn name="CommentStep" type="STRING"/>
+				<addedColumn expression="&#39;&quot;&#39; + Explanation + &#39;&quot;&#39; + &#39; + &quot;(&#39; + &#39;&quot;&#39; + &#39; + &#39; + &#39;tmp_LeadingAttribute&#39; + &#39; + &#39; + &#39;&quot;)&#39; + &#39;&quot;&#39;" name="QuotedExplanation" type="STRING"/>
+				<addedColumn name="CommentComponent" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="336,144,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create columns"/>
+		<target endpoint="in" step="Update Columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Generate Rule Components) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.xml.writer.ComplexXmlWriter" disabled="false" id="Generate Rule Components">
+		<properties fileName="../Development/Collibra_Rule_RBID-1.comp" maximumRecordsInMemory="10000" indenting="true" encoding="UTF-8">
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+			<objects>
+				<complexXmlWriterObjectStreamCfg name="Purity">
+					<subObjects/>
+					<template>
+&lt;!-- (DQMFramework_DQI) --&gt;&lt;step mode=&quot;NORMAL&quot; className=&quot;com.ataccama.dqc.tasks.dqi.DataQualityIndicator&quot; disabled=&quot;false&quot; id=&quot;DQFramework_DQI&quot;&gt;
+        &lt;properties explainedColumn=&quot;RuleCodes&quot; outRecordsFilterType=&quot;ALL&quot;&gt;
+            &lt;rules&gt;
+                &lt;dQIRule code=&quot;{RuleID}&quot; expression=&quot;tmp_RuleConditionMet&quot; name=&quot;{Normalised_Rule_Name}&quot; shortDescription=&quot;{Customer_Rule_Name}&quot;&gt;
+				 &lt;description&gt;{Customer_Rule_Details}&lt;/description&gt;
+				&lt;/dQIRule&gt;
+            &lt;/rules&gt;
+        &lt;/properties&gt;
+        &lt;visual-constraints layout=&quot;vertical&quot; bounds=&quot;360,432,-1,-1&quot;/&gt;
+    &lt;/step&gt;
+
+    &lt;connection className=&quot;com.ataccama.dqc.model.elements.connections.StandardFlowConnection&quot; disabled=&quot;false&quot;&gt;
+        &lt;source endpoint=&quot;summary&quot; step=&quot;DQFramework_DQI&quot;/&gt;
+        &lt;target endpoint=&quot;in&quot; step=&quot;Create LeadingAttribute column&quot;/&gt;
+        &lt;visual-constraints&gt;
+            &lt;bendpoints&gt;
+                &lt;point location=&quot;503,480&quot;/&gt;
+            &lt;/bendpoints&gt;
+        &lt;/visual-constraints&gt;
+    &lt;/connection&gt;
+
+&lt;!-- (Create LeadingAttribute column) --&gt;&lt;step mode=&quot;NORMAL&quot; className=&quot;com.ataccama.dqc.tasks.flow.AlterFormat&quot; disabled=&quot;false&quot; id=&quot;Create LeadingAttribute column&quot;&gt;
+        &lt;properties&gt;
+            &lt;addedColumns&gt;
+                &lt;addedColumn expression=&quot;//please fill in leading attribute field name&quot; name=&quot;LeadingAttribute&quot; type=&quot;STRING&quot;/&gt;
+            &lt;/addedColumns&gt;
+            &lt;removedColumns/&gt;
+        &lt;/properties&gt;
+        &lt;visual-constraints layout=&quot;vertical&quot; bounds=&quot;480,528,48,48&quot;/&gt;
+    &lt;/step&gt;
+    &lt;connection className=&quot;com.ataccama.dqc.model.elements.connections.StandardFlowConnection&quot; disabled=&quot;false&quot;&gt;
+        &lt;source endpoint=&quot;out&quot; step=&quot;Create LeadingAttribute column&quot;/&gt;
+        &lt;target endpoint=&quot;in&quot; step=&quot;Summary&quot;/&gt;
+        &lt;visual-constraints&gt;
+            &lt;bendpoints/&gt;
+        &lt;/visual-constraints&gt;
+    &lt;/connection&gt;
+    &lt;connection className=&quot;com.ataccama.dqc.model.elements.connections.StandardFlowConnection&quot; disabled=&quot;false&quot;&gt;
+        &lt;source endpoint=&quot;out&quot; step=&quot;DQFramework_DQI&quot;/&gt;
+        &lt;target endpoint=&quot;in&quot; step=&quot;remove tmp columns&quot;/&gt;
+        &lt;visual-constraints&gt;
+            &lt;bendpoints&gt;
+                &lt;point location=&quot;263,480&quot;/&gt;
+            &lt;/bendpoints&gt;
+        &lt;/visual-constraints&gt;
+    &lt;/connection&gt;
+&lt;!-- (DQMFramework_Scoring) --&gt;&lt;step mode=&quot;NORMAL&quot; className=&quot;com.ataccama.dqc.tasks.scoring.ScoringEngineStep&quot; disabled=&quot;false&quot; id=&quot;DQFramework_Scoring&quot;&gt;
+        &lt;properties defaultScoreColumn=&quot;RecordScore&quot; defaultExplainColumn=&quot;RecordExplanation&quot;&gt;
+            &lt;rules&gt;
+                &lt;scoringEngineNode condition=&quot;tmp_RuleConditionMet&quot; name=&quot;{Normalised_Rule_Name}&quot;&gt;
+                    &lt;cases&gt;
+                        &lt;scoringEngineCase score=&quot;0&quot; correction=&quot;0&quot; explanation=&quot;&quot; defaultCase=&quot;false&quot; value=&quot;true&quot;/&gt;
+                        &lt;scoringEngineCase score=&quot;10&quot; correction=&quot;0&quot; explanation=&quot;{QuotedExplanation}&quot; defaultCase=&quot;true&quot; value=&quot;false&quot;/&gt;
+                    &lt;/cases&gt;
+                    &lt;comm:comment&gt;{CommentStep}
+&lt;/comm:comment&gt;
+                &lt;/scoringEngineNode&gt;
+            &lt;/rules&gt;
+        &lt;/properties&gt;
+        &lt;visual-constraints layout=&quot;vertical&quot; bounds=&quot;360,360,-1,-1&quot;/&gt;
+    &lt;/step&gt;
+    &lt;connection className=&quot;com.ataccama.dqc.model.elements.connections.StandardFlowConnection&quot; disabled=&quot;false&quot;&gt;
+        &lt;source endpoint=&quot;out&quot; step=&quot;DQFramework_Scoring&quot;/&gt;
+        &lt;target endpoint=&quot;in&quot; step=&quot;DQFramework_DQI&quot;/&gt;
+        &lt;visual-constraints&gt;
+            &lt;bendpoints/&gt;
+        &lt;/visual-constraints&gt;
+    &lt;/connection&gt;
+
+&lt;!-- (remove tmp columns) --&gt;&lt;step mode=&quot;NORMAL&quot; className=&quot;com.ataccama.dqc.tasks.flow.AlterFormat&quot; disabled=&quot;false&quot; id=&quot;remove tmp columns&quot;&gt;
+        &lt;properties&gt;
+            &lt;addedColumns/&gt;
+            &lt;removedColumns&gt;
+                &lt;columnRef name=&quot;tmp_LeadingAttribute&quot;/&gt;
+            &lt;/removedColumns&gt;
+        &lt;/properties&gt;
+        &lt;visual-constraints layout=&quot;vertical&quot; bounds=&quot;240,528,-1,-1&quot;/&gt;
+    &lt;/step&gt;
+    &lt;connection className=&quot;com.ataccama.dqc.model.elements.connections.StandardFlowConnection&quot; disabled=&quot;false&quot;&gt;
+        &lt;source endpoint=&quot;out&quot; step=&quot;remove tmp columns&quot;/&gt;
+        &lt;target endpoint=&quot;in&quot; step=&quot;Detail&quot;/&gt;
+        &lt;visual-constraints&gt;
+            &lt;bendpoints/&gt;
+        &lt;/visual-constraints&gt;
+    &lt;/connection&gt;
+
+&lt;!-- (Detail) --&gt;&lt;step mode=&quot;NORMAL&quot; className=&quot;com.ataccama.dqc.tasks.common.usersteps.io.OutputStep&quot; disabled=&quot;false&quot; id=&quot;Detail&quot;&gt;
+        &lt;properties&gt;
+            &lt;requiredColumns/&gt;
+        &lt;/properties&gt;
+        &lt;visual-constraints layout=&quot;vertical&quot; bounds=&quot;240,624,-1,-1&quot;/&gt;
+    &lt;/step&gt;
+
+
+
+&lt;!-- (Set flag to true or false) --&gt;&lt;step mode=&quot;NORMAL&quot; className=&quot;com.ataccama.dqc.tasks.expressions.ColumnAssigner&quot; disabled=&quot;false&quot; id=&quot;Set flag to true or false&quot;&gt;
+        &lt;properties&gt;
+            &lt;assignments&gt;
+                &lt;assignment column=&quot;tmp_RuleConditionMet&quot;&gt;
+					&lt;expression&gt;//Insert you data quality expression here.
+//The expression MUST result in a boean true or false output.&lt;/expression&gt; 
+                    &lt;scorer&gt;
+                        &lt;scoringEntries/&gt;
+                    &lt;/scorer&gt;
+                &lt;/assignment&gt;
+            &lt;/assignments&gt;
+        &lt;/properties&gt;
+        &lt;visual-constraints layout=&quot;vertical&quot; bounds=&quot;360,264,-1,-1&quot;/&gt;
+    &lt;/step&gt;
+    &lt;connection className=&quot;com.ataccama.dqc.model.elements.connections.StandardFlowConnection&quot; disabled=&quot;false&quot;&gt;
+        &lt;source endpoint=&quot;out&quot; step=&quot;Set flag to true or false&quot;/&gt;
+        &lt;target endpoint=&quot;in&quot; step=&quot;DQFramework_Scoring&quot;/&gt;
+        &lt;visual-constraints&gt;
+            &lt;bendpoints/&gt;
+        &lt;/visual-constraints&gt;
+    &lt;/connection&gt;
+
+
+
+&lt;!-- (Summary) --&gt;&lt;step mode=&quot;NORMAL&quot; className=&quot;com.ataccama.dqc.tasks.common.usersteps.io.OutputStep&quot; disabled=&quot;false&quot; id=&quot;Summary&quot;&gt;
+        &lt;properties&gt;
+            &lt;requiredColumns/&gt;
+        &lt;/properties&gt;
+        &lt;visual-constraints layout=&quot;vertical&quot; bounds=&quot;480,624,-1,-1&quot;/&gt;
+    &lt;/step&gt;
+
+
+
+&lt;!-- (in) --&gt;&lt;step mode=&quot;NORMAL&quot; className=&quot;com.ataccama.dqc.tasks.common.usersteps.io.InputStep&quot; disabled=&quot;false&quot; id=&quot;in&quot;&gt;
+        &lt;properties&gt;
+            &lt;columns&gt;
+                &lt;columnDef name=&quot;RecordID&quot; type=&quot;STRING&quot;/&gt;
+                &lt;columnDef name=&quot;RecordScore&quot; type=&quot;INTEGER&quot;/&gt;
+                &lt;columnDef name=&quot;RecordExplanation&quot; type=&quot;STRING&quot;/&gt;
+				&lt;columnDef name=&quot;RuleCodes&quot; type=&quot;STRING&quot;/&gt;
+                &lt;columnDef name=&quot;Rule_Attribute_1&quot; type=&quot;STRING&quot;/&gt;
+            &lt;/columns&gt;
+            &lt;shadowColumns&gt;
+                &lt;shadowColumnDef name=&quot;tmp_RuleConditionMet&quot; type=&quot;BOOLEAN&quot;/&gt;
+                &lt;shadowColumnDef defaultExpression=&quot;//please fill in leading attribute field name&quot; name=&quot;tmp_LeadingAttribute&quot; type=&quot;STRING&quot;/&gt;
+            &lt;/shadowColumns&gt;
+        &lt;/properties&gt;
+        &lt;visual-constraints layout=&quot;vertical&quot; bounds=&quot;360,144,-1,-1&quot;/&gt;
+    &lt;/step&gt;
+    &lt;connection className=&quot;com.ataccama.dqc.model.elements.connections.StandardFlowConnection&quot; disabled=&quot;false&quot;&gt;
+        &lt;source endpoint=&quot;out&quot; step=&quot;in&quot;/&gt;
+        &lt;target endpoint=&quot;in&quot; step=&quot;Set flag to true or false&quot;/&gt;
+        &lt;visual-constraints&gt;
+            &lt;bendpoints/&gt;
+        &lt;/visual-constraints&gt;
+    &lt;/connection&gt;
+
+
+
+&lt;modelComment backgroundColor=&quot;128,255,255&quot; borderColor=&quot;128,255,255&quot; bounds=&quot;24,240,649,102&quot; foregroundColor=&quot;51,51,51&quot;&gt;Insert Rule expression/steps here. 
+RuleCode column must be set to TRUE or FALSE
+TRUE = Data passed the rule aka Data is good quality
+FALSE = Data failed the rule aka Data is bad quality
+Ensure all columns created (if any) are also removed.&lt;/modelComment&gt;
+
+
+
+&lt;modelComment backgroundColor=&quot;255,255,180&quot; borderColor=&quot;183,183,0&quot; bounds=&quot;24,24,343,54&quot; foregroundColor=&quot;51,51,51&quot;&gt;{CommentComponent}
+&lt;/modelComment&gt;
+</template>
+				</complexXmlWriterObjectStreamCfg>
+			</objects>
+			<template>&lt;purity-config xmlns:comm=&quot;http://www.ataccama.com/purity/comment&quot; xmlns:def=&quot;http://www.ataccama.com/purity/defaults&quot; version=&quot;12.3.0.ga-2019-02-03&quot;&gt;
+    &lt;references/&gt;
+    &lt;component-mappings&gt;
+        &lt;propertyMappings&gt;
+            &lt;property name=&quot;tmp_LeadingAttribute&quot; insert=&quot;false&quot; mappedTo=&quot;in/shadowColumns[2]/defaultExpression&quot;&gt;
+                &lt;def:default-value&gt;
+                    &lt;defaultExpression&gt;//please fill in leading attribute field name&lt;/defaultExpression&gt;
+                &lt;/def:default-value&gt;
+                &lt;usedIns&gt;
+                    &lt;usedIn insert=&quot;false&quot; mappedTo=&quot;Create LeadingAttribute column/addedColumns[0]/expression&quot;/&gt;
+                &lt;/usedIns&gt;
+            &lt;/property&gt;
+        &lt;/propertyMappings&gt;
+    &lt;/component-mappings&gt;
+&lt;Purity/&gt;
+&lt;/purity-config&gt;</template>
+		</properties>
+		<visual-constraints layout="vertical" bounds="456,384,-1,-1"/>
+	</step>
+
+
+
+<!-- (Multiplicator) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="336,288,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="Purity" step="Generate Rule Components"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="480,336"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="out"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="239,336"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Update Columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Update Columns">
+		<properties>
+			<assignments>
+				<assignment expression="&quot;Created on &quot; + DateString" column="CommentStep">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment column="CommentComponent">
+					<expression>&quot;Submitted for Development on : &quot; +  DateString + &quot;
+&quot; +
+&quot;Excel RuleID : &quot; + RuleID + &quot;
+&quot; +
+&quot;Collibra RuleBook Id : &quot; + RuleID + &quot;
+&quot; +
+&quot;Rule Name : &quot; + Normalised_Rule_Name</expression>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="336,216,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Update Columns"/>
+		<target endpoint="in" step="Multiplicator"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in">
+		<properties>
+			<columns>
+				<columnDef name="Customer_Rule_Name" type="STRING"/>
+				<columnDef name="Customer_Rule_Details" type="STRING"/>
+				<columnDef name="Normalised_Rule_Name" type="STRING"/>
+				<columnDef name="RuleID" type="STRING"/>
+				<columnDef name="Score" type="STRING"/>
+				<columnDef name="Explanation" type="STRING"/>
+				<columnDef name="RuleScope" type="STRING"/>
+				<columnDef name="DQ_Category" type="STRING"/>
+				<columnDef name="Tags" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="336,72,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in"/>
+		<target endpoint="in" step="Create columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (out) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="216,384,-1,-1"/>
+	</step>
+
+
+
+<modelComment backgroundColor="255,255,180" borderColor="183,183,0" bounds="48,96,211,73" foregroundColor="51,51,51">This is Web Service enabled only</modelComment>
+
+</purity-config>
