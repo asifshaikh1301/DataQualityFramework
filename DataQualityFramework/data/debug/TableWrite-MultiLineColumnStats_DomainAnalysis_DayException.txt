@@ -1,0 +1,1 @@
+"numCases";"numValues";"value";"index";"domainAnalysis_Type";"Multiple_RDC";"ProfileInternalColName";"SourceID";"SourceName";"SourceLayerID";"SourceLayerName";"SourceAttributeID";"SourceAttributeName"

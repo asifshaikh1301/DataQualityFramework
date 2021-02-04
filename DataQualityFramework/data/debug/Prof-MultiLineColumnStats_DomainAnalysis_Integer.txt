@@ -1,0 +1,7 @@
+"count-records";"example-numCases";"example-numValues";"count-keys";"example-value";"count-description";"example-index";"ProfileInternalColumnName";"ProfileSourceAttributeName";"ProfileInputName";"domainAnalyse-name"
+72;;;4;;"valid";;"S_8";"directmailing";"in";"integer"
+0;;;0;;"invalid";;"S_8";"directmailing";"in";"integer"
+76;;;4;;"valid";;"S_9";"directemail";"in";"integer"
+0;;;0;;"invalid";;"S_9";"directemail";"in";"integer"
+76;;;4;;"valid";;"S_10";"directtelephone";"in";"integer"
+0;;;0;;"invalid";;"S_10";"directtelephone";"in";"integer"

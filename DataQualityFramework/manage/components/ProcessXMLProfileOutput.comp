@@ -1,0 +1,1773 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (Read Profile XML) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.xml.reader.XmlReader" disabled="true" id="Read Profile XML">
+		<properties fileName="../../data/pro/ProfileTest1.xml">
+			<dataFormatParameters falseValue="false" dateTimeFormat="yy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+			<namespaces/>
+			<recordsOutputs>
+				<recordsOutput rowsRootXPath="profileExport" out="out_profiling">
+					<attributes>
+						<attribute xpath="." xmlValue="true" name="out_profiling" type="STRING"/>
+					</attributes>
+					<recordsOutputs/>
+					<shadowColumns/>
+				</recordsOutput>
+			</recordsOutputs>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="96,1008,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out_profiling" step="Read Profile XML"/>
+		<target endpoint="in" step="Xml Parser"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Read Profile XML 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.xml.reader.XmlReader" disabled="false" id="Read Profile XML 2">
+		<properties fileName="../../data/pro/ProfileTest1.xml">
+			<dataFormatParameters falseValue="false" dateTimeFormat="yy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+			<namespaces/>
+			<recordsOutputs>
+				<recordsOutput rowsRootXPath="profileExport/input" out="profileExport">
+					<attributes>
+						<attribute xpath="@name" xmlValue="false" name="ProfileInputName" type="STRING"/>
+					</attributes>
+					<recordsOutputs>
+						<recordsOutput rowsRootXPath="dataAnalyses/dataAnalyse" out="dataAnalyse_column_single_statistics">
+							<attributes>
+								<attribute xpath="@columnType" xmlValue="false" name="columnType" type="STRING"/>
+								<attribute xpath="@column" xmlValue="false" name="column" type="STRING"/>
+								<attribute xpath="expression" xmlValue="false" name="expression" type="STRING"/>
+							</attributes>
+							<recordsOutputs>
+								<recordsOutput rowsRootXPath="statistics/stat" out="statistics">
+									<attributes>
+										<attribute xpath="@multiple" xmlValue="false" name="stat-multiple" type="STRING"/>
+										<attribute xpath="@type" xmlValue="false" name="stat-type" type="STRING"/>
+									</attributes>
+									<recordsOutputs>
+										<recordsOutput rowsRootXPath="item" out="statistics-item">
+											<attributes>
+												<attribute xpath="@value" xmlValue="false" name="item-value" type="STRING"/>
+												<attribute xpath="@index" xmlValue="false" name="item-index" type="INTEGER"/>
+												<attribute xpath="@count" xmlValue="false" name="item-count" type="INTEGER"/>
+											</attributes>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="statistics.[stat-multiple]" name="stat-multiple" type="STRING"/>
+												<shadowColumnDef defaultExpression="statistics.[stat-type]" name="stat-type" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+											</shadowColumns>
+										</recordsOutput>
+									</recordsOutputs>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+									</shadowColumns>
+								</recordsOutput>
+								<recordsOutput rowsRootXPath="domainAnalysis/domainAnalyse" out="domainAnalysis">
+									<attributes>
+										<attribute xpath="@name" xmlValue="false" name="domainAnalyse-name" type="STRING"/>
+									</attributes>
+									<recordsOutputs>
+										<recordsOutput rowsRootXPath="examples/example" out="domainAnalysis-example">
+											<attributes>
+												<attribute xpath="@numCases" xmlValue="false" name="example-numCases" type="INTEGER"/>
+												<attribute xpath="@numValues" xmlValue="false" name="example-numValues" type="INTEGER"/>
+												<attribute xpath="@value" xmlValue="false" name="example-value" type="STRING"/>
+												<attribute xpath="@index" xmlValue="false" name="example-index" type="INTEGER"/>
+											</attributes>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+												<shadowColumnDef defaultExpression="domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+											</shadowColumns>
+										</recordsOutput>
+										<recordsOutput rowsRootXPath="count" out="domainAnalysis-count">
+											<attributes>
+												<attribute xpath="@records" xmlValue="false" name="count-records" type="INTEGER"/>
+												<attribute xpath="@keys" xmlValue="false" name="count-keys" type="INTEGER"/>
+												<attribute xpath="@description" xmlValue="false" name="count-description" type="STRING"/>
+											</attributes>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+												<shadowColumnDef defaultExpression="domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+											</shadowColumns>
+										</recordsOutput>
+										<recordsOutput rowsRootXPath="exceptions/example" out="domainAnalysis-exceptions">
+											<attributes>
+												<attribute xpath="@numCases" xmlValue="false" name="example-numCases" type="INTEGER"/>
+												<attribute xpath="@index" xmlValue="false" name="example-index" type="INTEGER"/>
+												<attribute xpath="@numValues" xmlValue="false" name="example-numValues" type="INTEGER"/>
+												<attribute xpath="@value" xmlValue="false" name="example-value" type="STRING"/>
+											</attributes>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+												<shadowColumnDef defaultExpression="domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+											</shadowColumns>
+										</recordsOutput>
+									</recordsOutputs>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+									</shadowColumns>
+								</recordsOutput>
+								<recordsOutput rowsRootXPath="frequencies/items/item" out="frequencies">
+									<attributes>
+										<attribute xpath="@count" xmlValue="false" name="item-count" type="INTEGER"/>
+										<attribute xpath="@percent" xmlValue="false" name="item-percent" type="STRING"/>
+										<attribute xpath="@value" xmlValue="false" name="item-value" type="STRING"/>
+									</attributes>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="&quot;Value&quot;" name="FrequencyType" type="STRING"/>
+									</shadowColumns>
+								</recordsOutput>
+								<recordsOutput rowsRootXPath="frequenciesMasked/items/item" out="frequenciesMasked">
+									<attributes>
+										<attribute xpath="@count" xmlValue="false" name="item-count" type="INTEGER"/>
+										<attribute xpath="@percent" xmlValue="false" name="item-percent" type="STRING"/>
+										<attribute xpath="@value" xmlValue="false" name="item-value" type="STRING"/>
+									</attributes>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="&quot;Masked&quot;" name="FrequencyType" type="STRING"/>
+									</shadowColumns>
+								</recordsOutput>
+							</recordsOutputs>
+						</recordsOutput>
+						<recordsOutput rowsRootXPath="bussinesRules/bussinesRule" out="businessRules">
+							<attributes>
+								<attribute xpath="@indColumn" xmlValue="false" name="br_indColumn" type="STRING"/>
+								<attribute xpath="@name" xmlValue="false" name="br_name" type="STRING"/>
+								<attribute xpath="expression" xmlValue="false" name="br_expression" type="STRING"/>
+							</attributes>
+							<recordsOutputs>
+								<recordsOutput rowsRootXPath="count" out="businessRules_count">
+									<attributes>
+										<attribute xpath="@records" xmlValue="false" name="records" type="INTEGER"/>
+										<attribute xpath="@description" xmlValue="false" name="description" type="STRING"/>
+										<attribute xpath="@keys" xmlValue="false" name="keys" type="INTEGER"/>
+									</attributes>
+									<recordsOutputs/>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="businessRules.br_indColumn" name="br_indColumn" type="STRING"/>
+										<shadowColumnDef defaultExpression="businessRules.br_name" name="br_name" type="STRING"/>
+										<shadowColumnDef defaultExpression="businessRules.br_expression" name="br_expression" type="STRING"/>
+									</shadowColumns>
+								</recordsOutput>
+							</recordsOutputs>
+							<shadowColumns>
+								<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+							</shadowColumns>
+						</recordsOutput>
+						<recordsOutput rowsRootXPath="rollUp" out="rollup">
+							<attributes>
+								<attribute xpath="@name" xmlValue="false" name="rollup_name" type="STRING"/>
+								<attribute xpath="@column" xmlValue="false" name="rollup_column" type="STRING"/>
+								<attribute xpath="expression" xmlValue="false" name="rollup_SourceAttributeName" type="STRING"/>
+							</attributes>
+							<recordsOutputs>
+								<recordsOutput rowsRootXPath="item" out="rollup_item">
+									<attributes>
+										<attribute xpath="@value" xmlValue="false" name="item-value" type="STRING"/>
+									</attributes>
+									<recordsOutputs>
+										<recordsOutput rowsRootXPath="dataAnalyses/dataAnalyse" out="ru_dataAnalyse_column_single_statistics">
+											<attributes>
+												<attribute xpath="@columnType" xmlValue="false" name="columnType" type="STRING"/>
+												<attribute xpath="@column" xmlValue="false" name="column" type="STRING"/>
+												<attribute xpath="expression" xmlValue="false" name="expression" type="STRING"/>
+											</attributes>
+											<recordsOutputs>
+												<recordsOutput rowsRootXPath="statistics/stat" out="ru_statistics">
+													<attributes>
+														<attribute xpath="@multiple" xmlValue="false" name="stat-multiple" type="STRING"/>
+														<attribute xpath="@type" xmlValue="false" name="stat-type" type="STRING"/>
+													</attributes>
+													<recordsOutputs>
+														<recordsOutput rowsRootXPath="item" out="ru_statistics-item">
+															<attributes>
+																<attribute xpath="@value" xmlValue="false" name="item-value" type="STRING"/>
+																<attribute xpath="@index" xmlValue="false" name="item-index" type="INTEGER"/>
+																<attribute xpath="@count" xmlValue="false" name="item-count" type="INTEGER"/>
+															</attributes>
+															<shadowColumns>
+																<shadowColumnDef defaultExpression="ru_statistics.[stat-multiple]" name="stat-multiple" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_statistics.[stat-type]" name="stat-type" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+															</shadowColumns>
+														</recordsOutput>
+													</recordsOutputs>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+													</shadowColumns>
+												</recordsOutput>
+												<recordsOutput rowsRootXPath="domainAnalysis/domainAnalyse" out="ru_domainAnalysis">
+													<attributes>
+														<attribute xpath="@name" xmlValue="false" name="domainAnalyse-name" type="STRING"/>
+													</attributes>
+													<recordsOutputs>
+														<recordsOutput rowsRootXPath="examples/example" out="ru_domainAnalysis-example">
+															<attributes>
+																<attribute xpath="@numCases" xmlValue="false" name="example-numCases" type="INTEGER"/>
+																<attribute xpath="@numValues" xmlValue="false" name="example-numValues" type="INTEGER"/>
+																<attribute xpath="@value" xmlValue="false" name="example-value" type="STRING"/>
+																<attribute xpath="@index" xmlValue="false" name="example-index" type="INTEGER"/>
+															</attributes>
+															<shadowColumns>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+															</shadowColumns>
+														</recordsOutput>
+														<recordsOutput rowsRootXPath="count" out="ru_domainAnalysis-count">
+															<attributes>
+																<attribute xpath="@records" xmlValue="false" name="count-records" type="INTEGER"/>
+																<attribute xpath="@keys" xmlValue="false" name="count-keys" type="INTEGER"/>
+																<attribute xpath="@description" xmlValue="false" name="count-description" type="STRING"/>
+															</attributes>
+															<shadowColumns>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+															</shadowColumns>
+														</recordsOutput>
+														<recordsOutput rowsRootXPath="exceptions/example" out="ru_domainAnalysis-exceptions">
+															<attributes>
+																<attribute xpath="@numCases" xmlValue="false" name="example-numCases" type="INTEGER"/>
+																<attribute xpath="@index" xmlValue="false" name="example-index" type="INTEGER"/>
+																<attribute xpath="@numValues" xmlValue="false" name="example-numValues" type="INTEGER"/>
+																<attribute xpath="@value" xmlValue="false" name="example-value" type="STRING"/>
+															</attributes>
+															<shadowColumns>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+															</shadowColumns>
+														</recordsOutput>
+													</recordsOutputs>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+													</shadowColumns>
+												</recordsOutput>
+												<recordsOutput rowsRootXPath="frequencies/items/item" out="ru_frequencies">
+													<attributes>
+														<attribute xpath="@count" xmlValue="false" name="item-count" type="INTEGER"/>
+														<attribute xpath="@percent" xmlValue="false" name="item-percent" type="STRING"/>
+														<attribute xpath="@value" xmlValue="false" name="item-value" type="STRING"/>
+													</attributes>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="&quot;Value&quot;" name="FrequencyType" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+													</shadowColumns>
+												</recordsOutput>
+												<recordsOutput rowsRootXPath="frequenciesMasked/items/item" out="ru_frequenciesMasked">
+													<attributes>
+														<attribute xpath="@count" xmlValue="false" name="item-count" type="INTEGER"/>
+														<attribute xpath="@percent" xmlValue="false" name="item-percent" type="STRING"/>
+														<attribute xpath="@value" xmlValue="false" name="item-value" type="STRING"/>
+													</attributes>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="&quot;Masked&quot;" name="FrequencyType" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+													</shadowColumns>
+												</recordsOutput>
+											</recordsOutputs>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+											</shadowColumns>
+										</recordsOutput>
+										<recordsOutput rowsRootXPath="bussinesRules/bussinesRule" out="ru_businessRules">
+											<attributes>
+												<attribute xpath="@indColumn" xmlValue="false" name="br_indColumn" type="STRING"/>
+												<attribute xpath="@name" xmlValue="false" name="br_name" type="STRING"/>
+												<attribute xpath="expression" xmlValue="false" name="br_expression" type="STRING"/>
+											</attributes>
+											<recordsOutputs>
+												<recordsOutput rowsRootXPath="count" out="ru_businessRules_count">
+													<attributes>
+														<attribute xpath="@records" xmlValue="false" name="records" type="INTEGER"/>
+														<attribute xpath="@description" xmlValue="false" name="description" type="STRING"/>
+														<attribute xpath="@keys" xmlValue="false" name="keys" type="INTEGER"/>
+													</attributes>
+													<recordsOutputs/>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_businessRules.br_indColumn" name="br_indColumn" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_businessRules.br_name" name="br_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_businessRules.br_expression" name="br_expression" type="STRING"/>
+													</shadowColumns>
+												</recordsOutput>
+											</recordsOutputs>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+											</shadowColumns>
+										</recordsOutput>
+									</recordsOutputs>
+									<shadowColumns/>
+								</recordsOutput>
+							</recordsOutputs>
+							<shadowColumns>
+								<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+							</shadowColumns>
+						</recordsOutput>
+					</recordsOutputs>
+					<shadowColumns/>
+				</recordsOutput>
+			</recordsOutputs>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="336,384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="businessRules" step="Read Profile XML 2"/>
+		<target endpoint="businessRules" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="businessRules_count" step="Read Profile XML 2"/>
+		<target endpoint="businessRules_count" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="dataAnalyse_column_single_statistics" step="Read Profile XML 2"/>
+		<target endpoint="dataAnalyse_column_single_statistics" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="domainAnalysis" step="Read Profile XML 2"/>
+		<target endpoint="domainAnalysis" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="domainAnalysis-count" step="Read Profile XML 2"/>
+		<target endpoint="domainAnalysis-count" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="domainAnalysis-example" step="Read Profile XML 2"/>
+		<target endpoint="domainAnalysis-example" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="domainAnalysis-exceptions" step="Read Profile XML 2"/>
+		<target endpoint="domainAnalysis-exceptions" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="frequencies" step="Read Profile XML 2"/>
+		<target endpoint="frequencies" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="frequenciesMasked" step="Read Profile XML 2"/>
+		<target endpoint="frequenciesMasked" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="profileExport" step="Read Profile XML 2"/>
+		<target endpoint="profileExport" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="rollup" step="Read Profile XML 2"/>
+		<target endpoint="rollup" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="rollup_item" step="Read Profile XML 2"/>
+		<target endpoint="rollup_item" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_businessRules" step="Read Profile XML 2"/>
+		<target endpoint="ru_businessRules" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_businessRules_count" step="Read Profile XML 2"/>
+		<target endpoint="ru_businessRules_count" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_dataAnalyse_column_single_statistics" step="Read Profile XML 2"/>
+		<target endpoint="ru_dataAnalyse_column_single_statistics" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_domainAnalysis" step="Read Profile XML 2"/>
+		<target endpoint="ru_domainAnalysis" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_domainAnalysis-count" step="Read Profile XML 2"/>
+		<target endpoint="ru_domainAnalysis-count" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_domainAnalysis-example" step="Read Profile XML 2"/>
+		<target endpoint="ru_domainAnalysis-example" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_domainAnalysis-exceptions" step="Read Profile XML 2"/>
+		<target endpoint="ru_domainAnalysis-exceptions" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_frequencies" step="Read Profile XML 2"/>
+		<target endpoint="ru_frequencies" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_frequenciesMasked" step="Read Profile XML 2"/>
+		<target endpoint="ru_frequenciesMasked" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_statistics" step="Read Profile XML 2"/>
+		<target endpoint="ru_statistics" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_statistics-item" step="Read Profile XML 2"/>
+		<target endpoint="ru_statistics-item" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="statistics" step="Read Profile XML 2"/>
+		<target endpoint="statistics" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="statistics-item" step="Read Profile XML 2"/>
+		<target endpoint="statistics-item" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (UpdateProfileRepository) --><component mode="NORMAL" disabled="false" id="UpdateProfileRepository">
+		<properties fileName="UpdateProfileRepository.comp">
+			<mappings>
+				<mappingEndPoint name="domainAnalysis-count">
+					<columnMappings>
+						<columnsMapping from="count-records" to="count-records"/>
+						<columnsMapping from="count-keys" to="count-keys"/>
+						<columnsMapping from="count-description" to="count-description"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="domainAnalysis-exceptions">
+					<columnMappings>
+						<columnsMapping from="example-numCases" to="example-numCases"/>
+						<columnsMapping from="example-index" to="example-index"/>
+						<columnsMapping from="example-numValues" to="example-numValues"/>
+						<columnsMapping from="example-value" to="example-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="rollup">
+					<columnMappings>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="frequenciesMasked">
+					<columnMappings>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="item-percent" to="item-percent"/>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="FrequencyType" to="FrequencyType"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="statistics-item">
+					<columnMappings>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="item-index" to="item-index"/>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="stat-multiple" to="stat-multiple"/>
+						<columnsMapping from="stat-type" to="stat-type"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_frequenciesMasked">
+					<columnMappings>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="item-percent" to="item-percent"/>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="FrequencyType" to="FrequencyType"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="rollup_item">
+					<columnMappings>
+						<columnsMapping from="item-value" to="item-value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_statistics">
+					<columnMappings>
+						<columnsMapping from="stat-multiple" to="stat-multiple"/>
+						<columnsMapping from="stat-type" to="stat-type"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_businessRules_count">
+					<columnMappings>
+						<columnsMapping from="records" to="records"/>
+						<columnsMapping from="description" to="description"/>
+						<columnsMapping from="keys" to="keys"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+						<columnsMapping from="br_indColumn" to="br_indColumn"/>
+						<columnsMapping from="br_name" to="br_name"/>
+						<columnsMapping from="br_expression" to="br_expression"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_frequencies">
+					<columnMappings>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="item-percent" to="item-percent"/>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="FrequencyType" to="FrequencyType"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_businessRules">
+					<columnMappings>
+						<columnsMapping from="br_indColumn" to="br_indColumn"/>
+						<columnsMapping from="br_name" to="br_name"/>
+						<columnsMapping from="br_expression" to="br_expression"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="statistics">
+					<columnMappings>
+						<columnsMapping from="stat-multiple" to="stat-multiple"/>
+						<columnsMapping from="stat-type" to="stat-type"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_domainAnalysis-count">
+					<columnMappings>
+						<columnsMapping from="count-records" to="count-records"/>
+						<columnsMapping from="count-keys" to="count-keys"/>
+						<columnsMapping from="count-description" to="count-description"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_statistics-item">
+					<columnMappings>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="item-index" to="item-index"/>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="stat-multiple" to="stat-multiple"/>
+						<columnsMapping from="stat-type" to="stat-type"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="domainAnalysis-example">
+					<columnMappings>
+						<columnsMapping from="example-numCases" to="example-numCases"/>
+						<columnsMapping from="example-numValues" to="example-numValues"/>
+						<columnsMapping from="example-value" to="example-value"/>
+						<columnsMapping from="example-index" to="example-index"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_domainAnalysis-example">
+					<columnMappings>
+						<columnsMapping from="example-numCases" to="example-numCases"/>
+						<columnsMapping from="example-numValues" to="example-numValues"/>
+						<columnsMapping from="example-value" to="example-value"/>
+						<columnsMapping from="example-index" to="example-index"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="businessRules">
+					<columnMappings>
+						<columnsMapping from="br_indColumn" to="br_indColumn"/>
+						<columnsMapping from="br_name" to="br_name"/>
+						<columnsMapping from="br_expression" to="br_expression"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_dataAnalyse_column_single_statistics">
+					<columnMappings>
+						<columnsMapping from="columnType" to="columnType"/>
+						<columnsMapping from="column" to="column"/>
+						<columnsMapping from="expression" to="expression"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="dataAnalyse_column_single_statistics">
+					<columnMappings>
+						<columnsMapping from="columnType" to="columnType"/>
+						<columnsMapping from="column" to="column"/>
+						<columnsMapping from="expression" to="expression"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_domainAnalysis-exceptions">
+					<columnMappings>
+						<columnsMapping from="example-numCases" to="example-numCases"/>
+						<columnsMapping from="example-index" to="example-index"/>
+						<columnsMapping from="example-numValues" to="example-numValues"/>
+						<columnsMapping from="example-value" to="example-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="domainAnalysis">
+					<columnMappings>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="businessRules_count">
+					<columnMappings>
+						<columnsMapping from="records" to="records"/>
+						<columnsMapping from="description" to="description"/>
+						<columnsMapping from="keys" to="keys"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="br_indColumn" to="br_indColumn"/>
+						<columnsMapping from="br_name" to="br_name"/>
+						<columnsMapping from="br_expression" to="br_expression"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="profileExport">
+					<columnMappings>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_domainAnalysis">
+					<columnMappings>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="frequencies">
+					<columnMappings>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="item-percent" to="item-percent"/>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="FrequencyType" to="FrequencyType"/>
+					</columnMappings>
+				</mappingEndPoint>
+			</mappings>
+			<parameters/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1080,384,-1,-1"/>
+	</component>
+
+
+
+<!-- (UpdateProfileRepository ) --><component mode="NORMAL" disabled="true" id="UpdateProfileRepository ">
+		<properties fileName="UpdateProfileRepository.comp">
+			<mappings>
+				<mappingEndPoint name="domainAnalysis-count">
+					<columnMappings>
+						<columnsMapping from="count-records" to="count-records"/>
+						<columnsMapping from="count-keys" to="count-keys"/>
+						<columnsMapping from="count-description" to="count-description"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="domainAnalysis-exceptions">
+					<columnMappings>
+						<columnsMapping from="example-numCases" to="example-numCases"/>
+						<columnsMapping from="example-index" to="example-index"/>
+						<columnsMapping from="example-numValues" to="example-numValues"/>
+						<columnsMapping from="example-value" to="example-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="rollup">
+					<columnMappings>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="frequenciesMasked">
+					<columnMappings>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="item-percent" to="item-percent"/>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="FrequencyType" to="FrequencyType"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="statistics-item">
+					<columnMappings>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="item-index" to="item-index"/>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="stat-multiple" to="stat-multiple"/>
+						<columnsMapping from="stat-type" to="stat-type"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_frequenciesMasked">
+					<columnMappings>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="item-percent" to="item-percent"/>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="FrequencyType" to="FrequencyType"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="rollup_item">
+					<columnMappings>
+						<columnsMapping from="item-value" to="item-value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_statistics">
+					<columnMappings>
+						<columnsMapping from="stat-multiple" to="stat-multiple"/>
+						<columnsMapping from="stat-type" to="stat-type"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_businessRules_count">
+					<columnMappings>
+						<columnsMapping from="records" to="records"/>
+						<columnsMapping from="description" to="description"/>
+						<columnsMapping from="keys" to="keys"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+						<columnsMapping from="br_indColumn" to="br_indColumn"/>
+						<columnsMapping from="br_name" to="br_name"/>
+						<columnsMapping from="br_expression" to="br_expression"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_frequencies">
+					<columnMappings>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="item-percent" to="item-percent"/>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="FrequencyType" to="FrequencyType"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_businessRules">
+					<columnMappings>
+						<columnsMapping from="br_indColumn" to="br_indColumn"/>
+						<columnsMapping from="br_name" to="br_name"/>
+						<columnsMapping from="br_expression" to="br_expression"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="statistics">
+					<columnMappings>
+						<columnsMapping from="stat-multiple" to="stat-multiple"/>
+						<columnsMapping from="stat-type" to="stat-type"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_domainAnalysis-count">
+					<columnMappings>
+						<columnsMapping from="count-records" to="count-records"/>
+						<columnsMapping from="count-keys" to="count-keys"/>
+						<columnsMapping from="count-description" to="count-description"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_statistics-item">
+					<columnMappings>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="item-index" to="item-index"/>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="stat-multiple" to="stat-multiple"/>
+						<columnsMapping from="stat-type" to="stat-type"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="domainAnalysis-example">
+					<columnMappings>
+						<columnsMapping from="example-numCases" to="example-numCases"/>
+						<columnsMapping from="example-numValues" to="example-numValues"/>
+						<columnsMapping from="example-value" to="example-value"/>
+						<columnsMapping from="example-index" to="example-index"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_domainAnalysis-example">
+					<columnMappings>
+						<columnsMapping from="example-numCases" to="example-numCases"/>
+						<columnsMapping from="example-numValues" to="example-numValues"/>
+						<columnsMapping from="example-value" to="example-value"/>
+						<columnsMapping from="example-index" to="example-index"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="businessRules">
+					<columnMappings>
+						<columnsMapping from="br_indColumn" to="br_indColumn"/>
+						<columnsMapping from="br_name" to="br_name"/>
+						<columnsMapping from="br_expression" to="br_expression"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_dataAnalyse_column_single_statistics">
+					<columnMappings>
+						<columnsMapping from="columnType" to="columnType"/>
+						<columnsMapping from="column" to="column"/>
+						<columnsMapping from="expression" to="expression"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="dataAnalyse_column_single_statistics">
+					<columnMappings>
+						<columnsMapping from="columnType" to="columnType"/>
+						<columnsMapping from="column" to="column"/>
+						<columnsMapping from="expression" to="expression"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_domainAnalysis-exceptions">
+					<columnMappings>
+						<columnsMapping from="example-numCases" to="example-numCases"/>
+						<columnsMapping from="example-index" to="example-index"/>
+						<columnsMapping from="example-numValues" to="example-numValues"/>
+						<columnsMapping from="example-value" to="example-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="domainAnalysis">
+					<columnMappings>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="businessRules_count">
+					<columnMappings>
+						<columnsMapping from="records" to="records"/>
+						<columnsMapping from="description" to="description"/>
+						<columnsMapping from="keys" to="keys"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="br_indColumn" to="br_indColumn"/>
+						<columnsMapping from="br_name" to="br_name"/>
+						<columnsMapping from="br_expression" to="br_expression"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="profileExport">
+					<columnMappings>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_domainAnalysis">
+					<columnMappings>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="frequencies">
+					<columnMappings>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="item-percent" to="item-percent"/>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="FrequencyType" to="FrequencyType"/>
+					</columnMappings>
+				</mappingEndPoint>
+			</mappings>
+			<parameters/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1080,1008,-1,-1"/>
+	</component>
+
+
+
+<!-- (Xml Parser) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.xml.reader.XmlParser" disabled="true" id="Xml Parser">
+		<properties inputColumn="out_profiling">
+			<dataFormatParameters falseValue="false" dateTimeFormat="yy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+			<namespaces/>
+			<recordsOutputs>
+				<recordsOutput rowsRootXPath="profileExport/input" out="profileExport">
+					<attributes>
+						<attribute xpath="@name" xmlValue="false" name="ProfileInputName" type="STRING"/>
+					</attributes>
+					<recordsOutputs>
+						<recordsOutput rowsRootXPath="dataAnalyses/dataAnalyse" out="dataAnalyse_column_single_statistics">
+							<attributes>
+								<attribute xpath="@columnType" xmlValue="false" name="columnType" type="STRING"/>
+								<attribute xpath="@column" xmlValue="false" name="column" type="STRING"/>
+								<attribute xpath="expression" xmlValue="false" name="expression" type="STRING"/>
+							</attributes>
+							<recordsOutputs>
+								<recordsOutput rowsRootXPath="statistics/stat" out="statistics">
+									<attributes>
+										<attribute xpath="@multiple" xmlValue="false" name="stat-multiple" type="STRING"/>
+										<attribute xpath="@type" xmlValue="false" name="stat-type" type="STRING"/>
+									</attributes>
+									<recordsOutputs>
+										<recordsOutput rowsRootXPath="item" out="statistics-item">
+											<attributes>
+												<attribute xpath="@value" xmlValue="false" name="item-value" type="STRING"/>
+												<attribute xpath="@index" xmlValue="false" name="item-index" type="INTEGER"/>
+												<attribute xpath="@count" xmlValue="false" name="item-count" type="INTEGER"/>
+											</attributes>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="statistics.[stat-multiple]" name="stat-multiple" type="STRING"/>
+												<shadowColumnDef defaultExpression="statistics.[stat-type]" name="stat-type" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+											</shadowColumns>
+										</recordsOutput>
+									</recordsOutputs>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+									</shadowColumns>
+								</recordsOutput>
+								<recordsOutput rowsRootXPath="domainAnalysis/domainAnalyse" out="domainAnalysis">
+									<attributes>
+										<attribute xpath="@name" xmlValue="false" name="domainAnalyse-name" type="STRING"/>
+									</attributes>
+									<recordsOutputs>
+										<recordsOutput rowsRootXPath="examples/example" out="domainAnalysis-example">
+											<attributes>
+												<attribute xpath="@numCases" xmlValue="false" name="example-numCases" type="INTEGER"/>
+												<attribute xpath="@numValues" xmlValue="false" name="example-numValues" type="INTEGER"/>
+												<attribute xpath="@value" xmlValue="false" name="example-value" type="STRING"/>
+												<attribute xpath="@index" xmlValue="false" name="example-index" type="INTEGER"/>
+											</attributes>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+												<shadowColumnDef defaultExpression="domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+											</shadowColumns>
+										</recordsOutput>
+										<recordsOutput rowsRootXPath="count" out="domainAnalysis-count">
+											<attributes>
+												<attribute xpath="@records" xmlValue="false" name="count-records" type="INTEGER"/>
+												<attribute xpath="@keys" xmlValue="false" name="count-keys" type="INTEGER"/>
+												<attribute xpath="@description" xmlValue="false" name="count-description" type="STRING"/>
+											</attributes>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+												<shadowColumnDef defaultExpression="domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+											</shadowColumns>
+										</recordsOutput>
+										<recordsOutput rowsRootXPath="exceptions/example" out="domainAnalysis-exceptions">
+											<attributes>
+												<attribute xpath="@numCases" xmlValue="false" name="example-numCases" type="INTEGER"/>
+												<attribute xpath="@index" xmlValue="false" name="example-index" type="INTEGER"/>
+												<attribute xpath="@numValues" xmlValue="false" name="example-numValues" type="INTEGER"/>
+												<attribute xpath="@value" xmlValue="false" name="example-value" type="STRING"/>
+											</attributes>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+												<shadowColumnDef defaultExpression="domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+											</shadowColumns>
+										</recordsOutput>
+									</recordsOutputs>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+									</shadowColumns>
+								</recordsOutput>
+								<recordsOutput rowsRootXPath="frequencies/items/item" out="frequencies">
+									<attributes>
+										<attribute xpath="@count" xmlValue="false" name="item-count" type="INTEGER"/>
+										<attribute xpath="@percent" xmlValue="false" name="item-percent" type="STRING"/>
+										<attribute xpath="@value" xmlValue="false" name="item-value" type="STRING"/>
+									</attributes>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="&quot;Value&quot;" name="FrequencyType" type="STRING"/>
+									</shadowColumns>
+								</recordsOutput>
+								<recordsOutput rowsRootXPath="frequenciesMasked/items/item" out="frequenciesMasked">
+									<attributes>
+										<attribute xpath="@count" xmlValue="false" name="item-count" type="INTEGER"/>
+										<attribute xpath="@percent" xmlValue="false" name="item-percent" type="STRING"/>
+										<attribute xpath="@value" xmlValue="false" name="item-value" type="STRING"/>
+									</attributes>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="&quot;Masked&quot;" name="FrequencyType" type="STRING"/>
+									</shadowColumns>
+								</recordsOutput>
+							</recordsOutputs>
+						</recordsOutput>
+						<recordsOutput rowsRootXPath="bussinesRules/bussinesRule" out="businessRules">
+							<attributes>
+								<attribute xpath="@indColumn" xmlValue="false" name="br_indColumn" type="STRING"/>
+								<attribute xpath="@name" xmlValue="false" name="br_name" type="STRING"/>
+								<attribute xpath="expression" xmlValue="false" name="br_expression" type="STRING"/>
+							</attributes>
+							<recordsOutputs>
+								<recordsOutput rowsRootXPath="count" out="businessRules_count">
+									<attributes>
+										<attribute xpath="@records" xmlValue="false" name="records" type="INTEGER"/>
+										<attribute xpath="@description" xmlValue="false" name="description" type="STRING"/>
+										<attribute xpath="@keys" xmlValue="false" name="keys" type="INTEGER"/>
+									</attributes>
+									<recordsOutputs/>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="businessRules.br_indColumn" name="br_indColumn" type="STRING"/>
+										<shadowColumnDef defaultExpression="businessRules.br_name" name="br_name" type="STRING"/>
+										<shadowColumnDef defaultExpression="businessRules.br_expression" name="br_expression" type="STRING"/>
+									</shadowColumns>
+								</recordsOutput>
+							</recordsOutputs>
+							<shadowColumns>
+								<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+							</shadowColumns>
+						</recordsOutput>
+						<recordsOutput rowsRootXPath="rollUp" out="rollup">
+							<attributes>
+								<attribute xpath="@name" xmlValue="false" name="rollup_name" type="STRING"/>
+								<attribute xpath="@column" xmlValue="false" name="rollup_column" type="STRING"/>
+								<attribute xpath="expression" xmlValue="false" name="rollup_SourceAttributeName" type="STRING"/>
+							</attributes>
+							<recordsOutputs>
+								<recordsOutput rowsRootXPath="item" out="rollup_item">
+									<attributes>
+										<attribute xpath="@value" xmlValue="false" name="item-value" type="STRING"/>
+									</attributes>
+									<recordsOutputs>
+										<recordsOutput rowsRootXPath="dataAnalyses/dataAnalyse" out="ru_dataAnalyse_column_single_statistics">
+											<attributes>
+												<attribute xpath="@columnType" xmlValue="false" name="columnType" type="STRING"/>
+												<attribute xpath="@column" xmlValue="false" name="column" type="STRING"/>
+												<attribute xpath="expression" xmlValue="false" name="expression" type="STRING"/>
+											</attributes>
+											<recordsOutputs>
+												<recordsOutput rowsRootXPath="statistics/stat" out="ru_statistics">
+													<attributes>
+														<attribute xpath="@multiple" xmlValue="false" name="stat-multiple" type="STRING"/>
+														<attribute xpath="@type" xmlValue="false" name="stat-type" type="STRING"/>
+													</attributes>
+													<recordsOutputs>
+														<recordsOutput rowsRootXPath="item" out="ru_statistics-item">
+															<attributes>
+																<attribute xpath="@value" xmlValue="false" name="item-value" type="STRING"/>
+																<attribute xpath="@index" xmlValue="false" name="item-index" type="INTEGER"/>
+																<attribute xpath="@count" xmlValue="false" name="item-count" type="INTEGER"/>
+															</attributes>
+															<shadowColumns>
+																<shadowColumnDef defaultExpression="ru_statistics.[stat-multiple]" name="stat-multiple" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_statistics.[stat-type]" name="stat-type" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+															</shadowColumns>
+														</recordsOutput>
+													</recordsOutputs>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+													</shadowColumns>
+												</recordsOutput>
+												<recordsOutput rowsRootXPath="domainAnalysis/domainAnalyse" out="ru_domainAnalysis">
+													<attributes>
+														<attribute xpath="@name" xmlValue="false" name="domainAnalyse-name" type="STRING"/>
+													</attributes>
+													<recordsOutputs>
+														<recordsOutput rowsRootXPath="examples/example" out="ru_domainAnalysis-example">
+															<attributes>
+																<attribute xpath="@numCases" xmlValue="false" name="example-numCases" type="INTEGER"/>
+																<attribute xpath="@numValues" xmlValue="false" name="example-numValues" type="INTEGER"/>
+																<attribute xpath="@value" xmlValue="false" name="example-value" type="STRING"/>
+																<attribute xpath="@index" xmlValue="false" name="example-index" type="INTEGER"/>
+															</attributes>
+															<shadowColumns>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+															</shadowColumns>
+														</recordsOutput>
+														<recordsOutput rowsRootXPath="count" out="ru_domainAnalysis-count">
+															<attributes>
+																<attribute xpath="@records" xmlValue="false" name="count-records" type="INTEGER"/>
+																<attribute xpath="@keys" xmlValue="false" name="count-keys" type="INTEGER"/>
+																<attribute xpath="@description" xmlValue="false" name="count-description" type="STRING"/>
+															</attributes>
+															<shadowColumns>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+															</shadowColumns>
+														</recordsOutput>
+														<recordsOutput rowsRootXPath="exceptions/example" out="ru_domainAnalysis-exceptions">
+															<attributes>
+																<attribute xpath="@numCases" xmlValue="false" name="example-numCases" type="INTEGER"/>
+																<attribute xpath="@index" xmlValue="false" name="example-index" type="INTEGER"/>
+																<attribute xpath="@numValues" xmlValue="false" name="example-numValues" type="INTEGER"/>
+																<attribute xpath="@value" xmlValue="false" name="example-value" type="STRING"/>
+															</attributes>
+															<shadowColumns>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+															</shadowColumns>
+														</recordsOutput>
+													</recordsOutputs>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+													</shadowColumns>
+												</recordsOutput>
+												<recordsOutput rowsRootXPath="frequencies/items/item" out="ru_frequencies">
+													<attributes>
+														<attribute xpath="@count" xmlValue="false" name="item-count" type="INTEGER"/>
+														<attribute xpath="@percent" xmlValue="false" name="item-percent" type="STRING"/>
+														<attribute xpath="@value" xmlValue="false" name="item-value" type="STRING"/>
+													</attributes>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="&quot;Value&quot;" name="FrequencyType" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+													</shadowColumns>
+												</recordsOutput>
+												<recordsOutput rowsRootXPath="frequenciesMasked/items/item" out="ru_frequenciesMasked">
+													<attributes>
+														<attribute xpath="@count" xmlValue="false" name="item-count" type="INTEGER"/>
+														<attribute xpath="@percent" xmlValue="false" name="item-percent" type="STRING"/>
+														<attribute xpath="@value" xmlValue="false" name="item-value" type="STRING"/>
+													</attributes>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="&quot;Masked&quot;" name="FrequencyType" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+													</shadowColumns>
+												</recordsOutput>
+											</recordsOutputs>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+											</shadowColumns>
+										</recordsOutput>
+										<recordsOutput rowsRootXPath="bussinesRules/bussinesRule" out="ru_businessRules">
+											<attributes>
+												<attribute xpath="@indColumn" xmlValue="false" name="br_indColumn" type="STRING"/>
+												<attribute xpath="@name" xmlValue="false" name="br_name" type="STRING"/>
+												<attribute xpath="expression" xmlValue="false" name="br_expression" type="STRING"/>
+											</attributes>
+											<recordsOutputs>
+												<recordsOutput rowsRootXPath="count" out="ru_businessRules_count">
+													<attributes>
+														<attribute xpath="@records" xmlValue="false" name="records" type="INTEGER"/>
+														<attribute xpath="@description" xmlValue="false" name="description" type="STRING"/>
+														<attribute xpath="@keys" xmlValue="false" name="keys" type="INTEGER"/>
+													</attributes>
+													<recordsOutputs/>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_businessRules.br_indColumn" name="br_indColumn" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_businessRules.br_name" name="br_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_businessRules.br_expression" name="br_expression" type="STRING"/>
+													</shadowColumns>
+												</recordsOutput>
+											</recordsOutputs>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+											</shadowColumns>
+										</recordsOutput>
+									</recordsOutputs>
+									<shadowColumns/>
+								</recordsOutput>
+							</recordsOutputs>
+							<shadowColumns>
+								<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+							</shadowColumns>
+						</recordsOutput>
+					</recordsOutputs>
+					<shadowColumns/>
+				</recordsOutput>
+			</recordsOutputs>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="336,1008,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="businessRules" step="Xml Parser"/>
+		<target endpoint="businessRules" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="businessRules_count" step="Xml Parser"/>
+		<target endpoint="businessRules_count" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="dataAnalyse_column_single_statistics" step="Xml Parser"/>
+		<target endpoint="dataAnalyse_column_single_statistics" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="domainAnalysis" step="Xml Parser"/>
+		<target endpoint="domainAnalysis" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="domainAnalysis-count" step="Xml Parser"/>
+		<target endpoint="domainAnalysis-count" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="domainAnalysis-example" step="Xml Parser"/>
+		<target endpoint="domainAnalysis-example" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="domainAnalysis-exceptions" step="Xml Parser"/>
+		<target endpoint="domainAnalysis-exceptions" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="frequencies" step="Xml Parser"/>
+		<target endpoint="frequencies" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="frequenciesMasked" step="Xml Parser"/>
+		<target endpoint="frequenciesMasked" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="profileExport" step="Xml Parser"/>
+		<target endpoint="profileExport" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="rollup" step="Xml Parser"/>
+		<target endpoint="rollup" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="rollup_item" step="Xml Parser"/>
+		<target endpoint="rollup_item" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_businessRules" step="Xml Parser"/>
+		<target endpoint="ru_businessRules" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_businessRules_count" step="Xml Parser"/>
+		<target endpoint="ru_businessRules_count" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_dataAnalyse_column_single_statistics" step="Xml Parser"/>
+		<target endpoint="ru_dataAnalyse_column_single_statistics" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_domainAnalysis" step="Xml Parser"/>
+		<target endpoint="ru_domainAnalysis" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_domainAnalysis-count" step="Xml Parser"/>
+		<target endpoint="ru_domainAnalysis-count" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_domainAnalysis-example" step="Xml Parser"/>
+		<target endpoint="ru_domainAnalysis-example" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_domainAnalysis-exceptions" step="Xml Parser"/>
+		<target endpoint="ru_domainAnalysis-exceptions" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_frequencies" step="Xml Parser"/>
+		<target endpoint="ru_frequencies" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_frequenciesMasked" step="Xml Parser"/>
+		<target endpoint="ru_frequenciesMasked" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_statistics" step="Xml Parser"/>
+		<target endpoint="ru_statistics" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_statistics-item" step="Xml Parser"/>
+		<target endpoint="ru_statistics-item" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="statistics" step="Xml Parser"/>
+		<target endpoint="statistics" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="statistics-item" step="Xml Parser"/>
+		<target endpoint="statistics-item" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<modelComment backgroundColor="255,255,180" borderColor="183,183,0" bounds="120,936,203,54" foregroundColor="51,51,51">Just here for reference on how 
+to parse using xml reader</modelComment>
+
+
+
+<modelComment backgroundColor="255,255,180" borderColor="183,183,0" bounds="24,120,361,230" foregroundColor="51,51,51">Stuff to do:
+1. Add SubmissionID, SubmissionDate, ReportDate 
+details to be passed into this component. This should 
+from sequenctial call from monitor plan and independent
+call from flat file/independent batch call. 
+2. Add profiling JDBC tables to database
+3. Add JDBC plan to delete full table for multi line 
+results for same table queries.
+--4. create xml value columns
+--5. create json value columns
+6. Add switches to write multi line/frequency details or not
+7. Make filename componentised
+8. test end to end for batch call of this piece only.</modelComment>
+
+</purity-config>

@@ -1,1 +1,0 @@
-"SourceName";"SourceLayerName";"SourceAttributeName";"SourceAttributeDataType";"OmniDB_SourceAttributeName";"Action";"Error";"tmp_AtleastOneSourceValuesNull";"SQL_SourceName";"SQL_SourceLayerName";"SQL_SourceAttributeName";"SQL_SourceAttributeDataType";"e_SourceName";"e_SourceLayerName";"e_SourceAttributeName";"e_SourceAttributeDataType";"e_Action"

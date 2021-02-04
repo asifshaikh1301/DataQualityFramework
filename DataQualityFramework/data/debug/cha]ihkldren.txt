@@ -1,2 +1,0 @@
-"DomainID";"DomainName";"DomainLayerID";"DomainLayerName"
-"_4mK9VfKHEeqNAochb262DA";"Customer";"_4mK9VfKHEeqNAochb262DA";"Customer"

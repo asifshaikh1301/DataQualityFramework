@@ -1,0 +1,7 @@
+"records";"description";"keys";"ProfileInputName";"br_indColumn";"br_name";"br_expression"
+0;"null";;"in";"P_23";"RuleOne";"length(GD) > 1"
+70;"false";70;"in";"P_23";"RuleOne";"length(GD) > 1"
+30;"true";30;"in";"P_23";"RuleOne";"length(GD) > 1"
+0;"null";;"in";"P_24";"RuleTwo";"length(GD) > 2"
+70;"false";70;"in";"P_24";"RuleTwo";"length(GD) > 2"
+30;"true";30;"in";"P_24";"RuleTwo";"length(GD) > 2"

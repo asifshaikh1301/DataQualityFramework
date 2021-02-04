@@ -1,1 +1,0 @@
-"DomainLayerID";"DomainAttributeID";"EXT_DomainAttributeID";"DomainAttributeName";"DataType";"Description";"Action";"Error";"SQL_DomainAttributeID";"UpsertUser"

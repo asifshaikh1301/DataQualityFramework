@@ -1,1 +1,0 @@
-"SourceSystemName";"SourceSystemExternalID";"SourceSystemDescription";"SourceSchemaName";"SourceSchemaExternalID";"SourceID";"SourceExternalID";"SourceName";"SourceTypeID";"SourceDescription";"SourceLayerName";"SourceLayerType";"SourceLayerDescription";"jdbc_ConnectionName";"DQFramework_DBType";"Omni_DBType"

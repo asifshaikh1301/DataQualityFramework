@@ -1,1 +1,0 @@
-"CategoryID";"EXT_CategoryID";"CategoryName";"Description";"Action";"Error";"SQL_CategoryID";"UpsertUser"

@@ -1,0 +1,2 @@
+"numCases";"numValues";"value";"domainAnalysis_Type";"Multiple_RDC"
+61;20;"W";"pattern";"S_2:1:1"

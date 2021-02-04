@@ -1,0 +1,8 @@
+"percent";"value";"count";"Multiple_RDC";"ProfileInternalColName";"SourceID";"SourceName";"SourceLayerID";"SourceLayerName";"SourceAttributeID";"SourceAttributeName"
+"39%";;"39";"S_2:7:1";"S_2";;;;;;"GD"
+"33%";"L";"33";"S_2:7:2";"S_2";;;;;;"GD"
+"9%";"LLLLLL";"9";"S_2:7:3";"S_2";;;;;;"GD"
+"8%";"LLL";"8";"S_2:7:4";"S_2";;;;;;"GD"
+"6%";"LLLL";"6";"S_2:7:5";"S_2";;;;;;"GD"
+"4%";"LLLLL";"4";"S_2:7:6";"S_2";;;;;;"GD"
+"1%";"LLLLLLL";"1";"S_2:7:7";"S_2";;;;;;"GD"

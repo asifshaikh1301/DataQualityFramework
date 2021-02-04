@@ -1,7 +1,0 @@
-"DomainName";"DomainLayerName";"DomainAttributeName"
-"Customer";"Customer";"Gender"
-"Customer";"Customer";"Mobile"
-"Customer";"Customer";"FullName"
-"Customer";"Customer";"Email"
-"Customer";"Customer";"RecID"
-"Customer";"Customer";"BirthDate"

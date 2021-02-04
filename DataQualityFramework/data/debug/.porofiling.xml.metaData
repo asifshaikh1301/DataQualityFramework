@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<settings>
+  <connector>
+    <saved-state fixedSizes="false" escapeSequence="" fieldSeparator=";" recordLength="-1" numberOfLinesInFooter="0" encoding="UTF-8" lineWithColumnNames="-1" ignoredRowRegEx="" recordSeparator="\r\n" numberOfLinesInHeader="0">
+      <columns>
+        <textColumnMetaData useInReaderOut="true" decimalSeparator="." booleanTrueValue="true" booleanFalseValue="false" dataType="STRING" name="out_profiling" columnWidth="0" maxDecimalPlaces="0" dateFormatLocale="en_US" numberGroupSeparator="" maxWidth="-1"/>
+      </columns>
+    </saved-state>
+  </connector>
+</settings>

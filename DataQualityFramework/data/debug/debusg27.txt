@@ -1,1 +1,0 @@
-"DomainName";"DomainLayerName";"DomainAttributeName";"Action";"Error";"tmp_AtleastOneDomainValuesNull";"SQL_DomainName";"SQL_DomainLayerName";"SQL_DomainAttributeName"

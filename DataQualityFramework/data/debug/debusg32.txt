@@ -1,1 +1,0 @@
-"DebugTraceID";"SubmissionID";"SubmissionDateTime";"ReportDateTime";"RuleID";"SourceName";"SourceLayerName";"SourceAttributeName";"Success_Count";"Total";"Action";"Error";"tmp_SubmissionIDisNull"

@@ -1,5 +1,0 @@
-"RuleID";"Technical_Rule_Name";"Generic_Rule_Name";"Rule_Details";"Score";"Explanation";"RuleScope";"DQ_Category";"Tags";"Action";"SQL_RuleID";"SQL_Technical_RuleName";"Error";"SQL_HierarchyCategory";"SQL_HierarchyCategoryID"
-1;"Column is populated";"empty or blank check";"""should not be blank or empty""";10;"COLUMN_NOT_POPULATED";"ATTRIBUTE";603;;"Add";;;;"Completeness";"603"
-2;"Mobile number is valid syntax and structure";"Mobile";"""at minimum one phone number must be held - Mobile Phone Numbers must either start with """"+447"""" (international) 0r """"07"""" (local)
-- Mobile Phone Number must 13 digits in length (international prefix) or 11 digits in length (local prefix)
-- Mobile Phone Number must not contain blanks or breaks in the string""";5;"INVALID_MOBILE_NUMBER_STRUCTURE";"ATTRIBUTE";604;"Contact,PII";"Add";2;"Mobile number is valid syntax and structure";;"Validity";"604"

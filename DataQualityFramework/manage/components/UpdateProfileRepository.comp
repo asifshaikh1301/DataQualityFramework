@@ -1,0 +1,2192 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (Group Aggregator) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.analysis.aggregator.GroupAggregator" disabled="false" id="Group Aggregator">
+		<properties>
+			<aggregationSets>
+				<aggregationSet>
+					<aggregations>
+						<aggregation expression="distinct(concatenate([domainAnalyse-name]))" name="domain"/>
+					</aggregations>
+					<groupBy>
+						<component expression="ProfileInternalColumnName" name="ProfileInternalColumnName"/>
+						<component expression="ProfileSourceAttributeName" name="ProfileSourceAttributeName"/>
+						<component expression="ProfileInputName" name="ProfileInputName"/>
+						<component expression="ProfileSourceAttributeType" name="ProfileSourceAttributeType"/>
+					</groupBy>
+				</aggregationSet>
+			</aggregationSets>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1080,-576,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Group Aggregator"/>
+		<target endpoint="in" step="Temp 8"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_results" step="Group Aggregator"/>
+		<target endpoint="in_b" step="Union 3"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1296,-538"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Group Aggregator 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.analysis.aggregator.GroupAggregator" disabled="false" id="Group Aggregator 2">
+		<properties>
+			<aggregationSets>
+				<aggregationSet>
+					<aggregations>
+						<aggregation expression="firstif([stat-type] is &quot;count&quot;,[item-value])" name="count"/>
+						<aggregation expression="firstif([stat-type] is &quot;count_nulls&quot;,[item-value])" name="count_nulls"/>
+						<aggregation expression="firstif([stat-type] is &quot;count_not_nulls&quot;,[item-value])" name="count_not_nulls"/>
+						<aggregation expression="firstif([stat-type] is &quot;distinct&quot;,[item-value])" name="distinct"/>
+						<aggregation expression="firstif([stat-type] is &quot;unique&quot;,[item-value])" name="unique"/>
+						<aggregation expression="firstif([stat-type] is &quot;min&quot;,[item-value])" name="min"/>
+						<aggregation expression="firstif([stat-type] is &quot;max&quot;,[item-value])" name="max"/>
+						<aggregation expression="firstif([stat-type] is &quot;median&quot;,[item-value])" name="median"/>
+						<aggregation expression="firstif([stat-type] is &quot;sum&quot;,[item-value])" name="sum"/>
+						<aggregation expression="firstif([stat-type] is &quot;avg&quot;,[item-value])" name="avg"/>
+						<aggregation expression="firstif([stat-type] is &quot;std&quot;,[item-value])" name="std"/>
+						<aggregation expression="firstif([stat-type] is &quot;var&quot;,[item-value])" name="var"/>
+						<aggregation expression="firstif([stat-type] is &quot;non_unique&quot;,[item-value])" name="non_unique"/>
+						<aggregation expression="firstif([stat-type] is &quot;duplicate&quot;,[item-value])" name="duplicate"/>
+						<aggregation expression="firstif([stat-type] is &quot;min_positive_length&quot;,[item-value])" name="min_positive_length"/>
+						<aggregation expression="firstif([stat-type] is &quot;min_length&quot;,[item-value])" name="min_length"/>
+						<aggregation expression="firstif([stat-type] is &quot;max_length&quot;,[item-value])" name="max_length"/>
+						<aggregation expression="firstif([stat-type] is &quot;avg_length&quot;,[item-value])" name="avg_length"/>
+						<aggregation expression="firstif([stat-type] is &quot;median_length&quot;,[item-value])" name="median_length"/>
+						<aggregation expression="firstif([stat-type] is &quot;domain&quot;,[item-value])" name="domain"/>
+						<aggregation expression="first(ProfileSourceAttributeType)" name="ProfileSourceAttributeType"/>
+						<aggregation expression="first(ProfileSourceAttributeName)" name="ProfileSourceAttributeName"/>
+					</aggregations>
+					<groupBy>
+						<component expression="ProfileInternalColumnName" name="ProfileInternalColumnName"/>
+						<component expression="ProfileInputName" name="ProfileInputName"/>
+					</groupBy>
+				</aggregationSet>
+			</aggregationSets>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1368,-672,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Group Aggregator 2"/>
+		<target endpoint="in" step="Prof-SingleLineColumnStats_RowBased"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_results" step="Group Aggregator 2"/>
+		<target endpoint="in" step="Prof-SingleLineColumnStats_columnbased"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1632,-636"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Group Aggregator 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.analysis.aggregator.GroupAggregator" disabled="false" id="Group Aggregator 3">
+		<properties>
+			<aggregationSets>
+				<aggregationSet>
+					<aggregations>
+						<aggregation expression="distinct(concatenate([domainAnalyse-name]))" name="domain"/>
+					</aggregations>
+					<groupBy>
+						<component expression="ProfileInternalColumnName" name="ProfileInternalColumnName"/>
+						<component expression="ProfileSourceAttributeName" name="ProfileSourceAttributeName"/>
+						<component expression="ProfileInputName" name="ProfileInputName"/>
+						<component expression="ProfileSourceAttributeType" name="ProfileSourceAttributeType"/>
+						<component expression="rollup_SourceAttributeName" name="rollup_SourceAttributeName"/>
+						<component expression="rollup_column" name="rollup_column"/>
+						<component expression="rollup_name" name="rollup_name"/>
+						<component expression="rollup_value" name="rollup_value"/>
+					</groupBy>
+				</aggregationSet>
+			</aggregationSets>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1080,1488,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Group Aggregator 3"/>
+		<target endpoint="in" step="Temp 9"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_results" step="Group Aggregator 3"/>
+		<target endpoint="in_b" step="Union 5"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1296,1524"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Group Aggregator 4) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.analysis.aggregator.GroupAggregator" disabled="false" id="Group Aggregator 4">
+		<properties>
+			<aggregationSets>
+				<aggregationSet>
+					<aggregations>
+						<aggregation expression="firstif([stat-type] is &quot;count&quot;,[item-value])" name="count"/>
+						<aggregation expression="firstif([stat-type] is &quot;count_nulls&quot;,[item-value])" name="count_nulls"/>
+						<aggregation expression="firstif([stat-type] is &quot;count_not_nulls&quot;,[item-value])" name="count_not_nulls"/>
+						<aggregation expression="firstif([stat-type] is &quot;distinct&quot;,[item-value])" name="distinct"/>
+						<aggregation expression="firstif([stat-type] is &quot;unique&quot;,[item-value])" name="unique"/>
+						<aggregation expression="firstif([stat-type] is &quot;min&quot;,[item-value])" name="min"/>
+						<aggregation expression="firstif([stat-type] is &quot;max&quot;,[item-value])" name="max"/>
+						<aggregation expression="firstif([stat-type] is &quot;median&quot;,[item-value])" name="median"/>
+						<aggregation expression="firstif([stat-type] is &quot;sum&quot;,[item-value])" name="sum"/>
+						<aggregation expression="firstif([stat-type] is &quot;avg&quot;,[item-value])" name="avg"/>
+						<aggregation expression="firstif([stat-type] is &quot;std&quot;,[item-value])" name="std"/>
+						<aggregation expression="firstif([stat-type] is &quot;var&quot;,[item-value])" name="var"/>
+						<aggregation expression="firstif([stat-type] is &quot;non_unique&quot;,[item-value])" name="non_unique"/>
+						<aggregation expression="firstif([stat-type] is &quot;duplicate&quot;,[item-value])" name="duplicate"/>
+						<aggregation expression="firstif([stat-type] is &quot;min_positive_length&quot;,[item-value])" name="min_positive_length"/>
+						<aggregation expression="firstif([stat-type] is &quot;min_length&quot;,[item-value])" name="min_length"/>
+						<aggregation expression="firstif([stat-type] is &quot;max_length&quot;,[item-value])" name="max_length"/>
+						<aggregation expression="firstif([stat-type] is &quot;avg_length&quot;,[item-value])" name="avg_length"/>
+						<aggregation expression="firstif([stat-type] is &quot;median_length&quot;,[item-value])" name="median_length"/>
+						<aggregation expression="firstif([stat-type] is &quot;domain&quot;,[item-value])" name="domain"/>
+						<aggregation expression="first(ProfileSourceAttributeType)" name="ProfileSourceAttributeType"/>
+						<aggregation expression="first(ProfileSourceAttributeName)" name="ProfileSourceAttributeName"/>
+					</aggregations>
+					<groupBy>
+						<component expression="ProfileInternalColumnName" name="ProfileInternalColumnName"/>
+						<component expression="ProfileInputName" name="ProfileInputName"/>
+						<component expression="rollup_SourceAttributeName" name="rollup_SourceAttributeName"/>
+						<component expression="rollup_column" name="rollup_column"/>
+						<component expression="rollup_name" name="rollup_name"/>
+						<component expression="rollup_value" name="rollup_value"/>
+					</groupBy>
+				</aggregationSet>
+			</aggregationSets>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1368,1320,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Group Aggregator 4"/>
+		<target endpoint="in" step="Prof-SingleLineColumnStats_RowBased_ru"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_results" step="Group Aggregator 4"/>
+		<target endpoint="in" step="Prof-SingleLineColumnStats_columnbased_ru"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1632,1356"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Prof-BusinessRules) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-BusinessRules">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-BusinessRules.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="960,1032,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-BusinessRules_ru) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-BusinessRules_ru">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-BusinessRules_ru.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="960,2856,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1656,-936,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_DomainAnalysis) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_DomainAnalysis">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_DomainAnalysis.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="2568,-384,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_DomainAnalysis_Day) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_DomainAnalysis_Day">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_DomainAnalysis_Day.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1440,-288,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_DomainAnalysis_Day_ru) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_DomainAnalysis_Day_ru">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_DomainAnalysis_Day_ru.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1464,1992,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_DomainAnalysis_Enum) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_DomainAnalysis_Enum">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_DomainAnalysis_Enum.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="false" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns>
+				<textWriterColumn name="example-numCases"/>
+				<textWriterColumn name="example-numValues"/>
+				<textWriterColumn name="example-value"/>
+				<textWriterColumn name="example-index"/>
+				<textWriterColumn name="ProfileInternalColumnName"/>
+				<textWriterColumn name="ProfileSourceAttributeName"/>
+				<textWriterColumn name="ProfileInputName"/>
+				<textWriterColumn name="domainAnalyse-name"/>
+			</columns>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="2064,-288,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_DomainAnalysis_Enum_ru) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_DomainAnalysis_Enum_ru">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_DomainAnalysis_Enum_ru.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="false" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns>
+				<textWriterColumn name="example-numCases"/>
+				<textWriterColumn name="example-numValues"/>
+				<textWriterColumn name="example-value"/>
+				<textWriterColumn name="example-index"/>
+				<textWriterColumn name="ProfileInternalColumnName"/>
+				<textWriterColumn name="ProfileSourceAttributeName"/>
+				<textWriterColumn name="ProfileInputName"/>
+				<textWriterColumn name="domainAnalyse-name"/>
+				<textWriterColumn name="rollup_SourceAttributeName"/>
+				<textWriterColumn name="rollup_column"/>
+				<textWriterColumn name="rollup_name"/>
+				<textWriterColumn name="rollup_value"/>
+			</columns>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="2088,1992,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_DomainAnalysis_Integer) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_DomainAnalysis_Integer">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_DomainAnalysis_Integer.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="2376,-288,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_DomainAnalysis_Integer_ru) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_DomainAnalysis_Integer_ru">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_DomainAnalysis_Integer_ru.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="2400,1992,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_DomainAnalysis_Pattern) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_DomainAnalysis_Pattern">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_DomainAnalysis_Pattern.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="false" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns>
+				<textWriterColumn name="example-numCases"/>
+				<textWriterColumn name="example-numValues"/>
+				<textWriterColumn name="example-value"/>
+				<textWriterColumn name="ProfileInternalColumnName"/>
+				<textWriterColumn name="ProfileSourceAttributeName"/>
+				<textWriterColumn name="ProfileInputName"/>
+				<textWriterColumn name="domainAnalyse-name"/>
+			</columns>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1752,-288,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_DomainAnalysis_Pattern_ru) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_DomainAnalysis_Pattern_ru">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_DomainAnalysis_Pattern_ru.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="false" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns>
+				<textWriterColumn name="example-numCases"/>
+				<textWriterColumn name="example-numValues"/>
+				<textWriterColumn name="example-value"/>
+				<textWriterColumn name="ProfileInternalColumnName"/>
+				<textWriterColumn name="ProfileSourceAttributeName"/>
+				<textWriterColumn name="ProfileInputName"/>
+				<textWriterColumn name="domainAnalyse-name"/>
+				<textWriterColumn name="rollup_SourceAttributeName"/>
+				<textWriterColumn name="rollup_column"/>
+				<textWriterColumn name="rollup_name"/>
+				<textWriterColumn name="rollup_value"/>
+			</columns>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1776,1992,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_DomainAnalysis_ru) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_DomainAnalysis_ru">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_DomainAnalysis_ru.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="2592,1896,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_Extremes) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_Extremes">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_Extremes.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1488,-864,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_Extremes_ru) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_Extremes_ru">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_Extremes_ru.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1488,1128,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_Frequencies) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_Frequencies">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_Frequencies.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1248,72,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_Frequencies_ru) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_Frequencies_ru">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_Frequencies_ru.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1320,2352,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_Quantiles) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_Quantiles">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_Quantiles.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1248,-864,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_Quantiles_ru) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_Quantiles_ru">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_Quantiles_ru.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1248,1128,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-MultiLineColumnStats_ru) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-MultiLineColumnStats_ru">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-MultiLineColumnStats_ru.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1608,1056,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-SingleLineColumnStats_RowBased) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-SingleLineColumnStats_RowBased">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-SingleLineColumnStats_RowBased.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1416,-744,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-SingleLineColumnStats_RowBased_ru) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-SingleLineColumnStats_RowBased_ru">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-SingleLineColumnStats_RowBased_ru.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1416,1248,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-SingleLineColumnStats_columnbased) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-SingleLineColumnStats_columnbased">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-SingleLineColumnStats_ColumnBased.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1632,-648,-1,-1"/>
+	</step>
+
+
+
+<!-- (Prof-SingleLineColumnStats_columnbased_ru) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Prof-SingleLineColumnStats_columnbased_ru">
+		<properties writeHeader="true" fileName="../../data/debug/Prof-SingleLineColumnStats_ColumnBased_ru.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1632,1344,-1,-1"/>
+	</step>
+
+
+
+<!-- (Quantiles?) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="Quantiles?">
+		<properties condition="[stat-type] is &quot;quantiles&quot;"/>
+		<visual-constraints layout="horizontal" bounds="1200,-936,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="Quantiles?"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_Quantiles"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Quantiles?"/>
+		<target endpoint="in" step="first_x or last_x?"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Quantiles? 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="Quantiles? 2">
+		<properties condition="[stat-type] is &quot;quantiles&quot;"/>
+		<visual-constraints layout="horizontal" bounds="1200,1056,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="Quantiles? 2"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_Quantiles_ru"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Quantiles? 2"/>
+		<target endpoint="in" step="first_x or last_x? 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Temp 1) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Temp 1">
+		<properties writeHeader="true" fileName="../../data/debug/Temp1.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="960,264,-1,-1"/>
+	</step>
+
+
+
+<!-- (Temp 10) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Temp 10">
+		<properties writeHeader="true" fileName="../../data/debug/Temp10.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="960,840,-1,-1"/>
+	</step>
+
+
+
+<!-- (Temp 11) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Temp 11">
+		<properties writeHeader="true" fileName="../../data/debug/Temp11.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="960,2664,-1,-1"/>
+	</step>
+
+
+
+<!-- (Temp 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Temp 2">
+		<properties writeHeader="true" fileName="../../data/debug/Temp2.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="888,-1080,-1,-1"/>
+	</step>
+
+
+
+<!-- (Temp 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Temp 3">
+		<properties writeHeader="true" fileName="../../data/debug/Temp3.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="888,-984,-1,-1"/>
+	</step>
+
+
+
+<!-- (Temp 4) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Temp 4">
+		<properties writeHeader="true" fileName="../../data/debug/Temp4.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="888,-888,-1,-1"/>
+	</step>
+
+
+
+<!-- (Temp 5) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Temp 5">
+		<properties writeHeader="true" fileName="../../data/debug/Temp5.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="960,384,-1,-1"/>
+	</step>
+
+
+
+<!-- (Temp 6) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Temp 6">
+		<properties writeHeader="true" fileName="../../data/debug/Temp6.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="960,552,-1,-1"/>
+	</step>
+
+
+
+<!-- (Temp 7) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Temp 7">
+		<properties writeHeader="true" fileName="../../data/debug/Temp7.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="960,696,-1,-1"/>
+	</step>
+
+
+
+<!-- (Temp 8) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Temp 8">
+		<properties writeHeader="true" fileName="../../data/debug/Temp8.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1128,-648,-1,-1"/>
+	</step>
+
+
+
+<!-- (Temp 9) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Temp 9">
+		<properties writeHeader="true" fileName="../../data/debug/Temp9.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1128,1368,-1,-1"/>
+	</step>
+
+
+
+<!-- (Union) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Union" disabled="false" id="Union">
+		<properties>
+			<columnMappings>
+				<columnMapping in_b="[count-records]" dest="count-records"/>
+				<columnMapping in_a="[example-numCases]" dest="example-numCases"/>
+				<columnMapping in_a="[example-numValues]" dest="example-numValues"/>
+				<columnMapping in_b="[count-keys]" dest="count-keys"/>
+				<columnMapping in_a="[example-value]" dest="example-value"/>
+				<columnMapping in_b="[count-description]" dest="count-description"/>
+				<columnMapping in_a="[example-index]" dest="example-index"/>
+				<columnMapping in_a="ProfileInternalColumnName" in_b="ProfileInternalColumnName" dest="ProfileInternalColumnName"/>
+				<columnMapping in_a="ProfileSourceAttributeName" in_b="ProfileSourceAttributeName" dest="ProfileSourceAttributeName"/>
+				<columnMapping in_a="ProfileInputName" in_b="ProfileInputName" dest="ProfileInputName"/>
+				<columnMapping in_a="[domainAnalyse-name]" in_b="[domainAnalyse-name]" dest="domainAnalyse-name"/>
+			</columnMappings>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1080,-384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union"/>
+		<target endpoint="in_a" step="Union 2"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1128,-374"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Union" disabled="false" id="Union 2">
+		<properties>
+			<columnMappings>
+				<columnMapping in_a="[count-records]" dest="count-records"/>
+				<columnMapping in_a="[example-numCases]" in_b="[example-numCases]" dest="example-numCases"/>
+				<columnMapping in_a="[example-numValues]" in_b="[example-numValues]" dest="example-numValues"/>
+				<columnMapping in_a="[count-keys]" dest="count-keys"/>
+				<columnMapping in_a="[example-value]" in_b="[example-value]" dest="example-value"/>
+				<columnMapping in_a="[count-description]" dest="count-description"/>
+				<columnMapping in_a="[example-index]" in_b="[example-index]" dest="example-index"/>
+				<columnMapping in_a="ProfileInternalColumnName" in_b="ProfileInternalColumnName" dest="ProfileInternalColumnName"/>
+				<columnMapping in_a="ProfileSourceAttributeName" in_b="ProfileSourceAttributeName" dest="ProfileSourceAttributeName"/>
+				<columnMapping in_a="ProfileInputName" in_b="ProfileInputName" dest="ProfileInputName"/>
+				<columnMapping in_a="[domainAnalyse-name]" in_b="[domainAnalyse-name]" dest="domainAnalyse-name"/>
+			</columnMappings>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1176,-384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union 2"/>
+		<target endpoint="in" step="day?"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Union" disabled="false" id="Union 3">
+		<properties>
+			<columnMappings>
+				<columnMapping in_a="[item-value]" in_b="domain" dest="item-value"/>
+				<columnMapping in_a="[stat-multiple]" in_b="&quot;false&quot;" dest="stat-multiple"/>
+				<columnMapping in_a="[stat-type]" in_b="&quot;domain&quot;" dest="stat-type"/>
+				<columnMapping in_a="ProfileInternalColumnName" in_b="ProfileInternalColumnName" dest="ProfileInternalColumnName"/>
+				<columnMapping in_a="ProfileSourceAttributeType" in_b="ProfileSourceAttributeType" dest="ProfileSourceAttributeType"/>
+				<columnMapping in_a="ProfileSourceAttributeName" in_b="ProfileSourceAttributeName" dest="ProfileSourceAttributeName"/>
+				<columnMapping in_a="ProfileInputName" in_b="ProfileInputName" dest="ProfileInputName"/>
+			</columnMappings>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1296,-672,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union 3"/>
+		<target endpoint="in" step="Group Aggregator 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union 4) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Union" disabled="false" id="Union 4">
+		<properties>
+			<columnMappings>
+				<columnMapping in_a="[item-count]" in_b="[item-count]" dest="item-count"/>
+				<columnMapping in_a="ProfileInternalColumnName" in_b="ProfileInternalColumnName" dest="ProfileInternalColumnName"/>
+				<columnMapping in_a="ProfileSourceAttributeName" in_b="ProfileSourceAttributeName" dest="ProfileSourceAttributeName"/>
+				<columnMapping in_a="[item-percent]" in_b="[item-percent]" dest="item-percent"/>
+				<columnMapping in_a="[item-value]" in_b="[item-value]" dest="item-value"/>
+				<columnMapping in_a="ProfileInputName" in_b="ProfileInputName" dest="ProfileInputName"/>
+				<columnMapping in_a="ProfileSourceAttributeType" in_b="ProfileSourceAttributeType" dest="ProfileSourceAttributeType"/>
+				<columnMapping in_a="FrequencyType" in_b="FrequencyType" dest="FrequencyType"/>
+			</columnMappings>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1080,72,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union 4"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_Frequencies"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union 5) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Union" disabled="false" id="Union 5">
+		<properties>
+			<columnMappings>
+				<columnMapping in_a="[item-value]" in_b="domain" dest="item-value"/>
+				<columnMapping in_a="[stat-multiple]" in_b="&quot;false&quot;" dest="stat-multiple"/>
+				<columnMapping in_a="[stat-type]" in_b="&quot;domain&quot;" dest="stat-type"/>
+				<columnMapping in_a="ProfileInternalColumnName" in_b="ProfileInternalColumnName" dest="ProfileInternalColumnName"/>
+				<columnMapping in_a="ProfileSourceAttributeType" in_b="ProfileSourceAttributeType" dest="ProfileSourceAttributeType"/>
+				<columnMapping in_a="ProfileSourceAttributeName" in_b="ProfileSourceAttributeName" dest="ProfileSourceAttributeName"/>
+				<columnMapping in_a="ProfileInputName" in_b="ProfileInputName" dest="ProfileInputName"/>
+				<columnMapping in_a="rollup_SourceAttributeName" in_b="rollup_SourceAttributeName" dest="rollup_SourceAttributeName"/>
+				<columnMapping in_a="rollup_column" in_b="rollup_column" dest="rollup_column"/>
+				<columnMapping in_a="rollup_name" in_b="rollup_name" dest="rollup_name"/>
+				<columnMapping in_a="rollup_value" in_b="rollup_value" dest="rollup_value"/>
+			</columnMappings>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1296,1320,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union 5"/>
+		<target endpoint="in" step="Group Aggregator 4"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union 6) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Union" disabled="false" id="Union 6">
+		<properties>
+			<columnMappings>
+				<columnMapping in_b="[count-records]" dest="count-records"/>
+				<columnMapping in_a="[example-numCases]" dest="example-numCases"/>
+				<columnMapping in_a="[example-numValues]" dest="example-numValues"/>
+				<columnMapping in_b="[count-keys]" dest="count-keys"/>
+				<columnMapping in_a="[example-value]" dest="example-value"/>
+				<columnMapping in_b="[count-description]" dest="count-description"/>
+				<columnMapping in_a="[example-index]" dest="example-index"/>
+				<columnMapping in_a="ProfileInternalColumnName" in_b="ProfileInternalColumnName" dest="ProfileInternalColumnName"/>
+				<columnMapping in_a="ProfileSourceAttributeName" in_b="ProfileSourceAttributeName" dest="ProfileSourceAttributeName"/>
+				<columnMapping in_a="ProfileInputName" in_b="ProfileInputName" dest="ProfileInputName"/>
+				<columnMapping in_a="[domainAnalyse-name]" in_b="[domainAnalyse-name]" dest="domainAnalyse-name"/>
+				<columnMapping in_a="rollup_SourceAttributeName" in_b="rollup_SourceAttributeName" dest="rollup_SourceAttributeName"/>
+				<columnMapping in_a="rollup_column" in_b="rollup_column" dest="rollup_column"/>
+				<columnMapping in_a="rollup_name" in_b="rollup_name" dest="rollup_name"/>
+				<columnMapping in_a="rollup_value" in_b="rollup_value" dest="rollup_value"/>
+			</columnMappings>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1104,1896,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union 6"/>
+		<target endpoint="in_a" step="Union 7"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1152,1906"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union 7) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Union" disabled="false" id="Union 7">
+		<properties>
+			<columnMappings>
+				<columnMapping in_a="[count-records]" dest="count-records"/>
+				<columnMapping in_a="[example-numCases]" in_b="[example-numCases]" dest="example-numCases"/>
+				<columnMapping in_a="[example-numValues]" in_b="[example-numValues]" dest="example-numValues"/>
+				<columnMapping in_a="[count-keys]" dest="count-keys"/>
+				<columnMapping in_a="[example-value]" in_b="[example-value]" dest="example-value"/>
+				<columnMapping in_a="[count-description]" dest="count-description"/>
+				<columnMapping in_a="[example-index]" in_b="[example-index]" dest="example-index"/>
+				<columnMapping in_a="ProfileInternalColumnName" in_b="ProfileInternalColumnName" dest="ProfileInternalColumnName"/>
+				<columnMapping in_a="ProfileSourceAttributeName" in_b="ProfileSourceAttributeName" dest="ProfileSourceAttributeName"/>
+				<columnMapping in_a="ProfileInputName" in_b="ProfileInputName" dest="ProfileInputName"/>
+				<columnMapping in_a="[domainAnalyse-name]" in_b="[domainAnalyse-name]" dest="domainAnalyse-name"/>
+				<columnMapping in_a="rollup_SourceAttributeName" in_b="rollup_SourceAttributeName" dest="rollup_SourceAttributeName"/>
+				<columnMapping in_a="rollup_column" in_b="rollup_column" dest="rollup_column"/>
+				<columnMapping in_a="rollup_name" in_b="rollup_name" dest="rollup_name"/>
+				<columnMapping in_a="rollup_value" in_b="rollup_value" dest="rollup_value"/>
+			</columnMappings>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1200,1896,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union 7"/>
+		<target endpoint="in" step="day? 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union 8) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Union" disabled="false" id="Union 8">
+		<properties>
+			<columnMappings>
+				<columnMapping in_a="[item-count]" in_b="[item-count]" dest="item-count"/>
+				<columnMapping in_a="ProfileInternalColumnName" in_b="ProfileInternalColumnName" dest="ProfileInternalColumnName"/>
+				<columnMapping in_a="ProfileSourceAttributeName" in_b="ProfileSourceAttributeName" dest="ProfileSourceAttributeName"/>
+				<columnMapping in_a="[item-percent]" in_b="[item-percent]" dest="item-percent"/>
+				<columnMapping in_a="[item-value]" in_b="[item-value]" dest="item-value"/>
+				<columnMapping in_a="ProfileInputName" in_b="ProfileInputName" dest="ProfileInputName"/>
+				<columnMapping in_a="ProfileSourceAttributeType" in_b="ProfileSourceAttributeType" dest="ProfileSourceAttributeType"/>
+				<columnMapping in_a="FrequencyType" in_b="FrequencyType" dest="FrequencyType"/>
+				<columnMapping in_a="rollup_SourceAttributeName" in_b="rollup_SourceAttributeName" dest="rollup_SourceAttributeName"/>
+				<columnMapping in_a="rollup_column" in_b="rollup_column" dest="rollup_column"/>
+				<columnMapping in_a="rollup_name" in_b="rollup_name" dest="rollup_name"/>
+				<columnMapping in_a="rollup_value" in_b="rollup_value" dest="rollup_value"/>
+			</columnMappings>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1104,2352,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union 8"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_Frequencies_ru"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- ([stat-multiple] is "false"?) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="[stat-multiple] is &quot;false&quot;?">
+		<properties condition="[stat-multiple] is &quot;false&quot;"/>
+		<visual-constraints layout="horizontal" bounds="1080,-720,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="[stat-multiple] is &quot;false&quot;?"/>
+		<target endpoint="in" step="Quantiles?"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1128,-816"/>
+				<point location="1128,-912"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="[stat-multiple] is &quot;false&quot;?"/>
+		<target endpoint="in_a" step="Union 3"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1296,-682"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- ([stat-multiple] is "false"? 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="[stat-multiple] is &quot;false&quot;? 2">
+		<properties condition="[stat-multiple] is &quot;false&quot;"/>
+		<visual-constraints layout="horizontal" bounds="1080,1272,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="[stat-multiple] is &quot;false&quot;? 2"/>
+		<target endpoint="in" step="Quantiles? 2"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1128,1176"/>
+				<point location="1128,1080"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="[stat-multiple] is &quot;false&quot;? 2"/>
+		<target endpoint="in_a" step="Union 5"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1296,1308"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (businessRules) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="businessRules">
+		<properties>
+			<columns>
+				<columnDef name="br_indColumn" type="STRING"/>
+				<columnDef name="br_name" type="STRING"/>
+				<columnDef name="br_expression" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,840,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="businessRules"/>
+		<target endpoint="in" step="businessRules-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (businessRules-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="businessRules-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,840,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="businessRules-Update"/>
+		<target endpoint="in" step="Temp 10"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (businessRules_count) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="businessRules_count">
+		<properties>
+			<columns>
+				<columnDef name="records" type="INTEGER"/>
+				<columnDef name="description" type="STRING"/>
+				<columnDef name="keys" type="INTEGER"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="br_indColumn" type="STRING"/>
+				<columnDef name="br_name" type="STRING"/>
+				<columnDef name="br_expression" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,1032,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="businessRules_count"/>
+		<target endpoint="in" step="businessRules_count-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (businessRules_count-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="businessRules_count-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,1032,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="businessRules_count-Update"/>
+		<target endpoint="in" step="Prof-BusinessRules"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (dataAnalyse_column_single_statistics) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="dataAnalyse_column_single_statistics">
+		<properties>
+			<columns>
+				<columnDef name="columnType" type="STRING"/>
+				<columnDef name="column" type="STRING"/>
+				<columnDef name="expression" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,-984,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="dataAnalyse_column_single_statistics"/>
+		<target endpoint="in" step="dataAnalyse_column_single_statistics-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (dataAnalyse_column_single_statistics-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="dataAnalyse_column_single_statistics-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,-984,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="dataAnalyse_column_single_statistics-Update"/>
+		<target endpoint="in" step="Temp 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (day?) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="day?">
+		<properties condition="[domainAnalyse-name] is &quot;day&quot;"/>
+		<visual-constraints layout="horizontal" bounds="1392,-384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="day?"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_DomainAnalysis_Day"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="day?"/>
+		<target endpoint="in" step="pattern?"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (day? 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="day? 2">
+		<properties condition="[domainAnalyse-name] is &quot;day&quot;"/>
+		<visual-constraints layout="horizontal" bounds="1416,1896,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="day? 2"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_DomainAnalysis_Day_ru"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="day? 2"/>
+		<target endpoint="in" step="pattern? 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (domainAnalysis) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="domainAnalysis">
+		<properties>
+			<columns>
+				<columnDef name="domainAnalyse-name" type="STRING"/>
+				<columnDef name="ProfileInternalColumnName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeType" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,-576,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="domainAnalysis"/>
+		<target endpoint="in" step="domainAnalysis-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (domainAnalysis-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="domainAnalysis-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,-576,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="domainAnalysis-Update"/>
+		<target endpoint="in" step="Group Aggregator"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (domainAnalysis-count) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="domainAnalysis-count">
+		<properties>
+			<columns>
+				<columnDef name="count-records" type="INTEGER"/>
+				<columnDef name="count-keys" type="INTEGER"/>
+				<columnDef name="count-description" type="STRING"/>
+				<columnDef name="ProfileInternalColumnName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="domainAnalyse-name" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,-288,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="domainAnalysis-count"/>
+		<target endpoint="in" step="domainAnalysis-count-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (domainAnalysis-count-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="domainAnalysis-count-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,-288,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="domainAnalysis-count-Update"/>
+		<target endpoint="in_b" step="Union"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1080,-264"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (domainAnalysis-example) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="domainAnalysis-example">
+		<properties>
+			<columns>
+				<columnDef name="example-numCases" type="INTEGER"/>
+				<columnDef name="example-numValues" type="INTEGER"/>
+				<columnDef name="example-value" type="STRING"/>
+				<columnDef name="example-index" type="INTEGER"/>
+				<columnDef name="ProfileInternalColumnName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="domainAnalyse-name" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,-432,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="domainAnalysis-example"/>
+		<target endpoint="in" step="domainAnalysis-example-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (domainAnalysis-example-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="domainAnalysis-example-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,-432,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="domainAnalysis-example-Update"/>
+		<target endpoint="in_a" step="Union"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1080,-408"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (domainAnalysis-exceptions) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="domainAnalysis-exceptions">
+		<properties>
+			<columns>
+				<columnDef name="example-numCases" type="INTEGER"/>
+				<columnDef name="example-index" type="INTEGER"/>
+				<columnDef name="example-numValues" type="INTEGER"/>
+				<columnDef name="example-value" type="STRING"/>
+				<columnDef name="ProfileInternalColumnName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="domainAnalyse-name" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,-96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="domainAnalysis-exceptions"/>
+		<target endpoint="in" step="domainAnalysis-exceptions-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (domainAnalysis-exceptions-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="domainAnalysis-exceptions-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,-96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="domainAnalysis-exceptions-Update"/>
+		<target endpoint="in_b" step="Union 2"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1176,-72"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (enum?) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="enum?">
+		<properties condition="[domainAnalyse-name] is &quot;enum&quot;"/>
+		<visual-constraints layout="horizontal" bounds="2016,-384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="enum?"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_DomainAnalysis_Enum"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="enum?"/>
+		<target endpoint="in" step="integer?"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (enum? 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="enum? 2">
+		<properties condition="[domainAnalyse-name] is &quot;enum&quot;"/>
+		<visual-constraints layout="horizontal" bounds="2040,1896,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="enum? 2"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_DomainAnalysis_Enum_ru"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="enum? 2"/>
+		<target endpoint="in" step="integer? 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (first_x or last_x?) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="first_x or last_x?">
+		<properties condition="[stat-type] is &quot;first_x&quot; OR [stat-type] is &quot;last_x&quot;"/>
+		<visual-constraints layout="horizontal" bounds="1440,-936,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="first_x or last_x?"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="first_x or last_x?"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_Extremes"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (first_x or last_x? 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="first_x or last_x? 2">
+		<properties condition="[stat-type] is &quot;first_x&quot; OR [stat-type] is &quot;last_x&quot;"/>
+		<visual-constraints layout="horizontal" bounds="1440,1056,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="first_x or last_x? 2"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_Extremes_ru"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="first_x or last_x? 2"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_ru"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (frequencies) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="frequencies">
+		<properties>
+			<columns>
+				<columnDef name="item-count" type="INTEGER"/>
+				<columnDef name="item-percent" type="STRING"/>
+				<columnDef name="item-value" type="STRING"/>
+				<columnDef name="ProfileInternalColumnName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeType" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="FrequencyType" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,0,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="frequencies"/>
+		<target endpoint="in" step="frequencies-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (frequencies-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="frequencies-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,0,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="frequencies-Update"/>
+		<target endpoint="in_a" step="Union 4"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1080,24"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (frequenciesMasked) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="frequenciesMasked">
+		<properties>
+			<columns>
+				<columnDef name="item-count" type="INTEGER"/>
+				<columnDef name="item-percent" type="STRING"/>
+				<columnDef name="item-value" type="STRING"/>
+				<columnDef name="ProfileInternalColumnName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeType" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="FrequencyType" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,144,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="frequenciesMasked"/>
+		<target endpoint="in" step="frequenciesMasked-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (frequenciesMasked-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="frequenciesMasked-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,144,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="frequenciesMasked-Update"/>
+		<target endpoint="in_b" step="Union 4"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1080,168"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (integer?) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="integer?">
+		<properties condition="[domainAnalyse-name] is &quot;integer&quot;"/>
+		<visual-constraints layout="horizontal" bounds="2328,-384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="integer?"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_DomainAnalysis"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="integer?"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_DomainAnalysis_Integer"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (integer? 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="integer? 2">
+		<properties condition="[domainAnalyse-name] is &quot;integer&quot;"/>
+		<visual-constraints layout="horizontal" bounds="2352,1896,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="integer? 2"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_DomainAnalysis_Integer_ru"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="integer? 2"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_DomainAnalysis_ru"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (pattern?) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="pattern?">
+		<properties condition="[domainAnalyse-name] is &quot;pattern&quot;"/>
+		<visual-constraints layout="horizontal" bounds="1704,-384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="pattern?"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_DomainAnalysis_Pattern"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="pattern?"/>
+		<target endpoint="in" step="enum?"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (pattern? 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="pattern? 2">
+		<properties condition="[domainAnalyse-name] is &quot;pattern&quot;"/>
+		<visual-constraints layout="horizontal" bounds="1728,1896,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="pattern? 2"/>
+		<target endpoint="in" step="Prof-MultiLineColumnStats_DomainAnalysis_Pattern_ru"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="pattern? 2"/>
+		<target endpoint="in" step="enum? 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (profileExport) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="profileExport">
+		<properties>
+			<columns>
+				<columnDef name="ProfileInputName" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,-1080,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="profileExport"/>
+		<target endpoint="in" step="profileExport-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (profileExport-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="profileExport-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,-1080,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="profileExport-Update"/>
+		<target endpoint="in" step="Temp 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (rollup) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="rollup">
+		<properties>
+			<columns>
+				<columnDef name="rollup_name" type="STRING"/>
+				<columnDef name="rollup_column" type="STRING"/>
+				<columnDef name="rollup_SourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,264,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="rollup"/>
+		<target endpoint="in" step="rollup-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (rollup-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="rollup-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,264,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="rollup-Update"/>
+		<target endpoint="in" step="Temp 1"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (rollup_item) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="rollup_item">
+		<properties>
+			<columns>
+				<columnDef name="item-value" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="rollup_item"/>
+		<target endpoint="in" step="rollup_item-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (rollup_item-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="rollup_item-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="rollup_item-Update"/>
+		<target endpoint="in" step="Temp 5"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_businessRules) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="ru_businessRules">
+		<properties>
+			<columns>
+				<columnDef name="br_indColumn" type="STRING"/>
+				<columnDef name="br_name" type="STRING"/>
+				<columnDef name="br_expression" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="rollup_SourceAttributeName" type="STRING"/>
+				<columnDef name="rollup_column" type="STRING"/>
+				<columnDef name="rollup_name" type="STRING"/>
+				<columnDef name="rollup_value" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,2664,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_businessRules"/>
+		<target endpoint="in" step="ru_businessRules-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_businessRules-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="ru_businessRules-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,2664,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_businessRules-Update"/>
+		<target endpoint="in" step="Temp 11"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_businessRules_count) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="ru_businessRules_count">
+		<properties>
+			<columns>
+				<columnDef name="records" type="INTEGER"/>
+				<columnDef name="description" type="STRING"/>
+				<columnDef name="keys" type="INTEGER"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="rollup_SourceAttributeName" type="STRING"/>
+				<columnDef name="rollup_column" type="STRING"/>
+				<columnDef name="rollup_name" type="STRING"/>
+				<columnDef name="rollup_value" type="STRING"/>
+				<columnDef name="br_indColumn" type="STRING"/>
+				<columnDef name="br_name" type="STRING"/>
+				<columnDef name="br_expression" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,2856,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_businessRules_count"/>
+		<target endpoint="in" step="ru_businessRules_count-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_businessRules_count-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="ru_businessRules_count-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,2856,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_businessRules_count-Update"/>
+		<target endpoint="in" step="Prof-BusinessRules_ru"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_dataAnalyse_column_single_statistics) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="ru_dataAnalyse_column_single_statistics">
+		<properties>
+			<columns>
+				<columnDef name="columnType" type="STRING"/>
+				<columnDef name="column" type="STRING"/>
+				<columnDef name="expression" type="STRING"/>
+				<columnDef name="rollup_SourceAttributeName" type="STRING"/>
+				<columnDef name="rollup_column" type="STRING"/>
+				<columnDef name="rollup_name" type="STRING"/>
+				<columnDef name="rollup_value" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,552,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_dataAnalyse_column_single_statistics"/>
+		<target endpoint="in" step="ru_dataAnalyse_column_single_statistics-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_dataAnalyse_column_single_statistics-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="ru_dataAnalyse_column_single_statistics-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,552,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_dataAnalyse_column_single_statistics-Update"/>
+		<target endpoint="in" step="Temp 6"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_domainAnalysis) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="ru_domainAnalysis">
+		<properties>
+			<columns>
+				<columnDef name="domainAnalyse-name" type="STRING"/>
+				<columnDef name="ProfileInternalColumnName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeType" type="STRING"/>
+				<columnDef name="rollup_SourceAttributeName" type="STRING"/>
+				<columnDef name="rollup_column" type="STRING"/>
+				<columnDef name="rollup_name" type="STRING"/>
+				<columnDef name="rollup_value" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,1488,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_domainAnalysis"/>
+		<target endpoint="in" step="ru_domainAnalysis-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_domainAnalysis-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="ru_domainAnalysis-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,1488,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_domainAnalysis-Update"/>
+		<target endpoint="in" step="Group Aggregator 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_domainAnalysis-count) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="ru_domainAnalysis-count">
+		<properties>
+			<columns>
+				<columnDef name="count-records" type="INTEGER"/>
+				<columnDef name="count-keys" type="INTEGER"/>
+				<columnDef name="count-description" type="STRING"/>
+				<columnDef name="ProfileInternalColumnName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="domainAnalyse-name" type="STRING"/>
+				<columnDef name="rollup_SourceAttributeName" type="STRING"/>
+				<columnDef name="rollup_column" type="STRING"/>
+				<columnDef name="rollup_name" type="STRING"/>
+				<columnDef name="rollup_value" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,1992,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_domainAnalysis-count"/>
+		<target endpoint="in" step="ru_domainAnalysis-count-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_domainAnalysis-count-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="ru_domainAnalysis-count-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,1992,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_domainAnalysis-count-Update"/>
+		<target endpoint="in_b" step="Union 6"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1104,2016"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_domainAnalysis-example) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="ru_domainAnalysis-example">
+		<properties>
+			<columns>
+				<columnDef name="example-numCases" type="INTEGER"/>
+				<columnDef name="example-numValues" type="INTEGER"/>
+				<columnDef name="example-value" type="STRING"/>
+				<columnDef name="example-index" type="INTEGER"/>
+				<columnDef name="ProfileInternalColumnName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="domainAnalyse-name" type="STRING"/>
+				<columnDef name="rollup_SourceAttributeName" type="STRING"/>
+				<columnDef name="rollup_column" type="STRING"/>
+				<columnDef name="rollup_name" type="STRING"/>
+				<columnDef name="rollup_value" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,1800,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_domainAnalysis-example"/>
+		<target endpoint="in" step="ru_domainAnalysis-example-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_domainAnalysis-example-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="ru_domainAnalysis-example-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,1800,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_domainAnalysis-example-Update"/>
+		<target endpoint="in_a" step="Union 6"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1104,1824"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_domainAnalysis-exceptions) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="ru_domainAnalysis-exceptions">
+		<properties>
+			<columns>
+				<columnDef name="example-numCases" type="INTEGER"/>
+				<columnDef name="example-index" type="INTEGER"/>
+				<columnDef name="example-numValues" type="INTEGER"/>
+				<columnDef name="example-value" type="STRING"/>
+				<columnDef name="ProfileInternalColumnName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="domainAnalyse-name" type="STRING"/>
+				<columnDef name="rollup_SourceAttributeName" type="STRING"/>
+				<columnDef name="rollup_column" type="STRING"/>
+				<columnDef name="rollup_name" type="STRING"/>
+				<columnDef name="rollup_value" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,2112,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_domainAnalysis-exceptions"/>
+		<target endpoint="in" step="ru_domainAnalysis-exceptions-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_domainAnalysis-exceptions-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="ru_domainAnalysis-exceptions-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,2112,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_domainAnalysis-exceptions-Update"/>
+		<target endpoint="in_b" step="Union 7"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1200,2136"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_frequencies) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="ru_frequencies">
+		<properties>
+			<columns>
+				<columnDef name="item-count" type="INTEGER"/>
+				<columnDef name="item-percent" type="STRING"/>
+				<columnDef name="item-value" type="STRING"/>
+				<columnDef name="ProfileInternalColumnName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeType" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="FrequencyType" type="STRING"/>
+				<columnDef name="rollup_SourceAttributeName" type="STRING"/>
+				<columnDef name="rollup_column" type="STRING"/>
+				<columnDef name="rollup_name" type="STRING"/>
+				<columnDef name="rollup_value" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,2256,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_frequencies"/>
+		<target endpoint="in" step="ru_frequencies-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_frequencies-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="ru_frequencies-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,2256,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_frequencies-Update"/>
+		<target endpoint="in_a" step="Union 8"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1104,2280"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_frequenciesMasked) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="ru_frequenciesMasked">
+		<properties>
+			<columns>
+				<columnDef name="item-count" type="INTEGER"/>
+				<columnDef name="item-percent" type="STRING"/>
+				<columnDef name="item-value" type="STRING"/>
+				<columnDef name="ProfileInternalColumnName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeType" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="FrequencyType" type="STRING"/>
+				<columnDef name="rollup_SourceAttributeName" type="STRING"/>
+				<columnDef name="rollup_column" type="STRING"/>
+				<columnDef name="rollup_name" type="STRING"/>
+				<columnDef name="rollup_value" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,2448,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_frequenciesMasked"/>
+		<target endpoint="in" step="ru_frequenciesMasked-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_frequenciesMasked-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="ru_frequenciesMasked-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,2448,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_frequenciesMasked-Update"/>
+		<target endpoint="in_b" step="Union 8"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="1104,2472"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_statistics) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="ru_statistics">
+		<properties>
+			<columns>
+				<columnDef name="stat-multiple" type="STRING"/>
+				<columnDef name="stat-type" type="STRING"/>
+				<columnDef name="ProfileInternalColumnName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeType" type="STRING"/>
+				<columnDef name="rollup_SourceAttributeName" type="STRING"/>
+				<columnDef name="rollup_column" type="STRING"/>
+				<columnDef name="rollup_name" type="STRING"/>
+				<columnDef name="rollup_value" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,696,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_statistics"/>
+		<target endpoint="in" step="ru_statistics-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_statistics-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="ru_statistics-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,696,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_statistics-Update"/>
+		<target endpoint="in" step="Temp 7"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_statistics-item) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="ru_statistics-item">
+		<properties>
+			<columns>
+				<columnDef name="item-value" type="STRING"/>
+				<columnDef name="item-index" type="INTEGER"/>
+				<columnDef name="item-count" type="INTEGER"/>
+				<columnDef name="stat-multiple" type="STRING"/>
+				<columnDef name="stat-type" type="STRING"/>
+				<columnDef name="ProfileInternalColumnName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeType" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="rollup_SourceAttributeName" type="STRING"/>
+				<columnDef name="rollup_column" type="STRING"/>
+				<columnDef name="rollup_name" type="STRING"/>
+				<columnDef name="rollup_value" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,1272,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_statistics-item"/>
+		<target endpoint="in" step="ru_statistics-item-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ru_statistics-item-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="ru_statistics-item-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,1272,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="ru_statistics-item-Update"/>
+		<target endpoint="in" step="[stat-multiple] is &quot;false&quot;? 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (statistics) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="statistics">
+		<properties>
+			<columns>
+				<columnDef name="stat-multiple" type="STRING"/>
+				<columnDef name="stat-type" type="STRING"/>
+				<columnDef name="ProfileInternalColumnName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeType" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,-888,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="statistics"/>
+		<target endpoint="in" step="statistics-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (statistics-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="statistics-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,-888,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="statistics-Update"/>
+		<target endpoint="in" step="Temp 4"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (statistics-item) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="statistics-item">
+		<properties>
+			<columns>
+				<columnDef name="item-value" type="STRING"/>
+				<columnDef name="item-index" type="INTEGER"/>
+				<columnDef name="item-count" type="INTEGER"/>
+				<columnDef name="stat-multiple" type="STRING"/>
+				<columnDef name="stat-type" type="STRING"/>
+				<columnDef name="ProfileInternalColumnName" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeType" type="STRING"/>
+				<columnDef name="ProfileSourceAttributeName" type="STRING"/>
+				<columnDef name="ProfileInputName" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="168,-720,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="statistics-item"/>
+		<target endpoint="in" step="statistics-item-Update"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (statistics-item-Update) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="statistics-item-Update">
+		<properties>
+			<assignments/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="528,-720,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="statistics-item-Update"/>
+		<target endpoint="in" step="[stat-multiple] is &quot;false&quot;?"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+</purity-config>

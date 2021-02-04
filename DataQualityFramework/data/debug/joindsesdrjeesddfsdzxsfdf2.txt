@@ -1,2 +1,0 @@
-"DomainName";"DomainLayerName"
-"Customer";"Customer"

@@ -1,0 +1,216 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (Customer) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.jdbc.read.JdbcReader" disabled="false" id="Customer">
+		<properties queryString="select RecID, FullName, GD, CalculatedDate, BirthDate, Description, Mobile, Email, directmailing, directemail, directtelephone, titleCode from Customer.dbo.Customer" dataSourceName="DQFramework">
+			<columns>
+				<jdbcReaderColumn name="RecID" type="LONG"/>
+				<jdbcReaderColumn name="FullName" type="STRING"/>
+				<jdbcReaderColumn name="GD" type="STRING"/>
+				<jdbcReaderColumn name="CalculatedDate" type="STRING"/>
+				<jdbcReaderColumn name="BirthDate" type="STRING"/>
+				<jdbcReaderColumn name="Description" type="STRING"/>
+				<jdbcReaderColumn name="Mobile" type="STRING"/>
+				<jdbcReaderColumn name="Email" type="STRING"/>
+				<jdbcReaderColumn name="directmailing" type="STRING"/>
+				<jdbcReaderColumn name="directemail" type="STRING"/>
+				<jdbcReaderColumn name="directtelephone" type="STRING"/>
+				<jdbcReaderColumn name="titleCode" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="288,48,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Customer"/>
+		<target endpoint="in" step="Json Output Profiling"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Json Output Profiling) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.profiling.JsonOutputProfilingAlgorithm" disabled="false" id="Json Output Profiling">
+		<properties defaultLocale="en_US" exportFile="../data/pro/ProfileTest.xml" outputFile="../data/pro/ProfileTest.profile" outputLimit="1000" exportToEndpoint="true" threaded="true">
+			<businessDomains strictThreshold="25.0" looseThreshold="20.0"/>
+			<domains>
+				<customs/>
+				<datetime active="true" threshold="80"/>
+				<enum valueCountLimit="20" active="true"/>
+				<numeric active="true" threshold="80"/>
+				<pattern active="true" patternCountLimit="10"/>
+				<specval active="true" gradientThreshold="100"/>
+			</domains>
+			<fkAnalysis/>
+			<inputs>
+				<profilingInput name="in" drillThrough="false">
+					<businessRules>
+						<businessRule expression="length(GD) &gt; 1" name="RuleOne"/>
+						<businessRule expression="length(GD) &gt; 2" name="RuleTwo"/>
+					</businessRules>
+					<dataToProfile>
+						<profiledData expression="RecID" analyseBusinessDomain="true" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="FullName" maskName="characters" analyseBusinessDomain="true" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="GD" maskName="characters" analyseBusinessDomain="true" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="CalculatedDate" maskName="characters" analyseBusinessDomain="true" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="BirthDate" maskName="characters" analyseBusinessDomain="true" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="Description" maskName="characters" analyseBusinessDomain="true" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="Mobile" maskName="characters" analyseBusinessDomain="true" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="Email" maskName="characters" analyseBusinessDomain="true" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="directmailing" maskName="characters" analyseBusinessDomain="true" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="directemail" maskName="characters" analyseBusinessDomain="true" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="directtelephone" maskName="characters" analyseBusinessDomain="true" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="titleCode" maskName="characters" analyseBusinessDomain="true" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+					</dataToProfile>
+					<dependencies/>
+					<pkAnalysis/>
+					<rollUps>
+						<rollUp expression="GD" name="RollupOnGD"/>
+						<rollUp expression="BirthDate" name="RollupOnBirthDate"/>
+					</rollUps>
+				</profilingInput>
+			</inputs>
+			<masks>
+				<maskCfg copyOther="true" name="characters">
+					<characterGroups>
+						<characterGroup characters="[:letter:]" symbol="L"/>
+						<characterGroup characters="[:digit:]" symbol="D"/>
+					</characterGroups>
+				</maskCfg>
+				<maskCfg copyOther="true" name="words">
+					<characterGroups>
+						<characterGroup repeatedSymbol="W" characters="[:letter:]" symbol="L" repeatedThreshold="2"/>
+						<characterGroup repeatedSymbol="N" characters="[:digit:]" symbol="D" repeatedThreshold="2"/>
+					</characterGroups>
+				</maskCfg>
+				<maskCfg copyOther="true" name="case_sensitive">
+					<characterGroups>
+						<characterGroup characters="[:lowercase:]" symbol="L"/>
+						<characterGroup characters="[:uppercase:]" symbol="U"/>
+						<characterGroup characters="[:digit:]" symbol="D"/>
+					</characterGroups>
+				</maskCfg>
+				<maskCfg copyOther="true" name="mask_digits">
+					<characterGroups>
+						<characterGroup characters="[:digit:]" symbol="D"/>
+					</characterGroups>
+				</maskCfg>
+			</masks>
+			<userMetadata dataOrigin="Whatever" description="Whatever" classification="Whatever">
+				<items>
+					<item name="ItemWhatever" value="Itemwhatever"/>
+					<item name="ItemWhatever1" value="Itemwhatever1"/>
+				</items>
+			</userMetadata>
+		</properties>
+		<visual-constraints layout="vertical" bounds="288,144,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Json Output Profiling"/>
+		<target endpoint="in" step="Multiplicator"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="288,240,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="ProcessJSONProfileStream"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="out"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (ProcessJSONProfileStream) --><component mode="NORMAL" disabled="false" id="ProcessJSONProfileStream">
+		<properties fileName="components/ProcessJSONProfileStream.comp">
+			<mappings>
+				<mappingEndPoint name="in">
+					<columnMappings>
+						<columnsMapping from="out_profiling" to="out_profiling"/>
+					</columnMappings>
+				</mappingEndPoint>
+			</mappings>
+			<parameters/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="288,360,-1,-1"/>
+	</component>
+
+
+
+<!-- (out) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="out">
+		<properties writeHeader="true" fileName="../data/debug/porofiling.json" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="72,288,-1,-1"/>
+	</step>
+
+</purity-config>

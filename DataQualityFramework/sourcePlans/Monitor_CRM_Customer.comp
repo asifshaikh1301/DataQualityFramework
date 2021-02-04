@@ -305,7 +305,7 @@
 			<parameters>
 				<DQFramework_DBType>&quot;mssql&quot;</DQFramework_DBType>
 				<Ex_BeginAggregation>now()</Ex_BeginAggregation>
-				<UpdateResultsRulesDB>true</UpdateResultsRulesDB>
+				<UpdateResultsRulesDB>false</UpdateResultsRulesDB>
 				<SubmissionDateTime>//getRequestTime()
 toDateTime(&quot;10-06-2020 23:00:00&quot;, &quot;dd-MM-yyyy HH:mm:ss&quot;)</SubmissionDateTime>
 				<ReportDateTime>//getRequestTime()
@@ -366,6 +366,326 @@ toDateTime(&quot;10-06-2020 23:00:00&quot;, &quot;dd-MM-yyyy HH:mm:ss&quot;)</Re
 
 
 
+<!-- (Json Output Profiling) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.profiling.JsonOutputProfilingAlgorithm" disabled="false" id="Json Output Profiling">
+		<properties defaultLocale="en_US" exportFile="../data/pro/ProfileTest.xml" outputFile="../data/pro/ProfileTest.profile" outputLimit="1000" exportToEndpoint="true" threaded="true">
+			<businessDomains strictThreshold="25.0" looseThreshold="20.0"/>
+			<domains>
+				<customs/>
+				<datetime active="true" threshold="80"/>
+				<enum valueCountLimit="20" active="true"/>
+				<numeric active="true" threshold="80"/>
+				<pattern active="true" patternCountLimit="10"/>
+				<specval active="true" gradientThreshold="100"/>
+			</domains>
+			<fkAnalysis/>
+			<inputs>
+				<profilingInput name="in" drillThrough="false">
+					<businessRules/>
+					<dataToProfile>
+						<profiledData expression="GD" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DQM_RecordScore" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DQM_RuleCodesFailed" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DQM_DataQualityPercentage" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+					</dataToProfile>
+					<dependencies/>
+					<pkAnalysis/>
+					<rollUps>
+						<rollUp expression="DQM_DataQualityPercentage" name="data_quality_percentage"/>
+						<rollUp expression="DQM_RuleCodesFailed" name="rule_codes_failed"/>
+						<rollUp expression="DQM_RecordScore" name="score"/>
+					</rollUps>
+				</profilingInput>
+			</inputs>
+			<masks>
+				<maskCfg copyOther="true" name="characters">
+					<characterGroups>
+						<characterGroup characters="[:letter:]" symbol="L"/>
+						<characterGroup characters="[:digit:]" symbol="D"/>
+					</characterGroups>
+				</maskCfg>
+				<maskCfg copyOther="true" name="words">
+					<characterGroups>
+						<characterGroup repeatedSymbol="W" characters="[:letter:]" symbol="L" repeatedThreshold="2"/>
+						<characterGroup repeatedSymbol="N" characters="[:digit:]" symbol="D" repeatedThreshold="2"/>
+					</characterGroups>
+				</maskCfg>
+				<maskCfg copyOther="true" name="case_sensitive">
+					<characterGroups>
+						<characterGroup characters="[:lowercase:]" symbol="L"/>
+						<characterGroup characters="[:uppercase:]" symbol="U"/>
+						<characterGroup characters="[:digit:]" symbol="D"/>
+					</characterGroups>
+				</maskCfg>
+				<maskCfg copyOther="true" name="mask_digits">
+					<characterGroups>
+						<characterGroup characters="[:digit:]" symbol="D"/>
+					</characterGroups>
+				</maskCfg>
+			</masks>
+			<userMetadata dataOrigin="Whatever" description="Whatever" classification="Whatever">
+				<items>
+					<item name="ItemWhatever" value="Itemwhatever"/>
+					<item name="ItemWhatever1" value="Itemwhatever1"/>
+				</items>
+			</userMetadata>
+		</properties>
+		<visual-constraints layout="vertical" bounds="384,960,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Json Output Profiling"/>
+		<target endpoint="in" step="Rule Summary 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Json Output Profiling 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.profiling.JsonOutputProfilingAlgorithm" disabled="true" id="Json Output Profiling 2">
+		<properties defaultLocale="en_US" exportFile="../data/pro/ProfileTest.xml" outputFile="../data/pro/ProfileTest.profile" outputLimit="1000" exportToEndpoint="true" threaded="true">
+			<businessDomains strictThreshold="25.0" looseThreshold="20.0"/>
+			<domains>
+				<customs/>
+				<datetime active="true" threshold="80"/>
+				<enum valueCountLimit="20" active="true"/>
+				<numeric active="true" threshold="80"/>
+				<pattern active="true" patternCountLimit="10"/>
+				<specval active="true" gradientThreshold="100"/>
+			</domains>
+			<fkAnalysis/>
+			<inputs>
+				<profilingInput name="in" drillThrough="false">
+					<businessRules/>
+					<dataToProfile>
+						<profiledData expression="RecID" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="FullName" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="GD" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="CalculatedDate" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="BirthDate" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="Description" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="Mobile" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="Landline" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="Email" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="dpadirectmailingoptoutcode" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="dpaemailoptoutcode" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="dpatelephonecommunicationoptoutcode" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="titleCode" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="SourceName" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="false" extremes="5" calculateAggregated="false"/>
+						</profiledData>
+						<profiledData expression="SourceLayerName" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DQM_Score" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DQM_GlobalRecordID" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="false"/>
+							<groupSizeAnalysis calculate="false"/>
+							<standardStats quantiles="0" calculate="false" extremes="0" calculateAggregated="false"/>
+						</profiledData>
+						<profiledData expression="DQM_RecordID" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="false"/>
+							<groupSizeAnalysis calculate="false"/>
+							<standardStats quantiles="0" calculate="false" extremes="0" calculateAggregated="false"/>
+						</profiledData>
+						<profiledData expression="DQM_RecordScore" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DQM_RecordExplanation" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DQM_RuleCodesApplied" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DQM_RuleCodesAppliedLA" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DQM_RuleCodesAppliedLAGuid" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="false"/>
+							<groupSizeAnalysis calculate="false"/>
+							<standardStats quantiles="0" calculate="false" extremes="0" calculateAggregated="false"/>
+						</profiledData>
+						<profiledData expression="DQM_RuleCodesAppliedMappings" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DQM_RuleCodesAppliedForFilter" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DQM_RuleCodesAppliedLAForFilter" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DQM_RuleCodesAppliedLAFiltered" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DQM_RuleCodesFailed" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DQM_RuleCodesFailedLA" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="Ex_BeginAggregation" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="false"/>
+							<groupSizeAnalysis calculate="false"/>
+							<standardStats quantiles="0" calculate="false" extremes="0" calculateAggregated="false"/>
+						</profiledData>
+						<profiledData expression="DQM_DataQualityPercentage" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DQM_RuleFailureCount" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="DQM_NoOfRules" analyseBusinessDomain="false" analyseDomain="false">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+					</dataToProfile>
+					<dependencies/>
+					<pkAnalysis/>
+					<rollUps>
+						<rollUp expression="DQM_DataQualityPercentage" name="data_quality_percentage"/>
+						<rollUp expression="DQM_RuleCodesFailed" name="rule_codes_failed"/>
+						<rollUp expression="DQM_RecordScore" name="score"/>
+					</rollUps>
+				</profilingInput>
+			</inputs>
+			<masks>
+				<maskCfg copyOther="true" name="characters">
+					<characterGroups>
+						<characterGroup characters="[:letter:]" symbol="L"/>
+						<characterGroup characters="[:digit:]" symbol="D"/>
+					</characterGroups>
+				</maskCfg>
+				<maskCfg copyOther="true" name="words">
+					<characterGroups>
+						<characterGroup repeatedSymbol="W" characters="[:letter:]" symbol="L" repeatedThreshold="2"/>
+						<characterGroup repeatedSymbol="N" characters="[:digit:]" symbol="D" repeatedThreshold="2"/>
+					</characterGroups>
+				</maskCfg>
+				<maskCfg copyOther="true" name="case_sensitive">
+					<characterGroups>
+						<characterGroup characters="[:lowercase:]" symbol="L"/>
+						<characterGroup characters="[:uppercase:]" symbol="U"/>
+						<characterGroup characters="[:digit:]" symbol="D"/>
+					</characterGroups>
+				</maskCfg>
+				<maskCfg copyOther="true" name="mask_digits">
+					<characterGroups>
+						<characterGroup characters="[:digit:]" symbol="D"/>
+					</characterGroups>
+				</maskCfg>
+			</masks>
+			<userMetadata dataOrigin="Whatever" description="Whatever" classification="Whatever">
+				<items>
+					<item name="ItemWhatever" value="Itemwhatever"/>
+					<item name="ItemWhatever1" value="Itemwhatever1"/>
+				</items>
+			</userMetadata>
+		</properties>
+		<visual-constraints layout="vertical" bounds="96,936,-1,-1"/>
+	</step>
+
+
+
 <!-- (Mobile number is valid syntax and structure) --><component mode="NORMAL" disabled="false" id="Mobile number is valid syntax and structure">
 		<properties fileName="../Rules/Issued/Rules_2.comp">
 			<mappings>
@@ -419,6 +739,15 @@ toDateTime(&quot;10-06-2020 23:00:00&quot;, &quot;dd-MM-yyyy HH:mm:ss&quot;)</Re
 		<target endpoint="Sheet1" step="DiscrepancyReport - Excel"/>
 		<visual-constraints>
 			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="Json Output Profiling"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="407,912"/>
+			</bendpoints>
 		</visual-constraints>
 	</connection>
 	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
@@ -505,7 +834,7 @@ toDateTime(&quot;10-06-2020 23:00:00&quot;, &quot;dd-MM-yyyy HH:mm:ss&quot;)</Re
 
 
 <!-- (Profile 'CRM_Customer' data for advanced analysis) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.profiling.ProfilingAlgorithm" disabled="false" id="Profile &#39;CRM_Customer&#39; data for advanced analysis">
-		<properties defaultLocale="en_US" outputFile="../data/pro/CRM_Customer.profile" outputLimit="1000" exportToEndpoint="false" tableNamePrefix="Prof1_" threaded="true" dataSource="DQMFramework">
+		<properties defaultLocale="en_US" outputFile="../data/pro/CRM_Customer.profile" outputLimit="1000" exportToEndpoint="false" tableNamePrefix="Prof1_" threaded="true" dataSource="DQFramework">
 			<businessDomains strictThreshold="15.0" looseThreshold="10.0"/>
 			<domains>
 				<customs>
@@ -724,13 +1053,13 @@ toDateTime(&quot;10-06-2020 23:00:00&quot;, &quot;dd-MM-yyyy HH:mm:ss&quot;)</Re
 				<items/>
 			</userMetadata>
 		</properties>
-		<visual-constraints layout="vertical" bounds="576,1008,-1,-1"/>
+		<visual-constraints layout="vertical" bounds="576,960,-1,-1"/>
 	</step>
 
 
 
 <!-- (Profile 'CRM_Customer' data for advanced analysis 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.profiling.ProfilingAlgorithm" disabled="false" id="Profile &#39;CRM_Customer&#39; data for advanced analysis 2">
-		<properties defaultLocale="en_US" outputFile="../data/pro/CRM_Customer1.profile" outputLimit="1000" exportToEndpoint="false" tableNamePrefix="Prof1_" threaded="true" dataSource="DQMFramework">
+		<properties defaultLocale="en_US" outputFile="../data/pro/CRM_Customer1.profile" outputLimit="1000" exportToEndpoint="false" tableNamePrefix="Prof1_" threaded="true" dataSource="DQFramework">
 			<businessDomains strictThreshold="15.0" looseThreshold="10.0"/>
 			<domains>
 				<customs>
@@ -759,6 +1088,16 @@ toDateTime(&quot;10-06-2020 23:00:00&quot;, &quot;dd-MM-yyyy HH:mm:ss&quot;)</Re
 							<standardStats quantiles="0" calculate="false" extremes="0" calculateAggregated="true"/>
 						</profiledData>
 						<profiledData expression="GD" maskName="characters" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
+						</profiledData>
+						<profiledData expression="RecID" analyseBusinessDomain="false" analyseDomain="true">
+							<frequencyAnalysis calculate="true"/>
+							<groupSizeAnalysis calculate="true"/>
+							<standardStats quantiles="10" calculate="false" extremes="5" calculateAggregated="false"/>
+						</profiledData>
+						<profiledData expression="RecID" analyseBusinessDomain="false" analyseDomain="true">
 							<frequencyAnalysis calculate="true"/>
 							<groupSizeAnalysis calculate="true"/>
 							<standardStats quantiles="10" calculate="true" extremes="5" calculateAggregated="true"/>
@@ -825,6 +1164,16 @@ toDateTime(&quot;10-06-2020 23:00:00&quot;, &quot;dd-MM-yyyy HH:mm:ss&quot;)</Re
 			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
 		</properties>
 		<visual-constraints layout="vertical" bounds="600,768,-1,-1"/>
+	</step>
+
+
+
+<!-- (Rule Summary 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="false" id="Rule Summary 3">
+		<properties writeHeader="true" fileName="../data/RuleSummasr1y.txt" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="384,1032,-1,-1"/>
 	</step>
 
 </purity-config>

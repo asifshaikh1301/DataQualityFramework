@@ -1,7 +1,0 @@
-"SourceName";"SourceLayerName";"DQM_RuleCodesAppliedMappings";"par_RuleID";"par_LeadingAttribute";"splitted_DQM_RuleCodesAppliedMappings";"splitted_DQM_RuleCodesAppliedMappings_RDC"
-"OmniCRM";"og_customer";"1:Gender:Rule_Attribute_1.Gender 10:Gender:Rule_Attribute_1.Gender 1:Mobile:Rule_Attribute_1.Mobile";1;"Gender";"1:Gender:Rule_Attribute_1.Gender";"400:3:1"
-"OmniCRM";"og_customer";"1:Gender:Rule_Attribute_1.Gender 10:Gender:Rule_Attribute_1.Gender 1:Mobile:Rule_Attribute_1.Mobile";10;"Gender";"10:Gender:Rule_Attribute_1.Gender";"400:3:2"
-"OmniCRM";"og_customer";"1:Gender:Rule_Attribute_1.Gender 10:Gender:Rule_Attribute_1.Gender 1:Mobile:Rule_Attribute_1.Mobile";1;"Mobile";"1:Mobile:Rule_Attribute_1.Mobile";"400:3:3"
-"OmniImInAMess";"og_customer";"1:Gender:Rule_Attribute_1.Gender 10:Gender:Rule_Attribute_1.Gender 1:Mobile:Rule_Attribute_1.Mobile";1;"Gender";"1:Gender:Rule_Attribute_1.Gender";"401:3:1"
-"OmniImInAMess";"og_customer";"1:Gender:Rule_Attribute_1.Gender 10:Gender:Rule_Attribute_1.Gender 1:Mobile:Rule_Attribute_1.Mobile";10;"Gender";"10:Gender:Rule_Attribute_1.Gender";"401:3:2"
-"OmniImInAMess";"og_customer";"1:Gender:Rule_Attribute_1.Gender 10:Gender:Rule_Attribute_1.Gender 1:Mobile:Rule_Attribute_1.Mobile";1;"Mobile";"1:Mobile:Rule_Attribute_1.Mobile";"401:3:3"

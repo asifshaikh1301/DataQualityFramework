@@ -1,0 +1,2092 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config version="12.3.0.ga-2019-02-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (Json Parser) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.json.parser.JsonParser" disabled="true" id="Json Parser">
+		<properties inputColumn="out_profiling">
+			<dataFormatParameters falseValue="false" dateTimeFormat="yy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yy-MM-dd" trueValue="true" dateFormatLocale="en_US" class="com.ataccama.dqc.tasks.io.text.read.TextReaderDataFormatParameters" thousandsSeparator=""/>
+			<dataStreams>
+				<rootJsonStreamConfig path="$.profileExport.input" name="profileExport" minOneRecord="true" maxOneRecord="false">
+					<attributes>
+						<attribute path="input-name" name="ProfileInputName" type="STRING"/>
+					</attributes>
+					<dataStreams>
+						<childJsonStreamConfig path="dataAnalyses.dataAnalyse" name="dataAnalyse_column_single_statistics" minOneRecord="false" maxOneRecord="false">
+							<attributes>
+								<attribute path="dataAnalyse-columnType" name="columnType" type="STRING"/>
+								<attribute path="dataAnalyse-column" name="column" type="STRING"/>
+								<attribute path="expression" name="expression" type="STRING"/>
+							</attributes>
+							<dataStreams>
+								<childJsonStreamConfig path="statistics.stat" name="statistics" minOneRecord="false" maxOneRecord="false">
+									<attributes>
+										<attribute path="stat-multiple" name="stat-multiple" type="STRING"/>
+										<attribute path="stat-type" name="stat-type" type="STRING"/>
+									</attributes>
+									<dataStreams>
+										<childJsonStreamConfig path="item" name="statistics-item" minOneRecord="false" maxOneRecord="false">
+											<attributes>
+												<attribute path="item-value" name="item-value" type="STRING"/>
+												<attribute path="item-index" name="item-index" type="INTEGER"/>
+												<attribute path="item-count" name="item-count" type="INTEGER"/>
+											</attributes>
+											<dataStreams/>
+											<scorer>
+												<scoringEntries>
+													<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+													<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+													<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+												</scoringEntries>
+											</scorer>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="statistics.[stat-multiple]" name="stat-multiple" type="STRING"/>
+												<shadowColumnDef defaultExpression="statistics.[stat-type]" name="stat-type" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+											</shadowColumns>
+										</childJsonStreamConfig>
+									</dataStreams>
+									<scorer>
+										<scoringEntries>
+											<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+										</scoringEntries>
+									</scorer>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+									</shadowColumns>
+								</childJsonStreamConfig>
+								<childJsonStreamConfig path="domainAnalysis.domainAnalyse" name="domainAnalysis" minOneRecord="false" maxOneRecord="false">
+									<attributes>
+										<attribute path="domainAnalyse-name" name="domainAnalyse-name" type="STRING"/>
+									</attributes>
+									<dataStreams>
+										<childJsonStreamConfig path="examples.example" name="domainAnalysis-example" minOneRecord="false" maxOneRecord="false">
+											<attributes>
+												<attribute path="example-numCases" name="example-numCases" type="INTEGER"/>
+												<attribute path="example-numValues" name="example-numValues" type="INTEGER"/>
+												<attribute path="example-value" name="example-value" type="STRING"/>
+												<attribute path="example-index" name="example-index" type="INTEGER"/>
+											</attributes>
+											<dataStreams/>
+											<scorer>
+												<scoringEntries>
+													<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+													<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+													<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+												</scoringEntries>
+											</scorer>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+												<shadowColumnDef defaultExpression="domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+											</shadowColumns>
+										</childJsonStreamConfig>
+										<childJsonStreamConfig path="count" name="domainAnalysis-count" minOneRecord="false" maxOneRecord="false">
+											<attributes>
+												<attribute path="count-records" name="count-records" type="INTEGER"/>
+												<attribute path="count-keys" name="count-keys" type="INTEGER"/>
+												<attribute path="count-description" name="count-description" type="STRING"/>
+											</attributes>
+											<dataStreams/>
+											<scorer>
+												<scoringEntries>
+													<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+													<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+													<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+												</scoringEntries>
+											</scorer>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+												<shadowColumnDef defaultExpression="domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+											</shadowColumns>
+										</childJsonStreamConfig>
+										<childJsonStreamConfig path="exceptions.example" name="domainAnalysis-exceptions" minOneRecord="false" maxOneRecord="false">
+											<attributes>
+												<attribute path="example-numCases" name="example-numCases" type="INTEGER"/>
+												<attribute path="example-index" name="example-index" type="INTEGER"/>
+												<attribute path="example-numValues" name="example-numValues" type="INTEGER"/>
+												<attribute path="example-value" name="example-value" type="STRING"/>
+											</attributes>
+											<dataStreams/>
+											<scorer>
+												<scoringEntries>
+													<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+													<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+													<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+												</scoringEntries>
+											</scorer>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+												<shadowColumnDef defaultExpression="domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+											</shadowColumns>
+										</childJsonStreamConfig>
+									</dataStreams>
+									<scorer>
+										<scoringEntries>
+											<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+										</scoringEntries>
+									</scorer>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+									</shadowColumns>
+								</childJsonStreamConfig>
+								<childJsonStreamConfig path="frequencies.items.item" name="frequencies" minOneRecord="false" maxOneRecord="false">
+									<attributes>
+										<attribute path="item-count" name="item-count" type="INTEGER"/>
+										<attribute path="item-percent" name="item-percent" type="STRING"/>
+										<attribute path="item-value" name="item-value" type="STRING"/>
+									</attributes>
+									<dataStreams/>
+									<scorer>
+										<scoringEntries>
+											<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+										</scoringEntries>
+									</scorer>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="&quot;Value&quot;" name="FrequencyType" type="STRING"/>
+									</shadowColumns>
+								</childJsonStreamConfig>
+								<childJsonStreamConfig path="frequenciesMasked.items.item" name="frequenciesMasked" minOneRecord="false" maxOneRecord="false">
+									<attributes>
+										<attribute path="item-count" name="item-count" type="INTEGER"/>
+										<attribute path="item-percent" name="item-percent" type="STRING"/>
+										<attribute path="item-value" name="item-value" type="STRING"/>
+									</attributes>
+									<dataStreams/>
+									<scorer>
+										<scoringEntries>
+											<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+										</scoringEntries>
+									</scorer>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="&quot;Masked&quot;" name="FrequencyType" type="STRING"/>
+									</shadowColumns>
+								</childJsonStreamConfig>
+							</dataStreams>
+							<scorer>
+								<scoringEntries/>
+							</scorer>
+							<shadowColumns/>
+						</childJsonStreamConfig>
+						<childJsonStreamConfig path="bussinesRules.bussinesRule" name="businessRules" minOneRecord="false" maxOneRecord="false">
+							<attributes>
+								<attribute path="bussinesRule-indColumn" name="br_indColumn" type="STRING"/>
+								<attribute path="bussinesRule-name" name="br_name" type="STRING"/>
+								<attribute path="expression" name="br_expression" type="STRING"/>
+							</attributes>
+							<dataStreams>
+								<childJsonStreamConfig path="count" name="businessRules_count" minOneRecord="false" maxOneRecord="false">
+									<attributes>
+										<attribute path="count-records" name="records" type="INTEGER"/>
+										<attribute path="count-description" name="description" type="STRING"/>
+										<attribute path="count-keys" name="keys" type="INTEGER"/>
+									</attributes>
+									<dataStreams/>
+									<scorer>
+										<scoringEntries/>
+									</scorer>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="businessRules.br_indColumn" name="br_indColumn" type="STRING"/>
+										<shadowColumnDef defaultExpression="businessRules.br_name" name="br_name" type="STRING"/>
+										<shadowColumnDef defaultExpression="businessRules.br_expression" name="br_expression" type="STRING"/>
+									</shadowColumns>
+								</childJsonStreamConfig>
+							</dataStreams>
+							<scorer>
+								<scoringEntries/>
+							</scorer>
+							<shadowColumns>
+								<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+							</shadowColumns>
+						</childJsonStreamConfig>
+						<childJsonStreamConfig path="rollUp" name="rollup" minOneRecord="false" maxOneRecord="false">
+							<attributes>
+								<attribute path="rollUp-name" name="rollup_name" type="STRING"/>
+								<attribute path="rollUp-column" name="rollup_column" type="STRING"/>
+								<attribute path="expression" name="rollup_SourceAttributeName" type="STRING"/>
+							</attributes>
+							<dataStreams>
+								<childJsonStreamConfig path="item" name="rollup_item" minOneRecord="false" maxOneRecord="false">
+									<attributes>
+										<attribute path="item-value" name="item-value" type="STRING"/>
+									</attributes>
+									<dataStreams>
+										<childJsonStreamConfig path="dataAnalyses.dataAnalyse" name="ru_dataAnalyse_column_single_statistics" minOneRecord="false" maxOneRecord="false">
+											<attributes>
+												<attribute path="dataAnalyse-columnType" name="columnType" type="STRING"/>
+												<attribute path="dataAnalyse-column" name="column" type="STRING"/>
+												<attribute path="expression" name="expression" type="STRING"/>
+											</attributes>
+											<dataStreams>
+												<childJsonStreamConfig path="statistics.stat" name="ru_statistics" minOneRecord="false" maxOneRecord="false">
+													<attributes>
+														<attribute path="stat-multiple" name="stat-multiple" type="STRING"/>
+														<attribute path="stat-type" name="stat-type" type="STRING"/>
+													</attributes>
+													<dataStreams>
+														<childJsonStreamConfig path="item" name="ru_statistics-item" minOneRecord="false" maxOneRecord="false">
+															<attributes>
+																<attribute path="item-value" name="item-value" type="STRING"/>
+																<attribute path="item-index" name="item-index" type="INTEGER"/>
+																<attribute path="item-count" name="item-count" type="INTEGER"/>
+															</attributes>
+															<dataStreams/>
+															<scorer>
+																<scoringEntries>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+																</scoringEntries>
+															</scorer>
+															<shadowColumns>
+																<shadowColumnDef defaultExpression="ru_statistics.[stat-multiple]" name="stat-multiple" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_statistics.[stat-type]" name="stat-type" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+															</shadowColumns>
+														</childJsonStreamConfig>
+													</dataStreams>
+													<scorer>
+														<scoringEntries>
+															<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+															<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+															<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+														</scoringEntries>
+													</scorer>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+													</shadowColumns>
+												</childJsonStreamConfig>
+												<childJsonStreamConfig path="domainAnalysis.domainAnalyse" name="ru_domainAnalysis" minOneRecord="false" maxOneRecord="false">
+													<attributes>
+														<attribute path="domainAnalyse-name" name="domainAnalyse-name" type="STRING"/>
+													</attributes>
+													<dataStreams>
+														<childJsonStreamConfig path="examples.example" name="ru_domainAnalysis-example" minOneRecord="false" maxOneRecord="false">
+															<attributes>
+																<attribute path="example-numCases" name="example-numCases" type="INTEGER"/>
+																<attribute path="example-numValues" name="example-numValues" type="INTEGER"/>
+																<attribute path="example-value" name="example-value" type="STRING"/>
+																<attribute path="example-index" name="example-index" type="INTEGER"/>
+															</attributes>
+															<dataStreams/>
+															<scorer>
+																<scoringEntries>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+																</scoringEntries>
+															</scorer>
+															<shadowColumns>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+															</shadowColumns>
+														</childJsonStreamConfig>
+														<childJsonStreamConfig path="count" name="ru_domainAnalysis-count" minOneRecord="false" maxOneRecord="false">
+															<attributes>
+																<attribute path="count-records" name="count-records" type="INTEGER"/>
+																<attribute path="count-keys" name="count-keys" type="INTEGER"/>
+																<attribute path="count-description" name="count-description" type="STRING"/>
+															</attributes>
+															<dataStreams/>
+															<scorer>
+																<scoringEntries>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+																</scoringEntries>
+															</scorer>
+															<shadowColumns>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+															</shadowColumns>
+														</childJsonStreamConfig>
+														<childJsonStreamConfig path="exceptions.example" name="ru_domainAnalysis-exceptions" minOneRecord="false" maxOneRecord="false">
+															<attributes>
+																<attribute path="example-numCases" name="example-numCases" type="INTEGER"/>
+																<attribute path="example-index" name="example-index" type="INTEGER"/>
+																<attribute path="example-numValues" name="example-numValues" type="INTEGER"/>
+																<attribute path="example-value" name="example-value" type="STRING"/>
+															</attributes>
+															<dataStreams/>
+															<scorer>
+																<scoringEntries>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+																</scoringEntries>
+															</scorer>
+															<shadowColumns>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+															</shadowColumns>
+														</childJsonStreamConfig>
+													</dataStreams>
+													<scorer>
+														<scoringEntries>
+															<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+															<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+															<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+														</scoringEntries>
+													</scorer>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+													</shadowColumns>
+												</childJsonStreamConfig>
+												<childJsonStreamConfig path="frequencies.items.item" name="ru_frequencies" minOneRecord="false" maxOneRecord="false">
+													<attributes>
+														<attribute path="item-count" name="item-count" type="INTEGER"/>
+														<attribute path="item-percent" name="item-percent" type="STRING"/>
+														<attribute path="item-value" name="item-value" type="STRING"/>
+													</attributes>
+													<dataStreams/>
+													<scorer>
+														<scoringEntries>
+															<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+															<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+															<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+														</scoringEntries>
+													</scorer>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="&quot;Value&quot;" name="FrequencyType" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+													</shadowColumns>
+												</childJsonStreamConfig>
+												<childJsonStreamConfig path="frequenciesMasked.items.item" name="ru_requenciesMasked" minOneRecord="false" maxOneRecord="false">
+													<attributes>
+														<attribute path="item-count" name="item-count" type="INTEGER"/>
+														<attribute path="item-percent" name="item-percent" type="STRING"/>
+														<attribute path="item-value" name="item-value" type="STRING"/>
+													</attributes>
+													<dataStreams/>
+													<scorer>
+														<scoringEntries>
+															<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+															<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+															<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+														</scoringEntries>
+													</scorer>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="&quot;Masked&quot;" name="FrequencyType" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+													</shadowColumns>
+												</childJsonStreamConfig>
+											</dataStreams>
+											<scorer>
+												<scoringEntries/>
+											</scorer>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+											</shadowColumns>
+										</childJsonStreamConfig>
+										<childJsonStreamConfig path="bussinesRules.bussinesRule" name="ru_businessRules" minOneRecord="false" maxOneRecord="false">
+											<attributes>
+												<attribute path="bussinesRule-indColumn" name="br_indColumn" type="STRING"/>
+												<attribute path="bussinesRule-name" name="br_name" type="STRING"/>
+												<attribute path="expression" name="br_expression" type="STRING"/>
+											</attributes>
+											<dataStreams>
+												<childJsonStreamConfig path="count" name="ru_businessRules_count" minOneRecord="false" maxOneRecord="false">
+													<attributes>
+														<attribute path="count-records" name="records" type="INTEGER"/>
+														<attribute path="count-description" name="description" type="STRING"/>
+														<attribute path="count-keys" name="keys" type="INTEGER"/>
+													</attributes>
+													<dataStreams/>
+													<scorer>
+														<scoringEntries/>
+													</scorer>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_businessRules.br_indColumn" name="br_indColumn" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_businessRules.br_name" name="br_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_businessRules.br_expression" name="br_expression" type="STRING"/>
+													</shadowColumns>
+												</childJsonStreamConfig>
+											</dataStreams>
+											<scorer>
+												<scoringEntries/>
+											</scorer>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+											</shadowColumns>
+										</childJsonStreamConfig>
+									</dataStreams>
+									<scorer>
+										<scoringEntries>
+											<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+										</scoringEntries>
+									</scorer>
+									<shadowColumns/>
+								</childJsonStreamConfig>
+							</dataStreams>
+							<scorer>
+								<scoringEntries/>
+							</scorer>
+							<shadowColumns>
+								<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+							</shadowColumns>
+						</childJsonStreamConfig>
+					</dataStreams>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+					<shadowColumns/>
+				</rootJsonStreamConfig>
+			</dataStreams>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="336,984,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="businessRules" step="Json Parser"/>
+		<target endpoint="businessRules" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="businessRules_count" step="Json Parser"/>
+		<target endpoint="businessRules_count" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="dataAnalyse_column_single_statistics" step="Json Parser"/>
+		<target endpoint="dataAnalyse_column_single_statistics" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="domainAnalysis" step="Json Parser"/>
+		<target endpoint="domainAnalysis" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="domainAnalysis-count" step="Json Parser"/>
+		<target endpoint="domainAnalysis-count" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="domainAnalysis-example" step="Json Parser"/>
+		<target endpoint="domainAnalysis-example" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="domainAnalysis-exceptions" step="Json Parser"/>
+		<target endpoint="domainAnalysis-exceptions" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="frequencies" step="Json Parser"/>
+		<target endpoint="frequencies" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="frequenciesMasked" step="Json Parser"/>
+		<target endpoint="frequenciesMasked" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="profileExport" step="Json Parser"/>
+		<target endpoint="profileExport" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="rollup" step="Json Parser"/>
+		<target endpoint="rollup" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="rollup_item" step="Json Parser"/>
+		<target endpoint="rollup_item" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_businessRules" step="Json Parser"/>
+		<target endpoint="ru_businessRules" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_businessRules_count" step="Json Parser"/>
+		<target endpoint="ru_businessRules_count" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_dataAnalyse_column_single_statistics" step="Json Parser"/>
+		<target endpoint="ru_dataAnalyse_column_single_statistics" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_domainAnalysis" step="Json Parser"/>
+		<target endpoint="ru_domainAnalysis" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_domainAnalysis-count" step="Json Parser"/>
+		<target endpoint="ru_domainAnalysis-count" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_domainAnalysis-example" step="Json Parser"/>
+		<target endpoint="ru_domainAnalysis-example" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_domainAnalysis-exceptions" step="Json Parser"/>
+		<target endpoint="ru_domainAnalysis-exceptions" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_frequencies" step="Json Parser"/>
+		<target endpoint="ru_frequencies" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_requenciesMasked" step="Json Parser"/>
+		<target endpoint="ru_frequenciesMasked" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_statistics" step="Json Parser"/>
+		<target endpoint="ru_statistics" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="ru_statistics-item" step="Json Parser"/>
+		<target endpoint="ru_statistics-item" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="statistics" step="Json Parser"/>
+		<target endpoint="statistics" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="statistics-item" step="Json Parser"/>
+		<target endpoint="statistics-item" step="UpdateProfileRepository "/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Json Reader) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.json.reader.JsonReader" disabled="false" id="Json Reader">
+		<properties fileName="../../data/pro/ProfileTest1.json" encoding="US-ASCII">
+			<dataFormatParameters falseValue="false" dateTimeFormat="yy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yy-MM-dd" trueValue="true" dateFormatLocale="en_US" class="com.ataccama.dqc.tasks.io.text.read.TextReaderDataFormatParameters" thousandsSeparator=""/>
+			<dataStreams>
+				<rootJsonStreamConfig path="$.profileExport.input" name="profileExport" minOneRecord="true" maxOneRecord="false">
+					<attributes>
+						<attribute path="input-name" name="ProfileInputName" type="STRING"/>
+					</attributes>
+					<dataStreams>
+						<childJsonStreamConfig path="dataAnalyses.dataAnalyse" name="dataAnalyse_column_single_statistics" minOneRecord="false" maxOneRecord="false">
+							<attributes>
+								<attribute path="dataAnalyse-columnType" name="columnType" type="STRING"/>
+								<attribute path="dataAnalyse-column" name="column" type="STRING"/>
+								<attribute path="expression" name="expression" type="STRING"/>
+							</attributes>
+							<dataStreams>
+								<childJsonStreamConfig path="statistics.stat" name="statistics" minOneRecord="false" maxOneRecord="false">
+									<attributes>
+										<attribute path="stat-multiple" name="stat-multiple" type="STRING"/>
+										<attribute path="stat-type" name="stat-type" type="STRING"/>
+									</attributes>
+									<dataStreams>
+										<childJsonStreamConfig path="item" name="statistics-item" minOneRecord="false" maxOneRecord="false">
+											<attributes>
+												<attribute path="item-value" name="item-value" type="STRING"/>
+												<attribute path="item-index" name="item-index" type="INTEGER"/>
+												<attribute path="item-count" name="item-count" type="INTEGER"/>
+											</attributes>
+											<dataStreams/>
+											<scorer>
+												<scoringEntries>
+													<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+													<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+													<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+												</scoringEntries>
+											</scorer>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="statistics.[stat-multiple]" name="stat-multiple" type="STRING"/>
+												<shadowColumnDef defaultExpression="statistics.[stat-type]" name="stat-type" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+											</shadowColumns>
+										</childJsonStreamConfig>
+									</dataStreams>
+									<scorer>
+										<scoringEntries>
+											<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+										</scoringEntries>
+									</scorer>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+									</shadowColumns>
+								</childJsonStreamConfig>
+								<childJsonStreamConfig path="domainAnalysis.domainAnalyse" name="domainAnalysis" minOneRecord="false" maxOneRecord="false">
+									<attributes>
+										<attribute path="domainAnalyse-name" name="domainAnalyse-name" type="STRING"/>
+									</attributes>
+									<dataStreams>
+										<childJsonStreamConfig path="examples.example" name="domainAnalysis-example" minOneRecord="false" maxOneRecord="false">
+											<attributes>
+												<attribute path="example-numCases" name="example-numCases" type="INTEGER"/>
+												<attribute path="example-numValues" name="example-numValues" type="INTEGER"/>
+												<attribute path="example-value" name="example-value" type="STRING"/>
+												<attribute path="example-index" name="example-index" type="INTEGER"/>
+											</attributes>
+											<dataStreams/>
+											<scorer>
+												<scoringEntries>
+													<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+													<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+													<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+												</scoringEntries>
+											</scorer>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+												<shadowColumnDef defaultExpression="domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+											</shadowColumns>
+										</childJsonStreamConfig>
+										<childJsonStreamConfig path="count" name="domainAnalysis-count" minOneRecord="false" maxOneRecord="false">
+											<attributes>
+												<attribute path="count-records" name="count-records" type="INTEGER"/>
+												<attribute path="count-keys" name="count-keys" type="INTEGER"/>
+												<attribute path="count-description" name="count-description" type="STRING"/>
+											</attributes>
+											<dataStreams/>
+											<scorer>
+												<scoringEntries>
+													<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+													<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+													<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+												</scoringEntries>
+											</scorer>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+												<shadowColumnDef defaultExpression="domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+											</shadowColumns>
+										</childJsonStreamConfig>
+										<childJsonStreamConfig path="exceptions.example" name="domainAnalysis-exceptions" minOneRecord="false" maxOneRecord="false">
+											<attributes>
+												<attribute path="example-numCases" name="example-numCases" type="INTEGER"/>
+												<attribute path="example-index" name="example-index" type="INTEGER"/>
+												<attribute path="example-numValues" name="example-numValues" type="INTEGER"/>
+												<attribute path="example-value" name="example-value" type="STRING"/>
+											</attributes>
+											<dataStreams/>
+											<scorer>
+												<scoringEntries>
+													<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+													<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+													<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+												</scoringEntries>
+											</scorer>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+												<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+												<shadowColumnDef defaultExpression="domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+											</shadowColumns>
+										</childJsonStreamConfig>
+									</dataStreams>
+									<scorer>
+										<scoringEntries>
+											<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+										</scoringEntries>
+									</scorer>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+									</shadowColumns>
+								</childJsonStreamConfig>
+								<childJsonStreamConfig path="frequencies.items.item" name="frequencies" minOneRecord="false" maxOneRecord="false">
+									<attributes>
+										<attribute path="item-count" name="item-count" type="INTEGER"/>
+										<attribute path="item-percent" name="item-percent" type="STRING"/>
+										<attribute path="item-value" name="item-value" type="STRING"/>
+									</attributes>
+									<dataStreams/>
+									<scorer>
+										<scoringEntries>
+											<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+										</scoringEntries>
+									</scorer>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="&quot;Value&quot;" name="FrequencyType" type="STRING"/>
+									</shadowColumns>
+								</childJsonStreamConfig>
+								<childJsonStreamConfig path="frequenciesMasked.items.item" name="frequenciesMasked" minOneRecord="false" maxOneRecord="false">
+									<attributes>
+										<attribute path="item-count" name="item-count" type="INTEGER"/>
+										<attribute path="item-percent" name="item-percent" type="STRING"/>
+										<attribute path="item-value" name="item-value" type="STRING"/>
+									</attributes>
+									<dataStreams/>
+									<scorer>
+										<scoringEntries>
+											<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+										</scoringEntries>
+									</scorer>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+										<shadowColumnDef defaultExpression="dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="&quot;Masked&quot;" name="FrequencyType" type="STRING"/>
+									</shadowColumns>
+								</childJsonStreamConfig>
+							</dataStreams>
+							<scorer>
+								<scoringEntries/>
+							</scorer>
+							<shadowColumns/>
+						</childJsonStreamConfig>
+						<childJsonStreamConfig path="bussinesRules.bussinesRule" name="businessRules" minOneRecord="false" maxOneRecord="false">
+							<attributes>
+								<attribute path="bussinesRule-indColumn" name="br_indColumn" type="STRING"/>
+								<attribute path="bussinesRule-name" name="br_name" type="STRING"/>
+								<attribute path="expression" name="br_expression" type="STRING"/>
+							</attributes>
+							<dataStreams>
+								<childJsonStreamConfig path="count" name="businessRules_count" minOneRecord="false" maxOneRecord="false">
+									<attributes>
+										<attribute path="count-records" name="records" type="INTEGER"/>
+										<attribute path="count-description" name="description" type="STRING"/>
+										<attribute path="count-keys" name="keys" type="INTEGER"/>
+									</attributes>
+									<dataStreams/>
+									<scorer>
+										<scoringEntries/>
+									</scorer>
+									<shadowColumns>
+										<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+										<shadowColumnDef defaultExpression="businessRules.br_indColumn" name="br_indColumn" type="STRING"/>
+										<shadowColumnDef defaultExpression="businessRules.br_name" name="br_name" type="STRING"/>
+										<shadowColumnDef defaultExpression="businessRules.br_expression" name="br_expression" type="STRING"/>
+									</shadowColumns>
+								</childJsonStreamConfig>
+							</dataStreams>
+							<scorer>
+								<scoringEntries/>
+							</scorer>
+							<shadowColumns>
+								<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+							</shadowColumns>
+						</childJsonStreamConfig>
+						<childJsonStreamConfig path="rollUp" name="rollup" minOneRecord="false" maxOneRecord="false">
+							<attributes>
+								<attribute path="rollUp-name" name="rollup_name" type="STRING"/>
+								<attribute path="rollUp-column" name="rollup_column" type="STRING"/>
+								<attribute path="expression" name="rollup_SourceAttributeName" type="STRING"/>
+							</attributes>
+							<dataStreams>
+								<childJsonStreamConfig path="item" name="rollup_item" minOneRecord="false" maxOneRecord="false">
+									<attributes>
+										<attribute path="item-value" name="item-value" type="STRING"/>
+									</attributes>
+									<dataStreams>
+										<childJsonStreamConfig path="dataAnalyses.dataAnalyse" name="ru_dataAnalyse_column_single_statistics" minOneRecord="false" maxOneRecord="false">
+											<attributes>
+												<attribute path="dataAnalyse-columnType" name="columnType" type="STRING"/>
+												<attribute path="dataAnalyse-column" name="column" type="STRING"/>
+												<attribute path="expression" name="expression" type="STRING"/>
+											</attributes>
+											<dataStreams>
+												<childJsonStreamConfig path="statistics.stat" name="ru_statistics" minOneRecord="false" maxOneRecord="false">
+													<attributes>
+														<attribute path="stat-multiple" name="stat-multiple" type="STRING"/>
+														<attribute path="stat-type" name="stat-type" type="STRING"/>
+													</attributes>
+													<dataStreams>
+														<childJsonStreamConfig path="item" name="ru_statistics-item" minOneRecord="false" maxOneRecord="false">
+															<attributes>
+																<attribute path="item-value" name="item-value" type="STRING"/>
+																<attribute path="item-index" name="item-index" type="INTEGER"/>
+																<attribute path="item-count" name="item-count" type="INTEGER"/>
+															</attributes>
+															<dataStreams/>
+															<scorer>
+																<scoringEntries>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+																</scoringEntries>
+															</scorer>
+															<shadowColumns>
+																<shadowColumnDef defaultExpression="ru_statistics.[stat-multiple]" name="stat-multiple" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_statistics.[stat-type]" name="stat-type" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+															</shadowColumns>
+														</childJsonStreamConfig>
+													</dataStreams>
+													<scorer>
+														<scoringEntries>
+															<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+															<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+															<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+														</scoringEntries>
+													</scorer>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+													</shadowColumns>
+												</childJsonStreamConfig>
+												<childJsonStreamConfig path="domainAnalysis.domainAnalyse" name="ru_domainAnalysis" minOneRecord="false" maxOneRecord="false">
+													<attributes>
+														<attribute path="domainAnalyse-name" name="domainAnalyse-name" type="STRING"/>
+													</attributes>
+													<dataStreams>
+														<childJsonStreamConfig path="examples.example" name="ru_domainAnalysis-example" minOneRecord="false" maxOneRecord="false">
+															<attributes>
+																<attribute path="example-numCases" name="example-numCases" type="INTEGER"/>
+																<attribute path="example-numValues" name="example-numValues" type="INTEGER"/>
+																<attribute path="example-value" name="example-value" type="STRING"/>
+																<attribute path="example-index" name="example-index" type="INTEGER"/>
+															</attributes>
+															<dataStreams/>
+															<scorer>
+																<scoringEntries>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+																</scoringEntries>
+															</scorer>
+															<shadowColumns>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+															</shadowColumns>
+														</childJsonStreamConfig>
+														<childJsonStreamConfig path="count" name="ru_domainAnalysis-count" minOneRecord="false" maxOneRecord="false">
+															<attributes>
+																<attribute path="count-records" name="count-records" type="INTEGER"/>
+																<attribute path="count-keys" name="count-keys" type="INTEGER"/>
+																<attribute path="count-description" name="count-description" type="STRING"/>
+															</attributes>
+															<dataStreams/>
+															<scorer>
+																<scoringEntries>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+																</scoringEntries>
+															</scorer>
+															<shadowColumns>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+															</shadowColumns>
+														</childJsonStreamConfig>
+														<childJsonStreamConfig path="exceptions.example" name="ru_domainAnalysis-exceptions" minOneRecord="false" maxOneRecord="false">
+															<attributes>
+																<attribute path="example-numCases" name="example-numCases" type="INTEGER"/>
+																<attribute path="example-index" name="example-index" type="INTEGER"/>
+																<attribute path="example-numValues" name="example-numValues" type="INTEGER"/>
+																<attribute path="example-value" name="example-value" type="STRING"/>
+															</attributes>
+															<dataStreams/>
+															<scorer>
+																<scoringEntries>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+																	<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+																</scoringEntries>
+															</scorer>
+															<shadowColumns>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+																<shadowColumnDef defaultExpression="ru_domainAnalysis.[domainAnalyse-name]" name="domainAnalyse-name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+																<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+															</shadowColumns>
+														</childJsonStreamConfig>
+													</dataStreams>
+													<scorer>
+														<scoringEntries>
+															<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+															<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+															<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+														</scoringEntries>
+													</scorer>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+													</shadowColumns>
+												</childJsonStreamConfig>
+												<childJsonStreamConfig path="frequencies.items.item" name="ru_frequencies" minOneRecord="false" maxOneRecord="false">
+													<attributes>
+														<attribute path="item-count" name="item-count" type="INTEGER"/>
+														<attribute path="item-percent" name="item-percent" type="STRING"/>
+														<attribute path="item-value" name="item-value" type="STRING"/>
+													</attributes>
+													<dataStreams/>
+													<scorer>
+														<scoringEntries>
+															<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+															<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+															<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+														</scoringEntries>
+													</scorer>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="&quot;Value&quot;" name="FrequencyType" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+													</shadowColumns>
+												</childJsonStreamConfig>
+												<childJsonStreamConfig path="frequenciesMasked.items.item" name="ru_requenciesMasked" minOneRecord="false" maxOneRecord="false">
+													<attributes>
+														<attribute path="item-count" name="item-count" type="INTEGER"/>
+														<attribute path="item-percent" name="item-percent" type="STRING"/>
+														<attribute path="item-value" name="item-value" type="STRING"/>
+													</attributes>
+													<dataStreams/>
+													<scorer>
+														<scoringEntries>
+															<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+															<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+															<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+														</scoringEntries>
+													</scorer>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.column" name="ProfileInternalColumnName" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.columnType" name="ProfileSourceAttributeType" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_dataAnalyse_column_single_statistics.expression" name="ProfileSourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="&quot;Masked&quot;" name="FrequencyType" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+													</shadowColumns>
+												</childJsonStreamConfig>
+											</dataStreams>
+											<scorer>
+												<scoringEntries/>
+											</scorer>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+											</shadowColumns>
+										</childJsonStreamConfig>
+										<childJsonStreamConfig path="bussinesRules.bussinesRule" name="ru_businessRules" minOneRecord="false" maxOneRecord="false">
+											<attributes>
+												<attribute path="bussinesRule-indColumn" name="br_indColumn" type="STRING"/>
+												<attribute path="bussinesRule-name" name="br_name" type="STRING"/>
+												<attribute path="expression" name="br_expression" type="STRING"/>
+											</attributes>
+											<dataStreams>
+												<childJsonStreamConfig path="count" name="ru_businessRules_count" minOneRecord="false" maxOneRecord="false">
+													<attributes>
+														<attribute path="count-records" name="records" type="INTEGER"/>
+														<attribute path="count-description" name="description" type="STRING"/>
+														<attribute path="count-keys" name="keys" type="INTEGER"/>
+													</attributes>
+													<dataStreams/>
+													<scorer>
+														<scoringEntries/>
+													</scorer>
+													<shadowColumns>
+														<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_businessRules.br_indColumn" name="br_indColumn" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_businessRules.br_name" name="br_name" type="STRING"/>
+														<shadowColumnDef defaultExpression="ru_businessRules.br_expression" name="br_expression" type="STRING"/>
+													</shadowColumns>
+												</childJsonStreamConfig>
+											</dataStreams>
+											<scorer>
+												<scoringEntries/>
+											</scorer>
+											<shadowColumns>
+												<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_SourceAttributeName" name="rollup_SourceAttributeName" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_column" name="rollup_column" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup.rollup_name" name="rollup_name" type="STRING"/>
+												<shadowColumnDef defaultExpression="rollup_item.[item-value]" name="rollup_value" type="STRING"/>
+											</shadowColumns>
+										</childJsonStreamConfig>
+									</dataStreams>
+									<scorer>
+										<scoringEntries>
+											<scoringEntry explain="true" score="0" explainAs="WLA_NOT_FOUND" key="WLA_NOT_FOUND"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_MULTIPLE" key="WLA_MULTIPLE"/>
+											<scoringEntry explain="true" score="0" explainAs="WLA_PARENT" key="WLA_PARENT"/>
+										</scoringEntries>
+									</scorer>
+									<shadowColumns/>
+								</childJsonStreamConfig>
+							</dataStreams>
+							<scorer>
+								<scoringEntries/>
+							</scorer>
+							<shadowColumns>
+								<shadowColumnDef defaultExpression="profileExport.ProfileInputName" name="ProfileInputName" type="STRING"/>
+							</shadowColumns>
+						</childJsonStreamConfig>
+					</dataStreams>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+					<shadowColumns/>
+				</rootJsonStreamConfig>
+			</dataStreams>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="336,336,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="businessRules" step="Json Reader"/>
+		<target endpoint="businessRules" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="businessRules_count" step="Json Reader"/>
+		<target endpoint="businessRules_count" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="dataAnalyse_column_single_statistics" step="Json Reader"/>
+		<target endpoint="dataAnalyse_column_single_statistics" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="domainAnalysis" step="Json Reader"/>
+		<target endpoint="domainAnalysis" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="domainAnalysis-count" step="Json Reader"/>
+		<target endpoint="domainAnalysis-count" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="domainAnalysis-example" step="Json Reader"/>
+		<target endpoint="domainAnalysis-example" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="domainAnalysis-exceptions" step="Json Reader"/>
+		<target endpoint="domainAnalysis-exceptions" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="frequencies" step="Json Reader"/>
+		<target endpoint="frequencies" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="frequenciesMasked" step="Json Reader"/>
+		<target endpoint="frequenciesMasked" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="profileExport" step="Json Reader"/>
+		<target endpoint="profileExport" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="rollup" step="Json Reader"/>
+		<target endpoint="rollup" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="rollup_item" step="Json Reader"/>
+		<target endpoint="rollup_item" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_businessRules" step="Json Reader"/>
+		<target endpoint="ru_businessRules" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_businessRules_count" step="Json Reader"/>
+		<target endpoint="ru_businessRules_count" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_dataAnalyse_column_single_statistics" step="Json Reader"/>
+		<target endpoint="ru_dataAnalyse_column_single_statistics" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_domainAnalysis" step="Json Reader"/>
+		<target endpoint="ru_domainAnalysis" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_domainAnalysis-count" step="Json Reader"/>
+		<target endpoint="ru_domainAnalysis-count" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_domainAnalysis-example" step="Json Reader"/>
+		<target endpoint="ru_domainAnalysis-example" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_domainAnalysis-exceptions" step="Json Reader"/>
+		<target endpoint="ru_domainAnalysis-exceptions" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_frequencies" step="Json Reader"/>
+		<target endpoint="ru_frequencies" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_requenciesMasked" step="Json Reader"/>
+		<target endpoint="ru_frequenciesMasked" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_statistics" step="Json Reader"/>
+		<target endpoint="ru_statistics" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="ru_statistics-item" step="Json Reader"/>
+		<target endpoint="ru_statistics-item" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="statistics" step="Json Reader"/>
+		<target endpoint="statistics" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="statistics-item" step="Json Reader"/>
+		<target endpoint="statistics-item" step="UpdateProfileRepository"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Text File Reader) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.read.TextFileReader" disabled="true" id="Text File Reader">
+		<properties lineMaxReadLength="65536" fileName="../../data/pro/ProfileTest1.json" fieldSeparator="\t" numberOfLinesInFooter="0" compression="NONE" encoding="US-ASCII" lineSeparator="\n" numberOfLinesInHeader="0">
+			<columns>
+				<textReaderColumn name="out_profiling" ignore="false" type="STRING"/>
+			</columns>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+			<errorHandlingStrategy rejectFileName="../rejected.txt">
+				<errorInstructions>
+					<errorInstruction dataStrategy="READ_POSSIBLE" errorType="EXTRA_DATA" putToLog="true" putToReject="false"/>
+					<errorInstruction dataStrategy="STOP" errorType="LONG_LINE" putToLog="true" putToReject="true"/>
+					<errorInstruction dataStrategy="STOP" errorType="PROCESSING_ERROR" putToLog="true" putToReject="false"/>
+					<errorInstruction dataStrategy="READ_POSSIBLE" errorType="INVALID_DATE" putToLog="true" putToReject="false"/>
+					<errorInstruction dataStrategy="READ_POSSIBLE" errorType="SHORT_LINE" putToLog="true" putToReject="true"/>
+					<errorInstruction dataStrategy="NULL_VALUE" errorType="UNPARSABLE_FIELD" putToLog="true" putToReject="false"/>
+				</errorInstructions>
+			</errorHandlingStrategy>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="192,984,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="Text File Reader"/>
+		<target endpoint="in" step="Json Parser"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (UpdateProfileRepository) --><component mode="NORMAL" disabled="false" id="UpdateProfileRepository">
+		<properties fileName="UpdateProfileRepository.comp">
+			<mappings>
+				<mappingEndPoint name="domainAnalysis-count">
+					<columnMappings>
+						<columnsMapping from="count-records" to="count-records"/>
+						<columnsMapping from="count-keys" to="count-keys"/>
+						<columnsMapping from="count-description" to="count-description"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="domainAnalysis-exceptions">
+					<columnMappings>
+						<columnsMapping from="example-numCases" to="example-numCases"/>
+						<columnsMapping from="example-index" to="example-index"/>
+						<columnsMapping from="example-numValues" to="example-numValues"/>
+						<columnsMapping from="example-value" to="example-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="rollup">
+					<columnMappings>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="frequenciesMasked">
+					<columnMappings>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="item-percent" to="item-percent"/>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="FrequencyType" to="FrequencyType"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="statistics-item">
+					<columnMappings>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="item-index" to="item-index"/>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="stat-multiple" to="stat-multiple"/>
+						<columnsMapping from="stat-type" to="stat-type"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_frequenciesMasked">
+					<columnMappings>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="item-percent" to="item-percent"/>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="FrequencyType" to="FrequencyType"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="rollup_item">
+					<columnMappings>
+						<columnsMapping from="item-value" to="item-value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_statistics">
+					<columnMappings>
+						<columnsMapping from="stat-multiple" to="stat-multiple"/>
+						<columnsMapping from="stat-type" to="stat-type"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_businessRules_count">
+					<columnMappings>
+						<columnsMapping from="records" to="records"/>
+						<columnsMapping from="description" to="description"/>
+						<columnsMapping from="keys" to="keys"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+						<columnsMapping from="br_indColumn" to="br_indColumn"/>
+						<columnsMapping from="br_name" to="br_name"/>
+						<columnsMapping from="br_expression" to="br_expression"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_frequencies">
+					<columnMappings>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="item-percent" to="item-percent"/>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="FrequencyType" to="FrequencyType"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_businessRules">
+					<columnMappings>
+						<columnsMapping from="br_indColumn" to="br_indColumn"/>
+						<columnsMapping from="br_name" to="br_name"/>
+						<columnsMapping from="br_expression" to="br_expression"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="statistics">
+					<columnMappings>
+						<columnsMapping from="stat-multiple" to="stat-multiple"/>
+						<columnsMapping from="stat-type" to="stat-type"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_domainAnalysis-count">
+					<columnMappings>
+						<columnsMapping from="count-records" to="count-records"/>
+						<columnsMapping from="count-keys" to="count-keys"/>
+						<columnsMapping from="count-description" to="count-description"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_statistics-item">
+					<columnMappings>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="item-index" to="item-index"/>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="stat-multiple" to="stat-multiple"/>
+						<columnsMapping from="stat-type" to="stat-type"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="domainAnalysis-example">
+					<columnMappings>
+						<columnsMapping from="example-numCases" to="example-numCases"/>
+						<columnsMapping from="example-numValues" to="example-numValues"/>
+						<columnsMapping from="example-value" to="example-value"/>
+						<columnsMapping from="example-index" to="example-index"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_domainAnalysis-example">
+					<columnMappings>
+						<columnsMapping from="example-numCases" to="example-numCases"/>
+						<columnsMapping from="example-numValues" to="example-numValues"/>
+						<columnsMapping from="example-value" to="example-value"/>
+						<columnsMapping from="example-index" to="example-index"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="businessRules">
+					<columnMappings>
+						<columnsMapping from="br_indColumn" to="br_indColumn"/>
+						<columnsMapping from="br_name" to="br_name"/>
+						<columnsMapping from="br_expression" to="br_expression"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_dataAnalyse_column_single_statistics">
+					<columnMappings>
+						<columnsMapping from="columnType" to="columnType"/>
+						<columnsMapping from="column" to="column"/>
+						<columnsMapping from="expression" to="expression"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="dataAnalyse_column_single_statistics">
+					<columnMappings>
+						<columnsMapping from="columnType" to="columnType"/>
+						<columnsMapping from="column" to="column"/>
+						<columnsMapping from="expression" to="expression"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_domainAnalysis-exceptions">
+					<columnMappings>
+						<columnsMapping from="example-numCases" to="example-numCases"/>
+						<columnsMapping from="example-index" to="example-index"/>
+						<columnsMapping from="example-numValues" to="example-numValues"/>
+						<columnsMapping from="example-value" to="example-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="domainAnalysis">
+					<columnMappings>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="businessRules_count">
+					<columnMappings>
+						<columnsMapping from="records" to="records"/>
+						<columnsMapping from="description" to="description"/>
+						<columnsMapping from="keys" to="keys"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="br_indColumn" to="br_indColumn"/>
+						<columnsMapping from="br_name" to="br_name"/>
+						<columnsMapping from="br_expression" to="br_expression"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="profileExport">
+					<columnMappings>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_domainAnalysis">
+					<columnMappings>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="frequencies">
+					<columnMappings>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="item-percent" to="item-percent"/>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="FrequencyType" to="FrequencyType"/>
+					</columnMappings>
+				</mappingEndPoint>
+			</mappings>
+			<parameters/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1080,336,-1,-1"/>
+	</component>
+
+
+
+<!-- (UpdateProfileRepository ) --><component mode="NORMAL" disabled="true" id="UpdateProfileRepository ">
+		<properties fileName="UpdateProfileRepository.comp">
+			<mappings>
+				<mappingEndPoint name="domainAnalysis-count">
+					<columnMappings>
+						<columnsMapping from="count-records" to="count-records"/>
+						<columnsMapping from="count-keys" to="count-keys"/>
+						<columnsMapping from="count-description" to="count-description"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="domainAnalysis-exceptions">
+					<columnMappings>
+						<columnsMapping from="example-numCases" to="example-numCases"/>
+						<columnsMapping from="example-index" to="example-index"/>
+						<columnsMapping from="example-numValues" to="example-numValues"/>
+						<columnsMapping from="example-value" to="example-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="rollup">
+					<columnMappings>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="frequenciesMasked">
+					<columnMappings>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="item-percent" to="item-percent"/>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="FrequencyType" to="FrequencyType"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="statistics-item">
+					<columnMappings>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="item-index" to="item-index"/>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="stat-multiple" to="stat-multiple"/>
+						<columnsMapping from="stat-type" to="stat-type"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_frequenciesMasked">
+					<columnMappings>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="item-percent" to="item-percent"/>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="FrequencyType" to="FrequencyType"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="rollup_item">
+					<columnMappings>
+						<columnsMapping from="item-value" to="item-value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_statistics">
+					<columnMappings>
+						<columnsMapping from="stat-multiple" to="stat-multiple"/>
+						<columnsMapping from="stat-type" to="stat-type"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_businessRules_count">
+					<columnMappings>
+						<columnsMapping from="records" to="records"/>
+						<columnsMapping from="description" to="description"/>
+						<columnsMapping from="keys" to="keys"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+						<columnsMapping from="br_indColumn" to="br_indColumn"/>
+						<columnsMapping from="br_name" to="br_name"/>
+						<columnsMapping from="br_expression" to="br_expression"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_frequencies">
+					<columnMappings>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="item-percent" to="item-percent"/>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="FrequencyType" to="FrequencyType"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_businessRules">
+					<columnMappings>
+						<columnsMapping from="br_indColumn" to="br_indColumn"/>
+						<columnsMapping from="br_name" to="br_name"/>
+						<columnsMapping from="br_expression" to="br_expression"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="statistics">
+					<columnMappings>
+						<columnsMapping from="stat-multiple" to="stat-multiple"/>
+						<columnsMapping from="stat-type" to="stat-type"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_domainAnalysis-count">
+					<columnMappings>
+						<columnsMapping from="count-records" to="count-records"/>
+						<columnsMapping from="count-keys" to="count-keys"/>
+						<columnsMapping from="count-description" to="count-description"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_statistics-item">
+					<columnMappings>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="item-index" to="item-index"/>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="stat-multiple" to="stat-multiple"/>
+						<columnsMapping from="stat-type" to="stat-type"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="domainAnalysis-example">
+					<columnMappings>
+						<columnsMapping from="example-numCases" to="example-numCases"/>
+						<columnsMapping from="example-numValues" to="example-numValues"/>
+						<columnsMapping from="example-value" to="example-value"/>
+						<columnsMapping from="example-index" to="example-index"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_domainAnalysis-example">
+					<columnMappings>
+						<columnsMapping from="example-numCases" to="example-numCases"/>
+						<columnsMapping from="example-numValues" to="example-numValues"/>
+						<columnsMapping from="example-value" to="example-value"/>
+						<columnsMapping from="example-index" to="example-index"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="businessRules">
+					<columnMappings>
+						<columnsMapping from="br_indColumn" to="br_indColumn"/>
+						<columnsMapping from="br_name" to="br_name"/>
+						<columnsMapping from="br_expression" to="br_expression"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_dataAnalyse_column_single_statistics">
+					<columnMappings>
+						<columnsMapping from="columnType" to="columnType"/>
+						<columnsMapping from="column" to="column"/>
+						<columnsMapping from="expression" to="expression"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="dataAnalyse_column_single_statistics">
+					<columnMappings>
+						<columnsMapping from="columnType" to="columnType"/>
+						<columnsMapping from="column" to="column"/>
+						<columnsMapping from="expression" to="expression"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_domainAnalysis-exceptions">
+					<columnMappings>
+						<columnsMapping from="example-numCases" to="example-numCases"/>
+						<columnsMapping from="example-index" to="example-index"/>
+						<columnsMapping from="example-numValues" to="example-numValues"/>
+						<columnsMapping from="example-value" to="example-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="domainAnalysis">
+					<columnMappings>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="businessRules_count">
+					<columnMappings>
+						<columnsMapping from="records" to="records"/>
+						<columnsMapping from="description" to="description"/>
+						<columnsMapping from="keys" to="keys"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="br_indColumn" to="br_indColumn"/>
+						<columnsMapping from="br_name" to="br_name"/>
+						<columnsMapping from="br_expression" to="br_expression"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="profileExport">
+					<columnMappings>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="ru_domainAnalysis">
+					<columnMappings>
+						<columnsMapping from="domainAnalyse-name" to="domainAnalyse-name"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="rollup_SourceAttributeName" to="rollup_SourceAttributeName"/>
+						<columnsMapping from="rollup_column" to="rollup_column"/>
+						<columnsMapping from="rollup_name" to="rollup_name"/>
+						<columnsMapping from="rollup_value" to="rollup_value"/>
+					</columnMappings>
+				</mappingEndPoint>
+				<mappingEndPoint name="frequencies">
+					<columnMappings>
+						<columnsMapping from="item-count" to="item-count"/>
+						<columnsMapping from="item-percent" to="item-percent"/>
+						<columnsMapping from="item-value" to="item-value"/>
+						<columnsMapping from="ProfileInternalColumnName" to="ProfileInternalColumnName"/>
+						<columnsMapping from="ProfileSourceAttributeType" to="ProfileSourceAttributeType"/>
+						<columnsMapping from="ProfileSourceAttributeName" to="ProfileSourceAttributeName"/>
+						<columnsMapping from="ProfileInputName" to="ProfileInputName"/>
+						<columnsMapping from="FrequencyType" to="FrequencyType"/>
+					</columnMappings>
+				</mappingEndPoint>
+			</mappings>
+			<parameters/>
+		</properties>
+		<visual-constraints layout="horizontal" bounds="1080,984,-1,-1"/>
+	</component>
+
+
+
+<modelComment backgroundColor="255,255,180" borderColor="183,183,0" bounds="120,816,233,134" foregroundColor="51,51,51">need to know how to use the JSON
+parser instead of text file reader but 
+i dont think it will be possible
+
+
+Just here for reference on how 
+to parse using xml reader</modelComment>
+
+
+
+<modelComment backgroundColor="255,255,180" borderColor="183,183,0" bounds="24,96,361,230" foregroundColor="51,51,51">Stuff to do:
+1. Add SubmissionID, SubmissionDate, ReportDate 
+details to be passed into this component. This should 
+from sequenctial call from monitor plan and independent
+call from flat file/independent batch call. 
+2. Add profiling JDBC tables to database
+3. Add JDBC plan to delete full table for multi line 
+results for same table queries.
+--4. create xml value columns
+--5. create json value columns
+6. Add switches to write multi line/frequency details or not
+7. Make filename componentised
+8. test end to end for batch call of this piece only.</modelComment>
+
+</purity-config>

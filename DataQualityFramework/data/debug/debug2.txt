@@ -1,1 +1,0 @@
-"RuleID";"Technical_Rule_Name";"Generic_Rule_Name";"Rule_Details";"Score";"Explanation";"RuleScope";"DQ_Category";"Tags";"Action";"SQL_RuleID";"SQL_Technical_RuleName";"Error";"SQL_HierarchyCategory";"SQL_HierarchyCategoryID"

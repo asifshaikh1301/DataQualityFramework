@@ -1,0 +1,1 @@
+"br_indColumn";"br_name";"br_null_count";"br_false_count";"br_true_count";"br_expression";"businessRulesRDC";"ProfileInternalColName"

@@ -1,7 +1,0 @@
-"SourceName";"SourceLayerName";"SourceAttributeName";"RuleID";"RuleMappings";"TotalRecordsProcessedByRule";"Fail_Count";"AggJoinCol"
-"OmniCRM";"og_customer";"Mobile";1;"Rule_Attribute_1.Mobile";50;22;"OmniCRMog_customerMobile1"
-"OmniImInAMess";"og_customer";"Gender";1;"Rule_Attribute_1.Gender";50;10;"OmniImInAMessog_customerGender1"
-"OmniImInAMess";"og_customer";"Mobile";1;"Rule_Attribute_1.Mobile";50;10;"OmniImInAMessog_customerMobile1"
-"OmniCRM";"og_customer";"Gender";10;"Rule_Attribute_1.Gender";50;12;"OmniCRMog_customerGender10"
-"OmniCRM";"og_customer";"Gender";1;"Rule_Attribute_1.Gender";50;29;"OmniCRMog_customerGender1"
-"OmniImInAMess";"og_customer";"Gender";10;"Rule_Attribute_1.Gender";50;16;"OmniImInAMessog_customerGender10"

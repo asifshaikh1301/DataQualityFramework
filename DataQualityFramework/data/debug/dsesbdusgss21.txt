@@ -1,1 +1,0 @@
-"MappingID";"EXT_MappingID";"SourceAttributeID";"DomainAttributeID";"Action";"Error";"SQL_MappingID";"UpsertUser";"Error_UpdateMapping"

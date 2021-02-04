@@ -1,0 +1,3 @@
+"br_indColumn";"br_name";"br_expression";"ProfileInputName"
+"P_23";"RuleOne";"length(GD) > 1";"in"
+"P_24";"RuleTwo";"length(GD) > 2";"in"

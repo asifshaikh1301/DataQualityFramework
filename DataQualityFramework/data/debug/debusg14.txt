@@ -1,1 +1,0 @@
-"CategoryID";"Category";"SubCategoryID";"SubCategory";"Description";"Action";"Error";"SQL_CategoryID";"SQL_SubCategoryID";"SQL_Category";"SQL_SubCategory"

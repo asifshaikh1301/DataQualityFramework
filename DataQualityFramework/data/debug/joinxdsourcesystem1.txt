@@ -1,3 +1,0 @@
-"SourceID";"SourceName";"SourceExternalID";"SourceType";"SourceDescription"
-;"OmniImInAMess";;"Omni";"Omni-Gen DQ Edition"
-;"OmniCRM";;"Omni";"Omni-Gen DQ Edition"

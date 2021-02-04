@@ -1,0 +1,2 @@
+"rollup_name";"rollup_column";"rollup_SourceAttributeName";"ProfileInputName"
+"ru_RollupOnGD";"S_2";"GD";"in"

@@ -1,1 +1,0 @@
-"TABLE_CATALOG";"TABLE_SCHEMA";"SourceID";"SourceExternalID";"SourceName";"SourceTypeID";"SourceDescription";"database_id";"jdbc_ConnectionName";"DQFramework_DBType";"Omni_DBType"

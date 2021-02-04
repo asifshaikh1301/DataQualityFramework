@@ -1,0 +1,2 @@
+"columnType";"column";"expression";"count";"count_nulls";"count_not_nulls";"distinct";"unique";"min";"max";"median";"sum_ifInt";"avg";"std";"var";"non_unique";"duplicate";"avg_length_ifString";"min_length_ifString";"max_length_ifString";"median_length_ifString";"dataAnalyse_column_single_statisticsRDC";"SourceID";"SourceName";"SourceLayerID";"SourceLayerName";"SourceAttributeID";"SourceAttributeName";"domainAnalysis_Type"
+"STRING";"S_2";"GD";100;39;61;20;10;"f";"phemail";"Female";;;;;10;41;2.6557377049;1;7;1;"in:4:1";;;;;;"GD";"enum pattern"
